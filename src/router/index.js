@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import main from '@/components/main'
+import main from '@/components/mainpage'
 import markdown from '@/components/pages/markdown'
 import section from '@/components/pages/section'
 import item from '@/components/pages/item'

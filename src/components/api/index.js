@@ -71,8 +71,6 @@ export function AddNewSection (section, callback) {
     console.log(data)
     callback(data)
   })
-
-
 }
 export function UpdateSection (callback) {
   BX24.callMethod('entity.item.add', {

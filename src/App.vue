@@ -12,7 +12,7 @@
 <script>
 import Top from './components/common/header'
 import Middle from './components/common/middle'
-import Content from './components/main'
+import Content from './components/mainpage'
 import Sidebar from './components/common/Sidebar'
 export default {
   name: 'App',
