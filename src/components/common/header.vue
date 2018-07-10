@@ -31,6 +31,7 @@ export default {
       var self = this
       console.log(this)
       console.log(this)
+      console.log(this)
       BX24.callMethod('user.current', {}, function (res) {
         console.log(res.data())
         self.msg = res.data().NAME + ' ' + res.data().LAST_NAME
