@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li><router-link to='/'>{{ msg }}</router-link></li>
-        <li><router-link to='/markdown/30'>mardown!</router-link></li>
+        <li><router-link to='/markdown/30'>maradasdasddown!</router-link></li>
         <li><router-link to='/item/1'>item!</router-link></li>
         <li><router-link to='/section/1'>section!</router-link></li>
         <li><router-link to='/settings/'>Settings</router-link></li>

@@ -13,9 +13,14 @@ export function GetSections (SectionId, callback) {
     FILTER: {SECTION: SectionId}
   },
   function (result) {
-    var data = result.data()
-    console.log(data)
-    callback(data)
+    if (result.error()) {
+      console.log(result)
+      GetSections(SectionId, callback)
+    } else {
+      var data = result.data()
+      console.log(data)
+      callback(data)
+    }
   }
   )
 }
@@ -79,9 +84,13 @@ export function UpdateSection (callback) {
     NAME: 'Новая статья',
     DETAIL_TEXT: ''
   }, function (result) {
-    var data = result.data()
-    console.log(data)
-    callback(data)
+    if (result.error()) {
+      UpdateSection(callback)
+    } else {
+      var data = result.data()
+      console.log(data)
+      callback(data)
+    }
   })
 }
 export function GetCatalogArray (SectionID, callback) {
