@@ -10,6 +10,7 @@
                  <table style="width: 100%;" cellpadding="0" cellspacing="0">
                    <tr>
                      <td>
+                       <fileView/>
                        <!--filelist-->
                        <filelist/>
                        <div id="kb-disk-network-drive-full" style="display:none;" class="kb-disk-network-drive-full-style">
@@ -40,10 +41,10 @@
 
 <script>
 import Filelist from './Filelist'
-import Filelist_view_1 from './Filelist_view_1'
+import FileView from './FileView'
 
 export default {
   name: 'mainpage',
-  components: {Filelist_view_1, Filelist}
+  components: {FileView, Filelist}
 }
 </script>
