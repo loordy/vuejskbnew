@@ -1,15 +1,32 @@
 <template>
-  <div id="live-search">
-    <div class="ht-container">
-      <div id="search-wrap">
-        <form role="search" method="get" id="searchform" class="clearfix" action="">
-          <input type="text" onfocus="if (this.value == 'Have a question? Ask or enter a search term.') {this.value = '';}" onblur="if (this.value == '')  {this.value = 'Have a question? Ask or enter a search term.';}" value="Have a question? Ask or enter a search term." name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off">
-          <i class="live-search-loading fa fa-spinner fa-spin"></i> <button type="submit" id="searchsubmit"> <i class="fa fa-search"></i>
-          <span>Search</span> </button>
-        </form>
+  <table style="width:100%">
+  <tr class="kb-layout-inner-inner-top-row">
+    <td class="kb-layout-inner-inner-cont">
+      <div class="page-header">
+        <div class="pagetitle-below">
+          <div class="disk-folder-list-toolbar" id="disk-folder-list-toolbar">
+            <div class="disk-breadcrumbs js-disk-breadcrumbs " id="breadcrumbs_f6cbe" style="opacity: 1;">
+              <div class="disk-breadcrumbs-item js-disk-breadcrumbs-folder">
+                <a class="disk-breadcrumbs-item-title js-disk-breadcrumbs-folder-link" href="">Мой Диск</a>
+                <span class="disk-breadcrumbs-item-arrow js-disk-breadcrumbs-arrow"></span>
+              </div>
+            </div>
+            <div class="disk-folder-list-config">
+              <div class="disk-folder-list-sorting">
+                <span class="disk-folder-list-sorting-text">По дате изменения</span>
+              </div>
+              <div class="disk-folder-list-view">
+                <a  class="disk-folder-list-view-item disk-folder-list-view-item-lines "></a>
+                <a  class="disk-folder-list-view-item disk-folder-list-view-item-grid js-disk-change-view disk-folder-list-view-item-active"></a>
+                <a  class="disk-folder-list-view-item disk-folder-list-view-item-grid-tile js-disk-change-view "></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </td>
+  </tr>
+  </table>
 </template>
 
 <script>
