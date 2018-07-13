@@ -1,22 +1,16 @@
-import Vue from 'vue'
 export default {
-  SET_ACTIVE_TYPE: (state, { type }) => {
-    state.activeType = type
+  setElements: (state, data) => {
+    state.elements = data
+    console.log('mutiroval')
+    console.log(data)
+    console.log(state)
   },
 
-  SET_LIST: (state, { type, ids }) => {
-    state.lists[type] = ids
+  setSections: (state, { data }) => {
+    state.sections = data
   },
 
-  SET_ITEMS: (state, { items }) => {
-    items.forEach(item => {
-      if (item) {
-        Vue.set(state.items, item.id, item)
-      }
-    })
-  },
-
-  SET_USER: (state, { id, user }) => {
-    Vue.set(state.users, id, user || false) /* false means user not found */
+  setUsers: (state, { data }) => {
+    state.users = data
   }
 }

@@ -22,7 +22,7 @@
     </aside>
 </template>
 <script>
-import { AddNewItem, GetSections, GetElements } from '../api/index'
+import { AddNewItem, GetSections } from '../api/index'
 import modal from './modalwindow'
 export default {
   name: 'Sidebar',
@@ -33,7 +33,7 @@ export default {
     return {
       i: 0,
       sections: '',
-      items: '',
+      items: this.$store.state.elements,
       catalog: '',
       iSshowModal: false
     }
@@ -52,12 +52,6 @@ export default {
         self.sections = data
       })
     },
-    GetElements () {
-      var self = this
-      GetElements(null, function (data) {
-        self.items = data
-      })
-    },
     showModal () {
       this.iSshowModal = true
     },
@@ -67,7 +61,6 @@ export default {
   },
   mounted () {
     this.GetSections()
-    this.GetElements()
   }
 }
 </script>

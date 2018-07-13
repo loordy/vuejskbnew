@@ -11,12 +11,14 @@
   <button  v-on:click="Adddemorazdel()">Добавить демо раздел</button>
   <button  v-on:click="RenewStore()">Обновить хранилище</button>
   <button  v-on:click="DelEntyty()">Удалить хранилище</button>
+  <button  v-on:click="checkstore()">показать хранилище</button>
 
 </div>
 </template>
 
 <script>
 import { GetCatalogArray, GetSections, GetElements } from '../api/index'
+
 
 /* global BX24 */
 export default {
@@ -32,6 +34,10 @@ export default {
   methods: {
     Adddemodannie () {
 
+    },
+    checkstore () {
+      console.log(this)
+      console.log(this.$store.state.elements)
     },
     DelEntyty () {
       BX24.callMethod('entity.delete', {'ENTITY': 'md_knowledge'})
