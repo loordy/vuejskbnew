@@ -60,7 +60,7 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'fileView'
-    }
+export default {
+  name: 'fileView'
+}
 </script>

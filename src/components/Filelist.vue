@@ -37,7 +37,7 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'filelist'
-    }
+export default {
+  name: 'filelist'
+}
 </script>

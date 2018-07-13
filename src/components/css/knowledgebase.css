@@ -11094,3 +11094,27 @@ a.td1:hover {
 .hide-features-more:hover {
   border-bottom-color: #2067b0;
 }
+.ui-grid-tile-multi-select-mode .ui-grid-tile-item-checkbox, .ui-grid-tile-item-checkbox-checked, .ui-grid-tile-item:hover .ui-grid-tile-item-checkbox {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ui-grid-tile-item-checkbox {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 1px solid rgba(130,139,149,.67);
+  border-radius: 2px;
+  top: 9px;
+  right: 10px;
+  pointer-events: none;
+  opacity: 0;
+  transition: .3s;
+  z-index: 99;
+}
+.ui-grid-tile-item {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin: 9px;
+}
