@@ -33,9 +33,13 @@ export default {
     return {
       i: 0,
       sections: '',
-      items: this.$store.state.elements,
       catalog: '',
       iSshowModal: false
+    }
+  },
+  computed: {
+    items () {
+      return this.$store.state.elements
     }
   },
   methods: {
