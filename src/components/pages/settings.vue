@@ -18,8 +18,6 @@
 
 <script>
 import { GetCatalogArray, GetSections, GetElements } from '../../api/index'
-
-
 /* global BX24 */
 export default {
   name: 'settings',
