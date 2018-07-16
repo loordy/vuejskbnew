@@ -7,7 +7,7 @@
           <div class="disk-folder-list-toolbar" id="disk-folder-list-toolbar">
             <div class="disk-breadcrumbs js-disk-breadcrumbs " id="breadcrumbs_f6cbe" style="opacity: 1;">
               <div class="disk-breadcrumbs-item js-disk-breadcrumbs-folder">
-                <a class="disk-breadcrumbs-item-title js-disk-breadcrumbs-folder-link" href="">Мой Диск</a>
+                <a class="disk-breadcrumbs-item-title js-disk-breadcrumbs-folder-link" href="">База знаний</a>
                 <span class="disk-breadcrumbs-item-arrow js-disk-breadcrumbs-arrow"></span>
               </div>
             </div>

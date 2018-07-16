@@ -10,8 +10,6 @@
                  <table style="width: 100%;" cellpadding="0" cellspacing="0">
                    <tr>
                      <td>
-
-                       <!--filelist-->
                        <filelist/>
                        <div id="kb-disk-network-drive-full" style="display:none;" class="kb-disk-network-drive-full-style">
                          <div id="kb-disk-network-drive"></div>
@@ -46,7 +44,7 @@
 import Filelist from './Filelist'
 import fileView from './FileView'
 import empty from './empty'
-import modalWindow from './modalWindow'
+import modalWindow from './ModalWindow'
 
 export default {
   name: 'mainpage',
