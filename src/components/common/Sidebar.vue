@@ -22,7 +22,7 @@
 </template>
 <script>
 import { AddNewItem, GetSections } from '../../api/index'
-import modal from './ModalWindow'
+import modal from './mainModal'
 export default {
   name: 'Sidebar',
   components: {
