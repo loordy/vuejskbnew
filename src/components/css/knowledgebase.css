@@ -5645,7 +5645,7 @@ td.kb-layout-inner-inner-cont {
 
 .page-header {
   min-width: 800px;
-  max-width: calc(100vw - 240px);
+  /*max-width: calc(100vw - 240px);*/
 }
 
 .menu-collapsed-mode .page-header {
