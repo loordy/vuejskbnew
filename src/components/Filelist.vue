@@ -7,7 +7,7 @@
                         <div class="ui-grid-tile-item-checkbox"></div>
                         <div class="ui-grid-tile-item-content">
                             <div class="disk-folder-list-item disk-folder-list-item-folder">
-                                <div class="disk-folder-list-item-image">
+                                <div class="disk-folder-list-item-image" id="foo" v-on:click="select($event)">
                                     <div class="ui-icon ui-icon-file ui-icon-file-folder" style="width: 85%;">
                                         <i></i>
                                     </div>
@@ -39,12 +39,27 @@
 <script>
 export default {
   name: 'filelist',
+  data: function () {
+    return {
+      checked: [],
+      targetId: false
+    }
+  },
   computed: {
-    items () {
+    items() {
       return this.$store.state.elements
     },
-    sections () {
+    sections() {
       return this.$store.state.sections
+    }
+  },
+  methods: {
+    onClick: function () {
+      console.log('asdasda')
+    },
+    select: function (event) {
+      this.targetId = event.currentTarget.id
+      console.log(this.targetId)
     }
   }
 }
