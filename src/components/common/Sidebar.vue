@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       i: 0,
-      sections: '',
+      sections: '{12,23,34}',
       catalog: '',
       iSshowModal: false
     }
