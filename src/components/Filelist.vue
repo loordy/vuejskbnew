@@ -3,7 +3,7 @@
         <div>
             <div id="folder_list_4326_tile_grid_container" class="disk-tile-grid">
                 <div class="ui-grid-tile">
-                    <div class="ui-grid-tile-item">
+                    <div class="ui-grid-tile-item" v-for="item in items">
                         <div class="ui-grid-tile-item-checkbox"></div>
                         <div class="ui-grid-tile-item-content">
                             <div class="disk-folder-list-item disk-folder-list-item-folder">
@@ -18,7 +18,7 @@
                                     <div class="disk-folder-list-item-title">
                                         <div class="disk-folder-list-item-title-wrapper">
                                             <input class="disk-folder-list-item-title-input" type="text" value="Test">
-                                            <a class="disk-folder-list-item-title-link" title="Test">Test</a>
+                                            <a class="disk-folder-list-item-title-link" title="Test">{{item}}</a>
                                         </div>
                                     </div>
                                     <div class="disk-folder-list-item-icons">
@@ -37,7 +37,16 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'filelist'
+export default {
+  name: 'filelist',
+  data: function () {
+    return {
+      items: [
+        '12',
+        '1222',
+        '2323'
+      ]
     }
+  }
+}
 </script>
