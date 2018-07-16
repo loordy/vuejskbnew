@@ -1,4 +1,4 @@
-import { GetUsers, GetSections, GetElements } from '../components/api/index'
+import { GetUsers, GetSections, GetElements } from '../api/index'
 export default {
   getAllElements ({commit, data}) {
     commit('setElements', data)

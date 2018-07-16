@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     activeType: null,
     itemsPerPage: 20,
+    currentUser: {},
     elements: {/* [id: number]: Item */},
     users: {/* [id: string]: User */},
     sections: {/* [id: string]: Section */},

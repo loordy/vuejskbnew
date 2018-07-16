@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { GetCatalogArray, GetSections, GetElements } from '../api/index'
+import { GetCatalogArray, GetSections, GetElements } from '../../api/index'
 
 
 /* global BX24 */

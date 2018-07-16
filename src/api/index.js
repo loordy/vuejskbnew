@@ -1,7 +1,14 @@
 /* global BX24 */
-export function GetUsers (callback) {
+export function GetCurrentUser (callback) {
   BX24.init(function () {
     BX24.callMethod('user.current', {}, function (res) {
+      callback(res.data())
+    })
+  })
+}
+export function GetUsers (callback) {
+  BX24.init(function () {
+    BX24.callMethod('user.get', {}, function (res) {
       callback(res.data())
     })
   })

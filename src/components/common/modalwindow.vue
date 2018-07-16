@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { AddNewSection } from '../api/index'
+import { AddNewSection } from '../../api/index'
 export default {
   name: 'modalwindow',
   data () {

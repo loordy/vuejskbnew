@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { GetCatalogArray, GetSections, GetElements } from '../api/index'
+import { GetCatalogArray, GetSections, GetElements } from '../../api/index'
 import Pageheader from '../common/Pageheader'
 export default {
   name: 'section',

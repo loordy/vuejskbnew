@@ -20,7 +20,7 @@
 <script>
 import _ from 'lodash'
 import marked from 'marked'
-import { GetElements, UpdateItem, GetSections } from '../api/index'
+import { GetElements, UpdateItem, GetSections } from '../../api/index'
 export default {
   data () {
     return {

@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { GetCatalogArray, GetSections, GetElements } from './api/index'
+import { GetCatalogArray, GetSections, GetElements } from '../api/index'
 export default {
   name: 'content',
   data () {

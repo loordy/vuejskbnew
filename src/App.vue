@@ -14,7 +14,7 @@ import Top from './components/common/header'
 import Middle from './components/common/middle'
 import Content from './components/mainpage'
 import Sidebar from './components/common/Sidebar'
-import { GetUsers, GetSections, GetElements } from './components/api/index'
+import { GetUsers, GetSections, GetElements, GetCurrentUser } from './api/index'
 import store from './store'
 export default {
   name: 'App',
@@ -30,13 +30,33 @@ export default {
       GetElements(null, function (data) {
         self.commit('setElements', data)
       })
+    },
+    GetSections () {
+      let self = store
+      GetSections(null, function (data) {
+        self.commit('setSections', data)
+      })
+    },
+    GetUsers () {
+      let self = store
+      GetUsers(null, function (data) {
+        self.commit('setUsers', data)
+      })
+    },
+    GetCurrentUser () {
+      let self = store
+      GetCurrentUser(null, function (data) {
+        self.commit('currentUser', data)
+      })
     }
   },
   mounted () {
     this.GetElements()
+    this.GetSections()
+    this.GetUsers()
+    this.GetCurrentUser()
     this.$router.push({ path: `/` })
     console.log('mounted app.vue')
-
   }
 }
 

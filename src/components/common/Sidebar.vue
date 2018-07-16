@@ -22,7 +22,7 @@
     </aside>
 </template>
 <script>
-import { AddNewItem, GetSections } from '../api/index'
+import { AddNewItem, GetSections } from '../../api/index'
 import modal from './modalwindow'
 export default {
   name: 'Sidebar',
@@ -32,7 +32,6 @@ export default {
   data () {
     return {
       i: 0,
-      sections: '',
       catalog: '',
       iSshowModal: false
     }
@@ -40,6 +39,9 @@ export default {
   computed: {
     items () {
       return this.$store.state.elements
+    },
+    sections () {
+      return this.$store.state.sections
     }
   },
   methods: {
