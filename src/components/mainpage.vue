@@ -35,9 +35,9 @@
          </div>
        </td>
      </tr>
-     <empty/>
-     <modalWindow/>
-     <fileView/>
+     <!--<empty/>-->
+     <!--<modalWindow/>-->
+     <!--<fileView/>-->
       <!--<tr v-html="htmll"></tr>-->
   </table>
 </template>
