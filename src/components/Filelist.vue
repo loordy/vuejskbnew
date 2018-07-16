@@ -7,7 +7,7 @@
                         <div class="ui-grid-tile-item-checkbox"></div>
                         <div class="ui-grid-tile-item-content">
                             <div class="disk-folder-list-item disk-folder-list-item-folder">
-                                <div class="disk-folder-list-item-image">
+                                <div class="disk-folder-list-item-image" id="foo" v-on:click="select($event)">
                                     <div class="ui-icon ui-icon-file ui-icon-file-folder" style="width: 85%;">
                                         <i></i>
                                     </div>
@@ -37,6 +37,7 @@
     </div>
 </template>
 <script>
+
 export default {
   name: 'filelist',
   data: function () {
@@ -45,7 +46,18 @@ export default {
         '12',
         '1222',
         '2323'
-      ]
+      ],
+      checked: [],
+      targetId: false
+    }
+  },
+  methods: {
+    onClick: function () {
+      console.log('asdasda')
+    },
+    select: function (event) {
+      this.targetId = event.currentTarget.id
+      console.log(this.targetId)
     }
   }
 }

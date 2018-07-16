@@ -11116,3 +11116,8 @@ a.td1:hover {
   vertical-align: top;
   margin: 9px;
 }
+.ui-grid-tile-item-checkbox-checked {
+  border-color: #2687e8;
+  background: #2687e8;
+  transition: .1s;
+}

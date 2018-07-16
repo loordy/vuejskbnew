@@ -1,5 +1,5 @@
 <template>
-    <div class="main-grid-container" style="display: none;">
+    <div class="main-grid-container">
         <table class="main-grid-table" id="folder_list_1_table">
             <thead class="main-grid-header">
             <tr class="main-grid-row-head">
