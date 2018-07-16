@@ -1,16 +1,12 @@
 /* global BX24 */
 export function GetCurrentUser (callback) {
-  BX24.init(function () {
-    BX24.callMethod('user.current', {}, function (res) {
-      callback(res.data())
-    })
+  BX24.callMethod('user.current', {}, function (res) {
+    callback(res.data())
   })
 }
 export function GetUsers (callback) {
-  BX24.init(function () {
-    BX24.callMethod('user.get', {}, function (res) {
-      callback(res.data())
-    })
+  BX24.callMethod('user.get', {}, function (res) {
+    callback(res.data())
   })
 }
 export function GetSections (SectionId, callback) {
@@ -24,7 +20,7 @@ export function GetSections (SectionId, callback) {
       console.log(result)
       GetSections(SectionId, callback)
     } else {
-      var data = result.data()
+      let data = result.data()
       console.log(data)
       callback(data)
     }
@@ -38,7 +34,7 @@ export function GetElements (params, callback) {
     FILTER: params
   },
   function (result) {
-    var data = result.data()
+    let data = result.data()
     console.log(data)
     callback(data)
   }
@@ -51,12 +47,11 @@ export function AddNewItem (callback) {
     NAME: 'Новая статья',
     DETAIL_TEXT: ''
   }, function (result) {
-    var data = result.data()
+    let data = result.data()
     console.log(data)
     callback(data)
   })
 }
-
 export function UpdateItem (item, callback) {
   BX24.callMethod('entity.item.update', {
     ENTITY: 'md_knowledge',
@@ -71,7 +66,6 @@ export function UpdateItem (item, callback) {
   }
   )
 }
-
 export function AddNewSection (section, callback) {
   BX24.callMethod('entity.section.add', {
     ENTITY: 'md_knowledge',
@@ -79,7 +73,7 @@ export function AddNewSection (section, callback) {
     NAME: section.NAME,
     DETAIL_TEXT: ''
   }, function (result) {
-    var data = result.data()
+    let data = result.data()
     console.log(data)
     callback(data)
   })
@@ -94,7 +88,7 @@ export function UpdateSection (callback) {
     if (result.error()) {
       UpdateSection(callback)
     } else {
-      var data = result.data()
+      let data = result.data()
       console.log(data)
       callback(data)
     }
@@ -109,10 +103,8 @@ export function GetCatalogArray (SectionID, callback) {
     Sections = data
     GetElements(false, function (data) {
       Elements = data
-
       let fID = null
       Catalog = Sections.filter(SectFilter)
-
       /**
        * @return {boolean}
        */
@@ -135,7 +127,6 @@ export function GetCatalogArray (SectionID, callback) {
       })
     })
   })
-
   Catalog.forEach(function (item, i, arr) {
     GetSections(Catalog[i]['SECTION'], function (data) {
       Catalog[i]['SECTION'] = []

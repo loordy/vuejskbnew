@@ -1,11 +1,14 @@
 <template>
-  <div class="kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
+  <transition name="slide-fade">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+  <div class="modal kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
     <div class="kb-iframe-content">
       <form action="" method="POST" id="kb-form" enctype="multipart/form-data">
         <input type="hidden" name="sessid" id="sessid" value="5b99ac85fed0ac560a18c8affe3a4547">
         <input type="hidden" name="ELEMENT_ID" value="43">
         <div style="width: 964px; height: 500px; padding: 15px 15px 20px;">
-
           <div class="kb-name-sort">
             <p>
               Раздел:
@@ -16,7 +19,6 @@
             </p>
           </div>
           <div class="kb-section">
-
             <p class="sections_select" style="position: relative;">
               Категория:
               <select name="CHILD_ID" id="child_select">
@@ -87,6 +89,10 @@
       </div>
     </div>
   </div>
+  </div>
+  </div>
+  </div>
+  </transition>
 </template>
 <style>
 
@@ -644,7 +650,80 @@
     font-family: Helvetica;
     box-shadow: inset 1px 1px 1px 1px black;
   }
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active до версии 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+  }
 
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal-container {
+    width: 100%;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+  }
+
+  .modal-body {
+    margin: 20px 0;
+  }
+
+  .modal-default-button {
+    float: right;
+  }
+
+  /*
+   * The following styles are auto-applied to elements with
+   * transition="modal" when their visibility is toggled
+   * by Vue.js.
+   *
+   * You can easily play with the modal transition by editing
+   * these styles.
+   */
+
+  .modal-enter {
+    opacity: 0;
+  }
+
+  .modal-leave-active {
+    opacity: 0;
+  }
+
+  .modal-enter .modal-container,
+  .modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 </style>
 <script>
 export default {

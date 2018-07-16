@@ -2,14 +2,13 @@
     <aside id="sidebar" role="complementary">
         <div id="categories-3" class="widget widget_categories clearfix"><h4 class="widget-title">
           <button id="show-modal" @click="showModal">Добавить раздел</button>
-          <modal v-if="iSshowModal" @close="closeModal">
+          <button @click="addStatya">Добавить статью</button>
+          <modal v-if="show" @close="show = false">
             <h3 slot="header">Редактировать</h3>
           </modal>
-          <button v-on:click="addStatya()">Добавить статью</button>
           <span>Разделы</span></h4>
             <ul  v-for="section in sections" :key="section.ID, i">
                 <li class="cat-item cat-item-2"><router-link :to='"/section/" + section.ID' :title="section.NAME">{{ section.NAME }}</router-link></li>
-
             </ul>
         </div>
 
@@ -23,7 +22,7 @@
 </template>
 <script>
 import { AddNewItem, GetSections } from '../../api/index'
-import modal from './modalwindow'
+import modal from './ModalWindow'
 export default {
   name: 'Sidebar',
   components: {
@@ -33,7 +32,8 @@ export default {
     return {
       i: 0,
       catalog: '',
-      iSshowModal: false
+      iSshowModal: false,
+      show: false
     }
   },
   computed: {
@@ -46,14 +46,15 @@ export default {
   },
   methods: {
     addStatya () {
-      var self = this
+      this.show = !this.show
+      let self = this
       AddNewItem(function (data) {
         console.log(data)
         self.$router.push({ path: `/markdown/${data}` })
       })
     },
     GetSections () {
-      var self = this
+      let self = this
       GetSections(null, function (data) {
         self.sections = data
       })

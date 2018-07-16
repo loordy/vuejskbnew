@@ -7,7 +7,7 @@
                         <div class="ui-grid-tile-item-checkbox"></div>
                         <div class="ui-grid-tile-item-content">
                             <div class="disk-folder-list-item disk-folder-list-item-folder">
-                                <div class="disk-folder-list-item-image" id="foo" v-on:click="select($event)">
+                                <div class="disk-folder-list-item-image" :id="section.ID" @click="select">
                                     <div class="ui-icon ui-icon-file ui-icon-file-folder" style="width: 85%;">
                                         <i></i>
                                     </div>
@@ -46,10 +46,10 @@ export default {
     }
   },
   computed: {
-    items() {
+    items () {
       return this.$store.state.elements
     },
-    sections() {
+    sections () {
       return this.$store.state.sections
     }
   },

@@ -10,8 +10,6 @@
                  <table style="width: 100%;" cellpadding="0" cellspacing="0">
                    <tr>
                      <td>
-
-                       <!--filelist-->
                        <filelist/>
                        <div id="kb-disk-network-drive-full" style="display:none;" class="kb-disk-network-drive-full-style">
                          <div id="kb-disk-network-drive"></div>
@@ -38,7 +36,6 @@
      <empty/>
      <modalWindow/>
      <fileView/>
-      <!--<tr v-html="htmll"></tr>-->
   </table>
 </template>
 
@@ -46,10 +43,9 @@
 import Filelist from './Filelist'
 import fileView from './FileView'
 import empty from './empty'
-import modalWindow from './modalWindow'
 
 export default {
   name: 'mainpage',
-  components: {fileView, Filelist, empty, modalWindow}
+  components: {fileView, Filelist, empty}
 }
 </script>
