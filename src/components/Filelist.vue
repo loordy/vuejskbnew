@@ -3,7 +3,7 @@
         <div>
             <div id="folder_list_4326_tile_grid_container" class="disk-tile-grid">
                 <div class="ui-grid-tile">
-                    <div class="ui-grid-tile-item" v-for="item in items">
+                    <div class="ui-grid-tile-item" v-for="item in items" :key="item.ID">
                         <div class="ui-grid-tile-item-checkbox"></div>
                         <div class="ui-grid-tile-item-content">
                             <div class="disk-folder-list-item disk-folder-list-item-folder">
