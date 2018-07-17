@@ -1,12 +1,18 @@
 <template>
-  <transition name="slide-fade">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-     </div>
+  <div class="side-panel side-panel-overlay side-panel-overlay-open" style="z-index: 3000; left: 0px; top: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.4);">
+    <div class="side-panel side-panel-container side-panel-container-open" style="z-index: 3001;  transform: translateX(0%); width: calc(100% - 240px);">
+      <span class="side-panel-close" title="Закрыть"><span class="side-panel-close-inner"></span></span>
+      <div class="side-panel-content-container">
+        <div  id="kb-iframe-popup-scope" class="template-bitrix24 kb-iframe-popup no-paddings kb-detail-page kb-iframe-popup-side-slider">
+          <div class="kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
+            <div class="side-panel-iframe" id="iframe_plov3nanc5">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </transition>
 </template>
 <style>
 

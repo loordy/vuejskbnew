@@ -43,9 +43,9 @@
 import Filelist from './Filelist'
 import fileView from './FileView'
 import empty from './empty'
-
+import main from './common/mainModal'
 export default {
   name: 'mainpage',
-  components: {fileView, Filelist, empty}
+  components: {fileView, Filelist, empty, main}
 }
 </script>

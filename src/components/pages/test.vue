@@ -24,7 +24,7 @@
   }
 </style>
 <script>
-import demo1 from './demo.vue'
+import demo1 from '../common/demo'
 var data = {
   name: 'My Tree',
   children: [
