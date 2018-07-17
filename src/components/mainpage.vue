@@ -34,8 +34,9 @@
        </td>
      </tr>
      <empty/>
-     <modalWindow/>
+     <!--<modalWindow/>-->
      <fileView/>
+     <testNew/>
   </table>
 </template>
 
@@ -44,8 +45,10 @@ import Filelist from './Filelist'
 import fileView from './FileView'
 import empty from './empty'
 import main from './common/mainModal'
+import testNew from './pages/SidebarNew'
 export default {
   name: 'mainpage',
-  components: {fileView, Filelist, empty, main}
+  components: {fileView, Filelist, empty, main, testNew}
 }
+
 </script>
