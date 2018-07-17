@@ -33,10 +33,9 @@
          </div>
        </td>
      </tr>
-     <!--<empty/>-->
-     <!--<modalWindow/>-->
-     <!--<fileView/>-->
-      <!--<tr v-html="htmll"></tr>-->
+     <empty/>
+     <modalWindow/>
+     <fileView/>
   </table>
 </template>
 
@@ -44,10 +43,9 @@
 import Filelist from './Filelist'
 import fileView from './FileView'
 import empty from './empty'
-import modalWindow from './ModalWindow'
 
 export default {
   name: 'mainpage',
-  components: {fileView, Filelist, empty, modalWindow}
+  components: {fileView, Filelist, empty}
 }
 </script>

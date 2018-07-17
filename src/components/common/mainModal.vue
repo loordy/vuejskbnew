@@ -1,98 +1,98 @@
 <template>
-  <div class="side-panel side-panel-overlay side-panel-overlay-open" style="z-index: 3000; left: 0px; top: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.4);">
-    <div class="side-panel side-panel-container side-panel-container-open" style="z-index: 3001; transform: translateX(0%); width: calc(100% - 240px);">
-      <span class="side-panel-close" title="Закрыть"><span class="side-panel-close-inner"></span></span>
-      <div class="side-panel-content-container">
-        <div  id="kb-iframe-popup-scope" class="template-bitrix24 kb-iframe-popup no-paddings kb-detail-page kb-iframe-popup-side-slider">
-          <div class="kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
-            <div class="side-panel-iframe" id="iframe_plov3nanc5">
-              <form action="" method="POST" id="kb-form" enctype="multipart/form-data">
-                <input type="hidden" name="sessid" id="sessid" value="5b99ac85fed0ac560a18c8affe3a4547">
-                <input type="hidden" name="ELEMENT_ID" value="43">
-                <div style="width: 964px; height: 500px; padding: 15px 15px 20px;">
-                  <div class="kb-name-sort">
-                    <p>
-                      Раздел:
-                      <select name="UF_KB_PARENT_ID" id="parents_select"  class="kb-edit-input" >
-                        <option value="">Выбрать</option>
-                        <option value="41" selected="">Раздел с большим количеством текста</option>
-                      </select>
-                    </p>
-                  </div>
-                  <div class="kb-section">
-                    <p class="sections_select" style="position: relative;">
-                      Категория:
-                      <select name="CHILD_ID" id="child_select">
-                        <option value="">Верхний раздел</option>
-                      </select>
-                      <i class="fa fa-refresh fa-spin fa-fw fast-spin" style="display: none;"></i>
-                    </p>
-                  </div>
-                  <div id="editor" style="margin-top: 15px; width: 100%; height: 77%;" class="editormd editormd-vertical">
-                    <textarea height="100px" name="UF_KB_DESCRIPTION" id="area" class="editormd-markdown-textarea" placeholder="Пользуйтесь Базой Знаний! Заполняйте легко ..." style="display: none;">sdfgsdfgsdggf</textarea>
-                    <div class="CodeMirror cm-s-default CodeMirror-wrap" style="font-size: 13px; width: 483px; margin-top: 78px; height: 308px;">
-                      <div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 51px;"><textarea autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div>
-                      <div class="CodeMirror-vscrollbar">
-                        <div style="min-width: 1px; height: 0px;"></div>
-                      </div>
-                      <div class="CodeMirror-hscrollbar">
-                        <div style="height: 100%; min-height: 1px; width: 0px;"></div>
-                      </div>
-                      <div class="CodeMirror-scrollbar-filler"></div>
-                      <div class="CodeMirror-gutter-filler"></div>
-                      <div class="CodeMirror-scroll" tabindex="-1">
-                        <div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -7px; border-right-width: 23px; min-height: 30px; padding-right: 0px; padding-bottom: 0px;">
-                          <div style="position: relative; top: 0px;">
-                            <div class="CodeMirror-lines">
-                              <div style="position: relative; outline: none;">
-                                <div class="CodeMirror-measure">AخA</div>
-                                <div class="CodeMirror-measure"></div>
-                                <div style="position: relative; z-index: 1;"></div>
-                                <div class="CodeMirror-cursors" style="visibility: hidden;">
-                                  <div class="CodeMirror-cursor" style="left: 12px; top: 0px; height: 22px;">&nbsp;</div>
-                                </div>
-                                <div class="CodeMirror-code">
-                                  <div class="CodeMirror-activeline" style="position: relative;">
-                                    <div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
-                                    <div class="CodeMirror-gutter-wrapper" style="left: -39px; width: 39px;">
-                                      <div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div>
-                                    </div>
-                                    <pre class=""><span style="padding-right: 0.1px;"><span class="cm-cm-overlay cm-matchhighlight">sdfgsdfgsdggf</span></span></pre>
-                                  </div>
-                                </div>
-                              </div>
+  <transition name="slide-fade">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+  <div class="modal kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
+    <div class="kb-iframe-content">
+      <form action="" method="POST" id="kb-form" enctype="multipart/form-data">
+        <input type="hidden" name="sessid" id="sessid" value="5b99ac85fed0ac560a18c8affe3a4547">
+        <input type="hidden" name="ELEMENT_ID" value="43">
+        <div style="width: 964px; height: 500px; padding: 15px 15px 20px;">
+          <div class="kb-name-sort">
+            <p>
+              Раздел:
+              <select name="UF_KB_PARENT_ID" id="parents_select"  class="kb-edit-input" >
+                <option value="">Выбрать</option>
+                <option value="41" selected="">Раздел с большим количеством текста</option>
+              </select>
+            </p>
+          </div>
+          <div class="kb-section">
+            <p class="sections_select" style="position: relative;">
+              Категория:
+              <select name="CHILD_ID" id="child_select">
+                <option value="">Верхний раздел</option>
+              </select>
+              <i class="fa fa-refresh fa-spin fa-fw fast-spin" style="display: none;"></i>
+            </p>
+          </div>
+          <div id="editor" style="margin-top: 15px; width: 100%; height: 77%;" class="editormd editormd-vertical">
+            <textarea height="100px" name="UF_KB_DESCRIPTION" id="area" class="editormd-markdown-textarea" placeholder="Пользуйтесь Базой Знаний! Заполняйте легко ..." style="display: none;">sdfgsdfgsdggf</textarea>
+            <div class="CodeMirror cm-s-default CodeMirror-wrap" style="font-size: 13px; width: 483px; margin-top: 78px; height: 308px;">
+              <div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 51px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div>
+              <div class="CodeMirror-vscrollbar" cm-not-content="true">
+                <div style="min-width: 1px; height: 0px;"></div>
+              </div>
+              <div class="CodeMirror-hscrollbar" cm-not-content="true">
+                <div style="height: 100%; min-height: 1px; width: 0px;"></div>
+              </div>
+              <div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+              <div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+              <div class="CodeMirror-scroll" tabindex="-1">
+                <div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -7px; border-right-width: 23px; min-height: 30px; padding-right: 0px; padding-bottom: 0px;">
+                  <div style="position: relative; top: 0px;">
+                    <div class="CodeMirror-lines">
+                      <div style="position: relative; outline: none;">
+                        <div class="CodeMirror-measure">AخA</div>
+                        <div class="CodeMirror-measure"></div>
+                        <div style="position: relative; z-index: 1;"></div>
+                        <div class="CodeMirror-cursors" style="visibility: hidden;">
+                          <div class="CodeMirror-cursor" style="left: 12px; top: 0px; height: 22px;">&nbsp;</div>
+                        </div>
+                        <div class="CodeMirror-code">
+                          <div class="CodeMirror-activeline" style="position: relative;">
+                            <div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+                            <div class="CodeMirror-gutter-wrapper" style="left: -39px; width: 39px;">
+                              <div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 20px;">1</div>
                             </div>
+                            <pre class=""><span style="padding-right: 0.1px;"><span class="cm-cm-overlay cm-matchhighlight">sdfgsdfgsdggf</span></span></pre>
                           </div>
                         </div>
-                        <div style="position: absolute; height: 23px; width: 1px; top: 30px;"></div>
-                        <div class="CodeMirror-gutters" style="height: 328px;">
-                          <div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div>
-                          <div class="CodeMirror-gutter CodeMirror-foldgutter"></div>
-                        </div>
                       </div>
                     </div>
-                    <a class="fa fa-close editormd-preview-close-btn"></a>
-                    <div class="editormd-preview" style="display: block; width: 482px; top: 78px; height: 308px;">
-                      <div class="markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;">
-                        <p>sdfgsdfgsdggf</p>
-                      </div>
-                    </div>
-                    <div class="editormd-container-mask" style="display: none;"></div>
-                    <div class="editormd-mask"></div>
                   </div>
                 </div>
-              </form>
-              <div class="popup-window-buttons">
-                <span class="popup-window-button popup-window-button-accept" id="save_kb">Сохранить</span>
-                <span class="webform-small-button webform-small-button-transparent" id="apply_kb">
-                     Применить</span>         <span class="popup-window-button popup-window-button-link popup-window-button-link-cancel" onclick="closeSliderKb();" id="cancel_kb">Отмена</span>
+                <div style="position: absolute; height: 23px; width: 1px; top: 30px;"></div>
+                <div class="CodeMirror-gutters" style="height: 328px;">
+                  <div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div>
+                  <div class="CodeMirror-gutter CodeMirror-foldgutter"></div>
+                </div>
               </div>
             </div>
+            <a class="fa fa-close editormd-preview-close-btn"></a>
+            <div class="editormd-preview" style="display: block; width: 482px; top: 78px; height: 308px;">
+              <div class="markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;">
+                <p>sdfgsdfgsdggf</p>
+              </div>
+            </div>
+            <div class="editormd-container-mask" style="display: none;"></div>
+            <div class="editormd-mask"></div>
           </div>
         </div>
+      </form>
+      <div class="popup-window-buttons">
+        <span class="popup-window-button popup-window-button-accept" id="save_kb">Сохранить</span>
+        <span class="webform-small-button webform-small-button-transparent" id="apply_kb">
+         Применить</span>
+        <span class="popup-window-button popup-window-button-link popup-window-button-link-cancel" id="cancel_kb">Отмена</span>
       </div>
     </div>
   </div>
+  </div>
+  </div>
+  </div>
+  </transition>
 </template>
 <style>
 
@@ -650,7 +650,80 @@
     font-family: Helvetica;
     box-shadow: inset 1px 1px 1px 1px black;
   }
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active до версии 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+  }
 
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal-container {
+    width: 100%;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+  }
+
+  .modal-body {
+    margin: 20px 0;
+  }
+
+  .modal-default-button {
+    float: right;
+  }
+
+  /*
+   * The following styles are auto-applied to elements with
+   * transition="modal" when their visibility is toggled
+   * by Vue.js.
+   *
+   * You can easily play with the modal transition by editing
+   * these styles.
+   */
+
+  .modal-enter {
+    opacity: 0;
+  }
+
+  .modal-leave-active {
+    opacity: 0;
+  }
+
+  .modal-enter .modal-container,
+  .modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 </style>
 <script>
 export default {
