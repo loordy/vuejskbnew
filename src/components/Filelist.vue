@@ -58,9 +58,14 @@ export default {
       console.log('asdasda')
     },
     select: function (event) {
-      this.targetId = event.currentTarget.id
-      console.log(this.targetId)
+      this.checked[event.currentTarget.id] = !this.checked[event.currentTarget.id]
+      console.log(this.checked)
     }
+  },
+  mounted () {
+    this.itemsold.forEach(function (item, i) {
+      this.checked[item.ID] = false
+    })
   }
 }
 </script>
