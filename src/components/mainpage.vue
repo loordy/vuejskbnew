@@ -10,10 +10,9 @@
                  <table style="width: 100%;" cellpadding="0" cellspacing="0">
                    <tr>
                      <td>
+                       <empty/>
                        <filelist/>
-                       <div id="kb-disk-network-drive-full" style="display:none;" class="kb-disk-network-drive-full-style">
-                         <div id="kb-disk-network-drive"></div>
-                       </div>
+                       <fileView/>
                      </td>
                    </tr>
                  </table>
@@ -33,9 +32,6 @@
          </div>
        </td>
      </tr>
-     <empty/>
-     <modalWindow/>
-     <fileView/>
   </table>
 </template>
 

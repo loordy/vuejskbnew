@@ -1,6 +1,5 @@
 <template>
-  <tr>
-    <td class="kb-layout-inner-inner-cont">
+  <td class="kb-layout-inner-inner-cont">
       <div id="workarea">
         <div id="sidebar"></div>
         <div id="workarea-content">

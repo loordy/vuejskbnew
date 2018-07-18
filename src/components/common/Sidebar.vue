@@ -3,9 +3,13 @@
         <div id="categories-3" class="widget widget_categories clearfix"><h4 class="widget-title">
           <button id="show-modal" @click="showModal">Добавить раздел</button>
           <button @click="addStatya">Добавить статью</button>
+          <div v-if="show" @close="show = false" class="fade-wrapp">
+
+          </div>
           <modal v-if="show" @close="show = false">
-            <h3 slot="header">Редактировать</h3>
+            <h3 slot="header">Редактasdasdвать</h3>
           </modal>
+          <div>{{ sections }}</div>
           <span>Разделы</span></h4>
             <ul  v-for="section in sections" :key="section.ID, i">
                 <li class="cat-item cat-item-2"><router-link :to='"/section/" + section.ID' :title="section.NAME">{{ section.NAME }}</router-link></li>
@@ -22,7 +26,7 @@
 </template>
 <script>
 import { AddNewItem, GetSections } from '../../api/index'
-import modal from './mainModal'
+import modal from './modalAll'
 export default {
   name: 'Sidebar',
   components: {
@@ -71,3 +75,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .fade-wrapp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+  }
+</style>
