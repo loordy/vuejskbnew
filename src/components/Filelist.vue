@@ -1,7 +1,15 @@
 <template>
-    <div class="kb-disk-interface-filelist">
-        <div>
-            <div id="folder_list_4326_tile_grid_container" class="disk-tile-grid">
+  <tr>
+    <td class="kb-layout-inner-inner-cont">
+      <div id="workarea">
+        <div id="workarea-content">
+          <div class="workarea-content-paddings">
+            <div class="kb-disk-container posr" style="position: relative;">
+              <table style="width: 100%;" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+          <div class="kb-disk-interface-filelist">
+            <div class="disk-tile-grid">
                 <div class="ui-grid-tile">
                     <div class="ui-grid-tile-item" v-for="section in sections" :key="section.ID">
                         <div class="ui-grid-tile-item-checkbox"></div>
@@ -33,8 +41,16 @@
                     </div>
                 </div>
             </div>
+          </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </td>
+  </tr>
 </template>
 <script>
 export default {
