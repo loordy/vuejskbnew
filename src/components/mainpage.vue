@@ -2,7 +2,7 @@
    <table style="width:100%;">
      <empty/>
      <filelist/>
-     <modalWindow/>
+     <!--<modalWindow/>-->
      <fileView/>
      <test/>
   </table>

@@ -11,19 +11,15 @@
                         class="main-grid-checkbox" for=""></label></span></span></th>
                 <th class="main-grid-cell-head main-grid-cell-static main-grid-cell-action"><span
                         class="main-grid-interface-settings-icon"></span></th>
-                <th class="main-grid-cell-head main-grid-cell-left main-grid-col-sortable  main-grid-draggable "><span
-                        class="main-grid-cell-head-container"><span class="main-grid-head-title">Размер</span><span
-                        class="main-grid-resize-button" title=""></span><span
-                        class="main-grid-control-sort main-grid-control-sort-hover-desc"></span></span></th>
-                <th class="main-grid-cell-head main-grid-cell-left main-grid-col-sortable  main-grid-draggable "><span
-                        class="main-grid-cell-head-container"><span class="main-grid-head-title">Изменен</span><span
-                        class="main-grid-resize-button" title=""></span><span
-                        class="main-grid-control-sort main-grid-control-sort-DESC"></span></span></th>
-                <th class="main-grid-cell-head main-grid-cell-left main-grid-col-sortable  main-grid-draggable "><span
-                        class="main-grid-cell-head-container"><span class="main-grid-head-title">Название</span><span
+              <th class="main-grid-cell-head main-grid-cell-left main-grid-col-sortable  main-grid-draggable "><span
+                class="main-grid-cell-head-container"><span class="main-grid-head-title">Название</span><span
                         class="main-grid-resize-button" title=""></span><span
                         class="main-grid-control-sort main-grid-control-sort-hover-asc"></span></span></th>
-                <th class="main-grid-cell-head main-grid-cell-static main-grid-special-empty"></th>
+              <th class="main-grid-cell-head main-grid-cell-left main-grid-col-sortable  main-grid-draggable "><span
+                class="main-grid-cell-head-container"><span class="main-grid-head-title">Изменен</span><span
+                class="main-grid-resize-button" title=""></span><span
+                class="main-grid-control-sort main-grid-control-sort-DESC"></span></span></th>
+              <th class="main-grid-cell-head main-grid-cell-static main-grid-special-empty"></th>
             </tr>
             </thead>
             <tbody>
@@ -35,25 +31,23 @@
                 <td class="main-grid-cell main-grid-cell-action"><span class="main-grid-cell-content"><a href="#"
                                                                                                          class="main-grid-row-action-button"></a></span>
                 </td>
-                <td class="main-grid-cell main-grid-cell-left"><span class="main-grid-cell-content"></span></td>
-                <td class="main-grid-cell main-grid-cell-left"><span
-                        class="main-grid-cell-content">29.05.2018 15:58</span></td>
-                <td class="main-grid-cell main-grid-cell-left">
+              <td class="main-grid-cell main-grid-cell-left">
                                        <span class="main-grid-cell-content">
-                                          <table class="bx-disk-object-name">
+                                          <table class="kb-disk-object-name">
                                              <tbody>
                                                 <tr>
                                                    <td style="width: 45px;">
-                                                      <div class="js-disk-grid-open-folder bx-file-icon-container-small bx-disk-folder-icon icon-shared shared icon-shared_2"></div>
+                                                      <div class="kb-disk-folder-icon"></div>
                                                    </td>
-                                                   <td><a class="bx-disk-folder-title js-disk-grid-folder"
+                                                   <td><a class="bx-disk-folder-title"
                                                           href="">Корпоративный Новый год</a></td>
                                                 </tr>
                                              </tbody>
                                           </table>
                                        </span>
                 </td>
-                <td class="main-grid-cell"></td>
+              <td class="main-grid-cell main-grid-cell-left"><span class="main-grid-cell-content">29.05.2018 15:58</span></td>
+              <td class="main-grid-cell"></td>
             </tr>
             </tbody>
         </table>
