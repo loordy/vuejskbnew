@@ -13,7 +13,6 @@
                 <div class="disk-folder-list-item-bottom">
                     <div class="disk-folder-list-item-title">
                         <div class="disk-folder-list-item-title-wrapper">
-                            <!--<input class="disk-folder-list-item-title-input" type="text" value="Test">-->
                             <a class="disk-folder-list-item-title-link" title="Test">Test</a>
                         </div>
                     </div>
