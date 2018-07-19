@@ -14,6 +14,9 @@ export default new Vuex.Store({
     elements: {/* [id: number]: Item */},
     users: {/* [id: string]: User */},
     sections: {/* [id: string]: Section */},
+    settings: {
+      viewType: [/* text */]
+    },
     lists: {
       top: [/* number */],
       new: [],

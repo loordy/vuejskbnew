@@ -33,7 +33,6 @@
         </div>
       </div>
     </td>
-  </tr>
 </template>
 <script>
 export default {

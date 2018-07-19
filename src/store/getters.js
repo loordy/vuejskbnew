@@ -1,20 +1,20 @@
 export default {
-  getSectionsByParentID: state => id => {
-    return state.sections.find(todo => todo.id === id);
+  getSectionsByParentID: state => SECTION_ID => {
+    return state.sections.filter(section => section.SECTION_ID === SECTION_ID)
   },
-  getSectionByID: state => id => {
-    return state.sections.find(todo => todo.id === id);
+  getSectionByID: state => ID => {
+    return state.sections.find(section => section.ID === ID)
   },
-  getElementsByParentID: state => id => {
-    return state.elements.find(todo => todo.id === id);
+  getElementsByParentID: state => SECTION_ID => {
+    return state.elements.filter(element => element.SECTION_ID === SECTION_ID)
   },
-  getElementByID: state => id => {
-    return state.elements.find(todo => todo.id === id);
+  getElementByID: state => ID => {
+    return state.elements.find(element => element.ID === ID)
   },
   getUsersByParams: state => id => {
-    return state.users.find(todo => todo.id === id);
+    return state.users.filter(user => user.ACTIVE)
   },
-  getUserByID: state => id => {
-    return state.users.find(todo => todo.id === id);
+  getUserByID: state => ID => {
+    return state.users.find(user => user.ID === ID)
   }
 }

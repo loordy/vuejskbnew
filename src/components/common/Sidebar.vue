@@ -9,7 +9,6 @@
           <modal v-if="show" @close="show = false">
             <h3 slot="header">Редактasdasdвать</h3>
           </modal>
-          <div>{{ sections }}</div>
           <span>Разделы</span></h4>
             <ul  v-for="section in sections" :key="section.ID, i">
                 <li class="cat-item cat-item-2"><router-link :to='"/section/" + section.ID' :title="section.NAME">{{ section.NAME }}</router-link></li>
@@ -50,12 +49,11 @@ export default {
   },
   methods: {
     addStatya () {
-      this.show = !this.show
-      let self = this
-      AddNewItem(function (data) {
-        console.log(data)
-        self.$router.push({ path: `/markdown/${data}` })
-      })
+      // this.show = !this.show
+      this.$store.commit('AddNewElement', {
+        'ID': this.$route.params.id + 100,
+        'SECTION_ID': this.$route.params.id,
+        'NAME': 'novayastatya ' + this.$route.params.id})
     },
     GetSections () {
       let self = this
