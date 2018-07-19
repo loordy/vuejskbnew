@@ -1,5 +1,6 @@
 export default {
   setElements: (state, data) => {
+    data = data.map(id => data.items[id])
     state.elements = data
   },
 
