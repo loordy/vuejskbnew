@@ -1,11 +1,18 @@
 export default {
   setElements: (state, data) => {
-    data = data.map(id => data.items[id])
     state.elements = data
   },
 
   setSections: (state, data) => {
     state.sections = data
+  },
+
+  AddNewElement: (state, data) => {
+    state.elements.push(data)
+  },
+
+  AddNewSection: (state, data) => {
+    state.sections.push(data)
   },
 
   setUsers: (state, data) => {

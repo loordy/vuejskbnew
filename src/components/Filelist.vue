@@ -39,6 +39,34 @@
                             </div>
                         </div>
                     </div>
+                  <div class="ui-grid-tile-item" v-for="element in elements" :key="element.ID">
+                    <div class="ui-grid-tile-item-checkbox"></div>
+                    <div class="ui-grid-tile-item-content">
+                      <div class="disk-folder-list-item disk-folder-list-item-folder">
+                        <div class="disk-folder-list-item-image" :id="element.ID" @click="select">
+                          <div class="ui-icon ui-icon-file ui-icon-file-folder" style="width: 85%;">
+                            <i></i>
+                          </div>
+                        </div>
+                        <div class="disk-folder-list-item-action">
+                        </div>
+                        <div class="disk-folder-list-item-bottom">
+                          <div class="disk-folder-list-item-title">
+                            <div class="disk-folder-list-item-title-wrapper">
+                              <input class="disk-folder-list-item-title-input" type="text" value="Test">
+                              <router-link :to='"/element/" + element.ID' class="disk-folder-list-item-title-link" :title="element.NAME">{{element.NAME}}</router-link>
+                            </div>
+                          </div>
+                          <div class="disk-folder-list-item-icons">
+                            <div class="disk-folder-list-item-locked" style="display: none;">
+                            </div>
+                            <div class="disk-folder-list-item-shared" style="display: none;">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
           </div>
@@ -62,11 +90,11 @@ export default {
     }
   },
   computed: {
-    items () {
-      return this.$store.state.elements
+    elements () {
+      return this.$store.getters.getElementsByParentID(this.$route.params.id)
     },
     sections () {
-      return this.$store.state.sections
+      return this.$store.getters.getSectionsByParentID(this.$route.params.id)
     }
   },
   methods: {

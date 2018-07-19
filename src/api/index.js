@@ -1,12 +1,14 @@
 /* global BX24 */
 export function GetCurrentUser (callback) {
-  BX24.callMethod('user.current', {}, function (res) {
-    callback(res.data())
+  BX24.callMethod('user.current', {}, function (result) {
+    console.log(result)
+    callback(result.data())
   })
 }
 export function GetUsers (callback) {
-  BX24.callMethod('user.get', {}, function (res) {
-    callback(res.data())
+  BX24.callMethod('user.get', {}, function (result) {
+    console.log(result)
+    callback(result.data())
   })
 }
 export function GetSections (SectionId, callback) {

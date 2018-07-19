@@ -4,6 +4,9 @@
   <div id="app">
     <Top></Top>
     <Middle></Middle>
+    <div>
+      <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
+    </div>
     <router-view/>
     <Sidebar/>
   </div>
