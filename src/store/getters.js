@@ -16,5 +16,8 @@ export default {
   },
   getUserByID: state => ID => {
     return state.users.find(user => user.ID === ID)
+  },
+  getviewType: state => type => {
+    return state.settings.viewType()
   }
 }

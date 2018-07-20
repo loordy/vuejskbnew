@@ -15,7 +15,7 @@ export default new Vuex.Store({
     users: {/* [id: string]: User */},
     sections: {/* [id: string]: Section */},
     settings: {
-      viewType: [/* text */]
+      viewType: 'grid'
     },
     lists: {
       top: [/* number */],
