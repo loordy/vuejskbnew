@@ -1,8 +1,8 @@
 <template>
   <table style="width:100%;">
     <empty></empty>
-    <filelist></filelist>
-    <fileView></fileView>
+    <filelist v-show="this.$store.state.settings.viewType === 'grid'"></filelist>
+    <fileView v-show="this.$store.state.settings.viewType === 'list'"></fileView>
     sdfgsdfjasdasdasdsdj
     <test/>
   </table>
