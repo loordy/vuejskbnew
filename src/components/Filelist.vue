@@ -102,8 +102,8 @@ export default {
       console.log('asdasda')
     },
     select: function (event) {
-      this.targetId = event.currentTarget.id
-      console.log(this.targetId)
+      console.log(event)
+      console.log(this.$store.getters.getSectionsByParentID(event.currentTarget.id))
     }
   }
 }

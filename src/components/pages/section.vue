@@ -3,6 +3,8 @@
     <empty></empty>
     <filelist></filelist>
     <fileView></fileView>
+    sdfgsdfjasdasdasdsdj
+    <test/>
   </table>
 </template>
 
