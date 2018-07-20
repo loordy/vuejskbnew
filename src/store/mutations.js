@@ -21,5 +21,9 @@ export default {
 
   currentUser: (state, data) => {
     state.currentUser = data
+  },
+
+  setView: (state, data) => {
+    state.settings.viewType = data
   }
 }
