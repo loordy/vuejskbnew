@@ -7,8 +7,7 @@
       @dblclick="changeType">
       <span  v-if="isFolder" class="bx-disk-wf-arrow "></span>
       <span v-if="isFolder" class="kb-disk-wf-folder-icon "></span>
-      {{ model.name }}
-
+      {{ model }}
     </div>
     <ul v-show="open" v-if="isFolder">
       <demo1

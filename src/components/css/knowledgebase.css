@@ -9112,3 +9112,17 @@ li.bx_disk_folder_container.bx_disk_open>div.bx_disk_folder_container .bx_disk_w
 li{
   list_style_type: none;
 }
+.kb-disk-folder-icon {
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 36px;
+  height: 29px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: url(../images/icons-files2.png) no-repeat;
+  background-position: 0 0!important;
+}
+td{
+  vertical-align: middle!important;
+}
