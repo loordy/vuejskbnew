@@ -23,7 +23,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="main_grid_row main_grid_row_body"  id="1231" @click="select">
+      <tr v-for="section in sections" :key="'section' + section.ID" class="main_grid_row main_grid_row_body"  :id="section.ID" @click="select">
         <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input
           type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
           title="Отметить для редактирования" ><label
@@ -38,8 +38,33 @@
                                                    <td style="width: 45px;">
                                                       <div class="kb_disk_folder_icon"></div>
                                                    </td>
-                                                   <td><a class="bx_disk_folder_title"
-                                                          href="">Корпоративный Новый год</a></td>
+                                                   <td><router-link :to="'/section/' + section.ID" class="bx_disk_folder_title"
+                                                          >{{ section.NAME }}</router-link></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </span>
+        </td>
+        <td class="main_grid_cell main_grid_cell_left"><span class="main_grid_cell_content">29.05.2018 15:58</span></td>
+        <td class="main_grid_cell"></td>
+      </tr>
+      <tr v-for="element in elements" :key="'element' + element.ID" class="main_grid_row main_grid_row_body"  :id="element.ID" @click="select">
+        <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input
+          type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
+          title="Отметить для редактирования" ><label
+          class="main_grid_checkbox" for=""></label></span></td>
+        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="popup = !popup" class="main_grid_row_action_button"></a></span>
+        </td>
+        <td class="main_grid_cell main_grid_cell_left">
+                                       <span class="main_grid_cell_content">
+                                          <table class="kb_disk_object_name">
+                                             <tbody>
+                                                <tr>
+                                                   <td style="width: 45px;">
+                                                      <div class="kb_disk_folder_icon"></div>
+                                                   </td>
+                                                    <td><router-link :to="'/element/' + element.ID" class="bx_disk_folder_title"
+                                                    >{{ element.NAME }}</router-link></td>
                                                 </tr>
                                              </tbody>
                                           </table>
@@ -82,6 +107,14 @@ export default {
   data: function () {
     return {
       popup: false
+    }
+  },
+  computed: {
+    elements () {
+      return this.$store.getters.getElementsByParentID(this.$route.params.id)
+    },
+    sections () {
+      return this.$store.getters.getSectionsByParentID(this.$route.params.id)
     }
   }
 }

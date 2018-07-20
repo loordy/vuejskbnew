@@ -11,7 +11,7 @@
                     <div class="kb_disk_interface_filelist">
                       <div>
                         <div>
-                          <div class="ui_grid_tile_item" v_for="section in sections" :key="section.ID">
+                          <div class="ui_grid_tile_item" v-for="section in sections" :key="section.ID">
                             <div class="ui_grid_tile_item_checkbox"></div>
                             <div>
                               <div class="disk_folder_list_item ">
@@ -26,7 +26,7 @@
                                   <div class="disk_folder_list_item_title">
                                     <div class="disk_folder_list_item_title_wrapper">
                                       <input class="disk_folder_list_item_title_input" type="text" value="Test">
-                                      <router_link :to='"/section/" + section.ID' class="disk_folder_list_item_title_link" :title="section.NAME">{{section.NAME}}</router_link>
+                                      <router-link :to='"/section/" + section.ID' class="disk_folder_list_item_title_link" :title="section.NAME">{{section.NAME}}</router-link>
                                     </div>
                                   </div>
                                   <div class="disk_folder_list_item_icons">
@@ -39,7 +39,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ui_grid_tile_item" v_for="element in elements" :key="element.ID">
+                          <div class="ui_grid_tile_item" v-for="element in elements" :key="element.ID">
                             <div class="ui_grid_tile_item_checkbox"></div>
                             <div>
                               <div class="disk_folder_list_item">
@@ -54,7 +54,7 @@
                                   <div class="disk_folder_list_item_title">
                                     <div class="disk_folder_list_item_title_wrapper">
                                       <input class="disk_folder_list_item_title_input" type="text" value="Test">
-                                      <router_link :to='"/element/" + element.ID' class="disk_folder_list_item_title_link" :title="element.NAME">{{element.NAME}}</router_link>
+                                      <router-link :to='"/element/" + element.ID' class="disk_folder_list_item_title_link" :title="element.NAME">{{element.NAME}}</router-link>
                                     </div>
                                   </div>
                                   <div class="disk_folder_list_item_icons">

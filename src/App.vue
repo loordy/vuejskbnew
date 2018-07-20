@@ -6,7 +6,6 @@
     </div>-->
     <router-view/>
     <Sidebar/>
-    <Middle></Middle>
   </div>
 </template>
 
