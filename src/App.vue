@@ -63,6 +63,6 @@ export default {
 </script>
 
 <style>
-  @import 'components/css/knowledgebase.css'
+  /* @import 'components/css/knowledgebase.css' */
   @import url(https://d3ijh37r9qzozj.cloudfront.net/knowhow/wp-content/themes/knowhow/css/font-awesome.min.css?ver=4.9.6);
 </style>
