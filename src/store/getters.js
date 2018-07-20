@@ -18,6 +18,6 @@ export default {
     return state.users.find(user => user.ID === ID)
   },
   getviewType: state => type => {
-    return state.settings.viewType()
+    return state.settings[type]
   }
 }

@@ -12,7 +12,7 @@
                     <div class="bx_disk_interface_filelist ">
                       <div>
                         <div class="disk_tile_grid">
-                          <div class="ui_grid_tile" style="min_height: 231px;">
+                          <div class="ui_grid_tile" style="min-height: 231px;">
                             <div class="disk_folder_list_no_data_inner">
                               <div class="disk_folder_list_no_data_inner_message">В данной папке нет файлов или папок</div>
                               <div class="disk_folder_list_no_data_inner_variable">
