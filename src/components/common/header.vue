@@ -5,7 +5,7 @@
         <div class="page_header">
           <div class="pagetitle_below">
             <div class="disk_folder_list_toolbar" >
-              <div class="disk_breadcrumbs js_disk_breadcrumbs"  style="opacity: 1;">
+              <div class="disk_breadcrumbs"  style="opacity: 1;">
                 <div class="disk_breadcrumbs_item js_disk_breadcrumbs_folder">
                   <a class="disk_breadcrumbs_item_title js_disk_breadcrumbs_folder_link" href="">База знаний</a>
                   <span class="disk_breadcrumbs_item_arrow js_disk_breadcrumbs_arrow"></span>
@@ -16,9 +16,9 @@
                   <span class="disk_folder_list_sorting_text">По дате изменения</span>
                 </div>
                 <div class="disk_folder_list_view">
-                  <div v_bind:class="[viewlist.viewList ? activeClass : '', list]"></div>
-                  <div v_bind:class="[viewlist.viewGrid ? activeClass : '', grid]"></div>
-                  <div v_bind:class="[viewlist.viewGrid_tile ? activeClass : '', gridtile]"></div>
+                  <div v-bind:class="[active === 'list' ? activeClass : '', list]"></div>
+                  <div v-bind:class="[active === 'grid' ? activeClass : '', grid]"></div>
+                  <div v-bind:class="[active === 'grid_tile' ? activeClass : '', gridtile]"></div>
                 </div>
               </div>
             </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
 export default {
   name: 'middle',
   data () {
@@ -37,170 +38,135 @@ export default {
       activeclass: 'disk_folder_list_view_item_active',
       grid: 'disk_folder_list_view_item disk_folder_list_view_item_grid',
       list: 'disk_folder_list_view_item disk_folder_list_view_item_lines',
-      gridtile: 'disk_folder_list_view_item disk_folder_list_view_item_grid_tile'
+      gridtile: 'disk_folder_list_view_item disk_folder_list_view_item_grid_tile',
+      active: ''
     }
   },
   computed: {
     viewlist () {
       return this.$store.getters.getviewType()
-    }
+    },
+    ...mapGetters({
+      active: 'getviewType'
+    })
   },
   methods: {
     viewChange (type) {
       this.store.commit('setView', type)
     }
   }
+
 }
 </script>
 
 <style scoped>
-  #live_search {
-    background:#f5f5f5;
-    padding:25px 0;
-    border_top:1px solid #e8e8e8;
-    border_bottom:1px solid #e8e8e8;
+  .kb_layout_inner_inner_top_row .kb_layout_inner_inner_cont {
+    height: 74px;
   }
-  #live_search #searchform {
-    width:100%;
-    background:#fff;
-    border:1px solid #d1d1d1;
-    position:relative;
-    _moz_border_radius:99px;
-    _webkit_border_radius:99px;
-    border_radius:99px;
+  .kb_layout_inner_inner_cont {
+    height: 100%;
+    width: 100%;
   }
-  #live_search #s {
-    float: left;
-    width: 80%;
-    background:none;
-    color:#595959;
-    font_size:16px;
-    padding:20px 25px;
-    border:none;
-    box_shadow:none;
-    position:relative;
-    outline: 0;
+  .page_header {
+    min_width: 800px;
+    /*max_width: calc(100vw _ 240px);*/
   }
-  #live_search i.live_search_loading {
-    font_size: 24px;
-    position:absolute;
-    right: 160px;
-    top: 18px;
-    display:none;
+
+  disk_folder_list_toolbar {
+    display: flex;
+    overflow: hidden;
+    margin: 0 12px 20px 0;
+    border_top: 1px solid rgba(82, 92, 105, .1);
+    border_bottom: 1px solid rgba(82, 92, 105, .1)
   }
-  #live_search #s.live_search_loading + i.live_search_loading {
-    display:inline_block;
+
+  disk_breadcrumbs {
+    display: flex;
+    flex: 1;
+    flex_wrap: wrap;
+    overflow: hidden;
+    padding_left: 12px;
+    font_family: 'OpenSans_Regular', "Helvetica Neue", Helvetica, sans_serif;
+    font_size: 0
   }
-  #live_search #searchsubmit {
-    position:absolute;
-    right:0;
-    top:0;
-    color:#fff;
-    margin:12px 25px 0 0;
-    padding: 10px 18px;
-    text_transform:uppercase;
-    border:none;
-    _moz_border_radius:99px;
-    _webkit_border_radius:99px;
-    border_radius:99px;
+
+  .disk_breadcrumbs_item {
+    flex: 0 1 auto;
+    flex_shrink: 0;
+    white_space: nowrap
   }
-  #live_search #searchsubmit:hover {
-    background_color:#4A4A4A;
+
+  .disk_breadcrumbs_item_title, .disk_breadcrumbs_item_title:hover {
+    display: inline-block;
+    vertical_align: middle;
+    font_size: 13px;
+    color: #525c69;
+    transition: .1s;
+    cursor: pointer
   }
-  #live_search #searchsubmit i {
-    margin:0 5px 0 0;
+
+  .bitrix24_light_theme .disk_breadcrumbs_item_title {
+    color: #fff;
+    opacity: 1
   }
-  #search_wrap {
-    position:relative;
+
+  .bitrix24_dark_theme .disk_breadcrumbs_item_title {
+    color: rgba(51, 51, 51, .8);
+    opacity: 1
   }
-  #search_result {
-    position:absolute;
-    background:#fff;
-    list_style:none;
-    min_width: 260px;
-    font_size:13px;
-    top:20px;
-    left: 5px;
-    margin: 0;
-    padding: 10px 5px;
-    border:1px solid #d1d1d1;
-    box_shadow:1px 1px 2px rgba(0,0,0,0.1);
-    z_index:9999;
-    _moz_border_radius:5px;
-    _webkit_border_radius:5px;
-    border_radius:5px;
+
+  .bitrix24_dark_theme .disk_breadcrumbs_item_title:hover {
+    color: #1f2127
   }
-  #search_result:before {
-    border_color: transparent transparent #ccc;
-    border_style: solid;
-    border_width: 12px;
-    content: "";
-    height: 0;
-    left: 40px;
-    position: absolute;
-    top: _25px;
-    width: 0;
+
+  .disk_breadcrumbs_item_title:hover {
+    opacity: 1
   }
-  #search_result:after {
-    border_color: transparent transparent #fff;
-    border_style: solid;
-    border_width: 12px;
-    content: "";
-    height: 0;
-    left: 40px;
-    position: absolute;
-    top: _24px;
-    width: 0;
-    z_index: 999;
+
+  .disk_breadcrumbs_item_arrow {
+    display: inline-block;
+    vertical_align: middle;
+    width: 20px;
+    height: 100%;
+    margin: 0 4px;
+    opacity: .5;
+    transition: .1s;
+    cursor: pointer;
+    background: url('data:image/svg+xml;charset=US_ASCII,%3Csvg%20width%3D%226px%22%20height%3D%2210px%22%20viewBox%3D%220%200%206%2010%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%20%3Cg%20stroke_width%3D%221%22%20transform%3D%22translate%28-478.000000%2C%20-217.000000%29%22%3E%3Cpath%20d%3D%22M477.5%2C223.5%20L482%2C223.5%20L482%2C225%20L477.5%2C225%20L476%2C225%20L476%2C219%20L477.5%2C219%20L477.5%2C223.5%20Z%22%20id%3D%22Path%22%20fill%3D%22%239299A2%22%20transform%3D%22translate%28479.000000%2C%20222.000000%29%20scale%28-1%2C%201%29%20rotate%2845.000000%29%20translate%28-479.000000%2C%20-222.000000%29%20%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E') center center no_repeat
   }
-  #search_result li {
-    margin:0;
+
+  .bitrix24_light_theme .disk_breadcrumbs_item_arrow {
+    background_image: url('data:image/svg+xml;charset=US_ASCII,%3Csvg%20width%3D%226px%22%20height%3D%2210px%22%20viewBox%3D%220%200%206%2010%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%20%3Cg%20stroke_width%3D%221%22%20transform%3D%22translate%28-478.000000%2C%20-217.000000%29%22%3E%3Cpath%20d%3D%22M477.5%2C223.5%20L482%2C223.5%20L482%2C225%20L477.5%2C225%20L476%2C225%20L476%2C219%20L477.5%2C219%20L477.5%2C223.5%20Z%22%20id%3D%22Path%22%20fill%3D%22%23fff%22%20transform%3D%22translate%28479.000000%2C%20222.000000%29%20scale%28-1%2C%201%29%20rotate%2845.000000%29%20translate%28-479.000000%2C%20-222.000000%29%20%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E')
   }
-  #search_result li.standard a:before,
-  #search_result li.video a:before,
-  #search_result li.faq a:before {
-    display: inline_block;
-    font_family: FontAwesome;
-    font_weight: normal;
-    font_size: 16px;
-    margin:0 10px 0 0;
-    position: absolute;
-    left: 10px;
+
+  .bitrix24_dark_theme .disk_breadcrumbs_item_arrow {
+    background_image: url('data:image/svg+xml;charset=US_ASCII,%3Csvg%20width%3D%226px%22%20height%3D%2210px%22%20viewBox%3D%220%200%206%2010%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%20%3Cg%20stroke_width%3D%221%22%20transform%3D%22translate%28-478.000000%2C%20-217.000000%29%22%3E%3Cpath%20d%3D%22M477.5%2C223.5%20L482%2C223.5%20L482%2C225%20L477.5%2C225%20L476%2C225%20L476%2C219%20L477.5%2C219%20L477.5%2C223.5%20Z%22%20id%3D%22Path%22%20fill%3D%22%23333%22%20transform%3D%22translate%28479.000000%2C%20222.000000%29%20scale%28-1%2C%201%29%20rotate%2845.000000%29%20translate%28-479.000000%2C%20-222.000000%29%20%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E')
   }
-  #search_result li.standard a:before {
-    content:"\f0f6";
+
+  .disk_breadcrumbs_item_arrow:hover {
+    opacity: 1
   }
-  #search_result li.video a:before {
-    content:"\f008";
-    font_size: 12px;
+
+  .disk_breadcrumbs_item:last_child .disk_breadcrumbs_item_arrow {
+    opacity: 0
   }
-  #search_result li.faq a:before {
-    content:"\f059";
+
+  .disk_breadcrumbs_item_back {
+    display: inline-block;
+    vertical_align: top;
+    height: 54px;
+    width: 30px;
+    opacity: .5;
+    background: url('data:image/svg+xml;charset=US_ASCII,%3Csvg%20width%3D%2213px%22%20height%3D%2212px%22%20viewBox%3D%220%200%2013%2012%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20fill%3D%22%23535C6A%22%20d%3D%22M4.65%2C7%20L8.2%2C10.55%20L6.8%2C11.95%20L2.25%2C7.4%20L2.2%2C7.45%20L0.8%2C6.05%20L0.85%2C6%20L0.8%2C5.95%20L2.2%2C4.55%20L2.25%2C4.6%20L6.8%2C0.05%20L8.2%2C1.45%20L4.65%2C5%20L13%2C5%20L13%2C7%20L4.65%2C7%20Z%22%3E%3C/path%3E%3C/svg%3E') 2px 21px no_repeat;
+    cursor: pointer;
+    transition: .1s
   }
-  #search_result li:last_child {
-    margin:0;
+
+  .bitrix24_light_theme .disk_breadcrumbs_item_back {
+    background_image: url('data:image/svg+xml;charset=US_ASCII,%3Csvg%20width%3D%2213px%22%20height%3D%2212px%22%20viewBox%3D%220%200%2013%2012%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M4.65%2C7%20L8.2%2C10.55%20L6.8%2C11.95%20L2.25%2C7.4%20L2.2%2C7.45%20L0.8%2C6.05%20L0.85%2C6%20L0.8%2C5.95%20L2.2%2C4.55%20L2.25%2C4.6%20L6.8%2C0.05%20L8.2%2C1.45%20L4.65%2C5%20L13%2C5%20L13%2C7%20L4.65%2C7%20Z%22%3E%3C/path%3E%3C/svg%3E')
   }
-  #search_result a {
-    display:block;
-    color:#444;
-    line_height: 1.4;
-    padding: 5px 10px 5px 32px;
-    position: relative;}
-  #search_result a:hover {
-    text_decoration:none;
-    background:#F5F5F5;
-    _moz_border_radius:99px;
-    _webkit_border_radius:99px;
-    border_radius:99px;
-  }
-  #search_result img {
-    vertical_align:middle;
-    margin:0 10px 0 0;
-  }
-  #search_result .nothing_here {
-    padding:0 5px;
-  }
-  #jquery_live_search {
-    overflow:visible  !important;
+
+  .disk_breadcrumbs_item_back:hover {
+    opacity: 1
   }
 </style>

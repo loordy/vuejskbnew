@@ -21,7 +21,7 @@
                         <textarea :value="item.DETAIL_TEXT" @input="update"></textarea>
                         <div class="textarea" v_html="compiledMarkdown"></div>
                         <div>
-                          <button v_on:click="Save">Сохранить</button>
+                          <button v_on:click="">Сохранить</button>
                         </div>
                       </section>
                     </div>
@@ -85,7 +85,7 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       this.item.DETAIL_TEXT = e.target.value
-    }, 300),
+    }, 300)
     /* GetElements () {
       var self = this
       const params = {

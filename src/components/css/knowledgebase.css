@@ -80,7 +80,7 @@
   color:#535c69;
 }
 .main_grid_context_button_icon{
-  background: url(../images/sprite_interface.min.svg) no_repeat;
+  background: url(../images/sprite_interface.min.svg) no-repeat;
   opacity:.8;
   vertical_align:top;
   display:inline-block;
@@ -9085,7 +9085,7 @@ a.td1:hover {
   vertical_align: middle;
   width: 16px;
   height: 16px;
-  background: transparent url(../images/icons_files2.png) no_repeat -72px 0;
+  background: transparent url(../images/icons_files2.png) no-repeat -72px 0;
 }
 li.bx_disk_folder_container.bx_disk_open>div.bx_disk_folder_container .bx_disk_wf_arrow {
   _webkit_transform: rotate(0deg);
@@ -9107,7 +9107,7 @@ li.bx_disk_folder_container.bx_disk_open>div.bx_disk_folder_container .bx_disk_w
   transition: all .2s ease;
   opacity: .8;
   border_radius: 50%;
-  background: url(../images/sprite.png) no_repeat 5px -89px;
+  background: url(../images/sprite.png) no-repeat 5px -89px;
 }
 li{
   list_style_type: none;
@@ -9120,7 +9120,7 @@ li{
   height: 29px;
   margin-right: 10px;
   vertical-align: middle;
-  background: url(../images/icons-files2.png) no-repeat;
+  background: url(../images/icons_files2.png) no-repeat;
   background-position: 0 0!important;
 }
 td{

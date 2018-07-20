@@ -1,13 +1,9 @@
-
 <template>
-
   <div id="app">
-    ngbfvdc
     <Top></Top>
-    hiihi
-    <div>
+    <!--<div>
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
-    </div>
+    </div>-->
     <router-view/>
     <Sidebar/>
     <Middle></Middle>
@@ -67,6 +63,6 @@ export default {
 </script>
 
 <style>
-  @import 'components/css/knowledgebase.css';
+  @import 'components/css/knowledgebase.css'
   @import url(https://d3ijh37r9qzozj.cloudfront.net/knowhow/wp-content/themes/knowhow/css/font-awesome.min.css?ver=4.9.6);
 </style>
