@@ -1,8 +1,10 @@
 <template>
   <table style="width:100%;">
-    <empty v-show=""></empty>
+    <empty></empty>
     <filelist></filelist>
     <fileView></fileView>
+    sdfgsdfjasdasdasdsdj
+    <test/>
   </table>
 </template>
 

@@ -1,20 +1,20 @@
 <template>
   <li>
-
     <div
       :class="{bold: isFolder}"
       @click="toggle"
       @dblclick="changeType">
       <span  v-if="isFolder" class="bx-disk-wf-arrow "></span>
       <span v-if="isFolder" class="kb-disk-wf-folder-icon "></span>
-      {{ model }}
+      {{ model.NAME }}
+      {{ model}}
     </div>
-    <ul v-show="open" v-if="isFolder">
+    <ul v-show="open" v-if="isFolder">{{ model }}
       <demo1
         class="item"
         v-for="(model, index) in model.children"
         :key="index"
-        :model="model">
+        :model="model">{{ model}}
       </demo1>
       <li class="add" @click="addChild">Add</li>
     </ul>
@@ -58,5 +58,4 @@ export default {
     }
   }
 }
-
 </script>

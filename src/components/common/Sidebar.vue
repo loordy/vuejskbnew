@@ -4,13 +4,13 @@
           <button id="show-modal" @click="showModal">Добавить раздел</button>
           <button @click="addStatya">Добавить статью</button>
           <div v-if="show" @close="show = false" class="fade-wrapp">
-
           </div>
           <modal v-if="show" @close="show = false">
             <h3 slot="header">Редактasdasdвать</h3>
           </modal>
           <span>Разделы</span></h4>
             <ul  v-for="section in sections" :key="section.ID, i">
+
                 <li class="cat-item cat-item-2"><router-link :to='"/section/" + section.ID' :title="section.NAME">{{ section.NAME }}</router-link></li>
             </ul>
         </div>

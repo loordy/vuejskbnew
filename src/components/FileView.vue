@@ -23,13 +23,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="main-grid-row main-grid-row-body">
+            <tr class="main-grid-row main-grid-row-body"  id="1231" @click="select">
                 <td class="main-grid-cell main-grid-cell-checkbox"><span class="main-grid-cell-content"><input
                         type="checkbox" class="main-grid-row-checkbox main-grid-checkbox" name="ID[]" value="493"
                         title="Отметить для редактирования" ><label
                         class="main-grid-checkbox" for=""></label></span></td>
-                <td class="main-grid-cell main-grid-cell-action"><span class="main-grid-cell-content"><a href="#"
-                                                                                                         class="main-grid-row-action-button"></a></span>
+                <td class="main-grid-cell main-grid-cell-action"><span class="main-grid-cell-content"><a @click="popup = !popup" class="main-grid-row-action-button"></a></span>
                 </td>
               <td class="main-grid-cell main-grid-cell-left">
                                        <span class="main-grid-cell-content">
@@ -51,10 +50,38 @@
             </tr>
             </tbody>
         </table>
+      <div v-show="popup" class="popup-window popup-window-no-paddings popup-window-show-animation-opacity" style="z-index: 1000; position: absolute;     top: 47px;
+    left: 65px;">
+        <div class="popup-window-content">
+          <div class="menu-popup" style="display: block;">
+            <div class="menu-popup-items">
+              <a class="menu-popup-item disk-folder-list-context-menu-item ">
+                <span class="menu-popup-item-icon"></span>
+                <span class="menu-popup-item-text">Открыть</span>
+              </a>
+              <span class="menu-popup-item disk-folder-list-context-menu-item ">
+              <span class="menu-popup-item-icon"></span>
+              <span class="menu-popup-item-text">Удалить</span>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="popup-window-angly popup-window-angly-left" style="top: 10px;"></div>
+      </div>
     </div>
 </template>
 <script>
 export default {
-  name: 'fileView'
+  name: 'fileView',
+  methods: {
+    select: function (event) {
+      console.log(event.currentTarget.id)
+    }
+  },
+  data: function () {
+    return {
+      popup: false
+    }
+  }
 }
 </script>
