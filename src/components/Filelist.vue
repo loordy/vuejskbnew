@@ -23,12 +23,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="section in sections" :key="'section' + section.ID" class="main_grid_row main_grid_row_body"  :id="section.ID" @click="select">
-        <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input
-          type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
+      <tr v-for="section in sections" :key="'section' + section.ID" class="main_grid_row main_grid_row_body"  :id="'sec' + section.ID" @click="select" style="position:relative;">
+        <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
           title="Отметить для редактирования" ><label
           class="main_grid_checkbox" for=""></label></span></td>
-        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="popup = !popup" class="main_grid_row_action_button"></a></span>
+        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="modal" class="main_grid_row_action_button" :id="'sec' + section.ID"></a></span>
         </td>
         <td class="main_grid_cell main_grid_cell_left">
                                        <span class="main_grid_cell_content">
@@ -47,15 +46,17 @@
         </td>
         <td class="main_grid_cell main_grid_cell_left"><span class="main_grid_cell_content">29.05.2018 15:58</span></td>
         <td class="main_grid_cell"></td>
+        <div v-if="popup == 'truesec' + section.ID" class="popup_window popup_window_no_paddings popup_window_show_animation_opacity"
+             style="z-index: 1000; position: absolute;left: 75px;"><menuModal/></div>
       </tr>
-      <tr v-for="element in elements" :key="'element' + element.ID" class="main_grid_row main_grid_row_body"  :id="element.ID" @click="select">
+      <tr v-for="element in elements" :key="'element' + element.ID" class="main_grid_row main_grid_row_body"  :id="'el' + element.ID" @click="select" style="position:relative;">
         <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input
           type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
           title="Отметить для редактирования" ><label
           class="main_grid_checkbox" for=""></label></span></td>
-        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="popup = !popup" class="main_grid_row_action_button"></a></span>
+        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="modal" class="main_grid_row_action_button" :id="'el' + element.ID"></a></span>
         </td>
-        <td class="main_grid_cell main_grid_cell_left">
+        <td class="main_grid_cell main_grid_cell_left element">
                                        <span class="main_grid_cell_content">
                                           <table class="kb_disk_object_name">
                                              <tbody>
@@ -72,41 +73,35 @@
         </td>
         <td class="main_grid_cell main_grid_cell_left"><span class="main_grid_cell_content">29.05.2018 15:58</span></td>
         <td class="main_grid_cell"></td>
+        <div v-if="popup == 'trueel' + element.ID" class="popup_window popup_window_no_paddings popup_window_show_animation_opacity"
+             style="z-index: 1000; position: absolute;left: 75px;"><menuModal/></div>
       </tr>
       </tbody>
     </table>
-    <div v_show="popup" class="popup_window popup_window_no_paddings popup_window_show_animation_opacity" style="z-index: 1000; position: absolute;     top: 47px;
-    left: 65px;">
-      <div class="popup_window_content">
-        <div class="menu_popup" style="display: block;">
-          <div class="menu_popup_items">
-            <a class="menu_popup_item disk_folder_list_context_menu_item ">
-              <span class="menu_popup_item_icon"></span>
-              <span class="menu_popup_item_text">Открыть</span>
-            </a>
-            <span class="menu_popup_item disk_folder_list_context_menu_item ">
-              <span class="menu_popup_item_icon"></span>
-              <span class="menu_popup_item_text">Удалить</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="popup_window_angly popup_window_angly_left" style="top: 10px;"></div>
-    </div>
   </div>
 </template>
 
 <script>
+import MenuModal from './MenuModal'
+
 export default {
   name: 'filelist',
-  methods: {
-    select: function (event) {
-      console.log(event.currentTarget.id)
-    }
-  },
+  components: {MenuModal},
   data: function () {
     return {
-      popup: false
+      popup: false,
+      modal1: false
+    }
+  },
+  methods: {
+    select: function (event) {
+      // console.log(event.currentTarget.id)
+    },
+    modal: function (event) {
+      // console.log(event.currentTarget.id)
+      // console.log(this.popup)
+      this.modal1 = !this.modal1
+      this.popup = this.modal1 + event.currentTarget.id
     }
   },
   computed: {
@@ -953,9 +948,6 @@ html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_text,html:
 .main_dropdown_item_selected .menu_popup_item_icon {
   /*background: url("templates/bitrix24/images/template_sprite.png?9") no-repeat -79px -1446px;*/
 }
-.menu_popup_item {
-  position: relative;
-}
 
 .menu_popup_item.icon .menu_popup_item_icon {
   background: url(images/sprite_interface.min.svg) 999px 999px no-repeat;
@@ -978,20 +970,7 @@ html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_text,html:
   background-position: 50% -277px;
 }
 
-.menu_popup_item.icon.menu::after {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -3px;
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 3px 0 3px 4px;
-  border-color: transparent transparent transparent #80868e;
-}
-html:not(.kb_ie) .menu_popup .disk_folder_list_context_menu_item.menu_popup_item,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup .menu_popup_item{display:flex}html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_text,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_text{flex:1}html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_icon{order:1;margin:auto;width:32px;position:relative}
+html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_text,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_text{flex:1}html:not(.kb_ie) .disk_folder_list_context_menu_item .menu_popup_item_icon,html:not(.kb_ie) .disk_folder_list_sorting_menu .menu_popup_item_icon{order:1;margin:auto;width:32px;position:relative}
 .menu_popup_item_upload_file{position:relative}#inputContainerLabelFolderList,.menu_popup_item_upload_file label{position:absolute;top:0;left:0;bottom:0;right:0;height:100%;width:100%;overflow:hidden}.menu_popup_item_upload_file input{position:absolute;top:-100px;height:100px}
 .kb_disk_folder_icon {
   display: inline-block;
@@ -1030,72 +1009,12 @@ li{
   opacity: .3;
   transition: opacity .2s ease;
 }
-.popup_window.popup_window_no_paddings, .popup_window.popup_window_no_paddings .popup_window_content {
-  padding: 0;
-}
-.popup_window_show_animation_opacity {
-  animation: popupWindowShowAnimationOpacity 400ms;
-  animation-fill-mode: both;
-}
-.popup_window {
-  background-color: #fff;
-  box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);
-  padding: 10px;
-  font: 13px "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-.menu_popup {
-  padding: 8px 0;
-}
-html:not(.bx-ie) .menu_popup .disk_folder_list_context_menu_item.menu_popup_item, html:not(.bx_ie) .disk_folder_list_sorting_menu .menu_popup .menu_popup_item {
-  display: flex;
-}
+
 html:not(.bx-ie) .disk_folder_list_context_menu_item .menu_popup_item_text, html:not(.bx-ie) .disk_folder_list_sorting_menu .menu_popup_item_text {
   order: 0;
   padding: 0 13px 0 20px;
 }
-.menu_popup .menu_popup_item {
-  background-color: transparent;
-  display: block;
-  cursor: pointer;
-  height: 36px;
-  position: relative;
-  text-decoration: none;
-  outline: 0;
-  white-space: nowrap;
-  -webkit-transition: background-color .3s linear;
-  transition: background-color .3s linear;
-}
-.popup_window_angly_left::before {
-  left: 8px;
-  top: 8px;
-}
-.popup_window_angly_left {
-  display: block;
-  left: -14px;
-  top: 10px;
-  height: 30px;
-  width: 14px;
-}
-.popup_window_angly:before {
-  background-color: #fff;
-  -webkit-box-shadow: 0 0 21px rgba(83,92,105,.13);
-  box-shadow: 0 0 21px rgba(83,92,105,.13);
-  content: '';
-  height: 15px;
-  position: absolute;
-  left: 9px;
-  top: 16px;
-  transform: rotate(45deg);
-  transform-origin: 50% 50%;
-  width: 15px;
-}
-.popup_window_angly {
-  /*display: none;*/
-  height: 22px;
-  position: absolute;
-  /*overflow: hidden;*/
-  width: 33px;
-}
+
 td{
   vertical-align: middle!important;
 }
