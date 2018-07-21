@@ -9,7 +9,10 @@ export default {
     return state.elements.filter(element => element.SECTION_ID === SECTION_ID)
   },
   getElementByID: state => ID => {
-    return state.elements.find(element => element.ID === ID)
+    return state.elements.filte(element => element.ID === ID)
+  },
+  getCountSection: state => SECTION_ID => {
+    return state.sections.filter(section => section.SECTION_ID === SECTION_ID).length + state.elements.filter(element => element.SECTION_ID === SECTION_ID)
   },
   getUsersByParams: state => id => {
     return state.users.filter(user => user.ACTIVE)

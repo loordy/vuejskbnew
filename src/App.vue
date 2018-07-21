@@ -11,15 +11,13 @@
 
 <script>
 import Top from './components/common/header'
-import Middle from './components/common/middle'
-import Content from './components/mainpage'
+import Content from './components/pages/section'
 import Sidebar from './components/common/Sidebar'
 /* import store from './store' */
 export default {
   name: 'App',
   components: {
     Top,
-    Middle,
     Content,
     Sidebar
   },

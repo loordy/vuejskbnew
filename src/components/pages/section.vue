@@ -1,6 +1,6 @@
 <template>
-  <table style="width:100%;">
-    <empty v-if="(elements.length + sections.length) === 0"></empty>
+  <table>
+    <empty v-if="countSecEl == 0"></empty>
     <filelist v-else-if="this.$store.state.settings.viewType === 'list'"></filelist>
     <fileView v-else></fileView>
   </table>
@@ -14,11 +14,8 @@ export default {
   name: 'mainpage',
   components: {fileView, Filelist, empty},
   computed: {
-    elements () {
-      return this.$store.getters.getElementsByParentID(this.$route.params.id)
-    },
-    sections () {
-      return this.$store.getters.getSectionsByParentID(this.$route.params.id)
+    countSecEl () {
+      return this.$store.getters.getCountSection(this.$route.params.id)
     }
   }
 }

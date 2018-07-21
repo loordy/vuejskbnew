@@ -1,5 +1,5 @@
 <template>
-  <table style="width:100%">
+  <table class="main">
     <tr class="kb_layout_inner_inner_top_row">
       <td class="kb_layout_inner_inner_cont">
         <div class="page_header">
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style>
+  table {
+    width: calc(100% - 200px);
+  }
   .kb_layout_inner_inner_top_row .kb_layout_inner_inner_cont {
     height: 74px;
   }

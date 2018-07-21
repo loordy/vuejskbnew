@@ -119,7 +119,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .main_grid_container {
   overflow-x: auto;
   overflow-y: hidden;

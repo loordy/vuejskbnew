@@ -1,6 +1,6 @@
 <template>
-    <aside id="sidebar" role="complementary">
-        <div id="categories_3" class="widget widget_categories clearfix"><h4 class="widget_title">
+    <aside>
+        <div class="widget widget_categories clearfix"><h4 class="widget_title">
           <button id="show_modal" @click="showModal">Добавить раздел</button>
           <button @click="addStatya">Добавить статью</button>
           <div v-if="show" @close="show = false" class="fade_wrapp">
@@ -71,6 +71,10 @@ export default {
 </script>
 
 <style scoped>
+  aside{
+    width:200px;
+    float:right;
+  }
   .fade_wrapp{
     position: fixed;
     top: 0;
