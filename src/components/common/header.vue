@@ -6,9 +6,9 @@
           <div class="pagetitle_below">
             <div class="disk_folder_list_toolbar" >
               <div class="disk_breadcrumbs"  style="opacity: 1;">
-                <div class="disk_breadcrumbs_item">
-                  <a class="disk_breadcrumbs_item_title" href="">База знаний</a>
-                  <span class="disk_breadcrumbs_item_arrow"></span>
+                <div class="disk_breadcrumbs_item js_disk_breadcrumbs_folder">
+                  <router-link to='/' class="disk_breadcrumbs_item_title js_disk_breadcrumbs_folder_link">База знаний</router-link>
+                  <span class="disk_breadcrumbs_item_arrow js_disk_breadcrumbs_arrow"></span>
                 </div>
               </div>
               <div class="disk_folder_list_config">

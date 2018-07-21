@@ -1,8 +1,8 @@
 <template>
   <table style="width:100%;">
     <empty v-if="(elements.length + sections.length) === 0"></empty>
-    <filelist v-if="this.$store.state.settings.viewType === 'list'"></filelist>
-    <fileView v-if="this.$store.state.settings.viewType === 'grid'"></fileView>
+    <filelist v-else-if="this.$store.state.settings.viewType === 'list'"></filelist>
+    <fileView v-else></fileView>
   </table>
 </template>
 
