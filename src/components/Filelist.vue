@@ -98,8 +98,8 @@ export default {
       // console.log(event.currentTarget.id)
     },
     modal: function (event) {
-      console.log(event.currentTarget.id)
-      console.log(this.popup)
+      // console.log(event.currentTarget.id)
+      // console.log(this.popup)
       this.modal1 = !this.modal1
       this.popup = this.modal1 + event.currentTarget.id
     }
