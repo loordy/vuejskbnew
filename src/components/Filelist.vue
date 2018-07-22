@@ -3,31 +3,46 @@
     <table class="main_grid_table">
       <thead class="main_grid_header">
       <tr class="main_grid_row_head">
-        <th class="main_grid_cell_head main_grid_cell_static main_grid_cell_checkbox"><span
-          class="main_grid_cell_head_container"><span
-          class="main_grid_checkbox_container main_grid_head_checkbox_container"><input
-          class="main_grid_checkbox main_grid_row_checkbox main_grid_check_all"
-          type="checkbox" title="Отметить все/снять отметку у всех"><label
-          class="main_grid_checkbox" for=""></label></span></span></th>
-        <th class="main_grid_cell_head main_grid_cell_static main_grid_cell_action"><span
-          class="main_grid_interface_settings_icon"></span></th>
-        <th class="main_grid_cell_head main_grid_cell_left main_grid_col_sortable  main_grid_draggable "><span
-          class="main_grid_cell_head_container"><span class="main_grid_head_title">Название</span><span
-          class="main_grid_resize_button" title=""></span><span
-          class="main_grid_control_sort main_grid_control_sort_hover_asc"></span></span></th>
-        <th class="main_grid_cell_head main_grid_cell_left main_grid_col_sortable  main_grid_draggable "><span
-          class="main_grid_cell_head_container"><span class="main_grid_head_title">Изменен</span><span
-          class="main_grid_resize_button" title=""></span><span
-          class="main_grid_control_sort main_grid_control_sort_DESC"></span></span></th>
+        <th class="main_grid_cell_head main_grid_cell_static main_grid_cell_checkbox">
+          <span class="main_grid_cell_head_container">
+            <span class="main_grid_checkbox_container main_grid_head_checkbox_container">
+              <input class="main_grid_checkbox main_grid_row_checkbox main_grid_check_all" type="checkbox" title="Отметить все/снять отметку у всех">
+              <label class="main_grid_checkbox" for=""></label>
+            </span>
+          </span>
+        </th>
+        <th class="main_grid_cell_head main_grid_cell_static main_grid_cell_action">
+          <span class="main_grid_interface_settings_icon"></span>
+        </th>
+        <th class="main_grid_cell_head main_grid_cell_left main_grid_col_sortable  main_grid_draggable ">
+          <span class="main_grid_cell_head_container">
+            <span class="main_grid_head_title">Название</span>
+            <span class="main_grid_resize_button" title=""></span>
+            <span class="main_grid_control_sort main_grid_control_sort_hover_asc"></span>
+          </span>
+        </th>
+        <th class="main_grid_cell_head main_grid_cell_left main_grid_col_sortable  main_grid_draggable ">
+          <span class="main_grid_cell_head_container">
+            <span class="main_grid_head_title">Изменен</span>
+            <span class="main_grid_resize_button" title=""></span>
+            <span class="main_grid_control_sort main_grid_control_sort_DESC"></span>
+          </span>
+        </th>
         <th class="main_grid_cell_head main_grid_cell_static main_grid_special_empty"></th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="section in sections" :key="'section' + section.ID" class="main_grid_row main_grid_row_body"  :id="'sec' + section.ID" @click="select" style="position:relative;">
-        <td class="main_grid_cell main_grid_cell_checkbox"><span class="main_grid_cell_content"><input type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" name="ID[]" value="493"
-          title="Отметить для редактирования" ><label
-          class="main_grid_checkbox" for=""></label></span></td>
-        <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="modal" class="main_grid_row_action_button" :id="'sec' + section.ID"></a></span>
+        <td class="main_grid_cell main_grid_cell_checkbox">
+          <span class="main_grid_cell_content">
+            <input :id="'main_grid_row_checkbox_el' + section.ID" type="checkbox" class="main_grid_row_checkbox main_grid_checkbox" :name="section.ID" :value="section.ID" title="Отметить для редактирования" >
+            <label class="main_grid_checkbox" :for="'main_grid_row_checkbox_el' + section.ID"></label>
+          </span>
+        </td>
+        <td class="main_grid_cell main_grid_cell_action">
+          <span class="main_grid_cell_content">
+            <a @click="modal" class="main_grid_row_action_button" :id="'sec' + section.ID"></a>
+          </span>
         </td>
         <td class="main_grid_cell main_grid_cell_left">
                                        <span class="main_grid_cell_content">
@@ -62,7 +77,7 @@
                                              <tbody>
                                                 <tr>
                                                    <td style="width: 45px;">
-                                                      <div class="kb_disk_folder_icon"></div>
+                                                      <div class="kb_disk_folder_icon ui_icon_file_folder-el"></div>
                                                    </td>
                                                     <td><router-link :to="'/element/' + element.ID" class="bx_disk_folder_title"
                                                     >{{ element.NAME }}</router-link></td>
@@ -383,7 +398,7 @@ label.main_grid_checkbox {
 }
 .main_grid_row_body .main_grid_row_checkbox,
 .main_grid_row_body .main_grid_row_checkbox + label {
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .main_grid_cell_head:nth-last-of-type(2) .main_grid_resize_button {
   right: 0;
@@ -1017,5 +1032,9 @@ html:not(.bx-ie) .disk_folder_list_context_menu_item .menu_popup_item_text, html
 
 td{
   vertical-align: middle!important;
+}
+.ui_icon_file_folder-el{
+  background-position: 0 -433px!important;
+  height: 35px;
 }
 </style>
