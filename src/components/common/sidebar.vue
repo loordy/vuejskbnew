@@ -4,44 +4,28 @@
           <span id="bx-disk-add-menu" class="ui-btn ui-btn-primary ui-btn-dropdown" @click="add">Добавить</span>
         </div>
         <sidebarModal v-if="addModal"/>
-        <TreeItems :sections="sections"></TreeItems>
-          <button id="show_modal" @click="addRazdel">Добавить раздел</button>
-          <button @click="addStatya">Добавить статью</button>
-          <div v-if="show" @close="show = false" class="fade_wrapp">
-          </div>
-          <modal v-if="show" @close="show = false">
-            <h3 slot="header">Редактasdasdвать</h3>
-          </modal>
-
+        <TreeItems></TreeItems>
     </aside>
 </template>
 <script>
-import modal from './modals/modalAll'
-import SidebarModal from './modals/SidebarModal'
+
+import sidebarModal from './modals/SidebarModal'
+
 import TreeItems from './TreeItems'
 
 export default {
   name: 'Sidebar',
   components: {
     TreeItems,
-    SidebarModal,
-    modal
+    sidebarModal
+
   },
   data () {
     return {
       i: 0,
       catalog: '',
       iSshowModal: false,
-      addModal: false,
-      show: false
-    }
-  },
-  computed: {
-    items () {
-      return this.$store.state.elements
-    },
-    sections () {
-      return this.$store.getters.getSectionsByParentID()
+      addModal: false
     }
   },
   methods: {
@@ -49,17 +33,10 @@ export default {
       this.addModal = !this.addModal
     },
     addStatya () {
-      /* this.show = !this.show */
-      this.$store.commit('AddNewElement', {
-        'ID': this.$route.params.id + 100 + Math.floor(Math.random() * 10),
-        'SECTION_ID': this.$route.params.id,
-        'NAME': 'novayastatya ' + this.$route.params.id})
+      this.show = !this.show
     },
     addRazdel () {
-      this.$store.commit('AddNewSection', {
-        'ID': this.$route.params.id + 1000 + Math.floor(Math.random() * 10),
-        'SECTION_ID': this.$route.params.id,
-        'NAME': 'novayrazdel ' + this.$route.params.id})
+      this.showSecMod = !this.showSecMod
     },
     getSections (SECTION_ID) {
       return this.$store.getters.getSectionsByParentID(SECTION_ID)

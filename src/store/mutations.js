@@ -3,16 +3,32 @@ export default {
     state.elements = data
   },
 
+  addNewElement: (state, data) => {
+    state.elements.push(data)
+  },
+
+  updateElement: (state, data) => {
+
+  },
+
+  deleteElement: (state, data) => {
+    state.elements.splice(state.elements.indexOf(data), 1)
+  },
+
   setSections: (state, data) => {
     state.sections = data
   },
 
-  AddNewElement: (state, data) => {
-    state.elements.push(data)
+  addNewSection: (state, data) => {
+    state.sections.push(data)
   },
 
-  AddNewSection: (state, data) => {
-    state.sections.push(data)
+  updateSection: (state, data) => {
+
+  },
+
+  deleteSection: (state, data) => {
+    state.sections.splice(state.sections.indexOf(data), 1)
   },
 
   setUsers: (state, data) => {

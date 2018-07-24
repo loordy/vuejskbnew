@@ -50,12 +50,10 @@ export default {
     }
   }, */
   mounted () {
-    /* this.GetElements()
-    this.GetSections()
-    this.GetUsers()
-    this.GetCurrentUser()
-    this.$router.push({ path: `/` }) */
     console.log('mounted app.vue')
+    /* this.$store.dispatch('setElements')
+    this.$store.dispatch('setSections')
+    this.$router.push({ path: `/` }) */
   }
 }
 

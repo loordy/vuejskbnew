@@ -15,10 +15,10 @@
                         <div class="disk_tile_grid">
                           <div class="ui_grid_tile" style="min-height: 231px;">
                             <div class="disk_folder_list_no_data_inner">
-                              <div class="disk_folder_list_no_data_inner_message">В данной папке нет файлов или папок</div>
+                              <div class="disk_folder_list_no_data_inner_message">В данной папке нет статей или разделов</div>
                               <div class="disk_folder_list_no_data_inner_variable">
-                                <div id="disk_folder_list_no_data_upload_file" class="disk_folder_list_no_data_inner_create_file">Создать файл</div>
-                                <div id="disk_folder_list_no_data_create_folder" class="disk_folder_list_no_data_inner_create_folder">Создать папку</div>
+                                <div id="disk_folder_list_no_data_upload_file" class="disk_folder_list_no_data_inner_create_file" @click="addStatya">Новая статья</div>
+                                <div id="disk_folder_list_no_data_create_folder" class="disk_folder_list_no_data_inner_create_folder" @click="addRazdel">Новый раздел</div>
                               </div>
                             </div>
                           </div>
@@ -34,11 +34,42 @@
         </div>
       </div>
     </td>
+    <sectionModal v-if="showSecMod" @close="showSecMod = false" :parent_section_id="$route.params.id">
+
+    </sectionModal>
+    <div v-if="show" @close="show = false" class="fade_wrapp">
+    </div>
+    <modal v-if="show" @close="show = false">
+    </modal>
   </tbody>
 </template>
 <script>
+import modal from '../modals/modalAll'
+import sectionModal from '../modals/setionModal'
 export default {
-  name: 'empty'
+  name: 'empty',
+  data () {
+    return {
+      showSecMod: false,
+      show: false
+    }
+  },
+  components: {
+    modal,
+    sectionModal
+  },
+  methods: {
+    addStatya () {
+      this.show = !this.show
+    /* this.$store.commit('AddNewElement', {
+        'ID': this.$route.params.id + 100 + Math.floor(Math.random() * 10),
+        'SECTION_ID': this.$route.params.id,
+        'NAME': 'novayastatya ' + this.$route.params.id}) */
+    },
+    addRazdel () {
+      this.showSecMod = !this.showSecMod
+    }
+  }
 }
 </script>
 <style scoped>

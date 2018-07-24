@@ -25,7 +25,7 @@
                               <div class="disk_folder_list_item_bottom">
                                 <div class="disk_folder_list_item_title">
                                   <div class="disk_folder_list_item_title_wrapper">
-                                    <input class="disk_folder_list_item_title_input" type="text" value="Test">
+                                    <input class="disk_folder_list_item_title_input" type="text" value="Test" >
                                     <router-link :to='"/section/" + section.ID' @click="modal" class="disk_folder_list_item_title_link"
                                                  :title="section.NAME">{{section.NAME}}
                                     </router-link>
@@ -113,12 +113,10 @@ export default {
       console.log('asdasda')
     },
     select: function (event) {
-      console.log(event)
-      console.log(this.$store.getters.getSectionsByParentID(event.currentTarget.id))
+      /* console.log(event)
+      console.log(this.$store.getters.getSectionsByParentID(event.currentTarget.id)) */
     },
     modal: function (event) {
-      console.log(event.currentTarget.id)
-      console.log(this.popup)
       if (this.popup !== event.currentTarget.id) { this.popup = event.currentTarget.id } else { this.popup = false }
     }
   }
@@ -332,6 +330,7 @@ export default {
   }
 
   .ui_grid_tile_item_checkbox {
+    display: none;
     position: absolute;
     width: 18px;
     height: 18px;
@@ -749,7 +748,7 @@ export default {
     max-width: 100%;
     width: 100%;
     height: 0;
-    background: url(../../images/sprite_files.min.svg?v1.2) no-repeat center;
+    background: url(../../images/sprite_files.min.svg) no-repeat center;
     background-size: 100% auto;
     --icon-file-col: 14
   }

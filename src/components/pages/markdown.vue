@@ -20,7 +20,6 @@
 <script>
 import _ from 'lodash'
 import marked from 'marked'
-import { GetElements, UpdateItem, GetSections } from '../../api/index'
 export default {
   data () {
     return {
@@ -41,46 +40,12 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       this.item.DETAIL_TEXT = e.target.value
-    }, 300),
-    GetElements () {
-      var self = this
-      const params = {
-        ID: self.$route.params.id
-      }
-      console.log(self.$route)
-      GetElements(params, function (data) {
-        data = data[0]
-        self.item = data
-        console.log(data)
-      })
-      console.log('self')
-      console.log(self.item)
-    },
-    GetSections () {
-      var self = this
-      GetSections(null, function (data) {
-        self.sections = data
-      })
-    },
-    Save () {
-      var self = this
-      UpdateItem(this.item, function (data) {
-        console.log(data)
-      })
-      console.log('self')
-      console.log(self.items)
-    }
+    }, 300)
   },
   mounted () {
-    this.GetElements()
-    this.GetSections()
   },
   watch: {
-    '$route' (to, from) {
-      console.log('route change')
-      this.GetElements()
-      this.GetSections()
-    }
+
   }
 }
 </script>

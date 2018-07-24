@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { GetCatalogArray, GetSections, GetElements } from '../../api/index'
+import { getSections, getElements } from '../../api/index'
 /* global BX24 */
 export default {
   name: 'settings',
@@ -62,7 +62,7 @@ export default {
     },
     GetSect () {
       var self = this
-      GetSections(null, function (data) {
+      getSections(null, function (data) {
         self.sections = data
       })
       console.log('self')
@@ -70,13 +70,8 @@ export default {
     },
     GetEl () {
       var params = {ID: 30}
-      GetElements(params, function (data) {
+      getElements(params, function (data) {
         console.log(data)
-      })
-    },
-    GetCat () {
-      GetCatalogArray(null, function (Catalog) {
-        console.log(Catalog)
       })
     },
     Install () {

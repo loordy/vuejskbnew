@@ -182,6 +182,7 @@ export default {
   }
 
   .main_grid_cell_head * {
+    display:none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -339,6 +340,7 @@ export default {
   .main_grid_cell_head.main_grid_cell_checkbox,
   .main_grid_cell.main_grid_cell_checkbox,
   .main_grid_control_panel_cell.main_grid_cell_checkbox {
+    display: none;
     width: 1%;
     min-width: 18px;
     text-align: center;
@@ -536,7 +538,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    display: inline-block;
+    display: none;
     width: 16px;
     min-width: 16px;
     height: 17px;

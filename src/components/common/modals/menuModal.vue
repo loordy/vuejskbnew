@@ -1,36 +1,64 @@
 <template>
   <div class="popup-window popup-window-no-paddings popup-window-show-animation-opacity"
-       :style="'display: block; position: absolute; z-index: 1000;' + pos">{{top}}
+       :style="'display: block; position: absolute; z-index: 1000;' + pos">
     <div class="popup-window-content">
       <div class="menu-popup" style="display: block;">
         <div class="menu-popup-items"><router-link :to="'/'+ type + '/' + ID" class="menu-popup-item disk-folder-list-context-menu-item "><span
           class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Открыть</span></router-link>
         </div>
           <div class="menu-popup-items"><a class="menu-popup-item disk-folder-list-context-menu-item "><span
-            class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Редактировать</span></a>
+            class="menu-popup-item-icon"></span><span class="menu-popup-item-text" @click="redact">Редактировать</span></a>
           </div>
             <div class="menu-popup-items"><a class="menu-popup-item disk-folder-list-context-menu-item "><span
-              class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Удалить</span></a>
+              class="menu-popup-item-icon"></span><span class="menu-popup-item-text" @click="deleteElSec">Удалить</span></a>
             </div>
       </div>
     </div>
+    <sectionModal v-if="showSecMod" @close="showSecMod = false" :section_id="ID">
+      <h3 slot="header">Редактировать</h3>
+    </sectionModal>
     <div class="popup-window-angly popup-window-angly-left" style="top: 10px;"></div>
   </div>
 </template>
 <script>
+import sectionModal from './setionModal'
 export default {
   name: 'menuModal',
+  data () {
+    return {
+      showSecMod: false
+    }
+  },
+  components: {
+    sectionModal
+  },
   props: {
     type: '',
     ID: '',
     pos: ''
+  },
+  methods: {
+    redact () {
+      if (this.type === 'section') {
+        this.showSecMod = !this.showSecMod
+      } else {
+        console.log('element')
+      }
+    },
+    deleteElSec () {
+      if (this.type === 'section') {
+        this.$store.commit('deleteSection', this.$store.getters.getSectionByID(this.ID))
+      } else {
+        this.$store.commit('deleteElement', this.$store.getters.getElementByID(this.ID))
+      }
+    }
   }
 }
 </script>
 <style scoped>
   .popup-window {
     background-color: #fff;
-    box-shadow: 0px 7px 21px rgba(83, 92, 105, 0.12), 0px -1px 6px 0px rgba(83, 92, 105, 0.06);
+    box-shadow: 0 7px 21px rgba(83, 92, 105, 0.12), 0 -1px 6px 0 rgba(83, 92, 105, 0.06);
     padding: 10px;
     font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
@@ -149,8 +177,8 @@ export default {
   }
 
   html:not(.bx-ie) .menu-popup .disk-folder-list-context-menu-item.menu-popup-item, html:not(.bx-ie) .disk-folder-list-sorting-menu .menu-popup .menu-popup-item {
-    display: flex;
-  }
+       display: flex;
+     }
 
   .menu-popup-item-icon {
     display: inline-block;

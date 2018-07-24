@@ -8,7 +8,7 @@ export default {
   name: 'element',
   computed: {
     compiledMarkdown () {
-      return marked(this.$store.getters.getElementByID(this.$route.params.id).DESCRIPTION, { sanitize: true })
+      return marked(this.$store.getters.getElementByID(this.$route.params.id).DETAIL_TEXT, { sanitize: true })
     }
   }
 }

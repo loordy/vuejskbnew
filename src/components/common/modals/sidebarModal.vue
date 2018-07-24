@@ -5,19 +5,52 @@
             <div class="menu-popup" style="display: block;">
                 <div class="menu-popup-items">
                     <span class="menu-popup-item menu-popup-no-icon "><span class="menu-popup-item-icon"></span><span
-                            class="menu-popup-item-text">Новый раздел</span></span>
+                            class="menu-popup-item-text" @click="addRazdel">Новый раздел</span></span>
                   <span
                         class="menu-popup-item menu-popup-no-icon menu-popup-item-submenu"><span
-                        class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Новую статью</span></span>
+                        class="menu-popup-item-icon"></span><span class="menu-popup-item-text" @click="addStatya">Новую статью</span></span>
                 </div>
             </div>
         </div>
         <div class="popup-window-angly popup-window-angly-bottom" style="left: 54.9844px; margin-left: 0px;"></div>
+      <sectionModal v-if="showSecMod" @close="showSecMod = false" :parent_section_id="$route.params.id">
+
+      </sectionModal>
+
+      <div v-if="show" @close="show = false" class="fade_wrapp">
+      </div>
+      <modal v-if="show" @close="show = false">
+        <h3 slot="header">Редактasdasdвать</h3>
+      </modal>
     </div>
 </template>
 <script>
+import modal from './modalAll'
+import sectionModal from './setionModal'
 export default {
-  name: 'sidebarModal'
+  name: 'sidebarModal',
+  data () {
+    return {
+      showSecMod: false,
+      show: false
+    }
+  },
+  components: {
+    modal,
+    sectionModal
+  },
+  methods: {
+    addStatya () {
+      this.show = !this.show
+      /* this.$store.commit('AddNewElement', {
+          'ID': this.$route.params.id + 100 + Math.floor(Math.random() * 10),
+          'SECTION_ID': this.$route.params.id,
+          'NAME': 'novayastatya ' + this.$route.params.id}) */
+    },
+    addRazdel () {
+      this.showSecMod = !this.showSecMod
+    }
+  }
 }
 </script>
 <style scoped>

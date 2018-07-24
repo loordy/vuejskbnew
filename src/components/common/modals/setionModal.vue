@@ -1,26 +1,64 @@
 <template>
   <transition name="modal">
-  <div class="popup-window popup-window-with-titlebar" style="left: 488px; top: 207.5px; display: block; position: absolute; z-index: 1100;">
-    <div class="popup-window-titlebar"><span
-      class="popup-window-titlebar-text">Создание папки</span></div>
+  <div class="popup-window popup-window-with-titlebar" style="left: 30%; top: 20%; display: block; position: fixed; z-index: 1100;">
+    <h3 class="popup-window-titlebar"><slot name="header"
+      class="popup-window-titlebar-text">Создание раздела</slot></h3>
     <div class="popup-window-content" >
       <div class="bx-disk-popup-container" style="display: block;">
         <div class="bx-disk-popup-content" style="padding-top: 30px; padding-bottom: 70px;"><label
           class="bx-disk-popup-label"><span class="req">*</span>Название</label><input class="bx-disk-popup-input"
                                                                                        style="font-size: 16px; margin-top: 10px;"
-                                                                                       type="text"></div>
+                                                                                       type="text"
+                                                                                       v-model="sectionNameModel.NAME"
+                                                                                       @keyup.enter="save"></div>
       </div>
     </div>
     <span class="popup-window-close-icon popup-window-titlebar-close-icon"></span>
-    <div class="popup-window-buttons"><span class=" ui-btn ui-btn-success">Создать</span><span
-      class=" ui-btn ui-btn-link">Закрыть</span></div>
+    <div class="popup-window-buttons"><span class=" ui-btn ui-btn-success" @click="save">Сохранить</span>
+      <span @click="closing"  class=" ui-btn ui-btn-link">Закрыть</span></div>
   </div>
   </transition>
 </template>
 
 <script>
 export default {
-  name: 'setionModal'
+  name: 'setionModal',
+  data () {
+    return {
+      sectionNameModel: {
+        NAME: ''
+      }
+    }
+  },
+  props: {
+    section_id: {}
+  },
+  created () {
+
+  },
+  mounted () {
+    if (this.section_id) {
+      this.sectionNameModel = this.$store.getters.getSectionByID(this.section_id)
+      this.originData = {...this.sectionNameModel}
+    }
+  },
+  methods: {
+    save () {
+      if (this.section_id) {
+        this.$store.dispatch('updateSection', this.sectionNameModel)
+      } else {
+        this.$store.dispatch('addNewSection', {
+          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'NAME': this.sectionNameModel.NAME})
+      }
+
+      this.$emit('close')
+    },
+    closing () {
+      this.sectionNameModel.NAME = this.originData.NAME
+      this.$emit('close')
+    }
+  }
 }
 </script>
 

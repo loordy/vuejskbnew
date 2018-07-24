@@ -1,140 +1,114 @@
 /* global BX24 */
-export function GetCurrentUser (callback) {
+export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
     console.log(result)
     callback(result.data())
   })
 }
-export function GetUsers (callback) {
+export function getUsers (callback) {
   BX24.callMethod('user.get', {}, function (result) {
     console.log(result)
     callback(result.data())
   })
 }
-export function GetSections (SectionId, callback) {
+export function getSections (entity, callback) {
   BX24.callMethod('entity.section.get', {
-    ENTITY: 'md_knowledge',
+    ENTITY: entity,
     SORT: {DATE_ACTIVE_FROM: 'ASC'},
-    FILTER: {SECTION: SectionId}
+    FILTER: ''
   },
   function (result) {
     if (result.error()) {
       console.log(result)
-      GetSections(SectionId, callback)
+      getSections(entity, callback)
     } else {
-      let data = result.data()
-      console.log(data)
-      callback(data)
+      callback(result.data())
     }
   }
   )
 }
-export function GetElements (params, callback) {
+export function getElements (entity, callback) {
   BX24.callMethod('entity.item.get', {
-    ENTITY: 'md_knowledge',
+    ENTITY: entity,
     SORT: {DATE_ACTIVE_FROM: 'ASC'},
-    FILTER: params
+    FILTER: ''
   },
   function (result) {
-    let data = result.data()
-    console.log(data)
-    callback(data)
+    if (result.error()) {
+      console.log(result)
+      getElements(entity, callback)
+    } else {
+      callback(result.data())
+    }
   }
   )
 }
-export function AddNewItem (callback) {
+export function addNewItem (entity, data, callback) {
   BX24.callMethod('entity.item.add', {
-    ENTITY: 'md_knowledge',
+    ENTITY: entity,
     DATE_ACTIVE_FROM: new Date(),
-    NAME: 'Новая статья',
-    DETAIL_TEXT: ''
+    NAME: data.NAME,
+    DETAIL_TEXT: '',
+    SECTION: data.SECTION
   }, function (result) {
-    let data = result.data()
-    console.log(data)
-    callback(data)
+    callback(result.data())
   })
 }
-export function UpdateItem (item, callback) {
+export function updateItem (entity, data, callback) {
   BX24.callMethod('entity.item.update', {
-    ENTITY: 'md_knowledge',
-    ID: item.ID,
-    DATE_ACTIVE_FROM: new Date(),
-    DETAIL_PICTURE: '',
-    NAME: item.NAME,
-    DETAIL_TEXT: item.DETAIL_TEXT,
-    SECTION: item.SECTION
+    ENTITY: entity,
+    ID: data.ID,
+    NAME: data.NAME,
+    DETAIL_TEXT: data.DETAIL_TEXT,
+    SECTION: data.SECTION
   }, function (result) {
-    callback(result)
+    console.log(result)
+    if (result !== true) { updateItem(entity, data, callback) }
   }
   )
 }
-export function AddNewSection (section, callback) {
-  BX24.callMethod('entity.section.add', {
-    ENTITY: 'md_knowledge',
-    DATE_ACTIVE_FROM: new Date(),
-    NAME: section.NAME,
-    DETAIL_TEXT: ''
-  }, function (result) {
-    let data = result.data()
-    console.log(data)
-    callback(data)
-  })
-}
-export function UpdateSection (callback) {
-  BX24.callMethod('entity.item.add', {
-    ENTITY: 'md_knowledge',
-    DATE_ACTIVE_FROM: new Date(),
-    NAME: 'Новая статья',
-    DETAIL_TEXT: ''
+export function deleteItem (entity, data, callback) {
+  BX24.callMethod('entity.item.delete', {
+    ENTITY: entity,
+    ID: data.ID
   }, function (result) {
     if (result.error()) {
-      UpdateSection(callback)
+      deleteItem(callback)
     } else {
-      let data = result.data()
-      console.log(data)
-      callback(data)
+      callback(result.data())
     }
   })
 }
-export function GetCatalogArray (SectionID, callback) {
-  let Catalog = []
-  let Sections = []
-  let Elements = []
-  GetSections(SectionID, function (data) {
-    console.log(Catalog)
-    Sections = data
-    GetElements(false, function (data) {
-      Elements = data
-      let fID = null
-      Catalog = Sections.filter(SectFilter)
-      /**
-       * @return {boolean}
-       */
-      function SectFilter (Section) {
-        return Section.SECTION === fID
-      }
-      console.log(Catalog)
-      Catalog.forEach(function (Section, i, arr) {
-        fID = Section.ID
-        console.log(Catalog)
-        if (Sections.filter(SectFilter) === true) {
-          Catalog[i]['ITEMS'] = []
-          Catalog[i]['ITEMS'] = Elements.filter(SectFilter)
-        }
-        console.log(Catalog)
-        if (Sections.filter(SectFilter) === true) {
-          Catalog[i]['SECTIONS'] = []
-          Catalog[i]['SECTIONS'] = Sections.filter(SectFilter)
-        }
-      })
-    })
+export function addNewSection (entity, section, callback) {
+  BX24.callMethod('entity.section.add', {
+    ENTITY: entity,
+    DATE_ACTIVE_FROM: new Date(),
+    NAME: section.NAME,
+    SECTION: section.SECTION
+  }, function (result) {
+    callback(result.data())
   })
-  Catalog.forEach(function (item, i, arr) {
-    GetSections(Catalog[i]['SECTION'], function (data) {
-      Catalog[i]['SECTION'] = []
-      Catalog[i]['SECTION'] = data
-      console.log(Catalog)
-    })
+}
+export function updateSection (entity, data, callback) {
+  BX24.callMethod('entity.section.update', {
+    ENTITY: entity,
+    ID: data.ID,
+    NAME: data.NAME,
+    SECTION: data.SECTION
+  }, function (result) {
+    console.log(result)
+    if (result !== true) { updateItem(entity, data, callback) }
   })
-  callback(Catalog)
+}
+export function deleteSection (entity, data, callback) {
+  BX24.callMethod('entity.section.delete', {
+    ENTITY: entity,
+    ID: data.ID
+  }, function (result) {
+    if (result.error()) {
+      deleteSection(callback)
+    } else {
+      callback(result.data())
+    }
+  })
 }

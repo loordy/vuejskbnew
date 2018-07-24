@@ -38,7 +38,6 @@ export default {
       return this.$store.getters.getSectionsByParentID(SECTION_ID)
     },
     getCountSections (SECTION_ID) {
-      console.log(SECTION_ID)
       return this.$store.getters.getCountSection(SECTION_ID)
     },
     show (event) {

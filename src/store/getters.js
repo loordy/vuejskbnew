@@ -1,21 +1,25 @@
 export default {
-  getSectionsByParentID: state => SECTION_ID => {
-    return state.sections.filter(section => section.SECTION_ID === SECTION_ID)
+  getSectionsByParentID: state => ID => {
+    if (ID === undefined) { ID = null }
+    return state.sections.filter(section => section.SECTION === ID)
   },
   getSectionByID: state => ID => {
     return state.sections.find(section => section.ID === ID)
   },
-  getElementsByParentID: state => SECTION_ID => {
-    return state.elements.filter(element => element.SECTION_ID === SECTION_ID)
+  getElementsByParentID: state => ID => {
+    if (ID === undefined) { ID = null }
+    return state.elements.filter(element => element.SECTION === ID)
   },
   getElementByID: state => ID => {
     return state.elements.find(element => element.ID === ID)
   },
-  getCountAllSecEl: state => SECTION_ID => {
-    return state.sections.filter(section => section.SECTION_ID === SECTION_ID).length + state.elements.filter(element => element.SECTION_ID === SECTION_ID)
+  getCountAllSecEl: state => ID => {
+    if (ID === undefined) { ID = null }
+    return state.sections.filter(section => section.SECTION === ID).length + state.elements.filter(element => element.SECTION === ID)
   },
-  getCountSection: state => SECTION_ID => {
-    return state.sections.filter(section => section.SECTION_ID === SECTION_ID).length
+  getCountSection: state => ID => {
+    if (ID === undefined) { ID = null }
+    return state.sections.filter(section => section.SECTION === ID).length
   },
   getUsersByParams: state => id => {
     return state.users.filter(user => user.ACTIVE)
