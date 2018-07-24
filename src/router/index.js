@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import main from '@/components/pages/main'
 import markdown from '@/components/pages/markdown'
 import section from '@/components/pages/section'
-import item from '@/components/pages/item'
+import artic from '@/components/pages/artic'
 import Settings from '@/components/pages/settings'
 
 Vue.use(Router)
@@ -12,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'section',
-      component: section
+      name: 'main',
+      component: main
     },
     {
       path: '/markdown/:id(\\d+)',
@@ -21,9 +22,9 @@ export default new Router({
       component: markdown
     },
     {
-      path: '/item/:id(\\d+)',
-      name: 'item',
-      component: item
+      path: '/artic/:id(\\d+)',
+      name: 'artic',
+      component: artic
     },
     {
       path: '/settings/',

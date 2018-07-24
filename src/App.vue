@@ -1,10 +1,12 @@
 <template>
   <div id="app">
+    <div class="main">
     <Top></Top>
     <!--<div>
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>-->
     <router-view/>
+    </div>
     <Sidebar/>
   </div>
 </template>
@@ -60,5 +62,9 @@ export default {
 </script>
 
 <style>
+  .main{
+    width: calc(100% - 200px);
+    float:left;
+  }
 @import url(https://d3ijh37r9qzozj.cloudfront.net/knowhow/wp-content/themes/knowhow/css/font-awesome.min.css?ver=4.9.6);
 </style>

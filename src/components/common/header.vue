@@ -1,5 +1,5 @@
 <template>
-  <table class="main">
+  <table>
     <tr class="kb_layout_inner_inner_top_row">
       <td class="kb_layout_inner_inner_cont">
         <div class="page_header">
@@ -12,13 +12,11 @@
                 </div>
               </div>
               <div class="disk_folder_list_config">
-                <div class="disk_folder_list_sorting">
-                  <span class="disk_folder_list_sorting_text">По дате изменения</span>
-                </div>
+
                 <div class="disk_folder_list_view">
                   <div v-bind:class="[this.$store.state.settings.viewType === 'list' ? activeClass : '', list]" @click="viewChange('list')"></div>
                   <div v-bind:class="[this.$store.state.settings.viewType === 'grid' ? activeClass : '', grid]" @click="viewChange('grid')"></div>
-                  <div v-bind:class="[this.$store.state.settings.viewType === 'grid_tile' ? activeClass : '', gridtile]" @click="viewChange('grid_tile')"></div>
+                  <!--<div v-bind:class="[this.$store.state.settings.viewType === 'grid_tile' ? activeClass : '', gridtile]" @click="viewChange('grid_tile')"></div>-->
                 </div>
               </div>
             </div>
@@ -50,10 +48,10 @@ export default {
 </script>
 
 <style>
-  table {
-    width: calc(100% - 200px);
+  table{
+    width:100%;
   }
-  .kb_layout_inner_inner_top_row .kb_layout_inner_inner_cont {
+   .kb_layout_inner_inner_top_row .kb_layout_inner_inner_cont {
     height: 74px;
   }
 

@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import Filelist from '../Filelist'
-import fileView from '../FileView'
-import empty from '../empty'
+import Filelist from '../common/catalog/Filelist'
+import fileView from '../common/catalog/FileView'
+import empty from '../common/catalog/empty'
 export default {
   name: 'mainpage',
   components: {fileView, Filelist, empty},
   computed: {
     countSecEl () {
-      return this.$store.getters.getCountSection(this.$route.params.id)
+      return this.$store.getters.getCountAllSecEl(this.$route.params.id)
     }
   }
 }

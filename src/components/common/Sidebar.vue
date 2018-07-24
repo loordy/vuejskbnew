@@ -3,39 +3,27 @@
         <div class="pagetitle-container pagetitle-align-right-container">
           <span id="bx-disk-add-menu" class="ui-btn ui-btn-primary ui-btn-dropdown" @click="add">Добавить</span>
         </div>
-        <div v-if="addModal">
-          <sidebarModal/>
-        </div>
-        <div id="categories_3" class="widget widget_categories clearfix"><h4 class="widget_title">
-          <button id="show_modal" @click="showModal">Добавить раздел</button>
+        <sidebarModal v-if="addModal"/>
+        <TreeItems :sections="sections"></TreeItems>
+          <button id="show_modal" @click="addRazdel">Добавить раздел</button>
           <button @click="addStatya">Добавить статью</button>
           <div v-if="show" @close="show = false" class="fade_wrapp">
-
           </div>
           <modal v-if="show" @close="show = false">
             <h3 slot="header">Редактasdasdвать</h3>
           </modal>
-          <span>Разделы</span></h4>
-            <ul  v-for="section in sections" :key="section.ID">
-                <li class="cat_item cat_item_2"><router-link :to='"/section/" + section.ID' :title="section.NAME">{{ section.NAME }}</router-link></li>
-            </ul>
-        </div>
 
-        <div id="st_articles_widget_2" class="widget st_articles_widget clearfix"><h4 class="widget_title"><span>Последние статьи</span>
-        </h4>
-            <ul class="clearfix">
-                <li v-for="item in items" :key ="item.ID" class="clearfix format_standard"><router-link :to="'/item/'+item.ID" rel="bookmark">{{ item.NAME }}</router-link></li>
-            </ul>
-        </div>
     </aside>
 </template>
 <script>
-  import modal from './modalAll'
-  import SidebarModal from "./SidebarModal";
+import modal from './modals/modalAll'
+import SidebarModal from './modals/SidebarModal'
+import TreeItems from './TreeItems'
 
-  export default {
+export default {
   name: 'Sidebar',
   components: {
+    TreeItems,
     SidebarModal,
     modal
   },
@@ -53,7 +41,7 @@
       return this.$store.state.elements
     },
     sections () {
-      return this.$store.state.sections
+      return this.$store.getters.getSectionsByParentID()
     }
   },
   methods: {
@@ -61,11 +49,26 @@
       this.addModal = !this.addModal
     },
     addStatya () {
-      // this.show = !this.show
+      /* this.show = !this.show */
       this.$store.commit('AddNewElement', {
-        'ID': this.$route.params.id + 100,
+        'ID': this.$route.params.id + 100 + Math.floor(Math.random() * 10),
         'SECTION_ID': this.$route.params.id,
         'NAME': 'novayastatya ' + this.$route.params.id})
+    },
+    addRazdel () {
+      this.$store.commit('AddNewSection', {
+        'ID': this.$route.params.id + 1000 + Math.floor(Math.random() * 10),
+        'SECTION_ID': this.$route.params.id,
+        'NAME': 'novayrazdel ' + this.$route.params.id})
+    },
+    getSections (SECTION_ID) {
+      return this.$store.getters.getSectionsByParentID(SECTION_ID)
+    },
+    getCountSections (SECTION_ID) {
+      return this.$store.getters.getCountSection(SECTION_ID)
+    },
+    showChildren (SECTION_ID) {
+
     },
     /* GetSections () {
       let self = this
@@ -79,11 +82,18 @@
     closeModal () {
       this.iSshowModal = false
     }
+  },
+  mounted () {
+    this.getSections()
   }
 }
 </script>
 
 <style scoped>
+  aside{
+    width:200px;
+    float:right;
+  }
   .fade_wrapp{
     position: fixed;
     top: 0;
@@ -170,5 +180,222 @@
 
   .menu-popup-item-upload-file {
     position: relative;
+  }
+
+  .bx-disk-sidebar-section {
+    text-align: center;
+    border-bottom: 1px solid #edeef0;
+    font-family: OpenSans-Light,sans-serif;
+  }
+  .bx-disk-table-sidebar-cell {
+    position: relative;
+    width: 200px;
+    vertical-align: top;
+    border-left: 1px solid #edeef0;
+  }
+  .bx-disk-container.posr > table {
+    table-layout: fixed;
+  }
+  .bx-disk-container {
+    background: #fff;
+  }
+  .posr {
+    position: relative;
+  }
+  .workarea-content-paddings {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  #workarea-content {
+    overflow: hidden;
+    background-color: #fff;
+    height: 100%;
+  }
+  .page-header, #sidebar, #workarea-content {
+    opacity: 0.96;
+  }
+  #workarea {
+    padding: 0;
+    height: 100%;
+    overflow-y: hidden;
+  }
+  .bx-layout-inner-inner-cont {
+    height: 100%;
+    width: 100%;
+  }
+  td.bx-layout-inner-inner-cont {
+    vertical-align: top;
+  }
+  .bx-layout-inner-inner-table {
+    border: 0;
+    border-spacing: 0px;
+    height: 100%;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .bx-layout-inner-inner-table {
+    background-color: transparent;
+  }
+  .bx-layout-inner-left, .bx-layout-inner-center {
+    height: 0px;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .bx-layout-inner-top-row .bx-layout-inner-left, .bx-layout-inner-top-row .bx-layout-inner-center {
+    height: 100%;
+  }
+  .bx-layout-inner-table {
+    background-color: #eef2f4;
+    border: medium none;
+    border-spacing: 0px;
+    height: 100%;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .bx-layout-inner-table {
+    background: transparent;
+  }
+  .bx-layout-cont {
+    height: 100%;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .bx-layout-table {
+    border: medium none;
+    border-spacing: 0px;
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    font-family: "RobotoRegular",sans-serif !important;
+    color: #38464f !important;
+  }
+  body {
+    color: #000;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+   /* background: #0c588d url(pattern-presents.svg) 0 0 repeat; */
+  }
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  :root {
+    --ui-btn-size-xs: 26px;
+    --ui-btn-size-sm: 31px;
+    --ui-btn-size-md: 39px;
+    --ui-btn-size-lg: 47px;
+    --ui-btn-inner-color-dark: #535c69;
+    --ui-btn-inner-color-light: #fff;
+    --ui-btn-bg-default: #868d95;
+    --ui-btn-bg-default-hover: #5b6573;
+    --ui-btn-bg-default-active: #3b506e;
+    --ui-btn-bg-success: #bbed21;
+    --ui-btn-bg-success-hover: #d2f95f;
+    --ui-btn-bg-success-active: #b2e232;
+    --ui-btn-bg-success-light: #e1f0b1;
+    --ui-btn-bg-success-light-hover: #eaf5c5;
+    --ui-btn-bg-success-light-active: #d3e59a;
+    --ui-btn-bg-danger: #f1361a;
+    --ui-btn-bg-danger-hover: #cc1c00;
+    --ui-btn-bg-danger-active: #d24430;
+    --ui-btn-bg-danger-light: #ffccca;
+    --ui-btn-bg-danger-light-hover: #ffdcdb;
+    --ui-btn-bg-danger-light-active: #f2b6b3;
+    --ui-btn-bg-primary: #3bc8f5;
+    --ui-btn-bg-primary-hover: #3eddff;
+    --ui-btn-bg-primary-active: #12b1e3;
+    --ui-btn-bg-secondary: #c5e7f4;
+    --ui-btn-bg-secondary-hover: #d1eef9;
+    --ui-btn-bg-secondary-active: #aee0f2;
+    --ui-btn-bg-light: transparent;
+    --ui-btn-bg-light-hover: #f6f8f9;
+    --ui-btn-bg-light-active: #d6f1fb;
+    --ui-btn-icon-color: black;
+  }
+
+  div.bx-disk-folder-container table {
+    width: 100%;
+    max-width: 500px;
+    table-layout: fixed;
+  }
+
+  div.bx-disk-folder-container td {
+    height: 24px;
+    vertical-align: middle;
+  }
+  .bx-disk-wf-folder-name span {
+    display: block;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 500px;
+    padding-left: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+  }
+  a {
+    color: #2067b0;
+    text-decoration: none;
+    -webkit-transition: border-bottom-color .2s linear;
+    transition: border-bottom-color .2s linear;
+  }
+  .bx-disk-wf-folder-icon span {
+    display: block;
+    width: 16px;
+    height: 16px;
+   background: transparent url(../images/icons_files2.png) no-repeat -72px 0;
+  }
+  .bx-disk-wood-folder {
+    padding: 0;
+  }
+  .bx-disk-wood-folder .bx-disk-wood-folder {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .bx-disk-wf-arrow span {
+    display: block;
+    width: 17px;
+    height: 17px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    opacity: 0.8;
+    border-radius: 50%;
+    /* background: url(/bitrix/images/disk/sprite.png) no-repeat 5px -89px; */
+  }
+  li.bx-disk-folder-container.bx-disk-close > div .bx-disk-wf-arrow span {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  .bx-disk-wf-arrow span {
+    display: block;
+    width: 17px;
+    height: 17px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    opacity: .8;
+    border-radius: 50%;
+    background: url(../images/sprite.png) no-repeat 5px -89px;
   }
 </style>

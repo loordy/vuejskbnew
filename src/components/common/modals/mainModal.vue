@@ -595,16 +595,15 @@
   .main-title-history {
     font: 26px/26px "OpenSans-Light", Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 21px 0px;
+    padding: 21px 0;
     display: block;
     word-wrap: break-word;
-    padding: 5px 0px;
     margin-top: 15px;
   }
 
   .history-line {
     font-size: 15px;
-    font-family: Arial;
+    font-family: Arial,sans-serif;
     font-weight: 500;
     padding: 15px 15px;
     background-color: white;

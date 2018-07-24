@@ -5,18 +5,10 @@
             <div class="menu-popup" style="display: block;">
                 <div class="menu-popup-items">
                     <span class="menu-popup-item menu-popup-no-icon "><span class="menu-popup-item-icon"></span><span
-                            class="menu-popup-item-text">Папка</span></span><span
+                            class="menu-popup-item-text">Новый раздел</span></span>
+                  <span
                         class="menu-popup-item menu-popup-no-icon menu-popup-item-submenu"><span
-                        class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Google Docs</span></span><span
-                        class="menu-popup-item menu-popup-no-icon menu-popup-item-submenu"><span
-                        class="menu-popup-item-icon"></span><span
-                        class="menu-popup-item-text">MS Office Online</span></span><span
-                        class="menu-popup-item menu-popup-no-icon menu-popup-item-submenu"><span
-                        class="menu-popup-item-icon"></span><span
-                        class="menu-popup-item-text">Office365</span></span><span
-                        class="menu-popup-item menu-popup-no-icon menu-popup-item-submenu"><span
-                        class="menu-popup-item-icon"></span><span
-                        class="menu-popup-item-text">Программы на компьютере</span></span>
+                        class="menu-popup-item-icon"></span><span class="menu-popup-item-text">Новую статью</span></span>
                 </div>
             </div>
         </div>
