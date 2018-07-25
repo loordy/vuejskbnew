@@ -23,7 +23,7 @@ export default {
 
   addNewSection: ({ commit, state }, data) => {
     api.addNewSection(entitykb, data, function (result) {
-      data.ID = result.data()
+      data.ID = result
       commit('AddNewSection', data)
     })
   },
@@ -34,6 +34,18 @@ export default {
 
   updateSection: ({ commit, state }, data) => {
     api.updateSection(entitykb, data)
+  },
+
+  deleteElement: ({ commit, state }, data) => {
+    api.deleteItem(entitykb, data, function (result) {
+      commit('deleteElement', data)
+    })
+  },
+
+  deleteSection: ({ commit, state }, data) => {
+    api.deleteSection(entitykb, data, function (result) {
+      commit('deleteSection', data)
+    })
   },
 
   setUsers: ({ commit, state }, data) => {

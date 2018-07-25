@@ -63,7 +63,7 @@ export function updateItem (entity, data, callback) {
     SECTION: data.SECTION
   }, function (result) {
     console.log(result)
-    if (result !== true) { updateItem(entity, data, callback) }
+    if (result.error()) { updateItem(entity, data, callback) }
   }
   )
 }
@@ -97,7 +97,7 @@ export function updateSection (entity, data, callback) {
     SECTION: data.SECTION
   }, function (result) {
     console.log(result)
-    if (result !== true) { updateItem(entity, data, callback) }
+    if (result.error()) { updateItem(entity, data, callback) }
   })
 }
 export function deleteSection (entity, data, callback) {

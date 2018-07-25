@@ -51,18 +51,19 @@ export default {
   }, */
   mounted () {
     console.log('mounted app.vue')
-    /* this.$store.dispatch('setElements')
+    this.$store.dispatch('setElements')
     this.$store.dispatch('setSections')
-    this.$router.push({ path: `/` }) */
+    this.$router.push({ path: `/` })
   }
 }
 
 </script>
 
 <style>
+  @import './components/css/all.css';
+  @import './components/css/fontawesome.css';
   .main{
     width: calc(100% - 200px);
     float:left;
   }
-@import url(https://d3ijh37r9qzozj.cloudfront.net/knowhow/wp-content/themes/knowhow/css/font-awesome.min.css?ver=4.9.6);
 </style>

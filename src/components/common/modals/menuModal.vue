@@ -17,20 +17,28 @@
     <sectionModal v-if="showSecMod" @close="showSecMod = false" :section_id="ID">
       <h3 slot="header">Редактировать</h3>
     </sectionModal>
+    <div v-if="showElMod" @close="showElMod = false" class="fade_wrapp">
+    </div>
+    <modal v-if="showElMod" @close="showElMod = false" :element_id="ID">
+      <h3 slot="header">Редактasdasdвать</h3>
+    </modal>
     <div class="popup-window-angly popup-window-angly-left" style="top: 10px;"></div>
   </div>
 </template>
 <script>
 import sectionModal from './setionModal'
+import modal from './modalAll'
 export default {
   name: 'menuModal',
   data () {
     return {
-      showSecMod: false
+      showSecMod: false,
+      showElMod: false
     }
   },
   components: {
-    sectionModal
+    sectionModal,
+    modal
   },
   props: {
     type: '',
@@ -42,14 +50,14 @@ export default {
       if (this.type === 'section') {
         this.showSecMod = !this.showSecMod
       } else {
-        console.log('element')
+        this.showElMod = !this.showElMod
       }
     },
     deleteElSec () {
       if (this.type === 'section') {
-        this.$store.commit('deleteSection', this.$store.getters.getSectionByID(this.ID))
+        this.$store.dispatch('deleteSection', this.$store.getters.getSectionByID(this.ID))
       } else {
-        this.$store.commit('deleteElement', this.$store.getters.getElementByID(this.ID))
+        this.$store.dispatch('deleteElement', this.$store.getters.getElementByID(this.ID))
       }
     }
   }

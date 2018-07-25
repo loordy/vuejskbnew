@@ -33,9 +33,6 @@ export default {
   props: {
     section_id: {}
   },
-  created () {
-
-  },
   mounted () {
     if (this.section_id) {
       this.sectionNameModel = this.$store.getters.getSectionByID(this.section_id)

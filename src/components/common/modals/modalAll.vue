@@ -15,15 +15,15 @@
           <div class="ht_container">
             <section id="content" role="main">
               <div>
-                <input class="kb-edit-input" v-model="item.NAME">
-                <select v-model="selected">
-                  <option disabled value="">Выберите один из вариантов</option>
-                  <option v-for="section in sections" :key="section.ID">{{ section.NAME}}</option>
+                <input class="kb-edit-input" v-model="elementModel.NAME">
+                <select v-model="selected" class="kb-select">
+                  <option disabled value="">{{ (sections.find(section => section.ID === elementModel.SECTION) ? sections.find(section => section.ID === elementModel.SECTION).NAME : 'Верхний уровень' )}}</option>
+                  <option v-for="section in sections" :key="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME}}</option>
                 </select>
               </div>
-
+              <navBar/>
               <div id="editor">
-                <textarea :value="item.DETAIL_TEXT" @input="update"></textarea>
+                <textarea :value="elementModel.DETAIL_TEXT" @input="update"></textarea>
                 <div class="textarea" v-html="compiledMarkdown"></div>
               </div>
               <div class="kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
@@ -32,7 +32,7 @@
                     <span class="popup-window-button popup-window-button-accept" @click="save">Сохранить</span>
                     <span class="webform-small-button webform-small-button-transparent" @click="updateart">Применить</span>
                     <span class="popup-window-button popup-window-button-link popup-window-button-link-cancel"
-                          id="cancel_kb" @click="$emit('close')">Отмена</span>
+                          id="cancel_kb" @click="closing">Отмена</span>
                   </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="slide_fade_modal_close" title="Закрыть">
-        <span class="slide_fade_modal_close_inner" @click="$emit('close')"></span>
+        <span class="slide_fade_modal_close_inner" @click="closing"> <i class="fas fa-times"></i></span>
       </div>
     </div>
   </transition>
@@ -51,40 +51,71 @@
 <script>
 import _ from 'lodash'
 import marked from 'marked'
+import NavBar from '../markdown/NavBar'
 
 export default {
   name: 'modalAll',
+  components: {NavBar},
   data () {
     return {
       input: '# hello',
       selected: '',
-      item: {
-        DETAIL_TEXT: '',
-        NAME: ''
-      }
+      elementModel: {
+        NAME: '',
+        DETAIL_TEXT: ''
+      },
+      TEXT: ''
     }
+  },
+  props: {
+    element_id: {}
   },
   computed: {
     compiledMarkdown () {
-      return marked(this.item.DETAIL_TEXT, {sanitize: true})
+      return marked(this.elementModel.DETAIL_TEXT, {sanitize: true})
     },
     sections () {
       return this.$store.state.sections
     }
   },
+  mounted () {
+    if (this.element_id) {
+      this.elementModel = this.$store.getters.getElementByID(this.element_id)
+      this.originData = {...this.elementModel}
+    }
+  },
   methods: {
     update: _.debounce(function (e) {
-      this.item.DETAIL_TEXT = e.target.value
+      this.elementModel.DETAIL_TEXT = e.target.value
     }, 300),
     save () {
-
+      if (this.element_id) {
+        this.$store.dispatch('updateElement', this.elementModel)
+      } else {
+        this.$store.dispatch('addNewElement', {
+          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'NAME': this.elementModel.NAME,
+          'DETAIL_TEXT': this.elementModel.DETAIL_TEXT})
+      }
+      this.$emit('close')
     },
     updateart () {
-
+      if (this.element_id) {
+        this.$store.dispatch('updateElement', this.elementModel)
+      } else {
+        this.$store.dispatch('addNewElement', {
+          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'NAME': this.elementModel.NAME,
+          'DETAIL_TEXT': this.elementModel.DETAIL_TEXT
+        })
+      }
+    },
+    closing () {
+      this.elementModel.NAME = this.originData.NAME
+      this.elementModel.DETAIL_TEXT = this.originData.DETAIL_TEXT
+      this.elementModel.SECTION = this.originData.SECTION
+      this.$emit('close')
     }
-
-  },
-  mounted () {
 
   }
 }
@@ -98,13 +129,28 @@ export default {
     color: #535c69;
     font-size: 15px;
     background-color: #ffffff;
-    width: 50%;
-    height: 35px;
-    margin-top: 0px;
+    width: 40%;
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.14);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.14);
+    outline: none;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 30px;
+    box-sizing: border-box;
+    margin-right: 5px;
+  }
+
+  .kb-select{
+    height: 30px;
+    border: 1px solid #c6cdd3;
+    width: 40%;
     box-shadow: inset 0px 1px 2px rgba(0,0,0,0.14);
     outline: none;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border-radius: 2px;
+    color: #535c69;
   }
 
   .kb-iframe-popup {
@@ -122,19 +168,15 @@ export default {
   }
 
   .pagetitle-wrap {
-    min-height: 74px;
+    min-height: auto;
     box-sizing: border-box;
     position: relative;
   }
 
   .pagetitle {
-    padding: 15px 15px 20px;
-  }
-
-  .pagetitle {
     font: 16px/16px "OpenSans-Light", Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 21px 0 21px 5px;
+    padding: 0px 20px;
     display: block;
     word-wrap: break-word;
   }
@@ -197,9 +239,13 @@ export default {
     height: 32px;
     border: 2px solid rgba(255, 255, 255, .7);
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .3);
     opacity: 1;
     transition: all 300ms ease;
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    font-size: 20px;
   }
 
   .kb_iframe_header {
@@ -207,7 +253,7 @@ export default {
   }
 
   .pagetitle_wrap {
-    min-height: 74px;
+    min-height: 55px;
     box-sizing: border-box;
     position: relative;
   }
@@ -215,6 +261,8 @@ export default {
   .slide_fade_modal_edit_workarea {
     margin: 15px 0 0 15px;
     background-color: #fff;
+    margin-top: 0;
+    margin-left: 0;
   }
 
   html, body, #editor {
@@ -224,13 +272,22 @@ export default {
     color: #333;
   }
 
+  #editor{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: calc(100% - 265px );
+
+  }
+
   textarea, #editor div {
     display: inline-block;
     width: 49%;
     vertical-align: top;
     box-sizing: border-box;
     padding: 0 20px;
-    height: 250px;
+    height: 100%;
+    overflow-y: auto;
   }
 
   textarea {
@@ -242,7 +299,11 @@ export default {
     font-size: 14px;
     font-family: 'Monaco', courier, monospace;
     padding: 20px;
-    height: 250px;
+    height: 100%;
+  }
+
+  .pagetitle h3{
+    margin: 0;
   }
 
   code {
@@ -407,5 +468,12 @@ export default {
   }
   :last-child.popup-window-button {
     margin-right: 0px;
+  }
+
+  #kb-content-outer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 </style>
