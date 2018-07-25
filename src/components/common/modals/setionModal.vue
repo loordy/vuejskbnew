@@ -45,8 +45,10 @@ export default {
         this.$store.dispatch('updateSection', this.sectionNameModel)
       } else {
         this.$store.dispatch('addNewSection', {
-          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'SECTION': (this.$route.params.id === undefined || this.$route.name === 'artic' ? null : this.$route.params.id),
           'NAME': this.sectionNameModel.NAME})
+        console.log(this.$route.params.id)
+        console.log(this.$route.name)
       }
 
       this.$emit('close')

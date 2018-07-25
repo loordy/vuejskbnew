@@ -92,17 +92,22 @@ export default {
     }, 300),
     save () {
       if (this.element_id) {
+        this.elementModel.SECTION = this.selected
         this.$store.dispatch('updateElement', this.elementModel)
+        console.log(this.elementModel)
       } else {
         this.$store.dispatch('addNewElement', {
-          'SECTION': this.selected,
+          'SECTION': (this.selected !== '' ? this.selected : null),
           'NAME': this.elementModel.NAME,
           'DETAIL_TEXT': this.elementModel.DETAIL_TEXT})
       }
+      console.log((this.selected !== '' ? this.selected : null))
+      console.log(this.selected)
       this.$emit('close')
     },
     updateart () {
       if (this.element_id) {
+        this.elementModel.SECTION = this.selected
         this.$store.dispatch('updateElement', this.elementModel)
       } else {
         this.$store.dispatch('addNewElement', {

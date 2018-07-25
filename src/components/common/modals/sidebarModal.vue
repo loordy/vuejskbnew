@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="popup-window-angly popup-window-angly-bottom" style="left: 54.9844px; margin-left: 0px;"></div>
-      <sectionModal v-if="showSecMod" @close="showSecMod = false" :parent_section_id="$route.params.id">
+      <sectionModal v-if="showSecMod" @close="showSecMod = false">
 
       </sectionModal>
 

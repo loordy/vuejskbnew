@@ -17,14 +17,18 @@ export default {
   addNewElement: ({ commit, state }, data) => {
     api.addNewItem(entitykb, data, function (result) {
       data.ID = result
-      commit('AddNewElement', data)
+      console.log(result)
+      console.log(data)
+      commit('addNewElement', data)
     })
   },
 
   addNewSection: ({ commit, state }, data) => {
     api.addNewSection(entitykb, data, function (result) {
       data.ID = result
-      commit('AddNewSection', data)
+      console.log(result)
+      console.log(data)
+      commit('addNewSection', data)
     })
   },
 
@@ -58,5 +62,9 @@ export default {
 
   setView: ({ commit, state }, data) => {
     state.settings.viewType = data
+  },
+
+  installEntity: ({ commit, state }, data) => {
+    api.installEntity()
   }
 }

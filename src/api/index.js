@@ -112,3 +112,7 @@ export function deleteSection (entity, data, callback) {
     }
   })
 }
+
+export function installEntity (entity, data, callback) {
+  BX24.callMethod('entity.add', {'ENTITY': 'md_knowledge', 'NAME': 'Micros KB'})
+}

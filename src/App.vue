@@ -51,6 +51,7 @@ export default {
   }, */
   mounted () {
     console.log('mounted app.vue')
+    this.$store.dispatch('installEntity')
     this.$store.dispatch('setElements')
     this.$store.dispatch('setSections')
     this.$router.push({ path: `/` })
