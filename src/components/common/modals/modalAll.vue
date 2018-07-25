@@ -17,8 +17,9 @@
               <div>
                 <input class="kb-edit-input" v-model="elementModel.NAME">
                 <select v-model="selected" class="kb-select">
-                  <option disabled value="">{{ (sections.find(section => section.ID === elementModel.SECTION) ? sections.find(section => section.ID === elementModel.SECTION).NAME : 'Верхний уровень' )}}</option>
-                  <option v-for="section in sections" :key="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME}}</option>
+                  <option selected value="">{{ (sections.find(section => section.ID === elementModel.SECTION) ? sections.find(section => section.ID === elementModel.SECTION).NAME : 'Верхний уровень' )}}</option>
+                  <option value="" v-show="elementModel.SECTION !== null">Верхний уровень</option>
+                  <option v-for="section in sections" :key="section.ID" :value="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME }}</option>
                 </select>
               </div>
               <navBar/>
@@ -81,6 +82,7 @@ export default {
   mounted () {
     if (this.element_id) {
       this.elementModel = this.$store.getters.getElementByID(this.element_id)
+      this.selected = this.elementModel.SECTION
       this.originData = {...this.elementModel}
     }
   },
@@ -93,7 +95,7 @@ export default {
         this.$store.dispatch('updateElement', this.elementModel)
       } else {
         this.$store.dispatch('addNewElement', {
-          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'SECTION': this.selected,
           'NAME': this.elementModel.NAME,
           'DETAIL_TEXT': this.elementModel.DETAIL_TEXT})
       }
@@ -104,7 +106,7 @@ export default {
         this.$store.dispatch('updateElement', this.elementModel)
       } else {
         this.$store.dispatch('addNewElement', {
-          'SECTION': (this.$route.params.id !== undefined ? this.$route.params.id : null),
+          'SECTION': this.selected,
           'NAME': this.elementModel.NAME,
           'DETAIL_TEXT': this.elementModel.DETAIL_TEXT
         })
