@@ -19,7 +19,7 @@
                 <select v-model="selected" class="kb-select">
                   <option selected value="">{{ (sections.find(section => section.ID === elementModel.SECTION) ? sections.find(section => section.ID === elementModel.SECTION).NAME : 'Верхний уровень' )}}</option>
                   <option value="" v-show="elementModel.SECTION !== null">Верхний уровень</option>
-                  <option v-for="section in sections" :key="section.ID" :value="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME }}</option>
+                  <option v-for="section in sections" :key="section.CODE" :value="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME }}</option>
                 </select>
               </div>
               <navBar/>
@@ -63,13 +63,18 @@ export default {
       selected: '',
       elementModel: {
         NAME: '',
-        DETAIL_TEXT: ''
+        DETAIL_TEXT: '',
+        SECTION: ''
       },
-      TEXT: ''
+      originData: {
+        NAME: '',
+        DETAIL_TEXT: '',
+        SECTION: ''
+      }
     }
   },
   props: {
-    element_id: {}
+    element_code: {}
   },
   computed: {
     compiledMarkdown () {
@@ -80,8 +85,8 @@ export default {
     }
   },
   mounted () {
-    if (this.element_id) {
-      this.elementModel = this.$store.getters.getElementByID(this.element_id)
+    if (this.element_code) {
+      this.elementModel = this.$store.getters.getElementByCODE(this.element_code)
       this.selected = this.elementModel.SECTION
       this.originData = {...this.elementModel}
     }
@@ -91,7 +96,7 @@ export default {
       this.elementModel.DETAIL_TEXT = e.target.value
     }, 300),
     save () {
-      if (this.element_id) {
+      if (this.element_code) {
         this.elementModel.SECTION = this.selected
         this.$store.dispatch('updateElement', this.elementModel)
         console.log(this.elementModel)
@@ -101,8 +106,6 @@ export default {
           'NAME': this.elementModel.NAME,
           'DETAIL_TEXT': this.elementModel.DETAIL_TEXT})
       }
-      console.log((this.selected !== '' ? this.selected : null))
-      console.log(this.selected)
       this.$emit('close')
     },
     updateart () {

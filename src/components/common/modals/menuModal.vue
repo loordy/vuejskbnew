@@ -14,13 +14,13 @@
             </div>
       </div>
     </div>
-    <sectionModal v-if="showSecMod" @close="showSecMod = false" :section_id="ID">
+    <sectionModal v-if="showSecMod" @close="showSecMod = false" :section_code="CODE">
       <h3 slot="header">Редактировать</h3>
     </sectionModal>
     <div v-if="showElMod" @close="showElMod = false" class="fade_wrapp">
     </div>
-    <modal v-if="showElMod" @close="showElMod = false" :element_id="ID">
-      <h3 slot="header">Редактasdasdвать</h3>
+    <modal v-if="showElMod" @close="showElMod = false" :element_code="CODE">
+      <h3 slot="header">Редактировать</h3>
     </modal>
     <div class="popup-window-angly popup-window-angly-left" style="top: 10px;"></div>
   </div>

@@ -48,7 +48,8 @@ export function addNewItem (entity, data, callback) {
     ENTITY: entity,
     DATE_ACTIVE_FROM: new Date(),
     NAME: data.NAME,
-    DETAIL_TEXT: '',
+    DETAIL_TEXT: data.DETAIL_TEXT,
+    CODE: data.CODE,
     SECTION: data.SECTION
   }, function (result) {
     callback(result.data())
@@ -84,6 +85,7 @@ export function addNewSection (entity, section, callback) {
     ENTITY: entity,
     DATE_ACTIVE_FROM: new Date(),
     NAME: section.NAME,
+    CODE: section.CODE,
     SECTION: section.SECTION
   }, function (result) {
     callback(result.data())

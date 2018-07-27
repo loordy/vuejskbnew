@@ -56,7 +56,7 @@
                                                    <td style="width: 45px;">
                                                       <div class="kb_disk_folder_icon"></div>
                                                    </td>
-                                                   <td><router-link :to="'/section/' + section.ID"
+                                                   <td><router-link :to="'/section/' + section.CODE"
                                                                     class="bx_disk_folder_title"
                                                    >{{ section.NAME }}</router-link></td>
                                                 </tr>
@@ -67,7 +67,7 @@
         <td class="main_grid_cell main_grid_cell_left"><span
           class="main_grid_cell_content">{{ frontEndDateFormat(section.DATE_CREATE) }}</span></td>
         <td class="main_grid_cell"></td>
-        <menuModal v-if="popup === 'section ' + section.ID" pos ="left:75px;" :ID="section.ID" type="section"></menuModal>
+        <menuModal v-if="popup === 'section ' + section.ID" pos ="left:75px;" :ID="section.CODE" type="section"></menuModal>
         </tr>
       <tr v-for="element in elements" :key="'artic ' + element.ID" class="main_grid_row main_grid_row_body"
           :id="'artic ' + element.ID" @click="select" style="position:relative;">
@@ -77,7 +77,7 @@
           class="main_grid_checkbox" for=""></label></span></td>
         <td class="main_grid_cell main_grid_cell_action"><span class="main_grid_cell_content"><a @click="modal"
                                                                                                  class="main_grid_row_action_button"
-                                                                                                 :id="'artic ' + element.ID"></a></span>
+                                                                                                 :id="'artic ' + element.CODE"></a></span>
         </td>
         <td class="main_grid_cell main_grid_cell_left element">
                                        <span class="main_grid_cell_content">
@@ -98,7 +98,7 @@
         <td class="main_grid_cell main_grid_cell_left"><span
           class="main_grid_cell_content">{{frontEndDateFormat(element.DATE_CREATE) }}</span></td>
         <td class="main_grid_cell"></td>
-        <menuModal v-if="popup === 'artic ' + element.ID" pos ="left:75px;" :ID="element.ID" type="artic"></menuModal>
+        <menuModal v-if="popup === 'artic ' + element.CODE" pos ="left:75px;" :CODE="element.CODE" type="artic"></menuModal>
       </tr>
       </tbody>
     </table>

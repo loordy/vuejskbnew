@@ -42,10 +42,6 @@ export default {
   methods: {
     addStatya () {
       this.show = !this.show
-      /* this.$store.commit('AddNewElement', {
-          'ID': this.$route.params.id + 100 + Math.floor(Math.random() * 10),
-          'SECTION_ID': this.$route.params.id,
-          'NAME': 'novayastatya ' + this.$route.params.id}) */
     },
     addRazdel () {
       this.showSecMod = !this.showSecMod

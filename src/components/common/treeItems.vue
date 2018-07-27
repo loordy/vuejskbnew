@@ -8,7 +8,7 @@
             <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
           </div>
           <div class="bx-disk-wf-folder-icon"><span></span></div>
-          <div class="bx-disk-wf-folder-name"><span><router-link :to="'/section/'+ section.ID">{{ section.NAME }}</router-link></span></div>
+          <div class="bx-disk-wf-folder-name"><span><router-link :to="'/section/'+ section.CODE">{{ section.NAME }}</router-link></span></div>
         </div>
       </li>
     </ul>
