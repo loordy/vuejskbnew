@@ -129,7 +129,7 @@ export default new Vuex.Store({
       'DEPTH_LEVEL': '1',
       'TSX_TMP': '2018-07-19 09:08:33',
       'ENTITY': 'md_knowledge',
-      'SECTION': null
+      'SECTION': '15'
     },
     {
       'ID': '15',
