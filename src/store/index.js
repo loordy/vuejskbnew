@@ -88,7 +88,7 @@ export default new Vuex.Store({
       'DEPTH_LEVEL': '1',
       'TSX_TMP': '2018-07-19 09:08:34',
       'ENTITY': 'md_knowledge',
-      'SECTION': null
+      'SECTION': '15'
     },
     {
       'ID': '19',
@@ -169,7 +169,7 @@ export default new Vuex.Store({
       'DEPTH_LEVEL': '1',
       'TSX_TMP': '2018-07-19 09:08:34',
       'ENTITY': 'md_knowledge',
-      'SECTION': null
+      'SECTION': '19'
     },
     {
       'ID': '19',

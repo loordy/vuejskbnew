@@ -50,6 +50,11 @@ export default {
     }
   }, */
   mounted () {
+
+
+    console.log('mounted app.vue')
+    console.log('mounted app.vue')
+    console.log('mounted app.vue')
     console.log('mounted app.vue')
     this.$store.dispatch('installEntity')
     this.$store.dispatch('setElements')
@@ -63,6 +68,7 @@ export default {
 <style>
   @import './components/css/all.css';
   @import './components/css/fontawesome.css';
+  @import './components/css/knowledgebase.css';
   .main{
     width: calc(100% - 200px);
     float:left;
