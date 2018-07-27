@@ -15,20 +15,18 @@ export default {
   },
 
   addNewElement: ({ commit, state }, data) => {
+    data.CODE = new Date()
+    commit('addNewElement', data)
     api.addNewItem(entitykb, data, function (result) {
-      data.ID = result
-      console.log(result)
-      console.log(data)
-      commit('addNewElement', data)
+      state.getters.getElementByCODE(data.CODE).ID = result
     })
   },
 
   addNewSection: ({ commit, state }, data) => {
+    data.CODE = new Date()
+    commit('addNewSection', data)
     api.addNewSection(entitykb, data, function (result) {
-      data.ID = result
-      console.log(result)
-      console.log(data)
-      commit('addNewSection', data)
+      state.getters.getSectionByCODE(data.CODE).ID = result
     })
   },
 
@@ -41,15 +39,13 @@ export default {
   },
 
   deleteElement: ({ commit, state }, data) => {
-    api.deleteItem(entitykb, data, function (result) {
-      commit('deleteElement', data)
-    })
+    commit('deleteElement', data)
+    api.deleteItem(entitykb, data, function (result) {})
   },
 
   deleteSection: ({ commit, state }, data) => {
-    api.deleteSection(entitykb, data, function (result) {
-      commit('deleteSection', data)
-    })
+    commit('deleteSection', data)
+    api.deleteSection(entitykb, data, function (result) {})
   },
 
   setUsers: ({ commit, state }, data) => {

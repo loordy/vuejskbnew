@@ -10,8 +10,8 @@ export default {
     if (ID === undefined) { ID = null }
     return state.elements.filter(element => element.SECTION === ID)
   },
-  getElementByID: state => ID => {
-    return state.elements.find(element => element.ID === ID)
+  getElementByCODE: state => CODE => {
+    return state.elements.find(element => element.CODE === CODE)
   },
   getCountAllSecEl: state => ID => {
     if (ID === undefined) { ID = null }

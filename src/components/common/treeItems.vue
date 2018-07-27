@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <ul class="is_root_path bx-disk-folder-container bx-disk-parent bx-disk-close" >
-      <li  class="bx-disk-folder_item" v-for="section in sections" :key="'sidebarsec'+section.ID" :id="section.ID">
-        <div class="bx-disk-folder-block">
-          <div class="bx-disk-wf-arrow">
-            <span v-show="getCountSections(section.ID)>0" @click="show" :id="section.ID"></span>
-            <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
+  <ul class="category-nav_list">
+    <li v-for="section in sections"  v-bind:class="[{open: showChildren === section.ID } , classli ]" :key="'sidebarsec'+section.ID" :id="section.ID">
+        <span v-if="getCountSections(section.ID)>0" @click="show" :id="section.ID" class="tree-caret"><i
+          class="fas fa-caret-right"></i>
+        </span>
+        <router-link class="cat-nav_list-item_link" :to="'/section/'+ section.CODE"><span class="link_text">{{ section.NAME }}</span>
+          <div class="icon_sidebar_block">
+              <span class="icon_sidebar icon_pencil">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+              <span class="icon_sidebar icon_menu ">
+                <i class="fas fa-ellipsis-v"></i>
+              </span>
           </div>
-          <div class="bx-disk-wf-folder-icon"><span></span></div>
-          <div class="bx-disk-wf-folder-name"><span><router-link :to="'/section/'+ section.ID">{{ section.NAME }}</router-link></span></div>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </router-link>
 
+        <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
+    </li>
+  </ul>
 </template>
 <script>
 export default {
@@ -21,7 +25,8 @@ export default {
   data () {
     return {
       showChildren: false,
-      childSection: ''
+      childSection: '',
+      classli: 'cat-nav_list-item tree-item'
     }
   },
   props: {
@@ -48,184 +53,141 @@ export default {
 }
 </script>
 <style scoped>
-    aside {
-        width: 200px;
-        float: right;
-    }
+  .category-nav_list {
+    margin: 0;
+  }
 
-    .bx-disk-container.posr > table {
-        table-layout: fixed;
-    }
+  .category-nav_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
 
-    body {
-        font-family: "RobotoRegular", sans-serif !important;
-        color: #38464f !important;
-    }
+  .category-nav_list .category-nav_list{
+    padding-left: 10px;
+  }
 
-    body {
-        color: #000;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        height: 100%;
-        width: auto;
-        margin: 0;
-        padding: 0;
-    }
+  .cat-nav_list-item_link {
+    display: block;
+    color: #556066;
+    font-family: "ProximaNova-Light";
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 36px;
+    padding: 0 16px;
+    padding-right: 30px;
+    position: relative;
+  }
 
-    body {
-        /* background: #0c588d url(pattern-presents.svg) 0 0 repeat; */
-    }
+  .cat-nav_list-item_link:hover {
+    background-color: #f6f9fb;
+  }
 
-    html {
-        height: 100%;
-        width: 100%;
-    }
+  .cat-nav_list-item_link span.link_text{
+    display: block;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-    :root {
-        --ui-btn-size-xs: 26px;
-        --ui-btn-size-sm: 31px;
-        --ui-btn-size-md: 39px;
-        --ui-btn-size-lg: 47px;
-        --ui-btn-inner-color-dark: #535c69;
-        --ui-btn-inner-color-light: #fff;
-        --ui-btn-bg-default: #868d95;
-        --ui-btn-bg-default-hover: #5b6573;
-        --ui-btn-bg-default-active: #3b506e;
-        --ui-btn-bg-success: #bbed21;
-        --ui-btn-bg-success-hover: #d2f95f;
-        --ui-btn-bg-success-active: #b2e232;
-        --ui-btn-bg-success-light: #e1f0b1;
-        --ui-btn-bg-success-light-hover: #eaf5c5;
-        --ui-btn-bg-success-light-active: #d3e59a;
-        --ui-btn-bg-danger: #f1361a;
-        --ui-btn-bg-danger-hover: #cc1c00;
-        --ui-btn-bg-danger-active: #d24430;
-        --ui-btn-bg-danger-light: #ffccca;
-        --ui-btn-bg-danger-light-hover: #ffdcdb;
-        --ui-btn-bg-danger-light-active: #f2b6b3;
-        --ui-btn-bg-primary: #3bc8f5;
-        --ui-btn-bg-primary-hover: #3eddff;
-        --ui-btn-bg-primary-active: #12b1e3;
-        --ui-btn-bg-secondary: #c5e7f4;
-        --ui-btn-bg-secondary-hover: #d1eef9;
-        --ui-btn-bg-secondary-active: #aee0f2;
-        --ui-btn-bg-light: transparent;
-        --ui-btn-bg-light-hover: #f6f8f9;
-        --ui-btn-bg-light-active: #d6f1fb;
-        --ui-btn-icon-color: black;
-    }
+  .cat-nav_list-item_link:hover:before{
+    content: "";
+    background-color: transparent;
+  }
 
-    li.bx-disk-folder-container {
-        overflow: hidden;
-        height: 100%;
-        margin-bottom: 10px;
-        padding: 0;
-    }
-    ul.bx-disk-folder-container {
-      margin: 20px 0;
-      padding: 0;
-    }
-    ul.bx-disk-folder-container  ul.bx-disk-folder-container {
-      padding-left: 30px;
-      margin:10px 0;
-    }
+  .cat-nav_list-item_link:hover:before{
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 246px;
+    min-width: 246px;
+    background-color: #f6f9fb;
+    z-index: 1;
+  }
 
-    .bx-disk-folder-container {
-      list-style: none;
-    }
-    .bx-disk-folder-block {
-      display: flex;
-    }
-    li.bx-disk-folder_item{
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
+  .cat-nav_list-item {
+    position: relative;
+  }
 
-    div.bx-disk-folder-container {
-        width: 100%;
-        -webkit-transition: background .2s ease;
-        -moz-transition: background .2s ease;
-        -ms-transition: background .2s ease;
-        -o-transition: background .2s ease;
-        transition: background .2s ease;
-        display:flex;
-    }
 
-    div.bx-disk-folder-container table {
-        width: 100%;
-        max-width: 500px;
-        table-layout: fixed;
-    }
+  .cat-nav_list-item_link.active{
+    color: #61a3da;
+    font-family: "ProximaNova-Regular";
+  }
 
-    .bx-disk-wf-arrow {
-        width: 18px !important;
-    }
+  .cat-nav_list-item_link.active span.link_text:after{
+    content: "";
+    background-color: #61a3da;
+    border-radius: 500px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -4px;
+    margin-left: -36px;
+    width: 7px;
+    height: 7px;
+  }
 
-    .bx-disk-wf-folder-icon {
-        width: 18px !important;
-    }
+  .cat-nav_list-item_link.active:hover span.link_text:after{
+    display: none;
+  }
 
-    .bx-disk-wf-folder-name {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 13px;
-        cursor: pointer;
-        text-align: left;
-        color: #535b69;
-    }
+  .cat-nav_list-item .tree-caret {
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 11px;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #9aa5ab;
+    cursor: pointer;
+    z-index: 2;
+  }
 
-    div.bx-disk-folder-container td {
-        height: 24px;
-        vertical-align: middle;
-    }
+  .cat-nav_list-item.open .tree-caret i:before{
+    content: "\f0d7";
+  }
 
-    .bx-disk-wf-folder-name span {
-        display: block;
-        overflow: hidden;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        max-width: 500px;
-        padding-left: 5px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        -ms-text-overflow: ellipsis;
-    }
+  .cat-nav_list-item_link .icon_sidebar_block{
+    position: absolute;
+    right: 5px;
+    top: 0;
+    opacity: 0;
+  }
 
-    a {
-        color: #2067b0;
-        text-decoration: none;
-        -webkit-transition: border-bottom-color .2s linear;
-        transition: border-bottom-color .2s linear;
-    }
+  .cat-nav_list-item_link:hover .icon_sidebar_block{
+    opacity: 1;
+  }
 
-    .bx-disk-wf-folder-icon span {
-        display: block;
-        width: 16px;
-        height: 16px;
-        background: transparent url(../images/icons_files2.png) no-repeat -72px 0;
-    }
+  .icon_sidebar{
+    width: 18px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: #9aa5ab;
+    z-index: 3;
+    display: inline-block;
+    font-size:  14px;
+    cursor: pointer;
+    transition: color ease 0.3s;
+  }
 
-    .bx-disk-wf-arrow > span {
-        display: block;
-        width: 17px;
-        height: 17px;
-        -webkit-transition: all .2s ease;
-        -moz-transition: all .2s ease;
-        -ms-transition: all .2s ease;
-        -o-transition: all .2s ease;
-        transition: all .2s ease;
-        opacity: 0.8;
-        border-radius: 50%;
-        background: url(../images/sprite.png) no-repeat 5px -89px;
-    }
+  .icon_menu:hover{
+    cursor: move;
+  }
 
-    li.bx-disk-folder-container.bx-disk-close > div .bx-disk-wf-arrow span {
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
-        transform: rotate(-90deg);
-    }
+  .icon_sidebar:hover{
+    color: #556066;
+  }
+
+
 </style>

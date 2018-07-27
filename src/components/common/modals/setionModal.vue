@@ -27,28 +27,29 @@ export default {
     return {
       sectionNameModel: {
         NAME: ''
+      },
+      originData: {
+        NAME: ''
       }
     }
   },
   props: {
-    section_id: {}
+    section_code: {}
   },
   mounted () {
-    if (this.section_id) {
-      this.sectionNameModel = this.$store.getters.getSectionByID(this.section_id)
+    if (this.section_code) {
+      this.sectionNameModel = this.$store.getters.getSectionByCODE(this.section_code)
       this.originData = {...this.sectionNameModel}
     }
   },
   methods: {
     save () {
-      if (this.section_id) {
+      if (this.section_code) {
         this.$store.dispatch('updateSection', this.sectionNameModel)
       } else {
         this.$store.dispatch('addNewSection', {
           'SECTION': (this.$route.params.id === undefined || this.$route.name === 'artic' ? null : this.$route.params.id),
           'NAME': this.sectionNameModel.NAME})
-        console.log(this.$route.params.id)
-        console.log(this.$route.name)
       }
 
       this.$emit('close')
