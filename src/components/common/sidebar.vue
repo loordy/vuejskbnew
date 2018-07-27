@@ -70,7 +70,8 @@ export default {
       i: 0,
       catalog: '',
       iSshowModal: false,
-      addModal: false
+      addModal: false,
+      ghbdasd: ''
     }
   },
   methods: {
