@@ -1,4 +1,5 @@
 <template>
+
     <div class="popup-window popup-window-no-paddings popup-window-show-animation-opacity"
          style="z-index: 1000; position: absolute; display: block; top: 55px;">
         <div class="popup-window-content">

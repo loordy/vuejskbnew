@@ -18,7 +18,11 @@
         <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
     </li>
   </ul>
+
+
 </template>
+
+
 <script>
 export default {
   name: 'TreeItems',
@@ -30,6 +34,7 @@ export default {
     }
   },
   props: {
+    //eslint-disable-next-line,
     SECTION_ID: {}
 
   },
@@ -188,6 +193,8 @@ export default {
   .icon_sidebar:hover{
     color: #556066;
   }
+
+
 
 
 </style>

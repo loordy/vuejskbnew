@@ -36,7 +36,41 @@
             </span>
           </a>
 
+          <!-- modal -->
+          <div class="tree-edit-modal edit-modal">
+            <i class="modal-angle right"></i>
+            <div class="edit-modal-header">
+              <div class="edit-modal-title">Редактировать раздел</div>
+              <div class="close-modal">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+
+            <div class="edit-modal-content">
+
+              <div class="edit-group">
+                <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
+                <input type="text" class="kb-input">
+              </div>
+
+              <div class="edit-group">
+                <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
+                <input type="text" class="kb-input">
+              </div>
+
+              <a href="#" class="category-item-add_btn">
+                Новый раздел
+                <i class="cat-item-in_icon"></i>
+              </a>
+
+            </div>
+
+          </div>
+          <!-- modal end-->
+
         </nav>
+
+
 
         <div class="category category-ser">
             <div class="category-search">
@@ -50,6 +84,75 @@
                 </span>
               </div>
             </div>
+            <div class="category-tag">
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>обучение менеджеров</span>
+                  </a>
+
+                  <span class="cat-num">4</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>обрендинг</span>
+                  </a>
+
+                  <span class="cat-num">8</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>инструкции</span>
+                  </a>
+
+                  <span class="cat-num">1</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>копирайтинг</span>
+                  </a>
+
+                  <span class="cat-num">7</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>продажи b2b</span>
+                  </a>
+
+                  <span class="cat-num">2</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+                <div class="category-tag_row">
+
+                  <a href="#" class="tag-item">
+                    <span>творчество</span>
+                  </a>
+
+                  <span class="cat-num">10</span>
+                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+
+                </div>
+
+            </div>
+
         </div>
 
     </aside>
@@ -70,8 +173,7 @@ export default {
       i: 0,
       catalog: '',
       iSshowModal: false,
-      addModal: false,
-      ghbdasd: ''
+      addModal: false
     }
   },
   methods: {
@@ -120,7 +222,7 @@ export default {
     border: 1px solid rgba(0,0,0,.06);
     box-shadow: 0 3px 16px rgba(158,157,163,.08);
     border-radius: 5px;
-    margin-bottom: 28px;
+    margin-bottom: 15px;
     padding: 20px 8px;
   }
 
@@ -161,14 +263,17 @@ export default {
     margin-bottom: 8px;
   }
 
+  .cat-nav-btn.active,
   .cat-nav-btn:hover{
     color: #4fabf8;
   }
 
+  .cat-nav-btn.favorite.active,
   .cat-nav-btn.favorite:hover{
     color: #e9a93f;
   }
 
+  .cat-nav-btn.trash.active,
   .cat-nav-btn.trash:hover{
     color: #f35e5e;
   }
@@ -216,9 +321,10 @@ export default {
 
   .category-search{
     padding: 20px;
+    border-bottom:  1px solid #f5f5f7;
   }
 
-  category-search_block{
+  .category-search_block{
     position: relative;
   }
 
@@ -233,6 +339,11 @@ export default {
     cursor: pointer;
     position: absolute;
     top: 0;
+    transition: color ease 0.3s;
+  }
+
+  .category-search_block .icon_sidebar:hover{
+    color: #556066;
   }
 
   .category-search_block .icon_arrow{
@@ -257,5 +368,191 @@ export default {
     font-size: 14px;
     font-family: "ProximaNova-Light";
   }
+
+  .category-tag{
+    padding: 20px;
+  }
+
+  .tag-item{
+    display: inline-block;
+    margin: 0 0 4px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgba(184,184,184,.44);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 24px;
+    text-align: center;
+    transition: border-color .2s ease;
+    font-size:  13px;
+    font-family: "ProximaNova-Regular";
+    padding: 0 8px;
+    text-decoration: none!important;
+  }
+
+  .tag-item:hover{
+    border-color: #9aa5ab;
+  }
+
+  .tag-item span{
+    color: #556066;
+    padding: 0 4px;
+  }
+
+  .category-tag_row{
+    align-items: center;
+    position: relative;
+  }
+
+  .category-tag_row .icon_sidebar{
+    width: 18px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: #9aa5ab;
+    z-index: 3;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    position: absolute;
+    right:  0;
+    top:  0;
+  }
+
+  .category-tag_row .icon_sidebar:hover{
+    color: #556066;
+  }
+
+  .category-tag_row .tag-item{
+    max-width: 80%;
+  }
+
+  .category-tag_row .icon_sidebar{
+    display: none;
+  }
+
+  .category-tag_row:hover .icon_sidebar{
+    display:  inline-block;
+  }
+
+  .category-tag_row .cat-num{
+    color: #9aa5ab;
+    display: inline-block;
+    width:  18px;
+    height:  26px;
+    line-height:  26px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    transition: opacity ease 0.3s;
+  }
+
+  .category-tag_row:hover .cat-num{
+    display: none;
+  }
+
+
+  /*------modal css start----*/
+
+  .tree-edit-modal{
+    position: absolute;
+    right: 310px;
+    top: 82px;
+    z-index: 20;
+  }
+
+  .edit-modal{
+    width: 285px;
+    z-index: 10;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 5px;
+    padding: 24px;
+    background-color: #fff;
+    position: absolute;
+    box-shadow: 0 3px 36px rgba(158,157,163,.54);
+    margin-bottom: 14px;
+    box-sizing: border-box;
+  }
+
+  .edit-modal-header{
+    position: relative;
+    padding-right:  30px;
+  }
+
+  .edit-modal-header .close-modal{
+    width:  20px;
+    height: 20px;
+    line-height: 20px;
+    font-size:  14px;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #c4c7cc;
+    cursor: pointer;
+  }
+
+  .edit-modal-title{
+    font-family: "ProximaNova-Semibold";
+    font-size: 16px;
+    color: #556066;
+    margin-bottom: 25px;
+  }
+
+  .edit-group{
+    margin-bottom: 20px;
+  }
+
+  .edit-group-label{
+    color: #afbcc2;
+    font-size: 12px;
+    font-family: "ProximaNova-Light";
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .kb-input{
+    width: 100%;
+    font-family: "ProximaNova-Regular";
+    color: #556066;
+    font-size: 14px;
+    padding: 0 16px!important;
+    margin: 0;
+    border: none;
+    display: inline-block;
+    line-height: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid #e4e5e9;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  .kb-input:hover{
+    border-color: #c4c7cc;
+  }
+  .kb-input:focus{
+    border-color: #56c1e4;
+  }
+
+  .edit-modal .modal-angle{
+    height: 12px;
+    background-color: #fff;
+    width: 12px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 70px;
+  }
+
+  .edit-modal .modal-angle.right{
+    right: -6px;
+  }
+
+  /*------modal css end----*/
 
 </style>
