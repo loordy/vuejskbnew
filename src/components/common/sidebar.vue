@@ -58,9 +58,42 @@
                 <input type="text" class="kb-input">
               </div>
 
+              <div class="edit-group">
+                <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
+                <div class="radio-button-row">
+
+                  <div class="radio-button-label">
+                    <input type="radio" class="radio" id="radio1"  name="list"/>
+                    <label for="radio1">Всем</label>
+                  </div>
+
+                  <div class="radio-button-label">
+                    <input type="radio" class="radio" id="radio2"  name="list"/>
+                    <label for="radio2">Мне</label>
+                  </div>
+
+                  <div class="radio-button-label">
+                    <input type="radio" class="radio" id="radio3"  name="list"/>
+                    <label for="radio3">Список</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="edit-group btn-group">
+                <button class="kb-btn red-btn">
+                  Удалить
+                </button>
+                <button class="kb-btn green-btn">
+                  Сохранить
+                </button>
+              </div>
+
               <a href="#" class="category-item-add_btn">
                 Новый раздел
-                <i class="cat-item-in_icon"></i>
+                <span class="cat-item-in_icon">
+                  <i class="fas fa-plus"></i>
+                </span>
               </a>
 
             </div>
@@ -551,6 +584,33 @@ export default {
 
   .edit-modal .modal-angle.right{
     right: -6px;
+  }
+
+  .radio-button-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn-group{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tree-edit-modal .category-item-add_btn{
+    position: relative;
+    margin-top: 35px;
+  }
+
+  .tree-edit-modal .category-item-add_btn:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -12px;
+    right: 0;
+    z-index: 2;
+    height: 1px;
+    background-color: #f5f5f7;
   }
 
   /*------modal css end----*/

@@ -223,7 +223,7 @@
 
 
 
-    <!-- grid items
+
       <div class="grid-items-wrap">
 
         <div class="grid-item">
@@ -232,7 +232,8 @@
 
             <div class="visual-edit">
               <div class="visual-edit_item">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox" id="checkbox" />
+                <label for="checkbox"></label>
               </div>
               <div class="visual-edit_item">
                 <div class="visual-artc-img" :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
@@ -279,7 +280,8 @@
 
             <div class="visual-edit">
               <div class="visual-edit_item">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox" id="checkbox2" />
+                <label for="checkbox2"></label>
               </div>
               <div class="visual-edit_item">
                 <div class="visual-artc-img" :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
@@ -326,7 +328,8 @@
 
             <div class="visual-edit">
               <div class="visual-edit_item">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox" id="checkbox3" checked/>
+                <label for="checkbox3"></label>
               </div>
               <div class="visual-edit_item">
                 <div class="visual-artc-img" :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
@@ -368,7 +371,7 @@
         </div>
 
       </div>
-    --->
+
     <router-view/>
 
     </div>
