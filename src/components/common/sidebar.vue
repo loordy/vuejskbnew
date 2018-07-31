@@ -149,8 +149,7 @@
               <div class="radio-button-label">
                 <input type="radio" class="radio" id="radio1"  name="list"/>
                 <label for="radio1">Всем</label>
-              </div> 
-
+              </div>
               <div class="radio-button-label">
                 <input type="radio" class="radio" id="radio2"  name="list"/>
                 <label for="radio2">Мне</label>

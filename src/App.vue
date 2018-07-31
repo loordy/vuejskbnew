@@ -102,8 +102,7 @@
 
     <div class="liset-item article">
 
-      <div class="article-cover">
-        <img src="./components/images/article2.jpeg" alt="">
+      <div class="article-cover" :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
       </div>
 
       <div class="article-content">
@@ -126,7 +125,7 @@
             менеджеров, которые существенно тормозят закрытие сделки и которые надо исключить во время обучения.
           </p>
           <p>
-            <img src="./components/images/article2.jpeg" alt="">
+            <img src="components/images/article2.jpeg" alt="">
           </p>
           <p><strong>ОШИБКА № 1</strong></p>
           <p>
