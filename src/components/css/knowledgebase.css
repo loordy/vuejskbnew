@@ -440,15 +440,16 @@ body{
   display: inline-block;
   font-size: 14px;
   border: 1px solid;
-  border-radius: 500px;
   box-sizing: border-box;
-  line-height: 30px;
+  line-height: 32px;
   padding: 0 26px;
   white-space: nowrap;
   min-width: 100px;
   background-color: #fff;
   transition: all ease 0.3s;
   outline: none;
+  font-family: "ProximaNova-Semibold",Helvetica,Arial,sans-serif;
+  border-radius: 2px;
 }
 
 .red-btn{
@@ -461,13 +462,15 @@ body{
 }
 
 .green-btn{
-  color: #39c8ac;
-  border-color: #39c8ac;
+  background: #bbed21;
+  color: #535c69;
+  border-color: #bbed21;
 }
 
 .green-btn:hover{
-  color: #33b199;
-  border-color: #33b199;
+  background: #d2f95f;
+  color: #535c69;
+  border-color: #d2f95f;
 }
 
 .blue-btn{

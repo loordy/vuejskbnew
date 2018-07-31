@@ -1,29 +1,33 @@
 <template>
     <div class="tree-edit-modal edit-modal">
         <i class="modal-angle right"></i>
-        <div class="edit-modal-header">
+
+        <div class="edit-modal-wrap">
+          <div class="edit-modal-header">
             <div class="edit-modal-title">Редактировать тега</div>
 
             <div class="close-modal" @click="$emit('close')">
-                <i class="fas fa-times"></i>
+              <i class="fas fa-times"></i>
             </div>
 
-        </div>
+          </div>
 
-        <div class="edit-modal-content">
+          <div class="edit-modal-content">
 
             <div class="edit-group">
-                <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
-                <input type="text" class="kb-input">
+              <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
+              <input type="text" class="kb-input">
             </div>
 
             <div class="edit-group btn-group m-b-0">
-                <button class="kb-btn blue-btn">
-                    Сохранить
-                </button>
+              <button class="kb-btn green-btn">
+                Сохранить
+              </button>
             </div>
 
+          </div>
         </div>
+
 
     </div>
 </template>
@@ -85,12 +89,18 @@
         width: 285px;
         z-index: 10;
         border: 1px solid rgba(0, 0, 0, .06);
-        padding: 24px;
         background-color: #fff;
-        box-shadow: 0 3px 36px rgba(158, 157, 163, .54);
+      box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);
         margin-bottom: 14px;
         box-sizing: border-box;
         position: absolute;
+    }
+
+    .edit-modal-wrap{
+      padding: 24px;
+      background-color: #fff;
+      position: relative;
+      z-index: 100;
     }
 
     .edit-modal-header {
@@ -99,16 +109,16 @@
     }
 
     .edit-modal-header .close-modal {
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        font-size: 14px;
-        text-align: center;
-        position: absolute;
-        right: 0;
-        top: -7px;
-        color: #c4c7cc;
-        cursor: pointer;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      color: #c4c7cc;
+      cursor: pointer;
     }
 
     .edit-modal-header .close-modal:hover{
@@ -161,16 +171,30 @@
     }
 
     .edit-modal .modal-angle {
-        height: 12px;
-        background-color: #fff;
-        width: 12px;
-        position: absolute;
-        transform: rotate(45deg);
-        top: 70px;
+      height: 12px;
+      background-color: #fff;
+      width: 12px;
+      position: absolute;
+      transform: rotate(45deg);
+      top: 70px;
     }
 
     .edit-modal .modal-angle.right {
-        right: -6px;
+      right: -6px;
+    }
+
+    .edit-modal .modal-angle.right:after{
+      background-color: #fff;
+      -webkit-box-shadow: 0 0 21px rgba(83,92,105,.13);
+      box-shadow: 0 0 21px rgba(83,92,105,.13);
+      content: '';
+      height: 15px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      transform: rotate(90deg);
+      transform-origin: 50% 50%;
+      width: 15px;
     }
 
     .radio-button-row {

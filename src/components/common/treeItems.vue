@@ -79,7 +79,7 @@ export default {
   .tree-list-wrap{
     position: relative;
   }
-  
+
   .category-nav_list {
     margin: 0;
   }
@@ -108,7 +108,7 @@ export default {
   }
 
   .cat-nav_list-item_link:hover {
-    background-color: #f6f9fb;
+    background-color: #ebf1f4;
   }
 
   .cat-nav_list-item_link span.link_text{
@@ -133,7 +133,7 @@ export default {
     bottom: 0;
     max-width: 246px;
     min-width: 246px;
-    background-color: #f6f9fb;
+    background-color: #ebf1f4;
     z-index: 1;
   }
 
