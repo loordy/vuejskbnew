@@ -7,22 +7,7 @@
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>-->
 
-    <!-- Заглушки
-      <div class="liset-item empty-articles">
-        <img src="./components/images/write-letter.svg" alt="">
-        <div class="text">Здесь пока ничего нет. Добавь статью или ссылку</div>
-      </div>
 
-      <div class="liset-item empty-articles">
-        <img src="./components/images/document-favorite.svg" alt="">
-        <div class="text">Здесь пока ничего нет.</div>
-      </div>
-
-      <div class="liset-item empty-articles">
-        <img src="./components/images/trash.svg" alt="">
-        <div class="text">Корзина пуста</div>
-      </div>
-    -->
 
     <div class="liset-item article">
 
@@ -407,6 +392,22 @@
           </div>
 
         </div>
+
+        <div class="liset-item empty-articles">
+          <img src="./components/images/write-letter.svg" alt="">
+          <div class="text">Здесь пока ничего нет. Добавь статью или ссылку</div>
+        </div>
+
+        <div class="liset-item empty-articles">
+          <img src="./components/images/document-favorite.svg" alt="">
+          <div class="text">Здесь пока ничего нет.</div>
+        </div>
+
+        <div class="liset-item empty-articles">
+          <img src="./components/images/trash.svg" alt="">
+          <div class="text">Корзина пуста</div>
+        </div>
+
 
       </div>
 

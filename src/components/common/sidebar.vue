@@ -308,7 +308,7 @@
 
   .category-search_block .icon_sidebar{
     display: inline-block;
-    color: #9aa5ab;
+    color: #717a89;
     font-size:  12px;
     width: 20px;
     height: 20px;

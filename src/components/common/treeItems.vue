@@ -108,7 +108,7 @@ export default {
   }
 
   .cat-nav_list-item_link:hover {
-    background-color: #ebf1f4;
+    background-color: #535c69;
   }
 
   .cat-nav_list-item_link span.link_text{
