@@ -1,6 +1,8 @@
 <template>
-<div class="liset-item article">
-
+<div class="detail-article article">
+  <div class="article-close">
+    <i data-v-9f5d9a14="" class="fas fa-times"></i>
+  </div>
   <div class="article-cover" :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
 
   </div>
@@ -81,3 +83,24 @@
     name: 'detailArticleModal'
   }
 </script>
+
+<style scoped>
+  /*.detail-article{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+  }*/
+  .article-close{
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 16px;
+    color: #c4c7cc;
+  }
+</style>
