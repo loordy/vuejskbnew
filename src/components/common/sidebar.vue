@@ -35,75 +35,7 @@
               <i class="fas fa-plus"></i>
             </span>
           </a>
-
-          <!-- modal -->
-          <div class="tree-edit-modal edit-modal">
-            <i class="modal-angle right"></i>
-            <div class="edit-modal-header">
-              <div class="edit-modal-title">Редактировать раздел</div>
-              <div class="close-modal">
-                <i class="fas fa-times"></i>
-              </div>
-            </div>
-
-            <div class="edit-modal-content">
-
-              <div class="edit-group">
-                <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
-                <input type="text" class="kb-input">
-              </div>
-
-              <div class="edit-group">
-                <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
-                <input type="text" class="kb-input">
-              </div>
-
-              <div class="edit-group">
-                <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
-                <div class="radio-button-row">
-
-                  <div class="radio-button-label">
-                    <input type="radio" class="radio" id="radio1"  name="list"/>
-                    <label for="radio1">Всем</label>
-                  </div>
-
-                  <div class="radio-button-label">
-                    <input type="radio" class="radio" id="radio2"  name="list"/>
-                    <label for="radio2">Мне</label>
-                  </div>
-
-                  <div class="radio-button-label">
-                    <input type="radio" class="radio" id="radio3"  name="list"/>
-                    <label for="radio3">Список</label>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="edit-group btn-group">
-                <button class="kb-btn red-btn">
-                  Удалить
-                </button>
-                <button class="kb-btn green-btn">
-                  Сохранить
-                </button>
-              </div>
-
-              <a href="#" class="category-item-add_btn">
-                Новый раздел
-                <span class="cat-item-in_icon">
-                  <i class="fas fa-plus"></i>
-                </span>
-              </a>
-
-            </div>
-
-          </div>
-          <!-- modal end-->
-
         </nav>
-
-
 
         <div class="category category-ser">
             <div class="category-search">
@@ -187,6 +119,71 @@
             </div>
 
         </div>
+
+      <!-- modal -->
+      <div class="tree-edit-modal edit-modal">
+        <i class="modal-angle right"></i>
+        <div class="edit-modal-header">
+          <div class="edit-modal-title">Редактировать раздел</div>
+          <div class="close-modal">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+
+        <div class="edit-modal-content">
+
+          <div class="edit-group">
+            <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
+            <input type="text" class="kb-input">
+          </div>
+
+          <div class="edit-group">
+            <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
+            <input type="text" class="kb-input">
+          </div>
+
+          <div class="edit-group">
+            <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
+            <div class="radio-button-row">
+
+              <div class="radio-button-label">
+                <input type="radio" class="radio" id="radio1"  name="list"/>
+                <label for="radio1">Всем</label>
+              </div> 
+
+              <div class="radio-button-label">
+                <input type="radio" class="radio" id="radio2"  name="list"/>
+                <label for="radio2">Мне</label>
+              </div>
+
+              <div class="radio-button-label">
+                <input type="radio" class="radio" id="radio3"  name="list"/>
+                <label for="radio3">Список</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="edit-group btn-group">
+            <button class="kb-btn red-btn">
+              Удалить
+            </button>
+            <button class="kb-btn green-btn">
+              Сохранить
+            </button>
+          </div>
+
+          <a href="#" class="category-item-add_btn">
+            Новый раздел
+            <span class="cat-item-in_icon">
+                  <i class="fas fa-plus"></i>
+                </span>
+          </a>
+
+        </div>
+
+      </div>
+      <!-- modal end-->
 
     </aside>
 
@@ -491,12 +488,13 @@ export default {
 
   /*------modal css start----*/
 
+  /*
   .tree-edit-modal{
     position: absolute;
     right: 310px;
     top: 82px;
     z-index: 20;
-  }
+  } */
 
   .edit-modal{
     width: 285px;
@@ -505,10 +503,10 @@ export default {
     border-radius: 5px;
     padding: 24px;
     background-color: #fff;
-    position: absolute;
     box-shadow: 0 3px 36px rgba(158,157,163,.54);
     margin-bottom: 14px;
     box-sizing: border-box;
+    position: relative;
   }
 
   .edit-modal-header{
@@ -613,6 +611,5 @@ export default {
     background-color: #f5f5f7;
   }
 
-  /*------modal css end----*/
-
+  /* ------modal css end---- */
 </style>

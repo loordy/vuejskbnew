@@ -70,12 +70,9 @@
       </div>
 
     </div>
-
     -->
 
   </div>
-
-
 </template>
 
 <script>
@@ -239,8 +236,4 @@ export default {
   .header-line_edit .line-edit-item.add-trash i{
     color: #f76b64;
   }
-
-
-
-
 </style>

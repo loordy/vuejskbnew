@@ -14,15 +14,10 @@
               </span>
           </div>
         </router-link>
-
         <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
     </li>
   </ul>
-
-
 </template>
-
-
 <script>
 export default {
   name: 'TreeItems',
@@ -34,7 +29,6 @@ export default {
     }
   },
   props: {
-    //eslint-disable-next-line,
     SECTION_ID: {}
 
   },
@@ -119,7 +113,6 @@ export default {
     position: relative;
   }
 
-
   .cat-nav_list-item_link.active{
     color: #61a3da;
     font-family: "ProximaNova-Regular";
@@ -193,8 +186,5 @@ export default {
   .icon_sidebar:hover{
     color: #556066;
   }
-
-
-
 
 </style>

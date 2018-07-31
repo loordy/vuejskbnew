@@ -431,6 +431,8 @@ body{
   padding-left: 15px;
 }
 
+/*------buttons css------*/
+
 .kb-btn{
   cursor: pointer;
   color: #a0a0a0;
@@ -445,6 +447,7 @@ body{
   min-width: 100px;
   background-color: #fff;
   transition: all ease 0.3s;
+  outline: none;
 }
 
 .red-btn{
@@ -512,7 +515,6 @@ body{
 .radio:focus + label:before {
   box-shadow: 0 0 0 3px #aee2ff;
 }
-
 
 input.checkbox{
   padding: 0;

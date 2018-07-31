@@ -7,7 +7,6 @@
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>-->
 
-
     <!-- Заглушки
       <div class="liset-item empty-articles">
         <img src="./components/images/write-letter.svg" alt="">
@@ -24,7 +23,6 @@
         <div class="text">Корзина пуста</div>
       </div>
     -->
-
 
     <div class="liset-item article">
 
@@ -102,7 +100,6 @@
 
     </div>
 
-
     <div class="liset-item article">
 
       <div class="article-cover">
@@ -143,15 +140,12 @@
             СПИН — это правильные вопросы,  <a href="#">Ссылка</a>
           </p>
 
-
           <h1>Заголовок 1</h1>
           <h2>Заголовок 2</h2>
           <h3>Заголовок 3</h3>
           <h4>Заголовок 4</h4>
           <h5>Заголовок 5</h5>
           <h6>Заголовок 6</h6>
-
-
 
           <table>
             <thead>
@@ -220,9 +214,6 @@
       </div>
 
     </div>
-
-
-
 
       <div class="grid-items-wrap">
 
@@ -376,7 +367,6 @@
 
     </div>
 
-
     <Sidebar/>
 
     <div class="fixed-add-btn">
@@ -384,9 +374,7 @@
     </div>
 
   </div>
-
 </template>
-
 <script>
 import Top from './components/common/header'
 import Content from './components/pages/section'
@@ -634,7 +622,6 @@ export default {
     margin-bottom: 7px;
   }
 
-
   .article .content-text-wrap  ul {
     padding-left: 20px;
   }
@@ -674,7 +661,6 @@ export default {
     letter-spacing: -.5px;
     font-weight: normal;
   }
-
 
   .article-footer{
     display: flex;
@@ -804,7 +790,6 @@ export default {
     opacity: 0.3;
   }
 
-
   .empty-articles .text{
     font-size: 16px;
     font-family: "ProximaNova-Semibold";
@@ -815,7 +800,7 @@ export default {
     margin: 0 0 32px;
   }
 
-  /*-------grid list css start------*/
+  /* -------grid list css start------ */
 
   .grid-item{
     padding: 16px 60px 18px 15px;
@@ -824,7 +809,6 @@ export default {
     overflow: hidden;
     position: relative;
   }
-
 
   .grid-items-wrap .grid-item{
     margin-bottom: -1px;
@@ -957,7 +941,6 @@ export default {
     margin-top: -18px;
   }
 
-
   .grid-item:hover{
     background-color: #f6f9fb;
   }
@@ -966,7 +949,6 @@ export default {
     background-color: #f6f9fb;
     border-left: 2px solid #36b5df;
   }
-
-  /*-------grid list css end------*/
+  /* -------grid list css end------ */
 
 </style>
