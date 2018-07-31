@@ -102,7 +102,7 @@ export default {
   }
 
   .edit-group-label {
-    color: #afbcc2;
+    color: #545c6a;
     font-size: 12px;
     font-family: "ProximaNova-Light";
     line-height: 1;
