@@ -17,12 +17,12 @@ export default new Router({
       component: main
     },
     {
-      path: '/markdown/:id(\\d+)',
+      path: '/markdown/:code(\\d+)',
       name: 'markdown',
       component: markdown
     },
     {
-      path: '/artic/:id(\\d+)',
+      path: '/artic/:code(\\d+)',
       name: 'artic',
       component: artic
     },
@@ -32,7 +32,7 @@ export default new Router({
       component: Settings
     },
     {
-      path: '/section/:id(\\d+)',
+      path: '/section/:code(\\d+)',
       name: 'section',
       component: section
     }
