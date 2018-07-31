@@ -1,66 +1,69 @@
 <template>
     <div class="tree-edit-modal edit-modal">
         <i class="modal-angle right"></i>
-        <div class="edit-modal-header">
+        <div class="edit-modal-wrap">
+          <div class="edit-modal-header">
             <div class="edit-modal-title">Редактировать раздел</div>
 
             <div class="close-modal" @click="$emit('close')">
-                <i class="fas fa-times"></i>
+              <i class="fas fa-times"></i>
             </div>
 
-        </div>
+          </div>
 
-        <div class="edit-modal-content">
-
-            <div class="edit-group">
-                <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
-                <input type="text" class="kb-input">
-            </div>
+          <div class="edit-modal-content">
 
             <div class="edit-group">
-                <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
-                <input type="text" class="kb-input">
+              <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
+              <input type="text" class="kb-input">
             </div>
 
             <div class="edit-group">
-                <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
-                <div class="radio-button-row">
+              <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
+              <input type="text" class="kb-input">
+            </div>
 
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio1" name="list"/>
-                        <label for="radio1">Всем</label>
-                    </div>
+            <div class="edit-group">
+              <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
+              <div class="radio-button-row">
 
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio2" name="list"/>
-                        <label for="radio2">Мне</label>
-                    </div>
-
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio3" name="list"/>
-                        <label for="radio3">Список</label>
-                    </div>
-
+                <div class="radio-button-label">
+                  <input type="radio" class="radio" id="radio1" name="list"/>
+                  <label for="radio1">Всем</label>
                 </div>
+
+                <div class="radio-button-label">
+                  <input type="radio" class="radio" id="radio2" name="list"/>
+                  <label for="radio2">Мне</label>
+                </div>
+
+                <div class="radio-button-label">
+                  <input type="radio" class="radio" id="radio3" name="list"/>
+                  <label for="radio3">Список</label>
+                </div>
+
+              </div>
             </div>
 
             <div class="edit-group btn-group">
-                <button class="kb-btn red-btn">
-                    Удалить
-                </button>
-                <button class="kb-btn blue-btn">
-                    Сохранить
-                </button>
+              <button class="kb-btn red-btn">
+                Удалить
+              </button>
+              <button class="kb-btn green-btn">
+                Сохранить
+              </button>
             </div>
 
             <a href="#" class="category-item-add_btn">
-                Новый раздел
-                <span class="cat-item-in_icon">
+              Новый раздел
+              <span class="cat-item-in_icon">
                   <i class="fas fa-plus"></i>
                 </span>
             </a>
 
+          </div>
         </div>
+
 
     </div>
 </template>
@@ -97,7 +100,7 @@
     }
 
     .category-item-add_btn:hover .cat-item-in_icon {
-        color: #3bc7ab;
+        color: #36b5df;
     }
 
     .cat-item-in_icon {
@@ -122,12 +125,18 @@
         width: 285px;
         z-index: 10;
         border: 1px solid rgba(0, 0, 0, .06);
-        padding: 24px;
         background-color: #fff;
-        box-shadow: 0 3px 36px rgba(158, 157, 163, .54);
+        box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);
         margin-bottom: 14px;
         box-sizing: border-box;
         position: absolute;
+    }
+
+    .edit-modal .edit-modal-wrap{
+      padding: 24px;
+      background-color: #fff;
+      position: relative;
+      z-index: 100;
     }
 
     .edit-modal-header {
@@ -142,8 +151,8 @@
         font-size: 14px;
         text-align: center;
         position: absolute;
-        right: 0;
-        top: -7px;
+        right: -10px;
+        top: -10px;
         color: #c4c7cc;
         cursor: pointer;
     }
@@ -210,6 +219,20 @@
         right: -6px;
     }
 
+    .edit-modal .modal-angle.right:after{
+      background-color: #fff;
+      -webkit-box-shadow: 0 0 21px rgba(83,92,105,.13);
+      box-shadow: 0 0 21px rgba(83,92,105,.13);
+      content: '';
+      height: 15px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      transform: rotate(90deg);
+      transform-origin: 50% 50%;
+      width: 15px;
+    }
+
     .radio-button-row {
         display: flex;
         align-items: center;
@@ -235,6 +258,10 @@
         z-index: 2;
         height: 1px;
         background-color: #f5f5f7;
+    }
+
+    .category-item-add_btn:hover{
+      background-color: #ebf1f4;
     }
 
     /* ------modal css end---- */

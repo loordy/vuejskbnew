@@ -7,22 +7,7 @@
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>-->
 
-    <!-- Заглушки
-      <div class="liset-item empty-articles">
-        <img src="./components/images/write-letter.svg" alt="">
-        <div class="text">Здесь пока ничего нет. Добавь статью или ссылку</div>
-      </div>
 
-      <div class="liset-item empty-articles">
-        <img src="./components/images/document-favorite.svg" alt="">
-        <div class="text">Здесь пока ничего нет.</div>
-      </div>
-
-      <div class="liset-item empty-articles">
-        <img src="./components/images/trash.svg" alt="">
-        <div class="text">Корзина пуста</div>
-      </div>
-    -->
 
     <div class="liset-item article">
 
@@ -38,25 +23,26 @@
 
           <div class="content-edit-btn">
             <i class="fas fa-ellipsis-h"></i>
-
             <div class="content-edit-btn-content">
               <i class="modal-angle top"></i>
-              <ul class="content-edit_list">
-                <li>
-                  <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
-                </li>
-              </ul>
-            </div>
+              <div class="content-edit-btn-content-wrap">
+                <ul class="content-edit_list">
+                  <li>
+                    <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
+                  </li>
+                </ul>
+              </div>
 
+            </div>
           </div>
 
         </div>
@@ -136,20 +122,23 @@
             <i class="fas fa-ellipsis-h"></i>
             <div class="content-edit-btn-content">
               <i class="modal-angle top"></i>
-              <ul class="content-edit_list">
-                <li>
-                  <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
-                </li>
-                <li>
-                  <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
-                </li>
-              </ul>
+              <div class="content-edit-btn-content-wrap">
+                <ul class="content-edit_list">
+                  <li>
+                    <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
+                  </li>
+                  <li>
+                    <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
+                  </li>
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
@@ -404,6 +393,22 @@
 
         </div>
 
+        <div class="liset-item empty-articles">
+          <img src="./components/images/write-letter.svg" alt="">
+          <div class="text">Здесь пока ничего нет. Добавь статью или ссылку</div>
+        </div>
+
+        <div class="liset-item empty-articles">
+          <img src="./components/images/document-favorite.svg" alt="">
+          <div class="text">Здесь пока ничего нет.</div>
+        </div>
+
+        <div class="liset-item empty-articles">
+          <img src="./components/images/trash.svg" alt="">
+          <div class="text">Корзина пуста</div>
+        </div>
+
+
       </div>
 
     <router-view/>
@@ -580,7 +585,7 @@ export default {
     position: relative;
     padding: 0 20px 0 0;
     color: #9aa5ab;
-    font-size: 14px;
+    font-size: 15px;
     display: inline-block;
   }
 
@@ -879,12 +884,19 @@ export default {
     top: 26px;
     right: -7px;
     border: 1px solid rgba(0,0,0,.06);
-    box-shadow: 0 3px 36px rgba(158,157,163,.54);
-    padding: 10px 8px;
+    box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);
     background-color: #fff;
     z-index: 100;
     display: none;
   }
+
+  .content-edit-btn-content-wrap{
+    background-color: #fff;
+    padding: 10px 8px;
+    position: relative;
+    z-index: 100;
+  }
+
   .content-edit_list{
     padding: 0;
     list-style: none;
@@ -900,6 +912,20 @@ export default {
     position: absolute;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  .content-edit-btn-content .modal-angle.top:after{
+    content: "";
+    background-color: #fff;
+    box-shadow: 0 0 21px rgba(83,92,105,.13);
+    content: '';
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+    width: 15px;
   }
 
   .content-edit_list li {

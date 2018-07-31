@@ -116,7 +116,7 @@
 
                 </div>
                 <!-- modal -->
-                <EditTagModal v-if="EditTagModal"  @close="EditTagModal= false" style="top: -45px; left:-310px;"/>
+                <EditTagModal v-if="EditTagModal"  @close="EditTagModal= false" style="top: -45px; left:-301px;"/>
                 <!-- modal end-->
             </div>
         </div>
@@ -225,7 +225,7 @@
     text-align: center;
     line-height: 28px;
     text-decoration: none!important;
-    color: #9aa5ab;
+    color: #717a89;
     display: block;
     transition: all ease 0.3s;
   }
@@ -274,11 +274,11 @@
   }
 
   .category-item-add_btn:hover{
-    background-color: #f6f9fb;
+    background-color: #ebf1f4;
   }
 
   .category-item-add_btn:hover .cat-item-in_icon{
-    color: #3bc7ab;
+    color: #36b5df;
   }
 
   .cat-item-in_icon{
@@ -308,7 +308,7 @@
 
   .category-search_block .icon_sidebar{
     display: inline-block;
-    color: #9aa5ab;
+    color: #717a89;
     font-size:  12px;
     width: 20px;
     height: 20px;

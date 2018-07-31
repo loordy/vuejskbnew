@@ -198,14 +198,14 @@ export default {
     line-height: 30px;
     text-align: center;
     font-size: 16px;
-    color: #c4c7cc;
+    color: #717a89;
     cursor: pointer;
     transition: color ease 0.3s;
   }
 
   .header-filter-btn.active,
   .header-filter-btn:hover{
-    color: #556066;
+    color: #4fabf8;
   }
 
   .header-line_edit{
