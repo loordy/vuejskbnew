@@ -33,7 +33,9 @@
       <div class="article-content">
 
         <div class="content-title">
+
           <h3>Существуют ли B2B-продажи? </h3>
+
           <div class="content-edit-btn">
             <i class="fas fa-ellipsis-h"></i>
           </div>
@@ -102,18 +104,22 @@
 
     <div class="liset-item article">
 
-      <div class="article-cover">
-        <img src="./components/images/article2.jpeg" alt="">
+      <div class="article-cover"  :style="{ backgroundImage: 'url(' + require('@/components/images/article2.jpeg') + ')' }">
+
       </div>
 
       <div class="article-content">
 
-        <div class="content-title">
+        <div class="content-title" @click="detailArticleModalMethod">
           <h3>Существуют ли B2B-продажи? </h3>
-          <div class="content-edit-btn">
+          <div class="content-edit-btn" @click="detailArticle=!detailArticle">
             <i class="fas fa-ellipsis-h"></i>
           </div>
         </div>
+
+        <!-- modal -->
+        <detailArticleModal v-if="detailArticle"  @close="detailArticle= false"/>
+        <!-- modal end-->
 
         <div class="article-source-line">
           <span class="source-line-item">19 янв. 2018 г.</span>
@@ -367,6 +373,7 @@
 
     </div>
 
+
     <Sidebar/>
 
     <div class="fixed-add-btn">
@@ -379,16 +386,23 @@
 import Top from './components/common/header'
 import Content from './components/pages/section'
 import Sidebar from './components/common/Sidebar'
+import detailArticleModal from './components/common/modals/detailArticleModal';
 /* import store from './store' */
 export default {
   name: 'App',
   components: {
     Top,
     Content,
-    Sidebar
+    Sidebar,
+    detailArticleModal
   },
-  /*  methods: {
-    GetElements () {
+  data () {
+    return {
+      detailArticle: false
+    }
+  },
+  methods: {
+    /*GetElements () {
       let self = store
       GetElements(null, function (data) {
         self.commit('setElements', data)
@@ -411,8 +425,14 @@ export default {
       GetCurrentUser(null, function (data) {
         self.commit('currentUser', data)
       })
-    }
-  }, */
+    }*/
+
+    detailArticleModalMethod (event) {
+      this.detailArticle = !this.detailArticle
+      console.log(event)
+      console.log(event.currentTarget)
+    },
+  },
   mounted () {
     console.log('mounted app.vue')
     console.log('mounted app.vue')

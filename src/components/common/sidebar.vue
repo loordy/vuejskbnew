@@ -120,80 +120,20 @@
 
         </div>
 
-      <!-- modal -->
-      <div class="tree-edit-modal edit-modal">
-        <i class="modal-angle right"></i>
-        <div class="edit-modal-header">
-          <div class="edit-modal-title">Редактировать раздел</div>
-          <div class="close-modal">
-            <i class="fas fa-times"></i>
-          </div>
-        </div>
 
-        <div class="edit-modal-content">
-
-          <div class="edit-group">
-            <div class="edit-group-label">НАЗВАНИЕ РАЗДЕЛА</div>
-            <input type="text" class="kb-input">
-          </div>
-
-          <div class="edit-group">
-            <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
-            <input type="text" class="kb-input">
-          </div>
-
-          <div class="edit-group">
-            <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
-            <div class="radio-button-row">
-
-              <div class="radio-button-label">
-                <input type="radio" class="radio" id="radio1"  name="list"/>
-                <label for="radio1">Всем</label>
-              </div> 
-
-              <div class="radio-button-label">
-                <input type="radio" class="radio" id="radio2"  name="list"/>
-                <label for="radio2">Мне</label>
-              </div>
-
-              <div class="radio-button-label">
-                <input type="radio" class="radio" id="radio3"  name="list"/>
-                <label for="radio3">Список</label>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="edit-group btn-group">
-            <button class="kb-btn red-btn">
-              Удалить
-            </button>
-            <button class="kb-btn green-btn">
-              Сохранить
-            </button>
-          </div>
-
-          <a href="#" class="category-item-add_btn">
-            Новый раздел
-            <span class="cat-item-in_icon">
-                  <i class="fas fa-plus"></i>
-                </span>
-          </a>
-
-        </div>
-
-      </div>
-      <!-- modal end-->
 
     </aside>
 
 </template>
 <script>
-import sidebarModal from './modals/SidebarModal'
-import TreeItems from './TreeItems'
-export default {
+  import sidebarModal from './modals/SidebarModal'
+  import TreeItems from './TreeItems'
+  import EditCatModal from "./modals/EditCatModal";
+
+  export default {
   name: 'Sidebar',
   components: {
+    EditCatModal,
     TreeItems,
     sidebarModal
 
@@ -203,7 +143,8 @@ export default {
       i: 0,
       catalog: '',
       iSshowModal: false,
-      addModal: false
+      addModal: false,
+      editCatModal: false
     }
   },
   methods: {
@@ -236,7 +177,8 @@ export default {
     },
     closeModal () {
       this.iSshowModal = false
-    }
+    },
+
   },
   mounted () {
     this.getSections()
@@ -495,105 +437,6 @@ export default {
     top: 82px;
     z-index: 20;
   } */
-
-  .edit-modal{
-    width: 285px;
-    z-index: 10;
-    border: 1px solid rgba(0,0,0,.06);
-    border-radius: 5px;
-    padding: 24px;
-    background-color: #fff;
-    box-shadow: 0 3px 36px rgba(158,157,163,.54);
-    margin-bottom: 14px;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .edit-modal-header{
-    position: relative;
-    padding-right:  30px;
-  }
-
-  .edit-modal-header .close-modal{
-    width:  20px;
-    height: 20px;
-    line-height: 20px;
-    font-size:  14px;
-    text-align: center;
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: #c4c7cc;
-    cursor: pointer;
-  }
-
-  .edit-modal-title{
-    font-family: "ProximaNova-Semibold";
-    font-size: 16px;
-    color: #556066;
-    margin-bottom: 25px;
-  }
-
-  .edit-group{
-    margin-bottom: 20px;
-  }
-
-  .edit-group-label{
-    color: #afbcc2;
-    font-size: 12px;
-    font-family: "ProximaNova-Light";
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .kb-input{
-    width: 100%;
-    font-family: "ProximaNova-Regular";
-    color: #556066;
-    font-size: 14px;
-    padding: 0 16px!important;
-    margin: 0;
-    border: none;
-    display: inline-block;
-    line-height: inherit;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: transparent;
-    border: 1px solid #e4e5e9;
-    height: 35px;
-    line-height: 35px;
-  }
-
-  .kb-input:hover{
-    border-color: #c4c7cc;
-  }
-  .kb-input:focus{
-    border-color: #56c1e4;
-  }
-
-  .edit-modal .modal-angle{
-    height: 12px;
-    background-color: #fff;
-    width: 12px;
-    position: absolute;
-    transform: rotate(45deg);
-    top: 70px;
-  }
-
-  .edit-modal .modal-angle.right{
-    right: -6px;
-  }
-
-  .radio-button-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .btn-group{
-    display: flex;
-    justify-content: space-between;
-  }
 
   .tree-edit-modal .category-item-add_btn{
     position: relative;
