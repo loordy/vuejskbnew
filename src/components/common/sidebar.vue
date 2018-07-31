@@ -57,7 +57,7 @@
                   </a>
 
                   <span class="cat-num">4</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
 
@@ -68,7 +68,7 @@
                   </a>
 
                   <span class="cat-num">8</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
 
@@ -79,7 +79,7 @@
                   </a>
 
                   <span class="cat-num">1</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
 
@@ -90,7 +90,7 @@
                   </a>
 
                   <span class="cat-num">7</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
 
@@ -101,7 +101,7 @@
                   </a>
 
                   <span class="cat-num">2</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
 
@@ -112,15 +112,14 @@
                   </a>
 
                   <span class="cat-num">10</span>
-                  <span class="icon_sidebar icon_pencil"><i class="fas fa-pencil-alt"></i></span>
+                  <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i class="fas fa-pencil-alt"></i></span>
 
                 </div>
-
+                <!-- modal -->
+                <EditTagModal v-if="EditTagModal"  @close="EditTagModal= false" style="top: -45px; left:-310px;"/>
+                <!-- modal end-->
             </div>
-
         </div>
-
-
 
     </aside>
 
@@ -128,14 +127,16 @@
 <script>
   import sidebarModal from './modals/SidebarModal'
   import TreeItems from './TreeItems'
-  import EditCatModal from "./modals/EditCatModal";
+  import EditCatModal from "./modals/EditCatModal"
+  import EditTagModal from "./modals/EditTagModal.vue";
 
   export default {
   name: 'Sidebar',
   components: {
     EditCatModal,
     TreeItems,
-    sidebarModal
+    sidebarModal,
+    EditTagModal
 
   },
   data () {
@@ -144,7 +145,7 @@
       catalog: '',
       iSshowModal: false,
       addModal: false,
-      editCatModal: false
+      EditTagModal: false
     }
   },
   methods: {
@@ -165,6 +166,11 @@
     },
     showChildren (SECTION_ID) {
 
+    },
+    EditTagModalMethod (event) {
+      this.EditTagModal = !this.EditTagModal
+      console.log(event)
+      console.log(event.currentTarget)
     },
     /* GetSections () {
       let self = this
@@ -192,8 +198,8 @@
     width: 260px;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.06);
-    box-shadow: 0 3px 16px rgba(158,157,163,.08);
-    border-radius: 5px;
+    /*box-shadow: 0 3px 16px rgba(158,157,163,.08);*/
+    /*border-radius: 5px;*/
     margin-bottom: 15px;
     padding: 20px 8px;
   }
@@ -205,7 +211,7 @@
   .category-nav-title{
     font-family: "ProximaNova-Semibold";
     font-size: 16px;
-    color: #556066;
+    color: #545c6a;
     line-height: 1;
     position: relative;
     margin: 0;
@@ -343,6 +349,7 @@
 
   .category-tag{
     padding: 20px;
+    position: relative;
   }
 
   .tag-item{
@@ -368,8 +375,9 @@
   }
 
   .tag-item span{
-    color: #556066;
+    color:rgba(32, 32, 33, 0.7);
     padding: 0 4px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   }
 
   .category-tag_row{

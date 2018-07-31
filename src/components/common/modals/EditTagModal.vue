@@ -2,7 +2,7 @@
     <div class="tree-edit-modal edit-modal">
         <i class="modal-angle right"></i>
         <div class="edit-modal-header">
-            <div class="edit-modal-title">Редактировать раздел</div>
+            <div class="edit-modal-title">Редактировать тега</div>
 
             <div class="close-modal" @click="$emit('close')">
                 <i class="fas fa-times"></i>
@@ -17,48 +17,11 @@
                 <input type="text" class="kb-input">
             </div>
 
-            <div class="edit-group">
-                <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
-                <input type="text" class="kb-input">
-            </div>
-
-            <div class="edit-group">
-                <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
-                <div class="radio-button-row">
-
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio1" name="list"/>
-                        <label for="radio1">Всем</label>
-                    </div>
-
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio2" name="list"/>
-                        <label for="radio2">Мне</label>
-                    </div>
-
-                    <div class="radio-button-label">
-                        <input type="radio" class="radio" id="radio3" name="list"/>
-                        <label for="radio3">Список</label>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="edit-group btn-group">
-                <button class="kb-btn red-btn">
-                    Удалить
-                </button>
+            <div class="edit-group btn-group m-b-0">
                 <button class="kb-btn blue-btn">
                     Сохранить
                 </button>
             </div>
-
-            <a href="#" class="category-item-add_btn">
-                Новый раздел
-                <span class="cat-item-in_icon">
-                  <i class="fas fa-plus"></i>
-                </span>
-            </a>
 
         </div>
 
@@ -66,7 +29,7 @@
 </template>
 <script>
     export default {
-      name: 'editCatModal',
+      name: 'EditTagModal',
       props:{
         top:'10',
         left: '10'
@@ -219,6 +182,7 @@
     .btn-group {
         display: flex;
         justify-content: space-between;
+        flex-direction: row-reverse;
     }
 
     .tree-edit-modal .category-item-add_btn {

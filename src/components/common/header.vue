@@ -37,10 +37,19 @@
     </div>
 
     <div class="header-line-filter">
-      <div class="header-filter-btn">
+
+      <div class="header-filter-btn"  @click="filterListModalMethod" :class="{active:filterListModal}">
           <i class="fas fa-filter"></i>
       </div>
+
+      <!-- modal -->
+      <filterListModal v-if="filterListModal"  @close="filterListModal= false"/>
+      <!-- modal end-->
+
     </div>
+
+
+
 
     <!-- Grid edit line
     <div class="header-line_edit">
@@ -76,20 +85,31 @@
 </template>
 
 <script>
+import filterListModal from "./modals/filterListModal";
 export default {
+  components: {
+    filterListModal,
+  },
   name: 'middle',
   data () {
     return {
       activeClass: 'disk_folder_list_view_item_active',
       grid: 'disk_folder_list_view_item disk_folder_list_view_item_grid',
       list: 'disk_folder_list_view_item disk_folder_list_view_item_lines',
-      gridtile: 'disk_folder_list_view_item disk_folder_list_view_item_grid_tile'
+      gridtile: 'disk_folder_list_view_item disk_folder_list_view_item_grid_tile',
+      filterListModal: false
     }
   },
   methods: {
     viewChange (type) {
       this.$store.commit('setView', type)
-    }
+    },
+
+    filterListModalMethod (event) {
+      this.filterListModal = !this.filterListModal
+      console.log(event)
+      console.log(event.currentTarget)
+    },
   }
 
 }
@@ -120,17 +140,20 @@ export default {
   }
 
   .tag-item span{
-    color: #556066;
+    color:rgba(32, 32, 33, 0.7);
     padding: 0 4px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     line-height: 23px;
     vertical-align: middle;
     display: inline-block;
   }
 
+
+
   .tag-item .icon-list{
     font-size: 14px;
     display: inline-block;
-    padding: 3px 0px 1px 0px;
+    padding: 3px 0px 3px 0px;
     line-height: 20px;
     margin-left:  0px;
     margin-right: 2px;
@@ -162,7 +185,7 @@ export default {
     margin-bottom:  10px;
   }
 
-  .header-line .header-filter-btn{
+  .header-line .header-line-filter{
     position: absolute;
     right: 0;
     top: 0;
