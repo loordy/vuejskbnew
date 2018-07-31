@@ -34,11 +34,31 @@
 
         <div class="content-title">
 
-          <h3>Существуют ли B2B-продажи? </h3>
+          <h3><a href="#">Существуют ли B2B-продажи?</a></h3>
 
           <div class="content-edit-btn">
             <i class="fas fa-ellipsis-h"></i>
+
+            <div class="content-edit-btn-content">
+              <i class="modal-angle top"></i>
+              <ul class="content-edit_list">
+                <li>
+                  <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
+                </li>
+              </ul>
+            </div>
+
           </div>
+
         </div>
 
         <div class="article-source-line">
@@ -110,16 +130,29 @@
 
       <div class="article-content">
 
-        <div class="content-title" @click="detailArticleModalMethod">
-          <h3>Существуют ли B2B-продажи? </h3>
-          <div class="content-edit-btn" @click="detailArticle=!detailArticle">
+        <div class="content-title">
+          <h3><a href="#">Существуют ли B2B-продажи? </a></h3>
+          <div class="content-edit-btn">
             <i class="fas fa-ellipsis-h"></i>
+            <div class="content-edit-btn-content">
+              <i class="modal-angle top"></i>
+              <ul class="content-edit_list">
+                <li>
+                  <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
+                </li>
+                <li>
+                  <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-
-        <!-- modal -->
-        <detailArticleModal v-if="detailArticle"  @close="detailArticle= false"/>
-        <!-- modal end-->
 
         <div class="article-source-line">
           <span class="source-line-item">19 янв. 2018 г.</span>
@@ -220,6 +253,10 @@
       </div>
 
     </div>
+
+    <!-- modal -->
+    <detailArticleModal v-if="detailArticle"  @close="detailArticle= false"/>
+    <!-- modal end-->
 
       <div class="grid-items-wrap">
 
@@ -454,8 +491,8 @@ export default {
 
   .article{
     border: 1px solid rgba(0,0,0,.06);
-    border-radius: 5px;
-    box-shadow: 0 3px 16px rgba(158,157,163,.08);
+    /* border-radius: 5px; */
+    /* box-shadow: 0 3px 16px rgba(158,157,163,.08); */
     margin-bottom: 28px;
     background-color: #fff;
     overflow: hidden;
@@ -496,6 +533,7 @@ export default {
     position: relative;
     padding-right:  50px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
 
   .content-edit-btn{
@@ -522,10 +560,20 @@ export default {
 
   .content-title h3{
     font-size: 26px;
-    color: #333;
+    color: #555;
     line-height: 30px;
     font-family: "ProximaNova-Bold";
     margin:  0;
+  }
+
+  .content-title a{
+    color: #555;
+    text-decoration: none!important;
+    transition: color ease 0.3s;
+  }
+
+  .content-title a:hover{
+    color: #2c77b1;
   }
 
   .source-line-item{
@@ -819,6 +867,84 @@ export default {
     text-align: center;
     margin: 0 0 32px;
   }
+
+  /* ------ content edit drop css ---- */
+  .content-edit-btn:hover .content-edit-btn-content{
+    display: block;
+  }
+  .content-edit-btn-content{
+    position: absolute;
+    width: 210px;
+    background-color: #fff;
+    top: 26px;
+    right: -7px;
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 3px 36px rgba(158,157,163,.54);
+    padding: 10px 8px;
+    background-color: #fff;
+    z-index: 100;
+    display: none;
+  }
+  .content-edit_list{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+
+  .content-edit-btn-content .modal-angle.top{
+    top: -6px;
+    right: 20px;
+    height: 12px;
+    background-color: #fff;
+    width: 12px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .content-edit_list li {
+    display: block;
+    width: 100%;
+    list-style: none;
+  }
+
+  .content-edit_list li a{
+    display: block;
+    text-decoration: none!important;
+    color: #979797;
+    font-size: 14px;
+    position: relative;
+    text-align: left;
+    padding-left: 35px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 2px;
+
+  }
+
+  .content-edit_list li a span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
+  }
+  .content-edit_list > li > a i{
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #9aa5ab;
+  }
+  .content-edit_list li a:hover{
+    background-color: #f6f9fb;
+    color: #556066;
+  }
+  .content-edit_list li a:hover i{
+    color: #556066;
+  }
+  /* ------ content edit drop css end---- *
 
   /* -------grid list css start------ */
 
