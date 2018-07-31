@@ -14,9 +14,10 @@
             </div>
         </div>
         <div class="popup-window-angly popup-window-angly-bottom" style="left: 54.9844px; margin-left: 0px;"></div>
-      <sectionModal v-if="showSecMod" @close="showSecMod = false">
 
-      </sectionModal>
+        <sectionModal v-if="showSecMod" @close="showSecMod = false">
+
+        </sectionModal>
 
       <div v-if="show" @close="show = false" class="fade_wrapp">
       </div>
