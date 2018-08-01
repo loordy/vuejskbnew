@@ -1,11 +1,11 @@
 <template>
-  <div>
+
       <span :to="tagData.link" class="tag-item">
           <span class="icon-list"><i class="fa fa-home"></i></span>
           <span>{{ tagData.tagName }}</span>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
-  </div>
+
 </template>
 <script>
 export default {
