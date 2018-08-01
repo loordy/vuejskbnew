@@ -105,10 +105,11 @@ export default {
     padding: 0 16px;
     padding-right: 30px;
     position: relative;
+    border-radius: 2px;
   }
 
   .cat-nav_list-item_link:hover {
-    background-color: #535c69;
+    background-color: #ebf1f4;
   }
 
   .cat-nav_list-item_link span.link_text{
