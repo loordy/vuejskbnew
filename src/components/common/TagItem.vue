@@ -1,8 +1,8 @@
 <template>
   <div>
-      <span :to="link" class="tag-item">
+      <span :to="tagData.link" class="tag-item">
           <span class="icon-list"><i class="fa fa-home"></i></span>
-          <span>{{ tagTitle }}</span>
+          <span>{{ tagData.tagName }}</span>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
   </div>

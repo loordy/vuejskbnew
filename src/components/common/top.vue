@@ -1,6 +1,6 @@
 <template>
   <div class="header-line">
-    <listTagItem :listTag="tagName"/>
+    <listTagItem :listTag="$store.state.tags"/>
 
     <div class="header-line-filter">
 
