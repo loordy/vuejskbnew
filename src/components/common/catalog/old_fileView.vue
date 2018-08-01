@@ -65,7 +65,7 @@ export default {
       return this.$store.getters.getElementsByParentID(this.$route.params.id)
     },
     sections () {
-      return this.$store.getters.getSectionsByParentID(this.$route.params.id)
+      return
     }
   },
   methods: {

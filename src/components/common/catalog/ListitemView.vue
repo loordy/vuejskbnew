@@ -1,60 +1,20 @@
 <template>
   <div>
-    <div class="liset-item article">
+    <div class="liset-item article" v-for="fbElement in fbElements">
         <div class="article-cover"
              :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
         </div>
         <div class="article-content">
             <div class="content-title">
-                <h3><a href="#">Существуют ли B2B-продажи?</a></h3>
+                <h3><router-link :to="fbElement.CODE">{{ fbElement.NAME }}</router-link></h3>
               <contentEditBtn/>
             </div>
             <div class="article-source-line">
-                <span class="source-line-item">19 янв. 2018 г.</span>
-                <span class="source-line-item cnt-none">Альберт Эйнштейн</span>
+                <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>
+                <span class="source-line-item cnt-none">{{ fbElement.CREATED_BY }}</span>
             </div>
             <div class="content-text-wrap">
-                <ol>
-                    <li>Первое правило B2B-продаж – найти внутреннего лоббиста.</li>
-                    <li>Внутренний лоббист – это сотрудник компании, который заинтересован во внедрении вашего продукта
-                        по
-                        своим карьерным соображениям. Его недооценивают, поэтому ему нужно расширение зоны
-                        ответственности.
-                        Нужно уменьшить влияние другого департамента, обескровив его или сделать его зависимым от себя
-                        за счет
-                        нового продукта. Нужно получить дополнительные баллы перед начальством, показав ему, что
-                        внедрение
-                        нового
-                        продукта – это выполнение его пожеланий или указаний. И так далее.
-                    </li>
-                    <li>Надо понять главное: компания – это "коллективное бессознательное". "Оно" у вас ничего не
-                        покупает,
-                        поэтому обращаться к нему бесполезно. Обращаться нужно к конкретным людям, которые будут
-                        покупать нечто
-                        не для абстрактной пользы компании, а для своей конкретной пользы. И нет, я не говорю об
-                        откатах. Я
-                        говорю о той пользе, которую этот человек на этой позиции в этой конкретной ситуации может
-                        получить
-                        внутри
-                        своей компании от внедрения вашего продукта. За счет повышения себя или принижения кого-то
-                        другого.
-                    </li>
-                    <li>Апеллировать к выгоде для компании очень сложно. Компания в целом, конечно, заинтересована в
-                        выгоде.
-                        Вот только приоритет для каждого сотрудника – это уменьшение личных рисков, а не общая польза.
-                        Любое новое внедрение – это риск. Внедрение нового продукта – это риск в квадрате. Пойти на него
-                        сотрудник может только в том случае, если личная польза превышает риск.
-                    </li>
-                    <li>Так что, B2B-продаж на самом деле нет. Это все тот самый старый добрый B2C. Главное, как обычно
-                        –
-                        понять, кто твой потребитель. А этот потребитель и есть тот самый внутренний лоббист.
-                    </li>
-                </ol>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim maxime minus modi odit
-                    quis
-                    sunt. Eum magnam mollitia quasi!
-                </p>
+                {{ fbElement.DETAIL_TEXT }}
             </div>
             <div class="article-collapse">
                 <button class="artc-collapse-btn">
@@ -62,7 +22,7 @@
                 </button>
             </div>
             <div class="article-footer">
-              <listTagItem :listTag="tagName"/>
+              <listTagItem :listTag="$store.state.tags"/>
                 <div class="article-footer-pin">
                     <div class="pin-item">
                         <i class="far fa-comments"></i>
@@ -78,9 +38,20 @@
 </template>
 <script>
 import ContentEditBtn from '../buttons/ContentEditBtn'
+import ListTagItem from '../ListTagItem'
 export default {
   name: 'listitemView',
-  components: {ContentEditBtn}
+  components: {ContentEditBtn,
+    ListTagItem},
+  data () {
+    return {
+    }
+  },
+  computed: {
+    fbElements () {
+      return this.$store.getters.getElementsByParentID(this.$route.params.id)
+    }
+  }
 }
 </script>
 <style>
