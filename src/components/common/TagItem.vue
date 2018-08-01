@@ -11,12 +11,11 @@
 export default {
   name: 'tsgItem',
   props: {
-    tagTitle: '',
-    link: ' / '
+    tagData: {}
   }
 }
 </script>
-<style>
+<style scoped>
     .tag-item {
         display: inline-block;
         margin: 0 0 4px;

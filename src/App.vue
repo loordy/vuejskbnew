@@ -2,7 +2,6 @@
   <div id="app">
     <div class="main">
       <Top></Top>
-      <fbSection/>
       <router-view/>
     </div>
     <Sidebar/>

@@ -118,18 +118,15 @@
                 <i class="fas fa-ellipsis-h"></i>
             </div>
         </div>
-      <emptyList/>
+
     </div>
 </template>
 <script>
-  import EmptyList from "./EmptyList";
-
-  export default {
-  name: 'listItemList',
-  components: {EmptyList}
+export default {
+  name: 'listItemList'
 }
 </script>
-<style>
+<style scoped>
     .article-cover img {
         position: absolute;
         top: 0;

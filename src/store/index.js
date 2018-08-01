@@ -12,6 +12,7 @@ export default new Vuex.Store({
     installed: false,
     itemsPerPage: 20,
     currentUser: {},
+    // TODO удалить после теста
     elements: [{
       'ID': '13',
       'CODE': '2018-07-19T09:08:35+03:44',
@@ -199,7 +200,40 @@ export default new Vuex.Store({
       top: [/* number */],
       new: [],
       show: []
-    }
+    },
+    // TODO временный стор
+    tags: [
+      {
+        tagName: 'tag1',
+        tagIcon: 'test',
+        tagLink: '/'
+      },
+      {
+        tagName: 'tag2',
+        tagIcon: 'test',
+        tagLink: '/'
+      },
+      {
+        tagName: 'tag3',
+        tagIcon: 'test',
+        tagLink: '/'
+      },
+      {
+        tagName: 'tag4',
+        tagIcon: 'test',
+        tagLink: '/'
+      },
+      {
+        tagName: 'tag5',
+        tagIcon: 'test',
+        tagLink: '/'
+      },
+      {
+        tagName: 'tag6',
+        tagIcon: 'test',
+        tagLink: '/'
+      }
+    ]
   },
   actions,
   mutations,

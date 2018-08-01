@@ -62,15 +62,7 @@
                 </button>
             </div>
             <div class="article-footer">
-                <div class="article-footer-tags">
-               <span class="tag-item">
-                  <span class="icon-list"><i class="fas fa-list-ul"></i></span>
-                  <span>брендинг</span>
-              </span>
-                    <span class="tag-item">
-                  <span>обучение менеджеров</span>
-              </span>
-                </div>
+              <listTagItem :listTag="tagName"/>
                 <div class="article-footer-pin">
                     <div class="pin-item">
                         <i class="far fa-comments"></i>
@@ -85,18 +77,13 @@
   </div>
 </template>
 <script>
-  import ContentEditBtn from "../buttons/ContentEditBtn";
-
-  export default {
-        name: 'listitemView',
-      components: {ContentEditBtn}
-    }
+import ContentEditBtn from '../buttons/ContentEditBtn'
+export default {
+  name: 'listitemView',
+  components: {ContentEditBtn}
+}
 </script>
 <style>
-    @import '../../css/all.css';
-    @import '../../css/fontawesome.css';
-    @import '../../css/knowledgebase.css';
-
     .article {
         border: 1px solid rgba(0, 0, 0, .06);
         /* border-radius: 5px; */

@@ -1,13 +1,6 @@
 <template>
   <div class="header-line">
-    <div class="top-tags-line">
-      <tsgItem :tagTitle="tagName"/>
-      <tsgItem :tagTitle="tagName"/>
-      <tsgItem :tagTitle="tagName"/>
-      <tsgItem :tagTitle="tagName"/>
-      <tsgItem :tagTitle="tagName"/>
-      <tsgItem :tagTitle="tagName"/>
-    </div>
+    <listTagItem :listTag="tagName"/>
 
     <div class="header-line-filter">
 
@@ -25,11 +18,11 @@
 
 <script>
 import filterListModal from './modals/filterListModal'
-import TsgItem from './TsgItem'
+import ListTagItem from './ListTagItem'
 
 export default {
   components: {
-    TsgItem,
+    ListTagItem,
     filterListModal
   },
   name: 'top',
@@ -54,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .tag-item{
     display: inline-block;
     margin: 0 0 4px;
