@@ -7,7 +7,9 @@
       <vue-loading type="bars" color="#d9544e" :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>-->
 
+      <NotebookList/>
 
+    <prevTreeList/>
 
     <div class="liset-item article">
 
@@ -425,16 +427,18 @@
   </div>
 </template>
 <script>
-import Top from './components/common/header'
-import Content from './components/pages/section'
-import Sidebar from './components/common/Sidebar'
-import detailArticleModal from './components/common/modals/detailArticleModal';
-/* import store from './store' */
+  import Top from './components/common/header'
+  import Sidebar from './components/common/Sidebar'
+  import detailArticleModal from './components/common/modals/detailArticleModal';
+  import PrevTreeList from "./PrevTreeList";
+  import NotebookList from "./NotebookList";
+  /* import store from './store' */
 export default {
   name: 'App',
   components: {
+    NotebookList,
+    PrevTreeList,
     Top,
-    Content,
     Sidebar,
     detailArticleModal
   },
@@ -1122,5 +1126,61 @@ export default {
     border-left: 2px solid #36b5df;
   }
   /* -------grid list css end------ */
+
+  /* --------prev tree list ------- */
+
+  li.kb-prev-tree-list_item  a{
+    color: #545c6a;
+    text-decoration: none!important;
+    position: relative;
+    padding-left: 28px;
+    display: inline-block;
+    font-size: 18px;
+    font-family: "ProximaNova-Regular";
+    transition: all ease 0.3s;
+    max-width: 100%;
+  }
+
+  li.kb-prev-tree-list_item  a span{
+    display: inline-block;
+    white-space: nowrap;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 33px;
+  }
+
+
+  li.kb-prev-tree-list_item  a:hover{
+    color: #2c77b1;
+  }
+
+  li.kb-prev-tree-list_item a i{
+    color: #4fabf8;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -12px;
+    font-size:  20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 18px;
+
+  }
+
+  .kb-prev-tree-list-parent li{
+    list-style: none;
+  }
+
+
+  .kb-prev-tree-list-parent > li > a{
+    font-size: 18px;
+  }
+
+  /* ---- prev tree list  end ---- */
+
+  /* ----- notebook-list-item ---- */
 
 </style>
