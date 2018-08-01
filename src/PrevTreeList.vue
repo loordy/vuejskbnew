@@ -117,6 +117,11 @@
         max-width: 100%;
     }
 
+    .kb-prev-tree-list > li.kb-prev-tree-list_item > a{
+      font-family: "ProximaNova-Semibold";
+      font-size: 20px;
+    }
+
     li.kb-prev-tree-list_item a span {
         display: block;
         white-space: nowrap;

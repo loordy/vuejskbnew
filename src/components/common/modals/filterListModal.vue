@@ -1,18 +1,20 @@
 <template>
   <div class="filter-list-modal">
-      <div class="edit-modal-header">
+      <div class="filter-list-modal-content">
+        <div class="edit-modal-header">
           <div class="edit-modal-title">Фильтр и вид</div>
           <div class="close-modal" @click="$emit('close')">
             <i class="fas fa-times"></i>
           </div>
-      </div>
+        </div>
 
-      <div class="edit-group m-b-0">
-        <div class="edit-group-label">ВИД</div>
+        <div class="edit-group m-b-0">
+          <div class="edit-group-label">ВИД</div>
           <div class="ful-w-btn-group">
             <a href="#" class="active">Лента</a>
             <a href="#">Таблица</a>
           </div>
+        </div>
       </div>
       <i class="modal-angle top"></i>
   </div>
@@ -45,11 +47,17 @@ export default {
     left: -242px;
     z-index: 110;
     background: #fff;
-    padding: 24px;
     border: 1px solid rgba(0,0,0,.06);
-    box-shadow: 0 3px 36px rgba(158,157,163,.54);
+    box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);
     margin-bottom: 14px;
     background-color: #fff;
+  }
+
+  .filter-list-modal-content{
+    padding: 24px;
+    position: relative;
+    z-index: 100;
+    background: #fff;
   }
 
   .edit-modal-header {
@@ -64,8 +72,8 @@ export default {
     font-size: 14px;
     text-align: center;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -10px;
+    top: -10px;
     color: #c4c7cc;
     cursor: pointer;
   }
@@ -95,6 +103,22 @@ export default {
   .modal-angle.top{
     top: -6px;
     right: 20px;
+  }
+
+  .modal-angle.top:after{
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 21px rgba(83,92,105,.13);
+    box-shadow: 0 0 21px rgba(83,92,105,.13);
+    content: '';
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    width: 15px;
   }
 
   .edit-group {

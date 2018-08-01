@@ -9,6 +9,7 @@
             </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
@@ -16,6 +17,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor.</span>
@@ -23,6 +25,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>База знаний</span>
@@ -30,6 +33,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
@@ -37,6 +41,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
@@ -62,17 +67,17 @@
     }
 
     .notebook-list-item {
-        position: relative;
-        transition: .3s ease;
-        border-radius: 5px 15px 15px 5px;
-        transform-origin: left center 0px;
-        display: inline-block;
-        margin: 8px;
-        height: 155px;
-        width: 123px;
-        display: block;
-        color: #fff!important;
-        text-decoration: none!important;
+      position: relative;
+      transition: .3s ease;
+      border-radius: 5px 15px 15px 5px;
+      transform-origin: left center 0px;
+      display: inline-block;
+      margin: 8px;
+      height: 155px;
+      width: 123px;
+      display: block;
+      color: #fff!important;
+      text-decoration: none!important;
     }
 
     .notebook-list-item:hover{
@@ -89,7 +94,19 @@
       text-align: center;
       color: #5f7073;
       font-size: 14px;
-      z-index: 20;
+      z-index: 11;
+      transition: all ease 0.3s;
+    }
+    .notebook-list-item .delete-item:hover{
+      color: #f45e5e;
+    }
+
+
+    .notebook-cover{
+      padding: 20px 10px;
+      padding-bottom: 30px;
+      padding-left: 18px;
+      overflow: hidden;
     }
 
     .notebook-cover {
@@ -151,20 +168,27 @@
     .notebook-skin{
       height: 100%;
       width: 100%;
-      padding: 20px 10px;
-      padding-bottom: 30px;
-      padding-left: 18px;
       display: flex;
       align-items: center;
       font-size: 22px;
       color: #fff;
       font-family: "ProximaNova-Semibold";
       line-height: 22px;
-    }
-
-    .notebook-skin{
       min-height: 100%;
       overflow: hidden;
+    }
+
+    .notebook-cover:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: calc(100% + 2px);
+      top: -1px;
+      z-index: 100;
+      border-radius: 2px;
+      left: 0px;
+      transition: 2s ease;
+      background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
     }
 
     /*
@@ -195,17 +219,6 @@
     }
     */
 
-    .notebook-cover:before {
-        content: "";
-        position: absolute;
-        width: 10px;
-        height: calc(100% + 2px);
-        top: -1px;
-        z-index: 100;
-        border-radius: 2px;
-        left: 0px;
-        transition: 2s ease;
-        background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
-    }
+
 
 </style>
