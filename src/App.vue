@@ -1,5 +1,4 @@
 <template>
-
   <div id="app">
     <div class="main">
       <Top></Top>
@@ -10,16 +9,15 @@
   </div>
 </template>
 <script>
-import Top from './components/common/header'
+import Top from './components/common/top'
 import Sidebar from './components/common/Sidebar'
 import fbSection from './components/pages/section'
-
 export default {
   name: 'App',
   components: {
     fbSection,
     Top,
-    Sidebar,
+    Sidebar
   },
   data () {
     return {

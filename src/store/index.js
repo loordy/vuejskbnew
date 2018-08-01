@@ -14,7 +14,7 @@ export default new Vuex.Store({
     currentUser: {},
     elements: [{
       'ID': '13',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:44',
       'TIMESTAMP_X': '2018-07-19T09:08:33+03:00',
       'DATE_CREATE': '2018-07-19T09:08:33+03:00',
       'CREATED_BY': '1',
@@ -52,7 +52,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '15',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:22',
       'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
       'DATE_CREATE': '2018-07-19T09:08:34+03:00',
       'CREATED_BY': '1',
@@ -72,7 +72,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '17',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:33',
       'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
       'DATE_CREATE': '2018-07-19T09:08:34+03:00',
       'CREATED_BY': '1',
@@ -92,7 +92,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '19',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:09',
       'TIMESTAMP_X': '2018-07-19T09:08:35+03:00',
       'DATE_CREATE': '2018-07-19T09:08:35+03:00',
       'CREATED_BY': '1',
@@ -113,7 +113,7 @@ export default new Vuex.Store({
     users: {/* [id: string]: User */},
     sections: [{
       'ID': '13',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:21',
       'TIMESTAMP_X': '2018-07-19T09:08:33+03:00',
       'DATE_CREATE': '2018-07-19T09:08:33+03:00',
       'CREATED_BY': '1',
@@ -133,7 +133,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '15',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:12',
       'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
       'DATE_CREATE': '2018-07-19T09:08:34+03:00',
       'CREATED_BY': '1',
@@ -153,7 +153,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '17',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:01',
       'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
       'DATE_CREATE': '2018-07-19T09:08:34+03:00',
       'CREATED_BY': '1',
@@ -173,7 +173,7 @@ export default new Vuex.Store({
     },
     {
       'ID': '19',
-      'CODE': null,
+      'CODE': '2018-07-19T09:08:35+03:00',
       'TIMESTAMP_X': '2018-07-19T09:08:35+03:00',
       'DATE_CREATE': '2018-07-19T09:08:35+03:00',
       'CREATED_BY': '1',
