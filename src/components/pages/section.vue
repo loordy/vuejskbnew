@@ -1,18 +1,19 @@
 <template>
-  <table>
-    <empty v-if="countSecEl == 0"></empty>
-    <filelist v-else-if="this.$store.state.settings.viewType === 'list'"></filelist>
-    <fileView v-else></fileView>
-  </table>
+  <div>
+    <!--<empty v-if="countSecEl == 0"></empty>-->
+    <!--v-else-if="this.$store.state.settings.viewType === 'list'"-->
+    <ListitemView></ListitemView>
+    <ListItemList></ListItemList>
+  </div>
 </template>
 
 <script>
-import Filelist from '../common/catalog/Filelist'
-import fileView from '../common/catalog/FileView'
+import ListitemView from '../common/catalog/ListitemView'
+import ListItemList from '../common/catalog/ListItemList'
 import empty from '../common/catalog/empty'
 export default {
   name: 'mainpage',
-  components: {fileView, Filelist, empty},
+  components: {ListitemView, ListItemList, empty},
   computed: {
     countSecEl () {
       return this.$store.getters.getCountAllSecEl(this.$route.params.id)

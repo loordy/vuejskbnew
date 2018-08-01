@@ -1,98 +1,58 @@
 <template>
-  <tbody>
-  <td class="kb_layout_inner_inner_cont">
-    <div>
-      <div>
-        <div class="workarea_content_paddings">
-          <div class="kb_disk_container" style="position: relative;">
-            <table style="width: 100%;" cellpadding="0" cellspacing="0">
-              <tr>
-                <td>
-                  <div class="kb_disk_interface_filelist">
-
-                      <div class="kb_disk_interface_listing">
-                        <div class="ui_grid_tile_item" v-for="section in sections" :key="'section ' + section.ID" :id="'section ' + section.ID">
-                          <div class="ui_grid_tile_item_checkbox"></div>
-                          <div>
-                            <div class="disk_folder_list_item ">
-                              <div class="disk_folder_list_item_image"  @click="select" :id="'section ' + section.ID">
-                                <div class="ui_icon ui_icon_file ui_icon_file_folder" style="width: 85%;">
-                                  <i></i>
-                                </div>
-                              </div>
-                              <div class="disk_folder_list_item_action" @click="modal" :id="'section ' + section.ID">
-                              </div>
-                              <div class="disk_folder_list_item_bottom">
-                                <div class="disk_folder_list_item_title">
-                                  <div class="disk_folder_list_item_title_wrapper">
-                                    <input class="disk_folder_list_item_title_input" type="text" value="Test" >
-                                    <router-link :to='"/section/" + section.ID' @click="modal" class="disk_folder_list_item_title_link"
-                                                 :title="section.NAME">{{section.NAME}}
-                                    </router-link>
-                                  </div>
-                                </div>
-                                <div class="disk_folder_list_item_icons">
-                                  <div class="disk_folder_list_item_locked" style="display: none;">
-                                  </div>
-                                  <div class="disk_folder_list_item_shared" style="display: none;">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <menuModal v-if="popup === 'section ' + section.ID" pos ="top:40px;" :ID="section.ID" type="section"></menuModal>
-                          </div>
-                        <div class="ui_grid_tile_item" v-for="element in elements" :key="'element ' + element.ID" :id="'element ' + element.ID">
-                          <div class="ui_grid_tile_item_checkbox"></div>
-                          <div>
-                            <div class="disk_folder_list_item">
-                              <div class="disk_folder_list_item_image">
-                                <div class="ui_icon ui_icon_file ui_icon_file_folder ui_icon_file_folder-el"
-                                     style="width: 85%;">
-                                  <i></i>
-                                </div>
-                              </div>
-                              <div class="disk_folder_list_item_action" @click="modal" :id="'artic ' + element.ID">
-                              </div>
-                              <div class="disk_folder_list_item_bottom">
-                                <div class="disk_folder_list_item_title">
-                                  <div class="disk_folder_list_item_title_wrapper">
-                                    <input class="disk_folder_list_item_title_input" type="text" value="Test">
-                                    <router-link :to='"/artic/" + element.ID' class="disk_folder_list_item_title_link"
-                                                 :title="element.NAME">{{element.NAME}}
-                                    </router-link>
-                                  </div>
-                                </div>
-                                <div class="disk_folder_list_item_icons">
-                                  <div class="disk_folder_list_item_locked" style="display: none;">
-                                  </div>
-                                  <div class="disk_folder_list_item_shared" style="display: none;">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <menuModal v-if="popup === 'artic ' + element.ID" pos ="top:40px;" :ID="element.ID" type="artic"></menuModal>
-                        </div>
-                      </div>
-
-                  </div>
-                </td>
-              </tr>
-            </table>
+  <div>
+  <div class="liset-item article" v-for="fb_element in fb_elements" :key="fb_element.CODE" :id="fb_element.CODE">
+    <div class="article-cover"
+         :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+    </div>
+    <div class="article-content">
+      <div class="content-title">
+        <h3><router-link :to="'/artic/' + fb_element.CODE">Существуют ли B2B-продажи?</router-link></h3>
+        <div class="content-edit-btn">
+          <i class="fas fa-ellipsis-h"></i>
+          <modal_artic_edit/>
+        </div>
+      </div>
+      <div class="article-source-line">
+        <span class="source-line-item">{{fb_element.DATE_CREATE}}</span>
+        <span class="source-line-item cnt-none">Альберт Эйнштейн</span>
+      </div>
+      <div class="content-text-wrap">
+        {{ fb_element.PREVIEW_TEXT}}
+      </div>
+      <div class="article-collapse">
+        <button class="artc-collapse-btn">
+          <span class="fas fa-angle-down"></span>
+        </button>
+      </div>
+      <div class="article-footer">
+        <div class="article-footer-tags">
+               <span class="tag-item">
+                  <span class="icon-list"><i class="fas fa-list-ul"></i></span>
+                  <span>брендинг</span>
+              </span>
+          <span class="tag-item">
+                  <span>обучение менеджеров</span>
+              </span>
+        </div>
+        <div class="article-footer-pin">
+          <div class="pin-item">
+            <i class="far fa-comments"></i>
+          </div>
+          <div class="pin-item like-btn">
+            <i class="far fa-heart"></i>
           </div>
         </div>
       </div>
     </div>
-  </td>
-  </tbody>
+  </div>
+  </div>
 </template>
 <script>
-import MenuModal from '../modals/MenuModal'
+import Modal_artic_edit from '../modals/Modal_artic_edit'
 
 export default {
   name: 'fileView',
-  components: {MenuModal},
+  components: {Modal_artic_edit},
   data: function () {
     return {
       checked: [],
