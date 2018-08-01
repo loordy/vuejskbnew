@@ -1,40 +1,6 @@
 <template>
   <div class="header-line">
-
-    <div class="top-tags-line">
-      <span class="tag-item">
-          <span class="icon-list"><i class="fa fa-home"></i></span>
-          <span>Домой</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-      <span class="tag-item">
-          <span class="icon-list"><i class="fas fa-list-ul"></i></span>
-          <span>брендинг</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-      <span class="tag-item">
-          <span>инструкции</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-      <span class="tag-item">
-          <span>копирайтинг</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-      <span class="tag-item">
-          <span>продажи b2b</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-      <span class="tag-item">
-          <span>творчество</span>
-          <span class="icon-delete"><i class="fas fa-times"></i></span>
-      </span>
-
-    </div>
+    <listTagItem :listTag="$store.state.tags"/>
 
     <div class="header-line-filter">
 
@@ -47,57 +13,23 @@
       <!-- modal end-->
 
     </div>
-
-
-
-
-    <!-- Grid edit line
-    <div class="header-line_edit">
-
-        <div class="article-select-all">
-          <div class="select-check">
-            <input type="checkbox">
-          </div>
-          <div class="select-num">
-            1 из 10
-          </div>
-        </div>
-
-      <div class="line-edit-item">
-        <i class="far fa-star"></i>
-        <span>В избранное</span>
-      </div>
-
-      <div class="line-edit-item">
-        <i class="far fa-star"></i>
-        <span>Убрать из избранного</span>
-      </div>
-
-      <div class="line-edit-item add-trash">
-        <i class="far fa-trash-alt"></i>
-        <span>Удалить</span>
-      </div>
-
-    </div>
-    -->
-
   </div>
 </template>
 
 <script>
-import filterListModal from "./modals/filterListModal";
+import filterListModal from './modals/filterListModal'
+import ListTagItem from './ListTagItem'
+
 export default {
   components: {
-    filterListModal,
+    ListTagItem,
+    filterListModal
   },
-  name: 'middle',
+  name: 'top',
   data () {
     return {
-      activeClass: 'disk_folder_list_view_item_active',
-      grid: 'disk_folder_list_view_item disk_folder_list_view_item_grid',
-      list: 'disk_folder_list_view_item disk_folder_list_view_item_lines',
-      gridtile: 'disk_folder_list_view_item disk_folder_list_view_item_grid_tile',
-      filterListModal: false
+      filterListModal: false,
+      tagName: 'Привет'
     }
   },
   methods: {
@@ -109,13 +41,13 @@ export default {
       this.filterListModal = !this.filterListModal
       console.log(event)
       console.log(event.currentTarget)
-    },
+    }
   }
 
 }
 </script>
 
-<style>
+<style scoped>
   .tag-item{
     display: inline-block;
     margin: 0 0 4px;
@@ -147,8 +79,6 @@ export default {
     vertical-align: middle;
     display: inline-block;
   }
-
-
 
   .tag-item .icon-list{
     font-size: 14px;
