@@ -82,7 +82,6 @@ export default {
     color: #556066;
   }
 
-
   .edit-modal-title {
     font-family: "ProximaNova-Semibold";
     font-size: 16px;
