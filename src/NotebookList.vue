@@ -48,6 +48,15 @@
             </div>
           </div>
         </a>
+
+      <a href="#" class="notebook-list-item add-notebook">
+        <div class="notebook-cover">
+          <div class="notebook-skin">
+            <span><i class="fas fa-plus"></i></span>
+          </div>
+        </div>
+      </a>
+
     </div>
 </template>
 <script>
@@ -98,7 +107,7 @@
       transition: all ease 0.3s;
     }
     .notebook-list-item .delete-item:hover{
-      color: #f45e5e;
+      color: #e83434;
     }
 
 
@@ -165,6 +174,33 @@
     }
 
 
+    .notebook-list-item.add-notebook{
+      transform: none;
+      opacity: 0.2;
+    }
+
+    .notebook-list-item.add-notebook:hover{
+      opacity: 0.8;
+    }
+
+    .notebook-list-item.add-notebook .notebook-cover{
+      background-image: none;
+      background-color:#dce1e4;
+      padding: 20px;
+    }
+
+    .notebook-list-item.add-notebook .notebook-skin{
+      text-align: center;
+      color: #9aa5ab;
+      font-size: 30px;
+      text-shadow: none;
+      justify-content: center;
+    }
+
+    .notebook-list-item.add-notebook .notebook-cover:before{
+      content: none;
+    }
+
     .notebook-skin{
       height: 100%;
       width: 100%;
@@ -190,35 +226,5 @@
       transition: 2s ease;
       background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
     }
-
-    /*
-    .notebook-skin {
-        height: 80px;
-
-        background: #e8e8e0;
-
-        padding: 10px;
-        font-size: 14px;
-        position: relative;
-        z-index: 10;
-        color: #222;
-        text-align: left;
-        overflow: hidden;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    }
-    */
-    /*
-    .notebook-skin:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 15px;
-        left: 0;
-        bottom: 15px;
-        background: #bfddf1;
-    }
-    */
-
-
 
 </style>
