@@ -1,13 +1,18 @@
 <template>
- <listitems></listitems>
+  <div>
+  <NotebookList />
+ <detailItem></detailItem>
+  </div>
 </template>
 
 <script>
-import listitems from './section'
+import detailItem from './detailItem'
+import NotebookList from '../common/NotebookList'
 export default {
   name: 'mainpage',
   components: {
-    listitems
+    detailItem,
+    NotebookList
   }
 }
 </script>

@@ -64,22 +64,21 @@
           </div>
         </div>
 
-
     </div>
 </template>
 <script>
-    export default {
-      name: 'editCatModal',
-      props:{
-        top:'10',
-        left: '10'
-      },
-      methods: {
-        closeModal () {
-          this.iSshowModal = false
-        }
-      }
+export default {
+  name: 'editCatModal',
+  props: {
+    top: '10',
+    left: '10'
+  },
+  methods: {
+    closeModal () {
+      this.iSshowModal = false
     }
+  }
+}
 </script>
 <style scoped>
 
@@ -160,7 +159,6 @@
     .edit-modal-header .close-modal:hover{
       color: #556066;
     }
-
 
     .edit-modal-title {
         font-family: "ProximaNova-Semibold";

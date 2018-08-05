@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import main from '@/components/pages/main'
 import markdown from '@/components/pages/markdown'
 import section from '@/components/pages/section'
-import artic from '@/components/pages/artic'
+import detailItem from '@/components/pages/detailItem'
 import Settings from '@/components/pages/settings'
 import filters from '@/components/pages/filters'
 
@@ -18,14 +18,14 @@ export default new Router({
       component: main
     },
     {
-      path: '/markdown/:code(\\d+)',
+      path: '/markdown/:code',
       name: 'markdown',
       component: markdown
     },
     {
-      path: '/artic/:code(\\d+)',
-      name: 'artic',
-      component: artic
+      path: '/detailItem/:code',
+      name: 'detailItem',
+      component: detailItem
     },
     {
       path: '/filters/',

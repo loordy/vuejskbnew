@@ -46,14 +46,11 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'NotebookList'
-    }
+export default {
+  name: 'NotebookList'
+}
 </script>
 <style scoped>
-    @import './components/css/all.css';
-    @import './components/css/fontawesome.css';
-    @import './components/css/knowledgebase.css';
 
     /* ----- notebook-list-item ---- */
     .prev-notebook-list{
@@ -65,7 +62,7 @@
         position: relative;
         transition: .3s ease;
         border-radius: 5px 15px 15px 5px;
-        transform-origin: left center 0px;
+        transform-origin: left center 0;
         display: inline-block;
         margin: 8px;
         height: 155px;
@@ -108,7 +105,7 @@
         z-index: 10;
         transition: .5s linear;
         transform-style: preserve-3d;
-        transform-origin: left center 0px;
+        transform-origin: left center 0;
         box-shadow: inset 0 0 0 1px #dbeaf2;
     }
 
@@ -146,7 +143,6 @@
       border-color: #b9df74 #89c049 #719e43;
       text-shadow: 0 1px #6e9c3a;
     }
-
 
     .notebook-skin{
       height: 100%;
@@ -203,7 +199,7 @@
         top: -1px;
         z-index: 100;
         border-radius: 2px;
-        left: 0px;
+        left: 0;
         transition: 2s ease;
         background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
     }

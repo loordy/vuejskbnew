@@ -125,39 +125,5 @@
 </script>
 
 <style scoped>
-  .detail-article{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    z-index: 100;
-    overflow-y: auto;
-  }
 
-  .article-close{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 110;
-    width: 35px;
-    height: 35px;
-    line-height: 38px;
-    text-align: center;
-    font-size: 16px;
-    color: #c4c7cc;
-    cursor: pointer;
-    background-color: #edeef0;
-    border-radius: 50%;
-    transition: all ease 0.3s;
-  }
-
-  .article-close:hover{
-    background-color: #d8d9da;
-  }
-
-  .detail-article .content-title h3{
-    cursor: auto;
-  }
 </style>

@@ -2,7 +2,7 @@
     <div class="category category-ser">
         <div class="category-search">
             <div class="category-search_block">
-                <input type="text" placeholder="Поиск по тегам" class="category-search_input">
+                <input type="text" placeholder="Поиск по тегам" class="category-search_input" v-model="searchWord" @keyup="doSearch">
                 <span class="icon_sidebar icon_arrow">
                     <span class="fas fa-arrow-up"></span>
                 </span>
@@ -12,76 +12,13 @@
             </div>
         </div>
         <div class="category-tag">
-            <div class="category-tag_row">
+            <div class="category-tag_row" v-for="tag in (searchWord ? result : taglist)" :key="tag.CODE">
 
-                <a href="#" class="tag-item">
-                    <span>обучение менеджеров</span>
-                </a>
+              <TagItem :tagData="tag" :searchText="searchWord"></TagItem>
 
                 <span class="cat-num">4</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
+                <span class="icon_sidebar icon_pencil" @click="EditTagModal = !EditTagModal"><i
                         class="fas fa-pencil-alt"></i></span>
-
-            </div>
-
-            <div class="category-tag_row">
-
-                <a href="#" class="tag-item">
-                    <span>обрендинг</span>
-                </a>
-
-                <span class="cat-num">8</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
-                        class="fas fa-pencil-alt"></i></span>
-
-            </div>
-
-            <div class="category-tag_row">
-
-                <a href="#" class="tag-item">
-                    <span>инструкции</span>
-                </a>
-
-                <span class="cat-num">1</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
-                        class="fas fa-pencil-alt"></i></span>
-
-            </div>
-
-            <div class="category-tag_row">
-
-                <a href="#" class="tag-item">
-                    <span>копирайтинг</span>
-                </a>
-
-                <span class="cat-num">7</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
-                        class="fas fa-pencil-alt"></i></span>
-
-            </div>
-
-            <div class="category-tag_row">
-
-                <a href="#" class="tag-item">
-                    <span>продажи b2b</span>
-                </a>
-
-                <span class="cat-num">2</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
-                        class="fas fa-pencil-alt"></i></span>
-
-            </div>
-
-            <div class="category-tag_row">
-
-                <a href="#" class="tag-item">
-                    <span>творчество</span>
-                </a>
-
-                <span class="cat-num">10</span>
-                <span class="icon_sidebar icon_pencil" @click="EditTagModalMethod"><i
-                        class="fas fa-pencil-alt"></i></span>
-
             </div>
             <!-- modal -->
             <EditTagModal v-if="EditTagModal" @close="EditTagModal= false" style="top: -45px; left:-301px;"/>
@@ -90,16 +27,49 @@
     </div>
 </template>
 <script>
-    import EditTagModal from './modals/EditTagModal'
+import EditTagModal from './modals/EditTagModal'
+import TagItem from './TagItem'
+import {
+  mapActions as mapSearchActions,
+  mapGetters as mapSearchGetters,
+  getterTypes,
+  actionTypes
+} from 'vuex-search'
+import { mapGetters } from 'vuex'
 
-    export default {
-        name: 'tagListSearch',
-        components: {EditTagModal},
-        props: {
-            EditTagModal: {},
-            EditTagModalMethod: {}
-        }
+export default {
+  name: 'tagListSearch',
+  data () {
+    return {
+      searchWord: '',
+      EditTagModal: false
     }
+  },
+  components: {
+    EditTagModal,
+    TagItem
+  },
+  computed: {
+    ...mapGetters({taglist: 'getTagList'}),
+    ...mapSearchGetters('tags', {
+      resultIds: getterTypes.result,
+      isLoading: getterTypes.isSearching
+    }),
+    result () {
+      // return this.resultIds.map(ID => this.taglist.filter(item => item.ID === ID)[0])
+      // TODO можно ограничить в дальнейшем массив поиска по 2 букве и протестировать выход из цикла по достижению кол-ва
+      return this.taglist.filter(item => this.resultIds.includes(item.ID))
+    }
+  },
+  methods: {
+    ...mapSearchActions('tags', {
+      searchTags: actionTypes.search
+    }),
+    doSearch () {
+      this.searchTags(this.searchWord)
+    }
+  }
+}
 </script>
 <style scoped>
 

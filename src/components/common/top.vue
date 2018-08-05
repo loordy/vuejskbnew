@@ -3,8 +3,7 @@
     <listTagItem :listTag="$store.state.tags"/>
 
     <div class="header-line-filter">
-
-      <div class="header-filter-btn"  @click="filterListModalMethod" :class="{active:filterListModal}">
+      <div class="header-filter-btn"  v-if="this.$route.name === 'filters'" @click="filterListModalMethod" :class="{active:filterListModal}">
           <i class="fas fa-filter"></i>
       </div>
 

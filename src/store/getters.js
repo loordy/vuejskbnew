@@ -11,6 +11,8 @@ export default {
     return state.elements.filter(element => element.SECTION === ID)
   },
   getElementByCODE: state => CODE => {
+    // TODO разобраться как показывать 1 элемент
+    if (CODE === undefined) { CODE = '2018-07-19T09:08:35+03:44' }
     return state.elements.find(element => element.CODE === CODE)
   },
   getCountAllSecEl: state => ID => {
@@ -27,7 +29,8 @@ export default {
   getUserByID: state => ID => {
     return state.users.find(user => user.ID === ID)
   },
-  getviewType: state => type => {
-    return state.settings[type]
-  }
+  getviewType: state => {
+    return state.viewSettings
+  },
+  getTagList: state => state.tags
 }

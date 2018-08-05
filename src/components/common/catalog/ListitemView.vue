@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="liset-item article" v-for="fbElement in fbElements">
+    <div class="liset-item article" v-for="fbElement in fbElements" :key="fbElement.CODE">
         <div class="article-cover"
              :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
         </div>
         <div class="article-content">
             <div class="content-title">
-                <h3><router-link :to="fbElement.CODE">{{ fbElement.NAME }}</router-link></h3>
+                <h3><router-link :to="'/detailItem/' + fbElement.CODE">{{ fbElement.NAME }}</router-link></h3>
               <contentEditBtn/>
             </div>
             <div class="article-source-line">
@@ -24,12 +24,7 @@
             <div class="article-footer">
               <listTagItem :listTag="$store.state.tags"/>
                 <div class="article-footer-pin">
-                    <div class="pin-item">
-                        <i class="far fa-comments"></i>
-                    </div>
-                    <div class="pin-item like-btn">
-                        <i class="far fa-heart"></i>
-                    </div>
+                  <likeBtn/>
                 </div>
             </div>
         </div>
@@ -39,10 +34,14 @@
 <script>
 import ContentEditBtn from '../buttons/ContentEditBtn'
 import ListTagItem from '../ListTagItem'
+import LikeBtn from '../buttons/LikeBtn'
 export default {
   name: 'listitemView',
-  components: {ContentEditBtn,
-    ListTagItem},
+  components: {
+    ContentEditBtn,
+    ListTagItem,
+    LikeBtn
+  },
   data () {
     return {
     }

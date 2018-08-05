@@ -4,9 +4,10 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'commentsBtn'
-    }
+// TODO решить что делать с комментариями
+export default {
+  name: 'commentsBtn'
+}
 </script>
 <style scoped>
 
@@ -230,7 +231,7 @@
     }
 
     /* ------ content edit drop css end---- *
-  
+
     /* -------grid list css start------ */
 
     .visual-edit input[type="checkbox"] {

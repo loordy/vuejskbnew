@@ -1,14 +1,14 @@
 <template>
     <div class="top-tags-line">
-        <tsgItem v-for="(tagItem, i) in listTag" :tagData="tagItem" :key="i" class="tags-item-wrap"/>
+        <tagItem v-for="tagItem in listTag" :tagData="tagItem" :key="tagItem.CODE" class="tags-item-wrap"/>
     </div>
 </template>
 <script>
-import TsgItem from './TagItem'
+import TagItem from './TagItem'
 
 export default {
   name: 'listTagItem',
-  components: {TsgItem},
+  components: {TagItem},
   props: {
     listTag: {}
   }

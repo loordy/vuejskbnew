@@ -24,11 +24,11 @@
   </div>
 </template>
 <script>
-import EditCatModal from "./modals/EditCatModal";
+import EditCatModal from './modals/EditCatModal'
 export default {
   name: 'TreeItems',
   components: {
-    EditCatModal,
+    EditCatModal
   },
   data () {
     return {
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     sections () {
-      return this.$store.getters.getSectionsByParentID(this.SECTION_ID)
+      return this.$store.getters.getElementsByParentID(this.SECTION_ID)
     }
   },
   methods: {

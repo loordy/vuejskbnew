@@ -1,15 +1,25 @@
 <template>
         <span :to="tagData.link" class="tag-item">
           <span class="icon-list"><i class="fa fa-home"></i></span>
-          <span>{{ tagData.tagName }}</span>
+          <TextHighlighter :queries="queries">{{ tagData.NAME }}</TextHighlighter>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
 </template>
 <script>
+import TextHighlighter from 'vue-text-highlight'
 export default {
   name: 'tsgItem',
+  components: {
+    TextHighlighter
+  },
   props: {
-    tagData: {}
+    tagData: {},
+    searchText: ''
+  },
+  computed: {
+    queries () {
+      return this.searchText.split(/\s+/)
+    }
   }
 }
 </script>

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
+import plugins from './plugins'
 
 Vue.use(Vuex)
 
@@ -111,130 +112,421 @@ export default new Vuex.Store({
       'ENTITY': 'md_knowledge',
       'SECTION': null
     }],
-    users: {/* [id: string]: User */},
-    sections: [{
-      'ID': '13',
-      'CODE': '2018-07-19T09:08:35+03:21',
-      'TIMESTAMP_X': '2018-07-19T09:08:33+03:00',
-      'DATE_CREATE': '2018-07-19T09:08:33+03:00',
-      'CREATED_BY': '1',
-      'MODIFIED_BY': '1',
-      'ACTIVE': 'Y',
-      'SORT': '500',
-      'NAME': 'Проверка',
-      'PICTURE': null,
-      'DETAIL_PICTURE': null,
-      'DETAIL_TEXT': 'Модуль пasdозволяет решить следующие задачи:Быстро запустить ваш собственный сайт, используя обширную коллекцию готовых шаблонов.Менять дизайн шаблона - фоны, шрифты, тексты, изображения и др.Создавать собственные шаблоны.Работать с включаемыми областями шаблонов как с отдельными страницами.Использовать готовые блоки из каталога.Редактировать блоки - менять палитру, шрифты, кнопки, добавлять анимацию и др.Выводить на сайт данные из 1С-Битрикс: Управление сайтом, в том числе товары каталогов и др.',
-      'LEFT_MARGIN': '7',
-      'RIGHT_MARGIN': '8',
-      'DEPTH_LEVEL': '1',
-      'TSX_TMP': '2018-07-19 09:08:33',
-      'ENTITY': 'md_knowledge',
-      'SECTION': '15'
+    users: {/* [ID: string]: User */},
+    sections: [],
+    viewSettings: {
+      viewType: 'view'
     },
-    {
-      'ID': '15',
-      'CODE': '2018-07-19T09:08:35+03:12',
-      'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
-      'DATE_CREATE': '2018-07-19T09:08:34+03:00',
-      'CREATED_BY': '1',
-      'MODIFIED_BY': '1',
-      'ACTIVE': 'Y',
-      'SORT': '500',
-      'NAME': 'Сайты 24',
-      'PICTURE': null,
-      'DETAIL_PICTURE': null,
-      'DETAIL_TEXT': 'Модуль позволяет решить следующие задачи:Быстро запустить ваш собственный сайт, используя обширную коллекцию готовых шаблонов.Менять дизайн шаблона - фоны, шрифты, тексты, изображения и др.Создавать собственные шаблоны.Работать с включаемыми областями шаблонов как с отдельными страницами.Использовать готовые блоки из каталога.Редактировать блоки - менять палитру, шрифты, кнопки, добавлять анимацию и др.Выводить на сайт данные из 1С-Битрикс: Управление сайтом, в том числе товары каталогов и др.',
-      'LEFT_MARGIN': '5',
-      'RIGHT_MARGIN': '6',
-      'DEPTH_LEVEL': '1',
-      'TSX_TMP': '2018-07-19 09:08:34',
-      'ENTITY': 'md_knowledge',
-      'SECTION': null
-    },
-    {
-      'ID': '17',
-      'CODE': '2018-07-19T09:08:35+03:01',
-      'TIMESTAMP_X': '2018-07-19T09:08:34+03:00',
-      'DATE_CREATE': '2018-07-19T09:08:34+03:00',
-      'CREATED_BY': '1',
-      'MODIFIED_BY': '1',
-      'ACTIVE': 'Y',
-      'SORT': '500',
-      'NAME': 'Сайты 24',
-      'PICTURE': null,
-      'DETAIL_PICTURE': null,
-      'DETAIL_TEXT': 'Модуль позволяет решить следующие задачи:Быстро запустить ваш собственный сайт, используя обширную коллекцию готовых шаблонов.Менять дизайн шаблона - фоны, шрифты, тексты, изображения и др.Создавать собственные шаблоны.Работать с включаемыми областями шаблонов как с отдельными страницами.Использовать готовые блоки из каталога.Редактировать блоки - менять палитру, шрифты, кнопки, добавлять анимацию и др.Выводить на сайт данные из 1С-Битрикс: Управление сайтом, в том числе товары каталогов и др.',
-      'LEFT_MARGIN': '3',
-      'RIGHT_MARGIN': '4',
-      'DEPTH_LEVEL': '1',
-      'TSX_TMP': '2018-07-19 09:08:34',
-      'ENTITY': 'md_knowledge',
-      'SECTION': '19'
-    },
-    {
-      'ID': '19',
-      'CODE': '2018-07-19T09:08:35+03:00',
-      'TIMESTAMP_X': '2018-07-19T09:08:35+03:00',
-      'DATE_CREATE': '2018-07-19T09:08:35+03:00',
-      'CREATED_BY': '1',
-      'MODIFIED_BY': '1',
-      'ACTIVE': 'Y',
-      'SORT': '500',
-      'NAME': 'Сайты 24',
-      'PICTURE': null,
-      'DETAIL_PICTURE': null,
-      'DETAIL_TEXT': 'Модуль позволяет решить следующие задачи:Быстро запустить ваш собственный сайт, используя обширную коллекцию готовых шаблонов.Менять дизайн шаблона - фоны, шрифты, тексты, изображения и др.Создавать собственные шаблоны.Работать с включаемыми областями шаблонов как с отдельными страницами.Использовать готовые блоки из каталога.Редактировать блоки - менять палитру, шрифты, кнопки, добавлять анимацию и др.Выводить на сайт данные из 1С-Битрикс: Управление сайтом, в том числе товары каталогов и др.',
-      'LEFT_MARGIN': '1',
-      'RIGHT_MARGIN': '2',
-      'DEPTH_LEVEL': '1',
-      'TSX_TMP': '2018-07-19 09:08:35',
-      'ENTITY': 'md_knowledge',
-      'SECTION': null
-    }],
-    settings: {
-      viewType: 'grid'
-    },
-    checkedElements: {},
-    lists: {
-      top: [/* number */],
-      new: [],
-      show: []
+    currentModal: {
+      redact: false,
+      title: '',
+      element_code: ''
     },
     // TODO временный стор
     tags: [
       {
-        tagName: 'tag1',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 1,
+        'NAME': 'velit'
       },
       {
-        tagName: 'tag2',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 2,
+        'NAME': 'earum'
       },
       {
-        tagName: 'tag3',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 3,
+        'NAME': 'fugit'
       },
       {
-        tagName: 'tag4',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 4,
+        'NAME': 'qui'
       },
       {
-        tagName: 'tag5',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 5,
+        'NAME': 'sit'
       },
       {
-        tagName: 'tag6',
-        tagIcon: 'test',
-        tagLink: '/'
+        'ID': 6,
+        'NAME': 'aut'
+      },
+      {
+        'ID': 7,
+        'NAME': 'aut'
+      },
+      {
+        'ID': 8,
+        'NAME': 'rerum'
+      },
+      {
+        'ID': 9,
+        'NAME': 'iure'
+      },
+      {
+        'ID': 10,
+        'NAME': 'esse'
+      },
+      {
+        'ID': 11,
+        'NAME': 'aliquam'
+      },
+      {
+        'ID': 12,
+        'NAME': 'nemo'
+      },
+      {
+        'ID': 13,
+        'NAME': 'officiis'
+      },
+      {
+        'ID': 14,
+        'NAME': 'quis'
+      },
+      {
+        'ID': 15,
+        'NAME': 'animi'
+      },
+      {
+        'ID': 16,
+        'NAME': 'architecto'
+      },
+      {
+        'ID': 17,
+        'NAME': 'pariatur'
+      },
+      {
+        'ID': 18,
+        'NAME': 'et'
+      },
+      {
+        'ID': 19,
+        'NAME': 'nisi'
+      },
+      {
+        'ID': 20,
+        'NAME': 'fugit'
+      },
+      {
+        'ID': 21,
+        'NAME': 'dolor'
+      },
+      {
+        'ID': 22,
+        'NAME': 'eaque'
+      },
+      {
+        'ID': 23,
+        'NAME': 'quia'
+      },
+      {
+        'ID': 24,
+        'NAME': 'et'
+      },
+      {
+        'ID': 25,
+        'NAME': 'minus'
+      },
+      {
+        'ID': 26,
+        'NAME': 'facilis'
+      },
+      {
+        'ID': 27,
+        'NAME': 'sint'
+      },
+      {
+        'ID': 28,
+        'NAME': 'alias'
+      },
+      {
+        'ID': 29,
+        'NAME': 'et'
+      },
+      {
+        'ID': 30,
+        'NAME': 'aliquID'
+      },
+      {
+        'ID': 31,
+        'NAME': 'dolorem'
+      },
+      {
+        'ID': 32,
+        'NAME': 'illo'
+      },
+      {
+        'ID': 33,
+        'NAME': 'non'
+      },
+      {
+        'ID': 34,
+        'NAME': 'consequatur'
+      },
+      {
+        'ID': 35,
+        'NAME': 'eaque'
+      },
+      {
+        'ID': 36,
+        'NAME': 'saepe'
+      },
+      {
+        'ID': 37,
+        'NAME': 'assumenda'
+      },
+      {
+        'ID': 38,
+        'NAME': 'laborum'
+      },
+      {
+        'ID': 39,
+        'NAME': 'pariatur'
+      },
+      {
+        'ID': 40,
+        'NAME': 'rem'
+      },
+      {
+        'ID': 41,
+        'NAME': 'voluptatum'
+      },
+      {
+        'ID': 42,
+        'NAME': 'non'
+      },
+      {
+        'ID': 43,
+        'NAME': 'magni'
+      },
+      {
+        'ID': 44,
+        'NAME': 'et'
+      },
+      {
+        'ID': 45,
+        'NAME': 'quod'
+      },
+      {
+        'ID': 46,
+        'NAME': 'non'
+      },
+      {
+        'ID': 47,
+        'NAME': 'magni'
+      },
+      {
+        'ID': 48,
+        'NAME': 'cum'
+      },
+      {
+        'ID': 49,
+        'NAME': 'deleniti'
+      },
+      {
+        'ID': 50,
+        'NAME': 'quia'
+      },
+      {
+        'ID': 51,
+        'NAME': 'qui'
+      },
+      {
+        'ID': 52,
+        'NAME': 'quae'
+      },
+      {
+        'ID': 53,
+        'NAME': 'dolorem'
+      },
+      {
+        'ID': 54,
+        'NAME': 'nihil'
+      },
+      {
+        'ID': 55,
+        'NAME': 'quo'
+      },
+      {
+        'ID': 56,
+        'NAME': 'quod'
+      },
+      {
+        'ID': 57,
+        'NAME': 'impedit'
+      },
+      {
+        'ID': 58,
+        'NAME': 'eius'
+      },
+      {
+        'ID': 59,
+        'NAME': 'eaque'
+      },
+      {
+        'ID': 60,
+        'NAME': 'sit'
+      },
+      {
+        'ID': 61,
+        'NAME': 'illum'
+      },
+      {
+        'ID': 62,
+        'NAME': 'tempore'
+      },
+      {
+        'ID': 63,
+        'NAME': 'dolores'
+      },
+      {
+        'ID': 64,
+        'NAME': 'alias'
+      },
+      {
+        'ID': 65,
+        'NAME': 'iure'
+      },
+      {
+        'ID': 66,
+        'NAME': 'suscipit'
+      },
+      {
+        'ID': 67,
+        'NAME': 'ut'
+      },
+      {
+        'ID': 68,
+        'NAME': 'ex'
+      },
+      {
+        'ID': 69,
+        'NAME': 'et'
+      },
+      {
+        'ID': 70,
+        'NAME': 'delectus'
+      },
+      {
+        'ID': 71,
+        'NAME': 'suscipit'
+      },
+      {
+        'ID': 72,
+        'NAME': 'necessitatibus'
+      },
+      {
+        'ID': 73,
+        'NAME': 'molestias'
+      },
+      {
+        'ID': 74,
+        'NAME': 'odio'
+      },
+      {
+        'ID': 75,
+        'NAME': 'laboriosam'
+      },
+      {
+        'ID': 76,
+        'NAME': 'doloribus'
+      },
+      {
+        'ID': 77,
+        'NAME': 'harum'
+      },
+      {
+        'ID': 78,
+        'NAME': 'nihil'
+      },
+      {
+        'ID': 79,
+        'NAME': 'consectetur'
+      },
+      {
+        'ID': 80,
+        'NAME': 'omnis'
+      },
+      {
+        'ID': 81,
+        'NAME': 'rem'
+      },
+      {
+        'ID': 82,
+        'NAME': 'voluptatem'
+      },
+      {
+        'ID': 83,
+        'NAME': 'et'
+      },
+      {
+        'ID': 84,
+        'NAME': 'qui'
+      },
+      {
+        'ID': 85,
+        'NAME': 'nesciunt'
+      },
+      {
+        'ID': 86,
+        'NAME': 'doloremque'
+      },
+      {
+        'ID': 87,
+        'NAME': 'repellendus'
+      },
+      {
+        'ID': 88,
+        'NAME': 'ullam'
+      },
+      {
+        'ID': 89,
+        'NAME': 'autem'
+      },
+      {
+        'ID': 90,
+        'NAME': 'dolor'
+      },
+      {
+        'ID': 91,
+        'NAME': 'ut'
+      },
+      {
+        'ID': 92,
+        'NAME': 'magni'
+      },
+      {
+        'ID': 93,
+        'NAME': 'velit'
+      },
+      {
+        'ID': 94,
+        'NAME': 'voluptatem'
+      },
+      {
+        'ID': 95,
+        'NAME': 'aut'
+      },
+      {
+        'ID': 96,
+        'NAME': 'harum'
+      },
+      {
+        'ID': 97,
+        'NAME': 'est'
+      },
+      {
+        'ID': 98,
+        'NAME': 'et'
+      },
+      {
+        'ID': 99,
+        'NAME': 'aliquID'
+      },
+      {
+        'ID': 100,
+        'NAME': 'quis'
       }
     ]
   },
+  plugins,
   actions,
   mutations,
   getters

@@ -2,8 +2,6 @@
   <div id="app">
     <div class="main">
       <Top></Top>
-      <NotebookList />
-      <PrevTreeList />
       <router-view/>
     </div>
     <Sidebar/>
@@ -12,13 +10,11 @@
 <script>
 import Top from './components/common/top'
 import Sidebar from './components/common/Sidebar'
-import NotebookList from './NotebookList'
-import PrevTreeList from './PrevTreeList'
+import PrevTreeList from './components/common/PrevTreeList'
 export default {
   name: 'App',
   components: {
     PrevTreeList,
-    NotebookList,
     Top,
     Sidebar
   },
