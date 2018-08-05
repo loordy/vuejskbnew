@@ -1,11 +1,9 @@
 <template>
-
-      <span :to="tagData.link" class="tag-item">
+        <span :to="tagData.link" class="tag-item">
           <span class="icon-list"><i class="fa fa-home"></i></span>
           <span>{{ tagData.tagName }}</span>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
-
 </template>
 <script>
 export default {
@@ -33,6 +31,10 @@ export default {
         padding: 0 8px;
         text-decoration: none !important;
         vertical-align: middle;
+    }
+
+    .top-tags-line .tag-item{
+      margin-right: 2px;
     }
 
     .tag-item:hover {
