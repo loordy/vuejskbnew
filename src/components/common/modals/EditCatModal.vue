@@ -122,7 +122,7 @@ export default {
     /*------modal css start----*/
     .edit-modal {
         width: 285px;
-        z-index: 10;
+        z-index: 100;
         border: 1px solid rgba(0, 0, 0, .06);
         background-color: #fff;
         box-shadow: 0 7px 21px rgba(83,92,105,.12), 0 -1px 6px 0 rgba(83,92,105,.06);

@@ -9,6 +9,7 @@
             </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
@@ -16,6 +17,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor.</span>
@@ -23,6 +25,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>База знаний</span>
@@ -30,6 +33,7 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
@@ -37,20 +41,33 @@
           </div>
         </a>
         <a href="#" class="notebook-list-item">
+          <span class="delete-item"><i class="fas fa-times"></i></span>
           <div class="notebook-cover">
             <div class="notebook-skin">
               <span>Lorem ipsum dolor sit.</span>
             </div>
           </div>
         </a>
+
+      <a href="#" class="notebook-list-item add-notebook">
+        <div class="notebook-cover">
+          <div class="notebook-skin">
+            <span><i class="fas fa-plus"></i></span>
+          </div>
+        </div>
+      </a>
+
     </div>
 </template>
 <script>
-export default {
-  name: 'NotebookList'
-}
+    export default {
+        name: 'NotebookList'
+    }
 </script>
 <style scoped>
+    @import './components/css/all.css';
+    @import './components/css/fontawesome.css';
+    @import './components/css/knowledgebase.css';
 
     /* ----- notebook-list-item ---- */
     .prev-notebook-list{
@@ -59,17 +76,17 @@ export default {
     }
 
     .notebook-list-item {
-        position: relative;
-        transition: .3s ease;
-        border-radius: 5px 15px 15px 5px;
-        transform-origin: left center 0;
-        display: inline-block;
-        margin: 8px;
-        height: 155px;
-        width: 123px;
-        display: block;
-        color: #fff!important;
-        text-decoration: none!important;
+      position: relative;
+      transition: .3s ease;
+      border-radius: 5px 15px 15px 5px;
+      transform-origin: left center 0px;
+      display: inline-block;
+      margin: 8px;
+      height: 155px;
+      width: 123px;
+      display: block;
+      color: #fff!important;
+      text-decoration: none!important;
     }
 
     .notebook-list-item:hover{
@@ -86,7 +103,19 @@ export default {
       text-align: center;
       color: #5f7073;
       font-size: 14px;
-      z-index: 20;
+      z-index: 11;
+      transition: all ease 0.3s;
+    }
+    .notebook-list-item .delete-item:hover{
+      color: #e83434;
+    }
+
+
+    .notebook-cover{
+      padding: 20px 10px;
+      padding-bottom: 30px;
+      padding-left: 18px;
+      overflow: hidden;
     }
 
     .notebook-cover {
@@ -105,7 +134,7 @@ export default {
         z-index: 10;
         transition: .5s linear;
         transform-style: preserve-3d;
-        transform-origin: left center 0;
+        transform-origin: left center 0px;
         box-shadow: inset 0 0 0 1px #dbeaf2;
     }
 
@@ -144,64 +173,58 @@ export default {
       text-shadow: 0 1px #6e9c3a;
     }
 
+
+    .notebook-list-item.add-notebook{
+      transform: none;
+      opacity: 0.2;
+    }
+
+    .notebook-list-item.add-notebook:hover{
+      opacity: 0.8;
+    }
+
+    .notebook-list-item.add-notebook .notebook-cover{
+      background-image: none;
+      background-color:#dce1e4;
+      padding: 20px;
+    }
+
+    .notebook-list-item.add-notebook .notebook-skin{
+      text-align: center;
+      color: #9aa5ab;
+      font-size: 30px;
+      text-shadow: none;
+      justify-content: center;
+    }
+
+    .notebook-list-item.add-notebook .notebook-cover:before{
+      content: none;
+    }
+
     .notebook-skin{
       height: 100%;
       width: 100%;
-      padding: 20px 10px;
-      padding-bottom: 30px;
-      padding-left: 18px;
       display: flex;
       align-items: center;
       font-size: 22px;
       color: #fff;
       font-family: "ProximaNova-Semibold";
       line-height: 22px;
-    }
-
-    .notebook-skin{
       min-height: 100%;
       overflow: hidden;
     }
 
-    /*
-    .notebook-skin {
-        height: 80px;
-
-        background: #e8e8e0;
-
-        padding: 10px;
-        font-size: 14px;
-        position: relative;
-        z-index: 10;
-        color: #222;
-        text-align: left;
-        overflow: hidden;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    }
-    */
-    /*
-    .notebook-skin:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 15px;
-        left: 0;
-        bottom: 15px;
-        background: #bfddf1;
-    }
-    */
-
     .notebook-cover:before {
-        content: "";
-        position: absolute;
-        width: 10px;
-        height: calc(100% + 2px);
-        top: -1px;
-        z-index: 100;
-        border-radius: 2px;
-        left: 0;
-        transition: 2s ease;
-        background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: calc(100% + 2px);
+      top: -1px;
+      z-index: 100;
+      border-radius: 2px;
+      left: 0px;
+      transition: 2s ease;
+      background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
     }
 
 </style>
