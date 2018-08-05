@@ -1,19 +1,28 @@
 <template>
-    <div>
-        <router-link to="/" class="notebook-list-item" v-for="base in bases" :key="base.CODE">
-            <span class="delete-item"><i class="fas fa-times"></i></span>
+        <router-link to="/" class="notebook-list-item" @click="setStore()">
+            <span class="delete-item" @click="deleteBase()"><i class="fas fa-times"></i></span>
             <div class="notebook-cover">
                 <div class="notebook-skin">
                     <span>{{ base.NAME }}</span>
                 </div>
             </div>
         </router-link>
-    </div>
 </template>
 <script>
-    export default {
-        name: 'notebookItem'
+export default {
+  name: 'notebookItem',
+  props: {
+    base: {}
+  },
+  methods: {
+    setStore () {
+      this.$store.dispatch('setBases', this.base)
+    },
+    deleteBase () {
+      this.$store.dispatch('deleteBase', this.base)
     }
+  }
+}
 </script>
 <style scoped>
 
@@ -116,26 +125,7 @@
         border-color: #b9df74 #89c049 #719e43;
         text-shadow: 0 1px #6e9c3a;
     }
-
-    .notebook-list-item.add-notebook .notebook-cover {
-        background-image: none;
-        background-color: #dce1e4;
-        padding: 20px;
-    }
-
-    .notebook-list-item.add-notebook .notebook-skin {
-        text-align: center;
-        color: #9aa5ab;
-        font-size: 30px;
-        text-shadow: none;
-        justify-content: center;
-    }
-
-    .notebook-list-item.add-notebook .notebook-cover:before {
-        content: none;
-    }
-
-    .notebook-skin {
+     .notebook-skin {
         height: 100%;
         width: 100%;
         display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PrevTreeList></PrevTreeList>
+    <PrevTreeList :currentID="fbElement.ID"></PrevTreeList>
     <div class="liset-item article">
       <div class="article-cover"
            :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">

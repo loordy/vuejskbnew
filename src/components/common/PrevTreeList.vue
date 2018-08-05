@@ -1,86 +1,20 @@
 <template>
   <div class="kb-prev-tree-wrap">
-    <h2 class="kb-prev-tree-title">Структура разделов</h2>
-
-    <ul class="kb-prev-tree-list">
-      <li class="kb-prev-tree-list_item">
-        <a href="#">
-          <i class="fas fa-folder-open"></i>
-          <span>Группа компаний UCD Micros</span>
-        </a>
-        <ul class="kb-prev-tree-list-parent">
-          <li class="kb-prev-tree-list_item">
-            <a href="#"><i class="fas fa-folder-open"></i><span>История</span></a>
-            <ul class="kb-prev-tree-list-parent">
-              <li class="kb-prev-tree-list_item">
-                <a href="#"><i
-                  class="far fa-file"></i><span>7 правил делового общения в мессенджерах</span></a>
-              </li>
-              <li class="kb-prev-tree-list_item"><a href="#"><i class="far fa-file"></i><span>Вредные советы руководителю проекта</span></a>
-              </li>
-            </ul>
-          </li>
-          <li class="kb-prev-tree-list_item"><a href="#"><i class="fas fa-folder-open"></i><span>Притча о двух работниках</span></a>
-            <ul class="kb-prev-tree-list-parent">
-              <li class="kb-prev-tree-list_item">
-                <a href="#"><i class="fas fa-folder-open"></i><span>История 2</span></a>
-                <ul class="kb-prev-tree-list-parent">
-                  <li class="kb-prev-tree-list_item">
-                    <a href="#"><i
-                      class="far fa-file"></i><span>7 правил делового общения в мессенджерах</span></a>
-                  </li>
-                  <li class="kb-prev-tree-list_item"><a href="#"><i class="far fa-file"></i><span>Вредные советы руководителю проекта</span></a>
-                  </li>
-                </ul>
-              </li>
-              <li class="kb-prev-tree-list_item">
-                <a href="#">
-                  <i class="fas fa-folder-open"></i>
-                  <span>Внутренний FAQ</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="kb-prev-tree-list_item">
-            <a href="#">
-              <i class="fas fa-folder-open"></i>
-              <span>Внутренний FAQ</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="kb-prev-tree-list_item">
-        <a href="#">
-          <i class="fas fa-folder-open"></i>
-          <span>Внутренний FAQ</span>
-        </a>
-      </li>
-      <li class="kb-prev-tree-list_item">
-        <a href="#">
-          <i class="fas fa-folder-open"></i>
-          <span>Приказы и поручения</span>
-        </a>
-      </li>
-      <li class="kb-prev-tree-list_item">
-        <a href="#">
-          <i class="fas fa-folder-open"></i>
-          <span>Менеджер по продажам</span>
-        </a>
-      </li>
-    </ul>
-
+    <h2 class="kb-prev-tree-title">Структура базы</h2>
+    <treeItemList :treeData="$store.getters.getElementsByParentID(currentID)" :currentItem="currentID"/>
   </div>
 </template>
 <script>
+import TreeItemList from './TreeItemList'
 export default {
-  name: 'prevTreeList'
+  name: 'prevTreeList',
+  components: {TreeItemList},
+  props: {
+    currentID: ''
+  }
 }
 </script>
 <style>
-  @import '../css/all.css';
-  @import '../css/fontawesome.css';
-  @import '../css/knowledgebase.css';
-
   /* --------prev tree list ------- */
   .kb-prev-tree-wrap {
     padding: 20px;
@@ -92,17 +26,6 @@ export default {
     font-family: "ProximaNova-Semibold";
     font-weight: normal;
     font-size: 22px;
-  }
-
-  .kb-prev-tree-list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  li.kb-prev-tree-list_item {
-    margin-left: 20px;
-    position: relative;
   }
 
   li.kb-prev-tree-list_item a {
@@ -145,50 +68,12 @@ export default {
 
   }
 
-  .kb-prev-tree-list-parent {
-    padding: 0;
-    margin: 0;
-    margin-top: 5px;
-    list-style: none;
-  }
-
   .kb-prev-tree-list-parent li {
     list-style: none;
   }
 
   .kb-prev-tree-list-parent > li > a {
     font-size: 18px;
-  }
-
-  li.kb-prev-tree-list_item:before {
-    content: '';
-    display: block;
-    border-top: 1px solid #bdc3c7;
-    border-left: 1px solid #bdc3c7;
-    height: 100%;
-    width: 1rem;
-    position: absolute;
-    bottom: -1.1rem;
-    left: -0.9rem;
-    left: -1.2rem;
-    z-index: 0;
-  }
-
-  li.kb-prev-tree-list_item:first-child:after {
-    content: '';
-    display: block;
-    border-left: 1px solid #bdc3c7;
-    height: 100%;
-    width: 1rem;
-    position: absolute;
-    bottom: 0.9rem;
-    left: -0.9rem;
-    left: -1.2rem;
-    z-index: 0;
-  }
-
-  li.kb-prev-tree-list_item:last-child:before {
-    border-left: none;
   }
 
   /* ---- prev tree list  end ---- */

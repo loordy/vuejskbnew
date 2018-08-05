@@ -29,8 +29,13 @@ export default {
   getUserByID: state => ID => {
     return state.users.find(user => user.ID === ID)
   },
+  getBaseByCODE: state => CODE => {
+    return state.bases.find(base => base.CODE === CODE)
+  },
   getviewType: state => {
     return state.viewSettings
   },
-  getTagList: state => state.tags
+  getTagList: state => state.tags,
+  getBaseList: state => state.bases,
+  getCurrentModal: state => state.currentModal
 }

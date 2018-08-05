@@ -5,7 +5,7 @@
         <span v-if="getCountSections(section.ID)>0" @click="show" :id="section.ID" class="tree-caret"><i
           class="fas fa-caret-right"></i>
         </span>
-        <router-link class="cat-nav_list-item_link" :to="'/section/'+ section.CODE"><span class="link_text">{{ section.NAME }}</span>
+        <router-link class="cat-nav_list-item_link" :to="'/detailItem/'+ section.CODE"><span class="link_text">{{ section.NAME }}</span>
           <div class="icon_sidebar_block">
               <span class="icon_sidebar icon_pencil" @click="editCatModalMethod">
                 <i class="fas fa-pencil-alt"></i>

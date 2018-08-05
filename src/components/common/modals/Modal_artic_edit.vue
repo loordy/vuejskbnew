@@ -20,9 +20,12 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'modal_artic_edit'
-    }
+export default {
+  name: 'modal_artic_edit',
+  props: {
+    data: {}
+  }
+}
 </script>
 <style scoped>
 

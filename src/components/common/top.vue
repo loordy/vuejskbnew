@@ -1,6 +1,6 @@
 <template>
   <div class="header-line">
-    <listTagItem :listTag="$store.state.tags"/>
+    <listTagItem/>
 
     <div class="header-line-filter">
       <div class="header-filter-btn"  v-if="this.$route.name === 'filters'" @click="filterListModalMethod" :class="{active:filterListModal}">

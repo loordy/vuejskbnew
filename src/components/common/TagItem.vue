@@ -1,7 +1,7 @@
 <template>
         <span :to="tagData.link" class="tag-item">
           <span class="icon-list"><i class="fa fa-home"></i></span>
-          <TextHighlighter :queries="queries">{{ tagData.NAME }}</TextHighlighter>
+          <TextHighlighter :queries="searchText">{{ tagData.NAME }}</TextHighlighter>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
 </template>
@@ -15,11 +15,6 @@ export default {
   props: {
     tagData: {},
     searchText: ''
-  },
-  computed: {
-    queries () {
-      return this.searchText.split(/\s+/)
-    }
   }
 }
 </script>

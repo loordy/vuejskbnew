@@ -5,7 +5,7 @@ import markdown from '@/components/pages/markdown'
 import section from '@/components/pages/section'
 import detailItem from '@/components/pages/detailItem'
 import Settings from '@/components/pages/settings'
-import filters from '@/components/pages/filters'
+import listItems from '@/components/pages/listItems'
 
 Vue.use(Router)
 
@@ -28,9 +28,9 @@ export default new Router({
       component: detailItem
     },
     {
-      path: '/filters/',
-      name: 'filters',
-      component: filters,
+      path: '/listItems/',
+      name: 'listItems',
+      component: listItems,
       props (route) {
         return route.query || {}
       }

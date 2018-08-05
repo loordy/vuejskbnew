@@ -14,7 +14,7 @@
         <div class="category-tag">
             <div class="category-tag_row" v-for="tag in (searchWord ? result : taglist)" :key="tag.CODE">
 
-              <TagItem :tagData="tag" :searchText="searchWord"></TagItem>
+              <TagItem :tagData="tag" :searchText="searchWord.split(/\s+/)"></TagItem>
 
                 <span class="cat-num">4</span>
                 <span class="icon_sidebar icon_pencil" @click="EditTagModal = !EditTagModal"><i

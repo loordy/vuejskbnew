@@ -9,21 +9,21 @@
           <div class="aside-pt-block">
             <div class="category-nav_header">
 
-              <a href="#" class="cat-nav-btn">
+              <router-link to="/" class="cat-nav-btn">
                 <i class="fa fa-home"></i>
-              </a>
+              </router-link>
 
               <a href="#" class="cat-nav-btn">
                 <i class="far fa-copy"></i>
               </a>
 
-              <a href="#" class="cat-nav-btn favorite">
+              <router-link to="/list/" class="cat-nav-btn favorite">
                 <i class="far fa-star"></i>
-              </a>
+              </router-link>
 
-              <a href="#" class="cat-nav-btn trash">
+              <router-link to="/list/" class="cat-nav-btn trash">
                 <i class="far fa-trash-alt"></i>
-              </a>
+              </router-link>
             </div>
           </div>
 

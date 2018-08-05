@@ -3,7 +3,7 @@ const entitykb = 'md_knowledge'
 // const settingskb = 'md_settings_knowledge'
 export default {
   setElements: ({ commit, state }, data) => {
-    api.getElements(entitykb, function (result) {
+    api.getElements(state.getters.getBaseByID(data).CODE, function (result) {
       commit('setElements', result)
     })
   },
@@ -61,6 +61,31 @@ export default {
   },
 
   installEntity: ({ commit, state }, data) => {
-    api.installEntity()
+    api.installEntity(data)
+  },
+
+  setBases: ({ commit, state }, data) => {
+    api.getElements(state.getters.getBaseByID(data).CODE, function (result) {
+      commit('setElements', result)
+    })
+  },
+
+  deleteBase: ({ commit, state }, data) => {
+    commit('deleteBase', data)
+    api.deleteItem(data, data, function (result) {})
+    api.deleteEntity(data, data, function (result) {})
+  },
+
+  addNewBase: ({ commit, state }, data) => {
+    data.CODE = new Date()
+    commit('addNewBase', data)
+    api.installEntity(data)
+    api.addNewItem(data, data, function (result) {
+      state.getters.getBaseByCODE(data.CODE).ID = result
+    })
+  },
+
+  updateBase: ({ commit, state }, data) => {
+    api.updateItem(data, data)
   }
 }

@@ -41,5 +41,23 @@ export default {
 
   setView: (state, data) => {
     state.settings.viewType = data
+  },
+
+  openModal: (state, data) => {
+    state.currentModal.openModal = data.openModal
+    state.currentModal.modalData = data.modalData
+  },
+
+  setBases: (state, data) => {
+    state.bases = data
+  },
+
+  addNewBase: (state, data) => {
+    state.bases.push(data)
+  },
+
+  deleteBase: (state, data) => {
+    state.bases.splice(state.bases.indexOf(data), 1)
   }
+
 }
