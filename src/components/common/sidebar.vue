@@ -13,15 +13,15 @@
                 <i class="fa fa-home"></i>
               </router-link>
 
-              <a href="#" class="cat-nav-btn">
+              <router-link to="/listItems/?q=favorites&a=b&d=g" class="cat-nav-btn">
                 <i class="far fa-copy"></i>
-              </a>
+              </router-link>
 
-              <router-link to="/list/" class="cat-nav-btn favorite">
+              <router-link to="/listItems/?q=favorites" class="cat-nav-btn favorite">
                 <i class="far fa-star"></i>
               </router-link>
 
-              <router-link to="/list/" class="cat-nav-btn trash">
+              <router-link to="/listItems/?a=trunk" class="cat-nav-btn trash">
                 <i class="far fa-trash-alt"></i>
               </router-link>
             </div>

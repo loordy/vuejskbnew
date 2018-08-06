@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/components/pages/main'
 import markdown from '@/components/pages/markdown'
-import section from '@/components/pages/section'
 import detailItem from '@/components/pages/detailItem'
 import Settings from '@/components/pages/settings'
 import listItems from '@/components/pages/listItems'
@@ -39,11 +38,6 @@ export default new Router({
       path: '/settings/',
       name: 'settings',
       component: Settings
-    },
-    {
-      path: '/section/:code(\\d+)',
-      name: 'section',
-      component: section
     }
   ]
 })
