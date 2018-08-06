@@ -149,6 +149,11 @@ export default {
     background: linear-gradient(to right, #9c2e2b 0%, #cc4b48 12%, #9c2e2b 25%, #cc4b48 37%, #9c2e2b 50%, #cc4b48 62%, #9c2e2b 75%, #cc4b48 87%, #9c2e2b 100%);
   }
   /* ----- notebook-list-item ---- */
+  .notebook-list-item.add-notebook{
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
   .notebook-list-item.add-notebook .notebook-cover {
     background-image: none;
     background-color: #dce1e4;

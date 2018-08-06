@@ -1,51 +1,90 @@
 <template>
   <transition name="slide_fade">
     <div class="slide_fade_modal">
-      <div class="slide_fade_modal_edit">
-        <div class="kb-iframe-header">
-          <div class="pagetitle-wrap">
-            <div class="pagetitle-inner-container">
-              <div class="pagetitle">
-                <slot name="header" class="pagetitle-item">Новая статья</slot>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide_fade_modal_edit_workarea">
-          <div class="ht_container">
-            <section id="content" role="main">
-              <div>
-                <input class="kb-edit-input" v-model="elementModel.NAME">
-                <select v-model="selected" class="kb-select">
-                  <option selected value="">{{ (sections.find(section => section.ID === elementModel.SECTION) ? sections.find(section => section.ID === elementModel.SECTION).NAME : 'Верхний уровень' )}}</option>
-                  <option value="" v-show="elementModel.SECTION !== null">Верхний уровень</option>
-                  <option v-for="section in sections" :key="section.CODE" :value="section.ID" v-show="section.ID !== elementModel.SECTION">{{ section.NAME }}</option>
-                </select>
-              </div>
-              <navBar/>
-              <div id="editor">
-                <textarea :value="elementModel.DETAIL_TEXT" @input="update"></textarea>
-                <div class="textarea" v-html="compiledMarkdown"></div>
-              </div>
-              <div class="kb-iframe-workarea kb-iframe-workarea-own-padding" id="kb-content-outer">
-                <div class="kb-iframe-content">
-                  <div class="popup-window-buttons">
-                    <span class="popup-window-button popup-window-button-accept" @click="save">Сохранить</span>
-                    <span class="webform-small-button webform-small-button-transparent" @click="updateart">Применить</span>
-                    <span class="popup-window-button popup-window-button-link popup-window-button-link-cancel"
-                          id="cancel_kb" @click="closing">Отмена</span>
+      <div class="slide_fade-wrapp">
+
+        <div class="slide_fade_modal_edit">
+            <div class="slide_fade_modal_edit-area">
+
+                  <div class="edit-area-header">Редактировать статью</div>
+              <div class="edit-area-form-container">
+                <div class="edit-area-form">
+                  <div class="edit-area-form-col">
+                    <div class="edit-group">
+                      <label for="" class="edit-group-label">Название</label>
+                      <input type="text" placeholder="Название" class="kb-lg-input">
+                    </div>
+
                   </div>
+                  <div class="edit-area-form-col">
+                    <div class="edit-group">
+                      <label for="" class="edit-group-label">Раздел</label>
+                      <input type="text" placeholder="Раздел" class="kb-lg-input">
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <div class="edit-area-mrk">
+                  <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
               </div>
 
-            </section>
+
+
+            </div>
+
+            <div class="edit-area-footer">
+              <button class="kb-btn green-btn">
+                Сохранить
+              </button>
+              <button class="kb-btn">
+                Применить
+              </button>
+            </div>
+        </div>
+
+        <div class="slide_fade-aside">
+          <div class="aside-block">
+            <h3 class="aside-title">Инпут 1</h3>
+            <input type="text" class="kb-input">
+          </div>
+
+          <div class="aside-block">
+            <h3 class="aside-title">Инпут 2</h3>
+            <input type="text" class="kb-input">
+          </div>
+
+          <div class="aside-block">
+            <div class="select-tag">
+                <div class="select-tag-hed">
+                  <div class="select-tag-hed-wrap">
+                    <input type="text" placeholder="Добавить тег...">
+                    <button>
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+            <div class="select-content">
+              <tagItem v-for="tagItem in taglist" :tagData="tagItem" :key="tagItem.CODE" searchText='' class="tags-item-wrap"/>
+            </div>
+          </div>
+
+          <div class="aside-block">
+            <h3 class="aside-title">Добавить теги</h3>
+            <tagListSearch :edit-tag-modal="EditTagModal" :edit-tag-modal-method="EditTagModalMethod"/>
+          </div>
+
+          <div class="slide_fade_modal_close" title="Закрыть">
+            <span class="slide_fade_modal_close_inner" @click="closing"> <i class="fas fa-times"></i></span>
           </div>
         </div>
-      </div>
-      <div class="slide_fade_modal_close" title="Закрыть">
-        <span class="slide_fade_modal_close_inner" @click="closing"> <i class="fas fa-times"></i></span>
+
       </div>
     </div>
+
   </transition>
 </template>
 
@@ -53,10 +92,16 @@
 import _ from 'lodash'
 import marked from 'marked'
 import NavBar from '../markdown/NavBar'
+import tagListSearch from '../TagListSearch'
+import tagItem from '../tagItem'
 
 export default {
   name: 'modalAll',
-  components: {NavBar},
+  components: {
+      NavBar,
+      tagListSearch,
+      tagItem
+  },
   data () {
     return {
       input: '# hello',
@@ -121,10 +166,12 @@ export default {
       }
     },
     closing () {
-      this.elementModel.NAME = this.originData.NAME
-      this.elementModel.DETAIL_TEXT = this.originData.DETAIL_TEXT
-      this.elementModel.SECTION = this.originData.SECTION
       this.$emit('close')
+      // this.elementModel.NAME = this.originData.NAME
+      // this.elementModel.DETAIL_TEXT = this.originData.DETAIL_TEXT
+      // this.elementModel.SECTION = this.originData.SECTION
+      console.log("test")
+
     }
 
   }
@@ -207,21 +254,23 @@ export default {
 
   .slide_fade_modal {
     position: fixed;
-    z-index: 3000;
+    z-index: 9999;
     top: 0;
     right: 0;
     display: block;
     width: 100%;
     height: 100%;
     bottom: 0;
+    cursor: auto;
+    background-color: #fff;
   }
 
   .slide_fade_modal_edit {
     height: 100%;
     transform: translateX(0%);
-    width: calc(100% - 64px);
+    width: 100%;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     transition: all ease 0.3s;
     background: #eef2f4;
@@ -230,10 +279,10 @@ export default {
 
   .slide_fade_modal_close {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 64px;
-    height: 64px;
+    top: 5px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     transition: opacity .3s;
@@ -247,15 +296,17 @@ export default {
     margin-left: -18px;
     width: 32px;
     height: 32px;
-    border: 2px solid rgba(255, 255, 255, .7);
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, .3);
     opacity: 1;
     transition: all 300ms ease;
     text-align: center;
     line-height: 32px;
-    color: #fff;
     font-size: 20px;
+    color: #c4c7cc;
+  }
+
+  .slide_fade_modal_close_inner:hover{
+    color: #333;
   }
 
   .kb_iframe_header {
@@ -486,4 +537,120 @@ export default {
     bottom: 0;
     width: 100%;
   }
+
+  .slide_fade-wrapp{
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide_fade-wrapp .slide_fade_modal_edit{
+    width: calc(100% - 300px);
+  }
+
+  .slide_fade-wrapp .slide_fade-aside {
+    width: 300px;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding: 10px;
+    background-color: #fff;
+    overflow-y: auto;
+    padding-top: 30px;
+  }
+
+  .edit-area-header{
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .edit-area-form-container{
+    padding: 15px;
+    background-color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .select-tag{
+    width: 260px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .06);
+  }
+
+  .select-tag-hed{
+    padding: 10px 20px;
+    border-bottom: 1px solid #f5f5f7;
+  }
+
+  .select-tag-hed-wrap{
+    position: relative;
+  }
+
+  .select-tag-hed input{
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    outline: none;
+    width: 100%;
+    padding-right: 30px;
+  }
+
+  .select-tag-hed button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: #9aa5ab;
+    font-size: 12px;
+    border: 0;
+    background-color: #fff;
+    outline: none;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .select-tag-hed button:hover{
+    color: #36b5df;
+  }
+
+  .edit-area-form{
+    padding: 20px 20px;
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+
+  .edit-area-form-col{
+    width: 50%;
+    padding: 0 15px;
+  }
+
+  .edit-area-mrk{
+    padding: 0 20px;
+  }
+
+  .edit-area-mrk textarea{
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #e4e5e9;
+    font-family: "ProximaNova-Regular";
+    color: #556066;
+    font-size: 18px;
+    padding: 20px 16px !important;
+    background-color: #fff;
+  }
+
+  .edit-area-footer{
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
 </style>

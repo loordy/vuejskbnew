@@ -8,7 +8,7 @@
       <div class="article-content">
         <div class="content-title">
           <h3><span>{{ fbElement.NAME }}</span></h3>
-          <contentEditBtn/>
+          <contentEditBtn></contentEditBtn>
         </div>
         <div class="article-source-line">
           <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>

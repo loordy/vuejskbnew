@@ -437,6 +437,7 @@ body{
 .kb-btn{
   cursor: pointer;
   color: #a0a0a0;
+  border-color: #a0a0a0;
   display: inline-block;
   font-size: 14px;
   border: 1px solid;
@@ -450,6 +451,11 @@ body{
   outline: none;
   font-family: "ProximaNova-Semibold",Helvetica,Arial,sans-serif;
   border-radius: 2px;
+}
+
+.kb-btn:hover{
+  background: #cfd4d8;
+  color: #535c69;
 }
 
 .red-btn{
@@ -571,4 +577,62 @@ input.checkbox:checked + label:after {
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.kb-input{
+  width: 100%;
+  font-family: "ProximaNova-Regular";
+  color: #556066;
+  font-size: 14px;
+  padding: 0 16px !important;
+  margin: 0;
+  border: none;
+  display: inline-block;
+  line-height: inherit;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid #e4e5e9;
+  height: 35px;
+  line-height: 35px;
+
+}
+
+.kb-lg-input{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  border: 1px solid #e4e5e9;
+  font-family: "ProximaNova-Regular";
+  color: #556066;
+  font-size: 18px;
+  padding: 0 16px !important;
+}
+
+.edit-group-label{
+  color: #545c6a;
+  font-size: 12px;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.aside-block{
+  margin-bottom: 30px;
+}
+
+
+.aside-title{
+  font-family: "ProximaNova-Semibold";
+  font-size: 16px;
+  color: #545c6a;
+  line-height: 1;
+  position: relative;
+  margin: 0;
+  margin-bottom: 15px;
 }
