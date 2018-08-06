@@ -4,8 +4,9 @@
         <div class="content-edit-btn-content-wrap">
             <ul class="content-edit_list">
                 <li>
-                    <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
+                    <div @click="show = !show" @close="show=false"> <i class="fas fa-pencil-alt"></i> <span>Редактировать111</span></div>
                 </li>
+              <modalAll v-if="show"></modalAll>
                 <li>
                     <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
                 </li>
@@ -20,10 +21,19 @@
     </div>
 </template>
 <script>
+import modalAll from './modalAll'
 export default {
   name: 'modal_artic_edit',
   props: {
     data: {}
+  },
+  components: {
+    modalAll
+  },
+  data () {
+    return {
+      show: false
+    }
   }
 }
 </script>

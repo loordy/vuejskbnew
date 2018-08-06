@@ -61,7 +61,6 @@ export default {
       if (this.NAME) {
         this.$emit('close')
         this.$store.dispatch('addNewBase', {NAME: this.NAME})
-
       }
     }
   }

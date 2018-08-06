@@ -34,7 +34,7 @@ export default {
 </script>
 <style scoped>
 
-    .cat-nav_list-item_link {
+    .cat-nav_list-item_link > a{
         display: block;
         color: #556066;
         font-family: "ProximaNova-Light";
@@ -47,16 +47,16 @@ export default {
         border-radius: 2px;
     }
 
-    .cat-nav_list-item_link:hover {
+    .cat-nav_list-item_link a:hover {
         background-color: #ebf1f4;
     }
 
-    .cat-nav_list-item_link:hover:before {
+    .cat-nav_list-item_link a:hover:before {
         content: "";
         background-color: transparent;
     }
 
-    .cat-nav_list-item_link:hover:before {
+    .cat-nav_list-item_link a:hover:before {
         content: "";
         position: absolute;
         left: -100%;

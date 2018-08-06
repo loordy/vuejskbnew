@@ -1,30 +1,45 @@
 <template>
-  <div class="content-edit-btn">
-    <i class="fas fa-ellipsis-h"></i>
-    <div class="content-edit-btn-content">
-      <i class="modal-angle top"></i>
-      <div class="content-edit-btn-content-wrap">
-        <ul class="content-edit_list">
-          <li>
-            <a href="#"> <i class="fas fa-pencil-alt"></i> <span>Редактировать</span></a>
-          </li>
-          <li>
-            <a href="#"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></a>
-          </li>
-          <li>
-            <a href="#"> <i class="far fa-star"></i> <span>Добавить в избранное</span></a>
-          </li>
-          <li>
-            <a href="#"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></a>
-          </li>
-        </ul>
+  <div>
+    <div class="content-edit-btn">
+      <i class="fas fa-ellipsis-h"></i>
+      <div class="content-edit-btn-content">
+        <i class="modal-angle top"></i>
+        <div class="content-edit-btn-content-wrap">
+          <ul class="content-edit_list">
+            <li>
+              <div @click="showM = !showM" @close="showM = false" class="content-edit_list-item"> <i class="fas fa-pencil-alt"></i> <span>Редактировать111</span></div>
+            </li>
+            <li>
+              <div class="content-edit_list-item"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></div>
+            </li>
+            <li>
+              <div class="content-edit_list-item"> <i class="far fa-star"></i> <span>Добавить в избранное</span></div>
+            </li>
+            <li>
+              <div class="content-edit_list-item"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <modalAll v-if="showM"></modalAll>
   </div>
 </template>
 <script>
+import modalAll from '../modals/modalAll'
 export default {
-  name: 'contentEditBtn'
+  name: 'contentEditBtn',
+  props: {
+    data: {}
+  },
+  components: {
+    modalAll
+  },
+  data () {
+    return {
+      showM: false
+    }
+  }
 }
 </script>
 <style scoped>
@@ -261,7 +276,7 @@ export default {
     list-style: none;
   }
 
-  .content-edit_list li a {
+  .content-edit_list li .content-edit_list-item {
     display: block;
     text-decoration: none !important;
     color: #979797;
@@ -275,7 +290,7 @@ export default {
 
   }
 
-  .content-edit_list li a span {
+  .content-edit_list li .content-edit_list-item span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -283,7 +298,7 @@ export default {
     display: inline-block;
   }
 
-  .content-edit_list > li > a i {
+  .content-edit_list > li > .content-edit_list-item i {
     position: absolute;
     left: 7px;
     top: 50%;
@@ -292,12 +307,12 @@ export default {
     color: #9aa5ab;
   }
 
-  .content-edit_list li a:hover {
+  .content-edit_list li .content-edit_list-item:hover {
     background-color: #f6f9fb;
     color: #556066;
   }
 
-  .content-edit_list li a:hover i {
+  .content-edit_list li .content-edit_list-item:hover i {
     color: #556066;
   }
 
