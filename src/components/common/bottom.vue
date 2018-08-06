@@ -1,11 +1,13 @@
 <template>
 <div>
   <modalAddNewBase v-if="currentModal.openModal === 'modalAddNewBase'" :modalData="currentModal.modalData" @close="close"/>
+  <EditCatModal v-else-if="currentModal.openModal === 'EditCatModal'" :modalData="currentModal.modalData" @close="close"/>
 </div>
 </template>
 
 <script>
 import ModalAddNewBase from './modals/ModalAddNewBase'
+import EditCatModal from './modals/EditCatModal'
 export default {
   name: 'bottom',
   data () {
@@ -14,7 +16,8 @@ export default {
     }
   },
   components: {
-    ModalAddNewBase
+    ModalAddNewBase,
+    EditCatModal
   },
   methods: {
     close () {

@@ -3,7 +3,7 @@
     <PrevTreeList :currentID="fbElement.ID"></PrevTreeList>
     <div class="liset-item article">
       <div class="article-cover"
-           :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+           :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
       </div>
       <div class="article-content">
         <div class="content-title">

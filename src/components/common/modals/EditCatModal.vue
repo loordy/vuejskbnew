@@ -1,5 +1,5 @@
 <template>
-    <div class="tree-edit-modal edit-modal">
+    <div class="tree-edit-modal edit-modal" :style="'top:'+ modalData.top +';'">
         <i class="modal-angle right"></i>
         <div class="edit-modal-wrap">
           <div class="edit-modal-header">
@@ -23,7 +23,7 @@
               <input type="text" class="kb-input">
             </div>
 
-            <div class="edit-group">
+            <div class="edit-group" style="display:none">
               <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
               <div class="radio-button-row">
 
@@ -55,7 +55,7 @@
             </div>
 
             <a href="#" class="category-item-add_btn">
-              Новый раздел
+              Новый элемент
               <span class="cat-item-in_icon">
                   <i class="fas fa-plus"></i>
                 </span>
@@ -70,13 +70,7 @@
 export default {
   name: 'editCatModal',
   props: {
-    top: '10',
-    left: '10'
-  },
-  methods: {
-    closeModal () {
-      this.iSshowModal = false
-    }
+    modalData: {}
   }
 }
 </script>
@@ -129,6 +123,7 @@ export default {
         margin-bottom: 14px;
         box-sizing: border-box;
         position: absolute;
+        left: calc(100% - 550px)
     }
 
     .edit-modal .edit-modal-wrap{

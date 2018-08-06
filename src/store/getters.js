@@ -21,7 +21,7 @@ export default {
   },
   getCountSection: state => ID => {
     if (ID === undefined) { ID = null }
-    return state.sections.filter(section => section.SECTION === ID).length
+    return state.elements.filter(item => item.SECTION === ID).length
   },
   getUsersByParams: state => id => {
     return state.users.filter(user => user.ACTIVE)

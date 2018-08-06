@@ -2,7 +2,7 @@
   <div>
     <div class="liset-item article" v-for="fbElement in fbElements" :key="fbElement.CODE">
         <div class="article-cover"
-             :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+             :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
         </div>
         <div class="article-content">
             <div class="content-title">

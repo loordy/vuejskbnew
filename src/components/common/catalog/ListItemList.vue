@@ -9,7 +9,7 @@
                     </div>
                     <div class="visual-edit_item">
                         <div class="visual-artc-img"
-                             :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+                             :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="visual-edit_item">
                         <div class="visual-artc-img"
-                             :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+                             :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="visual-edit_item">
                         <div class="visual-artc-img"
-                             :style="{ backgroundImage: 'url(' + require('@/components/images/article.jpg') + ')' }">
+                             :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
                         </div>
                     </div>
                 </div>
