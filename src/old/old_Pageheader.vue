@@ -4,7 +4,7 @@
     </header>
 </template>
 <script>
-import Breadcrumbs from './Breadcrumbs'
+import Breadcrumbs from './old_Breadcrumbs'
 
 export default {
   name: 'pageheader',

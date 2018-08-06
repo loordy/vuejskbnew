@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { getSections, getElements } from '../../api/index'
+import { getSections, getElements } from '../api/index'
 /* global BX24 */
 export default {
   name: 'settings',

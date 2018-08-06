@@ -8,7 +8,7 @@
       <div class="article-content">
         <div class="content-title">
           <h3><span>{{ fbElement.NAME }}</span></h3>
-          <contentEditBtn></contentEditBtn>
+          <contentEditBtn :data="fbElement"></contentEditBtn>
         </div>
         <div class="article-source-line">
           <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>
@@ -26,18 +26,21 @@
           <listTagItem :listTag="$store.state.tags"/>
           <div class="article-footer-pin">
             <likeBtn/>
+
           </div>
         </div>
       </div>
     </div>
+    <ListAddBtn></ListAddBtn>
   </div>
 </template>
 
 <script>
-import PrevTreeList from '../common/PrevTreeList'
+import PrevTreeList from '../common/tree/PrevTreeList'
 import ContentEditBtn from '../common/buttons/ContentEditBtn'
-import ListTagItem from '../common/ListTagItem'
+import ListTagItem from '../common/tag/ListTagItem'
 import LikeBtn from '../common/buttons/LikeBtn'
+import ListAddBtn from '../common/buttons/ListAddBtn'
 
 export default {
   name: 'detailItem',
@@ -50,7 +53,8 @@ export default {
     LikeBtn,
     PrevTreeList,
     ContentEditBtn,
-    ListTagItem
+    ListTagItem,
+    ListAddBtn
   }
 }
 </script>

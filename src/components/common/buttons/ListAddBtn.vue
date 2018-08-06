@@ -1,11 +1,23 @@
 <template>
-    <div class="fixed-add-btn">
+    <div class="fixed-add-btn" @click="openModal">
         <i class="fas fa-plus"></i>
     </div>
 </template>
 <script>
 export default {
-  name: 'listAddBtn'
+  name: 'listAddBtn',
+  methods: {
+    openModal () {
+      this.$store.commit('openModal',
+        {
+          openModal: 'modalAll',
+          modalData: {
+            element: this.data,
+            new: true
+          }
+        })
+    }
+  }
 }
 </script>
 <style>
@@ -160,7 +172,7 @@ export default {
         box-shadow: 0 0 30px rgba(158, 157, 163, .5);
         margin: 0 7.5px;
         position: fixed;
-        right: 70px;
+        right: 250px;
         bottom: 30px;
         z-index: 10;
         width: 55px;

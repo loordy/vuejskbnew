@@ -17,7 +17,7 @@
 
 <script>
 import filterListModal from './modals/filterListModal'
-import ListTagItem from './ListTagItem'
+import ListTagItem from './tag/ListTagItem'
 
 export default {
   components: {

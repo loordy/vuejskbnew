@@ -37,5 +37,8 @@ export default {
   },
   getTagList: state => state.tags,
   getBaseList: state => state.bases,
-  getCurrentModal: state => state.currentModal
+  getCurrentModal: state => state.currentModal,
+  getElementsList: state => ID => {
+    return state.elements.filter(element => element.SECTION === ID)
+  }
 }

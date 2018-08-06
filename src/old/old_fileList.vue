@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import MenuModal from '../modals/MenuModal'
+import MenuModal from '../components/common/modals/oldmenuModal'
 
 export default {
   name: 'filelist',

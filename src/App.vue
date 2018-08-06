@@ -12,7 +12,7 @@
 import Top from './components/common/top'
 import bottom from './components/common/bottom'
 import Sidebar from './components/common/Sidebar'
-import NotebookList from './components/common/NotebookList'
+import NotebookList from './components/common/notebook/NotebookList'
 import PrevTreeList from './components/common/modals/PrevTreeList'
 export default {
   name: 'App',
@@ -48,4 +48,5 @@ export default {
   @import 'assets/css/all.css';
   @import 'assets/css/fontawesome.css';
   @import 'assets/css/knowledgebase.css';
+  @import 'assets/css/vueWysiwyg.css';
 </style>

@@ -48,7 +48,7 @@
   </div>
 </template>
 <script>
-import Modal_artic_edit from '../modals/Modal_artic_edit'
+import Modal_artic_edit from '../components/common/modals/old_Modal_artic_edit'
 
 export default {
   name: 'fileView',

@@ -7,7 +7,7 @@
 
 <script>
 import detailItem from './detailItem'
-import NotebookList from '../common/NotebookList'
+import NotebookList from '../common/notebook/NotebookList'
 export default {
   name: 'mainpage',
   components: {

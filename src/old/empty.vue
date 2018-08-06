@@ -44,8 +44,8 @@
   </tbody>
 </template>
 <script>
-import modal from '../modals/modalAll'
-import sectionModal from '../modals/setionModal'
+import modal from '../components/common/modals/modalAll'
+import sectionModal from '../components/common/modals/setionModal'
 export default {
   name: 'empty',
   data () {

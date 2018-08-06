@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import EditTagModal from './modals/EditTagModal'
+import EditTagModal from '../modals/EditTagModal'
 import TagItem from './TagItem'
 import {
   mapActions as mapSearchActions,

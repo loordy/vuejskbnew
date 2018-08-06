@@ -37,15 +37,15 @@
           </a>
         </nav>
 
-      <tagListSearch :edit-tag-modal="EditTagModal" :edit-tag-modal-method="EditTagModalMethod"/>
+      <tagListSearch/>
 
     </aside>
 
 </template>
 <script>
-import sidebarModal from './modals/SidebarModal'
-import TreeItems from './TreeItems'
-import TagListSearch from './TagListSearch'
+import sidebarModal from './modals/old_sidebarModal'
+import TreeItems from './tree/treeItems'
+import TagListSearch from './tag/TagListSearch'
 
 export default {
   name: 'Sidebar',

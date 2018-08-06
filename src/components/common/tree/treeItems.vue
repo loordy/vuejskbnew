@@ -16,10 +16,10 @@
   </div>
 </template>
 <script>
-  import EditCatModal from './modals/EditCatModal'
-  import TreeItemString from "./TreeItemString"
+import EditCatModal from '../modals/EditCatModal'
+import TreeItemString from './TreeItemString'
 
-  export default {
+export default {
   name: 'TreeItems',
   components: {
     TreeItemString,

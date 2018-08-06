@@ -46,7 +46,7 @@
 
 <script>
 import marked from 'marked'
-import { GetElements } from '../../api/index'
+import { GetElements } from '../api/index'
 
 export default {
   name: 'item',
