@@ -20,7 +20,13 @@
 
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
-          <input type="text" class="kb-input" v-model="modalData.element.SECTION">
+          <div class="select-input">
+            <input type="text" class="kb-input" v-model="modalData.element.SECTION">
+            <div class="select-input-angle">
+              <i class="fas fa-angle-down"></i>
+            </div>
+          </div>
+
         </div>
 
         <div class="inner-cat-list">
@@ -36,24 +42,35 @@
           <div class="inner-cat-list-content">
               <ul class="inner-cat-list-list">
                   <li class="inner-cat-list-list-item">
-                      <span>Родительский раздел</span>
-                      <ul>
+                      <div class="inner-cat-list-list-item_link"><span>Родительский раздел</span></div>
+                      <ul class="inner-cat-list-list">
                         <li class="inner-cat-list-list-item">
-                            <span>Подраздел</span>
+                            <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
                         </li>
                         <li class="inner-cat-list-list-item">
-                          <span>Подраздел</span>
+                          <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
                         </li>
                         <li class="inner-cat-list-list-item">
-                          <span>Подраздел</span>
+                          <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
+                          <ul class="inner-cat-list-list">
+                            <li class="inner-cat-list-list-item">
+                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
+                            </li>
+                            <li class="inner-cat-list-list-item">
+                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
+                            </li>
+                            <li class="inner-cat-list-list-item">
+                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
+                            </li>
+                          </ul>
                         </li>
                       </ul>
                   </li>
                   <li class="inner-cat-list-list-item">
-                    <span>Подраздел</span>
+                    <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
                   </li>
                   <li class="inner-cat-list-list-item">
-                    <span>Подраздел</span>
+                    <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
                   </li>
               </ul>
           </div>
@@ -351,6 +368,82 @@ export default {
     border-radius: 5px;
     box-shadow: 0 3px 36px rgba(158,157,163,.54);
     margin-bottom: 10px;
+  }
+
+  .inner-cat-list-list{
+    list-style: none;
+    padding-left: 0;
+    margin: 0px;
+  }
+
+  .inner-cat-list-content{
+    padding: 10px 5px;
+  }
+
+  .inner-cat-list-list{
+    overflow: hidden;
+  }
+
+  .inner-cat-list-list-item .inner-cat-list-list-item_link{
+    color: #979797;
+    font-size: 14px;
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+    position: relative;
+    font-family: "ProximaNova-Regular";
+  }
+
+  .inner-cat-list-list-item > .inner-cat-list-list-item_link:hover{
+    background-color: #f6f9fb;
+    color: #333;
+  }
+
+  .inner-cat-list-list-item > .inner-cat-list-list-item_link:hover:before{
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 246px;
+    min-width: 246px;
+    background-color: #f6f9fb;
+    z-index: -1;
+  }
+
+  .inner-cat-list-list .inner-cat-list-list{
+    padding-left: 15px;
+    overflow: visible;
+  }
+
+  .inner-cat-list-list-item_link span{
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .select-input{
+    position: relative;
+  }
+
+  .select-input input{
+    padding-right: 35px!important;
+    cursor: pointer;
+  }
+
+  .select-input .select-input-angle{
+    width: 35px;
+    height: 35px;
+    line-height: 38px;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #bfc0c1;
+    text-align: center;
   }
 
 </style>
