@@ -56,7 +56,7 @@
             <input type="text" class="kb-input">
           </div>
 
-          <div class="aside-block">
+          <div class="aside-block border-block">
             <div class="select-tag">
                 <div class="select-tag-hed">
                   <div class="select-tag-hed-wrap">
@@ -115,7 +115,8 @@ export default {
         NAME: '',
         DETAIL_TEXT: '',
         SECTION: ''
-      }
+      },
+      taglist: this.$store.state.tags
     }
   },
   props: {
@@ -576,7 +577,10 @@ export default {
   .select-tag{
     width: 260px;
     background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, .06);
+  }
+
+  .select-content .tag-item{
+    margin-right: 4px;
   }
 
   .select-tag-hed{
@@ -651,6 +655,10 @@ export default {
     background-color: #fff;
     margin-left: 15px;
     margin-right: 15px;
+  }
+
+  .select-content{
+    padding: 15px;
   }
 
 </style>

@@ -23,6 +23,42 @@
           <input type="text" class="kb-input" v-model="modalData.element.SECTION">
         </div>
 
+        <div class="inner-cat-list">
+
+          <div class="inner-cat-list-search">
+            <div class="inner-cat-list-search-wrap">
+              <input type="text" placeholder="Поиск по разделам...">
+              <button>
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="inner-cat-list-content">
+              <ul class="inner-cat-list-list">
+                  <li class="inner-cat-list-list-item">
+                      <span>Родительский раздел</span>
+                      <ul>
+                        <li class="inner-cat-list-list-item">
+                            <span>Подраздел</span>
+                        </li>
+                        <li class="inner-cat-list-list-item">
+                          <span>Подраздел</span>
+                        </li>
+                        <li class="inner-cat-list-list-item">
+                          <span>Подраздел</span>
+                        </li>
+                      </ul>
+                  </li>
+                  <li class="inner-cat-list-list-item">
+                    <span>Подраздел</span>
+                  </li>
+                  <li class="inner-cat-list-list-item">
+                    <span>Подраздел</span>
+                  </li>
+              </ul>
+          </div>
+        </div>
+
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
           <div class="radio-button-row">
@@ -269,4 +305,52 @@ export default {
   }
 
   /* ------modal css end---- */
+
+  .inner-cat-list-search{
+    padding: 10px 15px;
+    border-bottom: 1px solid #f5f5f7;
+  }
+
+  .inner-cat-list-search-wrap{
+    position: relative;
+  }
+
+  .inner-cat-list-search-wrap input{
+    height: 30px;
+    width: 100%;
+    padding-right: 40px;
+    line-height: 30px;
+    border: 0;
+    outline: none;
+  }
+
+  .inner-cat-list-search-wrap input::placeholder{
+    font-size: 14px;
+  }
+
+  .inner-cat-list-search-wrap button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    color: #bfc0c1;
+    transition: color ease 0.3s;
+    cursor: pointer;
+    background-color: transparent!important;
+    border: 0!important;
+    outline: none;
+  }
+
+  .inner-cat-list-search-wrap button:hover{
+    color: #556066;
+  }
+
+  .inner-cat-list{
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 5px;
+    box-shadow: 0 3px 36px rgba(158,157,163,.54);
+    margin-bottom: 10px;
+  }
+
 </style>

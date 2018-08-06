@@ -636,3 +636,7 @@ input.checkbox:checked + label:after {
   margin: 0;
   margin-bottom: 15px;
 }
+
+.border-block{
+  border: 1px solid rgba(0, 0, 0, .06);
+}
