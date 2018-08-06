@@ -1,6 +1,6 @@
 <template>
         <router-link to="/" class="notebook-list-item" @click="setStore()">
-            <span class="delete-item" @click="deleteBase()"><i class="fas fa-times"></i></span>
+            <span v-if="base.ID" class="delete-item" @click="deleteBase()"><i class="fas fa-times"></i></span>
             <div class="notebook-cover">
                 <div class="notebook-skin">
                     <span>{{ base.NAME }}</span>
