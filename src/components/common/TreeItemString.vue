@@ -12,13 +12,25 @@
     </div>
 </template>
 <script>
-    export default {
-        name: 'treeItemString',
-        props: {
-            editCatModalMethod: {},
-            section: {}
-        }
+export default {
+  name: 'treeItemString',
+  props: {
+    section: {}
+  },
+  methods: {
+    editCatModalMethod () {
+      let topY = ((Math.trunc(event.pageY / 36)) * 36 - 63) + 'px'
+      this.$store.commit('openModal',
+        {
+          openModal: 'EditCatModal',
+          modalData: {
+            element: this.section,
+            top: topY
+          }
+        })
     }
+  }
+}
 </script>
 <style scoped>
 

@@ -6,7 +6,7 @@
         <span v-if="getCountSections(section.ID)>0" @click="show" :id="section.ID" class="tree-caret"><i
           class="fas fa-caret-right"></i>
         </span>
-        <treeItemString :edit-cat-modal-method="editCatModalMethod" :section="section"/>
+        <treeItemString :section="section"/>
         <TreeItems v-if="showChildren === section.ID" :SECTION_ID="section.ID"></TreeItems>
       </li>
     </ul>
