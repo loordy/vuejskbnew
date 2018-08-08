@@ -152,6 +152,11 @@ export default {
   .notebook-list-item.add-notebook{
     cursor: pointer;
     opacity: 0.5;
+    transform: none!important;
+  }
+
+  .notebook-list-item.add-notebook:hover{
+    opacity: 0.8;
   }
 
   .notebook-list-item.add-notebook .notebook-cover {
