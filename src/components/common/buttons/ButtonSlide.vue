@@ -6,14 +6,13 @@
 
 </template>
 <script>
-    export default {
-        name: 'ButtonSlide'
-    }
+export default {
+  name: 'ButtonSlide'
+}
 </script>
 <style scoped>
 
     /* ----- notebook-list-item ---- */
-
 
     .notebook-list-title-toggle {
         display: inline-block;

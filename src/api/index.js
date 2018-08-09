@@ -21,6 +21,7 @@ const BasParamsGet = {
 }
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
+    console.log(result)
     callback(result)
   })
 }
@@ -54,6 +55,7 @@ export function getElements (params, callback) {
     function (result) {
       if (result.error()) {
         console.log(result)
+        console.log(params)
         getElements(params, callback)
       } else {
         callback(result.data())

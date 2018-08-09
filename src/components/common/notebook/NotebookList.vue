@@ -9,10 +9,10 @@
 
 </template>
 <script>
-  import NotebookItem from './NotebookItem'
-  import NotebookAdd from './NotebookAdd'
+import NotebookItem from './NotebookItem'
+import NotebookAdd from './NotebookAdd'
 
-  export default {
+export default {
   name: 'NotebookList',
   components: {NotebookAdd, NotebookItem},
   data () {

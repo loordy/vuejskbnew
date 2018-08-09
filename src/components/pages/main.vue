@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show.length > 0">
+  <div v-if="show.length !== 0">
   <NotebookList />
  <detailItem></detailItem>
   </div>

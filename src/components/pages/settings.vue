@@ -12,6 +12,7 @@
     <button @click="setsettings">10</button>
     <button @click="setUsers">11</button>
     <button @click="setElem">12</button>
+    <button @click="consoling">store</button>
 </div>
 </template>
 
@@ -78,6 +79,9 @@ export default {
     },
     setElem () {
       this.$store.dispatch('setElements', this.$store.getters.getCurrentBase('entity'))
+    },
+    consoling () {
+      console.log(this.$store)
     }
   }
 }
