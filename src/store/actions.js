@@ -147,6 +147,8 @@ export default {
             {
               ENTITY: result.find(item => item.NAME === 'entity').CODE
             }, function (result) {
+              console.log('setelemt')
+              console.log(result)
               commit('setElements', result)
             })
         }

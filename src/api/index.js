@@ -1,24 +1,24 @@
 /* global BX24 */
-const BasParams = {
-  'ENTITY': '',
-  'NAME': '',
-  'ACTIVE': '',
-  'DATE_ACTIVE_FROM': '',
-  'DATE_ACTIVE_TO': '',
-  'SORT': '',
-  'PREVIEW_PICTURE': '',
-  'PREVIEW_TEXT': '',
-  'DETAIL_PICTURE': '',
-  'DETAIL_TEXT': '',
-  'CODE': '',
-  'SECTION': '',
-  'PROPERTY_VALUES': ''
-}
-const BasParamsGet = {
-  ENTITY: '',
-  SORT: {DATE_ACTIVE_FROM: 'ASC'},
-  FILTER: ''
-}
+// const BasParams = {
+//   'ENTITY': '',
+//   'NAME': '',
+//   'ACTIVE': '',
+//   'DATE_ACTIVE_FROM': '',
+//   'DATE_ACTIVE_TO': '',
+//   'SORT': '',
+//   'PREVIEW_PICTURE': '',
+//   'PREVIEW_TEXT': '',
+//   'DETAIL_PICTURE': '',
+//   'DETAIL_TEXT': '',
+//   'CODE': '',
+//   'SECTION': '',
+//   'PROPERTY_VALUES': ''
+// }
+// const BasParamsGet = {
+//   ENTITY: '',
+//   SORT: {DATE_ACTIVE_FROM: 'ASC'},
+//   FILTER: ''
+// }
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
     console.log(result)
@@ -51,13 +51,13 @@ export function getSections (entity, callback) {
 }
 
 export function getElements (params, callback) {
-  BX24.callMethod('entity.item.get', Object.assign(BasParamsGet, params),
+  BX24.callMethod('entity.item.get', params,
     function (result) {
       if (result.error()) {
-        console.log(result)
-        console.log(params)
         getElements(params, callback)
       } else {
+        console.log(result)
+        console.log(params)
         callback(result.data())
       }
     }
