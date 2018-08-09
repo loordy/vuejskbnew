@@ -6,22 +6,19 @@
     </div>
     <Sidebar/>
     <bottom></bottom>
-    <ListAddBtn></ListAddBtn>
   </div>
 </template>
 <script>
 import Top from './components/common/top'
 import bottom from './components/common/bottom'
 import Sidebar from './components/common/Sidebar'
-import ListAddBtn from './components/common/buttons/ListAddBtn'
 
 export default {
   name: 'App',
   components: {
     Top,
     Sidebar,
-    bottom,
-    ListAddBtn
+    bottom
   },
   data () {
     return {

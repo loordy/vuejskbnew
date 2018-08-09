@@ -120,6 +120,7 @@ export default {
 
   start: ({commit, state}, data) => {
     api.getCurrentUser(function (result) {
+      console.log(result)
       api.getElements(
         {
           ENTITY: 'md_kb_settings',
