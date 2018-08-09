@@ -8,10 +8,11 @@
       <div class="article-content">
         <div class="content-title">
           <h3><span>{{ fbElement.NAME }}</span></h3>
-          <contentEditBtn></contentEditBtn>
+          <contentEditBtn :data="fbElement"></contentEditBtn>
         </div>
         <div class="article-source-line">
           <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>
+          <!--<span class="source-line-item cnt-none">{{ $store.getters.getUserByID(fbElement.CREATED_BY ).NAME }}</span>-->
           <span class="source-line-item cnt-none">{{ fbElement.CREATED_BY }}</span>
         </div>
         <div class="content-text-wrap">
@@ -26,31 +27,39 @@
           <listTagItem :listTag="$store.state.tags"/>
           <div class="article-footer-pin">
             <likeBtn/>
+
           </div>
         </div>
       </div>
     </div>
+    <ListAddBtn></ListAddBtn>
   </div>
 </template>
 
 <script>
-import PrevTreeList from '../common/PrevTreeList'
+import PrevTreeList from '../common/tree/PrevTreeList'
 import ContentEditBtn from '../common/buttons/ContentEditBtn'
-import ListTagItem from '../common/ListTagItem'
+import ListTagItem from '../common/tag/ListTagItem'
 import LikeBtn from '../common/buttons/LikeBtn'
+import ListAddBtn from '../common/buttons/ListAddBtn'
 
 export default {
   name: 'detailItem',
   data () {
     return {
-      fbElement: this.$store.getters.getElementByCODE(this.$route.params.code)
+    }
+  },
+  computed: {
+    fbElement () {
+      return this.$store.getters.getElementByCODE(this.$route.params.code)
     }
   },
   components: {
     LikeBtn,
     PrevTreeList,
     ContentEditBtn,
-    ListTagItem
+    ListTagItem,
+    ListAddBtn
   }
 }
 </script>

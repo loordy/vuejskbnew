@@ -1,8 +1,8 @@
 <template>
   <div class="kb-prev-tree-wrap">
     <h2 class="kb-prev-tree-title">Структура базы</h2>
-    <treeItemList :treeData="$store.getters.getElementsByParentID(currentID)" :currentItem="currentID"/>
-  </div>
+    <treeItemList :treeData="treeData" :currentItem="currentID"/>
+    </div>
 </template>
 <script>
 import TreeItemList from './TreeItemList'
@@ -11,6 +11,11 @@ export default {
   components: {TreeItemList},
   props: {
     currentID: ''
+  },
+  computed: {
+    treeData () {
+      return this.$store.getters.getElementsByParentID(this.currentID)
+    }
   }
 }
 </script>

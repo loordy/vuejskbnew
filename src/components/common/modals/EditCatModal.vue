@@ -130,11 +130,16 @@ export default {
 
     },
     updateElement () {
-
+      this.$emit('close')
     },
     close () {
-
+      Object.assign(this.modalData.element, this._beforeEditingCache)
+      this._beforeEditingCache = null
+      this.$emit('close')
     }
+  },
+  mounted () {
+    this._beforeEditingCache = Object.assign({}, this.modalData.element)
   }
 }
 </script>

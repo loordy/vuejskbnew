@@ -4,10 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import VueLoading from 'vue-loading-template'
-
+import wysiwyg from 'vue-wysiwyg'
+Vue.use(wysiwyg, {})
 Vue.config.productionTip = false
-Vue.use(VueLoading)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

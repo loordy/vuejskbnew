@@ -27,7 +27,7 @@
     </div>
 </template>
 <script>
-import EditTagModal from './modals/EditTagModal'
+import EditTagModal from '../modals/EditTagModal'
 import TagItem from './TagItem'
 import {
   mapActions as mapSearchActions,
@@ -68,6 +68,11 @@ export default {
     doSearch () {
       this.searchTags(this.searchWord)
     }
+  },
+  mounted () {
+    // this.$store.watch(this.$store.getters.getElementsListACTIVE('Y'), n => {
+    //   console.log('watched: ', n)
+    // })
   }
 }
 </script>

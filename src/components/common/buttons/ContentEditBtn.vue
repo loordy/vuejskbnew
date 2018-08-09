@@ -7,37 +7,36 @@
         <div class="content-edit-btn-content-wrap">
           <ul class="content-edit_list">
             <li>
-              <div @click="showM = !showM" @close="showM = false" class="content-edit_list-item"> <i class="fas fa-pencil-alt"></i> <span>Редактировать111</span></div>
+              <div @click="openModal" class="content-edit_list-item"><i class="fas fa-pencil-alt"></i> <span>Редактировать</span>
+              </div>
             </li>
             <li>
-              <div class="content-edit_list-item"> <i class="fas fa-lock"></i> <span>Закрепить запись</span></div>
+              <div class="content-edit_list-item"  @click="console.log('доделать')"><i class="far fa-star"></i> <span>Добавить в избранное</span></div>
             </li>
             <li>
-              <div class="content-edit_list-item"> <i class="far fa-star"></i> <span>Добавить в избранное</span></div>
-            </li>
-            <li>
-              <div class="content-edit_list-item"> <i class="far fa-trash-alt"></i> <span>Удалить в корзину</span></div>
+              <div class="content-edit_list-item" @click="data.ACTIVE = 'N'"><i class="far fa-trash-alt" ></i> <span>Удалить в корзину</span></div>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <modalAll v-if="showM"></modalAll>
   </div>
 </template>
 <script>
-import modalAll from '../modals/modalAll'
 export default {
   name: 'contentEditBtn',
   props: {
     data: {}
   },
-  components: {
-    modalAll
-  },
-  data () {
-    return {
-      showM: false
+  methods: {
+    openModal () {
+      this.$store.commit('openModal',
+        {
+          openModal: 'modalAll',
+          modalData: {
+            element: this.data
+          }
+        })
     }
   }
 }

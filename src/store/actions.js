@@ -1,91 +1,131 @@
 import * as api from '../api/index'
-const entitykb = 'md_knowledge'
+const entitykb = 'md_knowledge1'
 // const settingskb = 'md_settings_knowledge'
 export default {
-  setElements: ({ commit, state }, data) => {
-    api.getElements(state.getters.getBaseByID(data).CODE, function (result) {
+  setElements: ({commit, state}, data) => {
+    console.log(data)
+    api.getElements(data.CODE, function (result) {
       commit('setElements', result)
     })
   },
 
-  setSections: ({ commit, state }, data) => {
+  setSections: ({commit, state}, data) => {
     api.getSections(entitykb, function (result) {
       commit('setSections', result)
     })
   },
 
-  addNewElement: ({ commit, state }, data) => {
-    data.CODE = new Date()
-    commit('addNewElement', data)
-    api.addNewItem(entitykb, data, function (result) {
-      state.getters.getElementByCODE(data.CODE).ID = result
+  setSettings: ({commit, state}, data) => {
+    api.getElements('md_kb_settings', function (result) {
+      commit('setSettings', result)
     })
   },
 
-  addNewSection: ({ commit, state }, data) => {
+  setBases: ({commit, state}, data) => {
+    api.getElements('md_kb_bases', function (result) {
+      commit('setBases', result)
+    })
+  },
+
+  setFavorites: ({commit, state}, data) => {
+    api.getSections('md_kb_favorites', function (result) {
+      commit('setFavorites', result)
+    })
+  },
+
+  addNewElement: ({commit, state}, data) => {
+    if (!data.entity) {
+      data.entity = state.getters.getCurrentBase
+    }
+    if (!data.CODE) {
+      data.CODE = new Date()
+    }
+    commit('addNewElement', data)
+    api.addNewItem(data.entity, data, function (result) {
+      data.ID = result
+      commit('updateElement', data)
+      // state.getters.getElementByCODE(data.CODE).ID = result
+    })
+  },
+
+  addNewSection: ({commit, state}, data) => {
     data.CODE = new Date()
     commit('addNewSection', data)
     api.addNewSection(entitykb, data, function (result) {
-      state.getters.getSectionByCODE(data.CODE).ID = result
+      // state.getters.getSectionByCODE(data.CODE).ID = result
     })
   },
 
-  updateElement: ({ commit, state }, data) => {
+  updateElement: ({commit, state}, data) => {
     api.updateItem(entitykb, data)
   },
 
-  updateSection: ({ commit, state }, data) => {
+  updateSection: ({commit, state}, data) => {
     api.updateSection(entitykb, data)
   },
 
-  deleteElement: ({ commit, state }, data) => {
+  deleteElement: ({commit, state}, data) => {
     commit('deleteElement', data)
-    api.deleteItem(entitykb, data, function (result) {})
+    api.deleteItem(entitykb, data, function (result) {
+    })
   },
 
-  deleteSection: ({ commit, state }, data) => {
+  deleteSection: ({commit, state}, data) => {
     commit('deleteSection', data)
-    api.deleteSection(entitykb, data, function (result) {})
+    api.deleteSection(entitykb, data, function (result) {
+    })
   },
 
-  setUsers: ({ commit, state }, data) => {
-    state.users = data
+  setUsers: ({commit, state}, data) => {
+    api.getUsers(function (result) {
+      commit('setUsers', result)
+    })
   },
 
-  currentUser: ({ commit, state }, data) => {
+  currentUser: ({commit, state}, data) => {
     state.currentUser = data
   },
 
-  setView: ({ commit, state }, data) => {
+  setView: ({commit, state}, data) => {
     state.settings.viewType = data
   },
 
-  installEntity: ({ commit, state }, data) => {
+  installEntity: ({commit, state}, data) => {
     api.installEntity(data)
   },
 
-  setBases: ({ commit, state }, data) => {
-    api.getElements(state.getters.getBaseByID(data).CODE, function (result) {
-      commit('setElements', result)
+  deleteBase: ({commit, state}, data) => {
+    commit('deleteBase', data)
+    api.deleteItem('md_kb_bases', data, function (result) {
+    })
+    api.deleteEntity(data.CODE, function (result) {
     })
   },
 
-  deleteBase: ({ commit, state }, data) => {
-    commit('deleteBase', data)
-    api.deleteItem(data, data, function (result) {})
-    api.deleteEntity(data, data, function (result) {})
-  },
-
-  addNewBase: ({ commit, state }, data) => {
-    data.CODE = new Date()
+  addNewBase: ({commit, state}, data) => {
+    data.CODE = new Date().getTime()
     commit('addNewBase', data)
     api.installEntity(data)
-    api.addNewItem(data, data, function (result) {
-      state.getters.getBaseByCODE(data.CODE).ID = result
+    api.addNewItem('md_kb_bases', data, function (result) {
+      data.ID = result
+      commit('updateElement', data)
     })
   },
 
-  updateBase: ({ commit, state }, data) => {
+  updateBase: ({commit, state}, data) => {
     api.updateItem(data, data)
+  },
+
+  setEntity: ({commit, state}, data) => {
+    commit('setEntity', data)
+  },
+
+  start: ({commit, state}, data) => {
+    api.getElements('md_kb_settings', function (result) {
+      commit('setSettings', result)
+      api.getElements(result.find(item => item.NAME === 'entity').CODE, function (result) {
+        commit('setElements', result)
+      })
+    })
   }
 }

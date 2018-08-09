@@ -8,7 +8,8 @@ export default {
   },
 
   updateElement: (state, data) => {
-
+    state.bases.find(item => item.CODE === data.CODE).ID = data.ID
+    // Object.assign(state.bases.find(item => item.CODE === data.CODE), data)
   },
 
   deleteElement: (state, data) => {
@@ -40,7 +41,7 @@ export default {
   },
 
   setView: (state, data) => {
-    state.settings.viewType = data
+    state.userSettings.find(usrs => usrs.NAME === 'viewType').CODE = data
   },
 
   openModal: (state, data) => {
@@ -52,12 +53,24 @@ export default {
     state.bases = data
   },
 
+  setSettings: (state, data) => {
+    state.userSettings = data
+  },
+
+  setFavorites: (state, data) => {
+    state.favorites = data
+  },
+
   addNewBase: (state, data) => {
     state.bases.push(data)
   },
 
   deleteBase: (state, data) => {
     state.bases.splice(state.bases.indexOf(data), 1)
+  },
+
+  setEntity: (state, data) => {
+    state.userSettings.find(usrs => usrs.NAME === 'entity').CODE = data.CODE
   }
 
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="cat-nav_list-item_link">
-        <router-link :to="'/detailItem/'+ section.CODE" class="link_text">{{ section.NAME }}</router-link>
+        <router-link :to="'/detailItem/'+ section.CODE" class="link_text"><span>{{ section.NAME }}</span></router-link>
         <div class="icon_sidebar_block">
               <span class="icon_sidebar icon_pencil" @click="editCatModalMethod">
                 <i class="fas fa-pencil-alt"></i>

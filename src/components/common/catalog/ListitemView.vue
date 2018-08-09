@@ -33,7 +33,7 @@
 </template>
 <script>
 import ContentEditBtn from '../buttons/ContentEditBtn'
-import ListTagItem from '../ListTagItem'
+import ListTagItem from '../tag/ListTagItem'
 import LikeBtn from '../buttons/LikeBtn'
 export default {
   name: 'listitemView',
@@ -48,12 +48,12 @@ export default {
   },
   computed: {
     fbElements () {
-      return this.$store.getters.getElementsByParentID(this.$route.params.id)
+      return this.$store.getters.getElementsListACTIVE(this.$route.query.trunk)
     }
   }
 }
 </script>
-<style>
+<style scoped>
     .article {
         border: 1px solid rgba(0, 0, 0, .06);
         /* border-radius: 5px; */

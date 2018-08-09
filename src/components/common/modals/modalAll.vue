@@ -4,45 +4,44 @@
       <div class="slide_fade-wrapp">
 
         <div class="slide_fade_modal_edit">
-            <div class="slide_fade_modal_edit-area">
+          <div class="slide_fade_modal_edit-area">
 
-                  <div class="edit-area-header">Редактировать статью</div>
-              <div class="edit-area-form-container">
-                <div class="edit-area-form">
-                  <div class="edit-area-form-col">
-                    <div class="edit-group">
-                      <label for="" class="edit-group-label">Название</label>
-                      <input type="text" placeholder="Название" class="kb-lg-input">
-                    </div>
-
-                  </div>
-                  <div class="edit-area-form-col">
-                    <div class="edit-group">
-                      <label for="" class="edit-group-label">Раздел</label>
-                      <input type="text" placeholder="Раздел" class="kb-lg-input">
-                    </div>
+            <div class="edit-area-header">
+              <slot name="header">Редактировать статью</slot>
+            </div>
+            <div class="edit-area-form-container">
+              <div class="edit-area-form">
+                <div class="edit-area-form-col">
+                  <div class="edit-group">
+                    <label for="" class="edit-group-label">Название</label>
+                    <input type="text" placeholder="Название" class="kb-lg-input" v-model="modalData.element.NAME">
                   </div>
 
-
+                </div>
+                <div class="edit-area-form-col">
+                  <div class="edit-group">
+                    <label for="" class="edit-group-label">Раздел</label>
+                    <input type="text" placeholder="Раздел" class="kb-lg-input" v-model="modalData.element.SECTION">
+                  </div>
                 </div>
 
-                <div class="edit-area-mrk">
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
-                </div>
               </div>
 
-
-
+              <div class="edit-area-mrk">
+                <wysiwyg  v-model="modalData.element.DETAIL_TEXT"></wysiwyg>
+              </div>
             </div>
 
-            <div class="edit-area-footer">
-              <button class="kb-btn green-btn">
-                Сохранить
-              </button>
-              <button class="kb-btn">
-                Применить
-              </button>
-            </div>
+          </div>
+
+          <div class="edit-area-footer">
+            <button class="kb-btn green-btn">
+              Сохранить
+            </button>
+            <button class="kb-btn">
+              Применить
+            </button>
+          </div>
         </div>
 
         <div class="slide_fade-aside">
@@ -58,27 +57,28 @@
 
           <div class="aside-block border-block">
             <div class="select-tag">
-                <div class="select-tag-hed">
-                  <div class="select-tag-hed-wrap">
-                    <input type="text" placeholder="Добавить тег...">
-                    <button>
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </div>
+              <div class="select-tag-hed">
+                <div class="select-tag-hed-wrap">
+                  <input type="text" placeholder="Добавить тег...">
+                  <button>
+                    <i class="fas fa-plus"></i>
+                  </button>
                 </div>
+              </div>
             </div>
             <div class="select-content">
-              <tagItem v-for="tagItem in taglist" :tagData="tagItem" :key="tagItem.CODE" searchText='' class="tags-item-wrap"/>
+              <tagItem v-for="tagItem in taglist" :tagData="tagItem" :key="tagItem.CODE" searchText=''
+                       class="tags-item-wrap"/>
             </div>
           </div>
 
           <div class="aside-block">
             <h3 class="aside-title">Добавить теги</h3>
-            <tagListSearch :edit-tag-modal="EditTagModal" :edit-tag-modal-method="EditTagModalMethod"/>
+            <tagListSearch/>
           </div>
 
           <div class="slide_fade_modal_close" title="Закрыть">
-            <span class="slide_fade_modal_close_inner" @click="closing"> <i class="fas fa-times"></i></span>
+            <span class="slide_fade_modal_close_inner" @click="close"> <i class="fas fa-times"></i></span>
           </div>
         </div>
 
@@ -89,98 +89,49 @@
 </template>
 
 <script>
-import _ from 'lodash'
-import marked from 'marked'
-import NavBar from '../markdown/NavBar'
-import tagListSearch from '../TagListSearch'
-import tagItem from '../tagItem'
+import tagListSearch from '../tag/TagListSearch'
+import tagItem from '../tag/TagItem'
+// import wysiwyg from 'vue-wysiwyg'
 
 export default {
   name: 'modalAll',
   components: {
-      NavBar,
-      tagListSearch,
-      tagItem
+    tagListSearch,
+    tagItem
+    // wysiwyg
   },
   data () {
     return {
-      input: '# hello',
-      selected: '',
-      elementModel: {
-        NAME: '',
-        DETAIL_TEXT: '',
-        SECTION: ''
-      },
-      originData: {
-        NAME: '',
-        DETAIL_TEXT: '',
-        SECTION: ''
-      },
       taglist: this.$store.state.tags
     }
   },
   props: {
-    element_code: {}
+    modalData: {}
   },
-  computed: {
-    compiledMarkdown () {
-      return marked(this.elementModel.DETAIL_TEXT, {sanitize: true})
-    },
-    sections () {
-      return this.$store.state.sections
-    }
-  },
+  computed: {},
   mounted () {
-    if (this.element_code) {
-      this.elementModel = this.$store.getters.getElementByCODE(this.element_code)
-      this.selected = this.elementModel.SECTION
-      this.originData = {...this.elementModel}
-    }
+    this._beforeEditingCache = Object.assign({}, this.modalData.element)
   },
   methods: {
-    update: _.debounce(function (e) {
-      this.elementModel.DETAIL_TEXT = e.target.value
-    }, 300),
-    save () {
-      if (this.element_code) {
-        this.elementModel.SECTION = this.selected
-        this.$store.dispatch('updateElement', this.elementModel)
-        console.log(this.elementModel)
-      } else {
-        this.$store.dispatch('addNewElement', {
-          'SECTION': (this.selected !== '' ? this.selected : null),
-          'NAME': this.elementModel.NAME,
-          'DETAIL_TEXT': this.elementModel.DETAIL_TEXT})
-      }
-      this.$emit('close')
-    },
-    updateart () {
-      if (this.element_id) {
-        this.elementModel.SECTION = this.selected
-        this.$store.dispatch('updateElement', this.elementModel)
-      } else {
-        this.$store.dispatch('addNewElement', {
-          'SECTION': this.selected,
-          'NAME': this.elementModel.NAME,
-          'DETAIL_TEXT': this.elementModel.DETAIL_TEXT
-        })
-      }
-    },
-    closing () {
-      this.$emit('close')
-      // this.elementModel.NAME = this.originData.NAME
-      // this.elementModel.DETAIL_TEXT = this.originData.DETAIL_TEXT
-      // this.elementModel.SECTION = this.originData.SECTION
-      console.log("test")
+    deleteElement () {
 
+    },
+    updateElement () {
+
+      this.$emit('close')
+    },
+    close () {
+      Object.assign(this.modalData.element, this._beforeEditingCache)
+      this._beforeEditingCache = null
+      this.$emit('close')
     }
-
   }
 }
 </script>
 
 <style scoped>
-  .kb-edit-input {
+
+   .kb-edit-input {
     border: 1px solid #c6cdd3;
     border-radius: 2px;
     padding: 10px 10px;
@@ -189,9 +140,9 @@ export default {
     background-color: #ffffff;
     width: 40%;
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.14);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.14);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.14);
     outline: none;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-bottom: 15px;
     margin-left: 10px;
     margin-top: 10px;
@@ -200,13 +151,13 @@ export default {
     margin-right: 5px;
   }
 
-  .kb-select{
+  .kb-select {
     height: 30px;
     border: 1px solid #c6cdd3;
     width: 40%;
-    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.14);
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.14);
     outline: none;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     border-radius: 2px;
     color: #535c69;
   }
@@ -306,7 +257,7 @@ export default {
     color: #c4c7cc;
   }
 
-  .slide_fade_modal_close_inner:hover{
+  .slide_fade_modal_close_inner:hover {
     color: #333;
   }
 
@@ -334,11 +285,11 @@ export default {
     color: #333;
   }
 
-  #editor{
+  #editor {
     position: absolute;
     width: 100%;
     left: 0;
-    height: calc(100% - 265px );
+    height: calc(100% - 265px);
 
   }
 
@@ -364,39 +315,46 @@ export default {
     height: 100%;
   }
 
-  .pagetitle h3{
+  .pagetitle h3 {
     margin: 0;
   }
 
   code {
     color: #f66;
   }
+
   .popup-window-buttons {
     padding: 10px 10px 0px !important;
   }
+
   .popup-window-buttons {
     padding: 10px 10px 0px !important;
   }
+
   .popup-window-buttons {
     text-align: center;
     padding: 20px 0 10px;
     position: relative;
   }
+
   .kb-iframe-content {
     padding-bottom: 15px;
     margin-bottom: 20px;
   }
+
   .kb-iframe-workarea {
     padding: 15px 0px 0px;
     background-color: #fff;
   }
+
   body {
-    font-family: "RobotoRegular",sans-serif !important;
+    font-family: "RobotoRegular", sans-serif !important;
     color: #38464f !important;
   }
+
   body {
     color: #000;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -405,20 +363,24 @@ export default {
     margin: 0;
     padding: 0;
   }
+
   .kb-iframe-popup {
     background: #eef2f4 !important;
     padding: 0 15px 21px 21px;
   }
+
   html {
     height: 100%;
     width: 100%;
   }
+
   .popup-window-button-accept, .popup-window-button-create {
     background: #bbed21;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #535c69;
   }
+
   .popup-window-button {
     display: inline-block;
     height: 39px;
@@ -427,7 +389,7 @@ export default {
     border-radius: 2px;
     cursor: pointer;
     color: #535c69;
-    font-family: "OpenSans-Bold",Helvetica,Arial,sans-serif;
+    font-family: "OpenSans-Bold", Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: normal;
     outline: 0;
@@ -438,6 +400,7 @@ export default {
     text-shadow: none;
     white-space: nowrap;
   }
+
   .popup-window-button {
     display: inline-block;
     height: 39px;
@@ -447,7 +410,7 @@ export default {
     border-radius: 2px;
     cursor: pointer;
     color: #7a818a;
-    font-family: "OpenSans-Bold",Helvetica,Arial,sans-serif;
+    font-family: "OpenSans-Bold", Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: normal;
     outline: 0;
@@ -460,15 +423,17 @@ export default {
     -webkit-box-shadow: 0 0 0 1px #c6cdd3 inset;
     box-shadow: inset 0px 0px 0px 1px #c6cdd3;
     -webkit-font-smoothing: antialiased;
-    -webkit-transition: background-color .2s linear,color .2s linear;
-    transition: background-color .2s linear,color .2s linear;
+    -webkit-transition: background-color .2s linear, color .2s linear;
+    transition: background-color .2s linear, color .2s linear;
   }
+
   .popup-window-button-accept, .popup-window-button-create {
     background: #bbed21;
     -webkit-box-shadow: none;
     box-shadow: none;
     color: #535c69;
   }
+
   .webform-button, .webform-small-button, .webform-button-upload {
     background: #ecedef;
     -webkit-box-shadow: 0 0 0 1px #c6cdd3 inset;
@@ -480,7 +445,7 @@ export default {
     height: 47px;
     line-height: 47px;
     margin: 0 16px 0 0;
-    font-family: "OpenSans-Bold",Helvetica,Arial,sans-serif;
+    font-family: "OpenSans-Bold", Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: normal;
     outline: 0;
@@ -491,10 +456,11 @@ export default {
     text-shadow: none;
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
-    -webkit-transition: background-color .2s linear,color .2s linear;
-    transition: background-color .2s linear,color .2s linear;
+    -webkit-transition: background-color .2s linear, color .2s linear;
+    transition: background-color .2s linear, color .2s linear;
     border: 0;
   }
+
   .webform-small-button, .webform-button.webform-button-upload, .webform-small-button.webform-button-upload, .webform-field-upload {
     height: 39px;
     line-height: 39px;
@@ -502,17 +468,20 @@ export default {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+
   .webform-button-transparent, .webform-small-button-transparent {
     -webkit-box-shadow: inset 0 0 0 1px #a1a6ac;
     box-shadow: inset 0px 0px 0px 1px #a1a6ac;
     background: 0;
     color: #535c69;
   }
+
   .popup-window-button-link, .popup-window-button-link-cancel, .popup-window-button-link:hover, .popup-window-button-link:active {
     background: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+
   .popup-window-button-link {
     border-bottom: 1px solid #c0c2c5;
     border-radius: 0;
@@ -524,29 +493,31 @@ export default {
     transition: border-bottom-color .15s linear;
     padding: 0;
   }
+
   .popup-window-button-link-cancel {
     color: #f1361b;
     border-bottom-color: #ffb4a9;
   }
+
   :last-child.popup-window-button {
     margin-right: 0px;
   }
 
-  #kb-content-outer{
+  #kb-content-outer {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
   }
 
-  .slide_fade-wrapp{
+  .slide_fade-wrapp {
     display: flex;
     background-color: #fff;
     width: 100%;
     height: 100%;
   }
 
-  .slide_fade-wrapp .slide_fade_modal_edit{
+  .slide_fade-wrapp .slide_fade_modal_edit {
     width: calc(100% - 300px);
   }
 
@@ -561,38 +532,38 @@ export default {
     padding-top: 30px;
   }
 
-  .edit-area-header{
+  .edit-area-header {
     padding: 15px 20px;
     text-align: center;
     font-size: 18px;
   }
 
-  .edit-area-form-container{
+  .edit-area-form-container {
     padding: 15px;
     background-color: #fff;
     margin-left: 15px;
     margin-right: 15px;
   }
 
-  .select-tag{
+  .select-tag {
     width: 260px;
     background-color: #fff;
   }
 
-  .select-content .tag-item{
+  .select-content .tag-item {
     margin-right: 4px;
   }
 
-  .select-tag-hed{
+  .select-tag-hed {
     padding: 10px 20px;
     border-bottom: 1px solid #f5f5f7;
   }
 
-  .select-tag-hed-wrap{
+  .select-tag-hed-wrap {
     position: relative;
   }
 
-  .select-tag-hed input{
+  .select-tag-hed input {
     height: 30px;
     line-height: 30px;
     border: 0;
@@ -601,7 +572,7 @@ export default {
     padding-right: 30px;
   }
 
-  .select-tag-hed button{
+  .select-tag-hed button {
     position: absolute;
     right: 0;
     top: 0;
@@ -618,27 +589,27 @@ export default {
     cursor: pointer;
   }
 
-  .select-tag-hed button:hover{
+  .select-tag-hed button:hover {
     color: #36b5df;
   }
 
-  .edit-area-form{
+  .edit-area-form {
     padding: 20px 20px;
     display: flex;
     margin-left: -15px;
     margin-right: -15px;
   }
 
-  .edit-area-form-col{
+  .edit-area-form-col {
     width: 50%;
     padding: 0 15px;
   }
 
-  .edit-area-mrk{
+  .edit-area-mrk {
     padding: 0 20px;
   }
 
-  .edit-area-mrk textarea{
+  .edit-area-mrk textarea {
     width: 100%;
     min-height: 300px;
     border: 1px solid #e4e5e9;
@@ -649,7 +620,7 @@ export default {
     background-color: #fff;
   }
 
-  .edit-area-footer{
+  .edit-area-footer {
     text-align: center;
     padding: 20px;
     background-color: #fff;
@@ -657,7 +628,7 @@ export default {
     margin-right: 15px;
   }
 
-  .select-content{
+  .select-content {
     padding: 15px;
   }
 

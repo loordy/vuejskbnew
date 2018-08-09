@@ -11,8 +11,8 @@
         <div class="edit-group m-b-0">
           <div class="edit-group-label">ВИД</div>
           <div class="ful-w-btn-group">
-            <a href="#" class="active">Лента</a>
-            <a href="#">Таблица</a>
+            <a @click="$store.state.settings.viewType = 'view'" :class="{active: $store.state.settings.viewType === 'view'}">Лента</a>
+            <a @click="$store.state.settings.viewType = 'list'" :class="{active: $store.state.settings.viewType === 'list'}">Таблица</a>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@ export default {
     width: 285px;
     width: 285px;
     top: 40px;
-    left: -242px;
+    left: calc(100% - 550px);
     z-index: 110;
     background: #fff;
     border: 1px solid rgba(0,0,0,.06);

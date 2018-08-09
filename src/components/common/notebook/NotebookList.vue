@@ -13,7 +13,11 @@ export default {
   components: {NotebookAdd, NotebookItem},
   data () {
     return {
-      bases: this.$store.getters.getBaseList
+    }
+  },
+  computed: {
+    bases () {
+      return this.$store.getters.getBaseList
     }
   }
 }

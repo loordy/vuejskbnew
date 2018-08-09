@@ -2,13 +2,13 @@
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
     console.log(result)
-    callback(result.data())
+    callback(result)
   })
 }
 export function getUsers (callback) {
   BX24.callMethod('user.get', {}, function (result) {
     console.log(result)
-    callback(result.data())
+    callback(result)
   })
 }
 export function getSections (entity, callback) {
@@ -46,7 +46,7 @@ export function getElements (entity, callback) {
 export function addNewItem (entity, data, callback) {
   BX24.callMethod('entity.item.add', {
     ENTITY: entity,
-    DATE_ACTIVE_FROM: new Date(),
+    DATE_ACTIVE_FROM: new Date().getTime(),
     NAME: data.NAME,
     DETAIL_TEXT: data.DETAIL_TEXT,
     CODE: data.CODE,
@@ -83,7 +83,7 @@ export function deleteItem (entity, data, callback) {
 export function addNewSection (entity, section, callback) {
   BX24.callMethod('entity.section.add', {
     ENTITY: entity,
-    DATE_ACTIVE_FROM: new Date(),
+    DATE_ACTIVE_FROM: new Date().getTime(),
     NAME: section.NAME,
     CODE: section.CODE,
     SECTION: section.SECTION
@@ -98,7 +98,6 @@ export function updateSection (entity, data, callback) {
     NAME: data.NAME,
     SECTION: data.SECTION
   }, function (result) {
-    console.log(result)
     if (result.error()) { updateItem(entity, data, callback) }
   })
 }
@@ -115,10 +114,16 @@ export function deleteSection (entity, data, callback) {
   })
 }
 
-export function installEntity (entity, data, callback) {
-  BX24.callMethod('entity.add', {'ENTITY': data, 'NAME': data})
+export function installEntity (data, callback) {
+  BX24.callMethod('entity.add', {
+    'ENTITY': data.CODE,
+    'NAME': data.NAME
+  }, function (result) {
+    if (result.error()) { console.log('erreoraraerae install') }
+  }
+  )
 }
 
-export function deleteEntity (entity, data, callback) {
-  BX24.callMethod('entity.delete', {'ENTITY': data})
+export function deleteEntity (data, callback) {
+  BX24.callMethod('entity.delete', {'ENTITY': data.CODE})
 }
