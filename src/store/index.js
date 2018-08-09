@@ -13,7 +13,13 @@ export default new Vuex.Store({
     installed: false,
     itemsPerPage: 20,
     currentUser: {},
-    elements: [],
+    elements: [{
+      NAME: 'asdasd',
+      CODE: 'asdasdas',
+      ID: '12312',
+      DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
+      ACTIVE: 'Y'
+    }],
     users: [],
     sections: [],
     userSettings: [],
@@ -97,7 +103,11 @@ export default new Vuex.Store({
         'NAME': 'nisi'
       }
     ],
-    bases: [],
+    bases: [{
+      NAME: 'База знаний',
+      CODE: 'asdasd',
+      ID: '123'
+    }],
     currentModal: {
       openModal: '',
       modalData: {}

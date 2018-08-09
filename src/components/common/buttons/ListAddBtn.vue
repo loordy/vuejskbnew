@@ -174,7 +174,7 @@ export default {
         box-shadow: 0 0 30px rgba(158, 157, 163, .5);
         margin: 0 7.5px;
         position: fixed;
-        right: 250px;
+        right: 280px;
         bottom: 30px;
         z-index: 10;
         width: 55px;
