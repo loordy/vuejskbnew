@@ -1,13 +1,14 @@
 <template>
   <div class="header-line">
     <button @click="$router.push('/settings/')">Настройки</button>
-    <ButtonSlide/>
+    <ButtonSlide @click="showBases=!showBases"/>
     <listTagItem :taglist="taglist"/>
     <div class="header-line-filter">
       <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
           <i class="fas fa-filter"></i>
       </div>
     </div>
+    <NotebookList v-if="showBases" />
   </div>
 </template>
 
@@ -15,18 +16,21 @@
 import ListTagItem from './tag/ListTagItem'
 import TagItem from './tag/TagItem'
 import ButtonSlide from './buttons/ButtonSlide'
+import NotebookList from './notebook/NotebookList'
 export default {
   components: {
     ListTagItem,
     TagItem,
-    ButtonSlide
+    ButtonSlide,
+    NotebookList
   },
   name: 'top',
   data () {
     return {
       filterListModal: false,
       tagName: 'Привет',
-      taglist: ''
+      taglist: '',
+      showBases: false
     }
   },
   methods: {

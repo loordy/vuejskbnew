@@ -6,23 +6,22 @@
     </div>
     <Sidebar/>
     <bottom></bottom>
+    <ListAddBtn></ListAddBtn>
   </div>
 </template>
 <script>
 import Top from './components/common/top'
 import bottom from './components/common/bottom'
 import Sidebar from './components/common/Sidebar'
-import NotebookList from './components/common/notebook/NotebookList'
-import PrevTreeList from './components/common/modals/PrevTreeList'
+import ListAddBtn from './components/common/buttons/ListAddBtn'
 
 export default {
   name: 'App',
   components: {
-    PrevTreeList,
-    NotebookList,
     Top,
     Sidebar,
-    bottom
+    bottom,
+    ListAddBtn
   },
   data () {
     return {

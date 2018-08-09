@@ -36,9 +36,7 @@ export default {
   },
   getTagList: state => state.tags,
   getBaseList: state => state.bases,
-  getCurrentBase: state => NAME => {
-    return state.userSettings.find(item => item.NAME === NAME)
-  },
+  getCurrentBase: state => state.userSettings.find(item => item.NAME === 'entity'),
   getCurrentModal: state => state.currentModal,
   getElementsListACTIVE: state => ACTIVE => {
     return state.elements.filter(element => element.ACTIVE === ACTIVE)

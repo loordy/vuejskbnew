@@ -1,13 +1,16 @@
 <template>
 
         <div class="notebook-list-title-toggle">
-          <i class="far fa-bookmark"></i> Базы заний <span class="slide-toggle"><i class="fas fa-angle-up"></i></span>
+          <i class="far fa-bookmark"></i> Базы заний <span class="slide-toggle"><i :class="[open ? 'fas fa-angle-up' : 'fas fa-angle-down']"></i></span>
         </div>
 
 </template>
 <script>
 export default {
-  name: 'ButtonSlide'
+  name: 'ButtonSlide',
+  props: {
+    open: {default: false}
+  }
 }
 </script>
 <style scoped>

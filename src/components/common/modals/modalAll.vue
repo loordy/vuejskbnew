@@ -35,10 +35,10 @@
           </div>
 
           <div class="edit-area-footer">
-            <button class="kb-btn green-btn">
+            <button class="kb-btn green-btn" @click="saveItem">
               Сохранить
             </button>
-            <button class="kb-btn">
+            <button class="kb-btn" @click="updateItem">
               Применить
             </button>
           </div>
@@ -113,14 +113,20 @@ export default {
     this._beforeEditingCache = Object.assign({}, this.modalData.element)
   },
   methods: {
-    deleteElement () {
-
+    save () {
+      this.update()
+      this.$emit('close')
     },
-    updateElement () {
-      if (this.section_code) {
-        this.$store.dispatch('updateSection', this.modalData.element)
+    apply () {
+      this.update()
+    },
+    update () {
+      this._beforeEditingCache = Object.assign({}, this.modalData.element)
+      if (this.modalData.element.ID) {
+        this.$store.dispatch('updateElement', this.modalData.element)
       } else {
-        this.$store.dispatch('addNewSection', this.modalData.element)
+        this.modalData.element.ENTITY = this.$store.getters.getCurrentBase()
+        this.$store.dispatch('addNewElement', this.modalData.element)
       }
       this.$emit('close')
     },

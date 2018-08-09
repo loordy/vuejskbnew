@@ -35,11 +35,8 @@ export default {
   },
 
   addNewElement: ({commit, state}, data) => {
-    if (!data.entity) {
-      data.entity = state.getters.getCurrentBase
-    }
     if (!data.CODE) {
-      data.CODE = new Date()
+      data.CODE = new Date().getTime()
     }
     commit('addNewElement', data)
     api.addNewItem(data.entity, data, function (result) {
