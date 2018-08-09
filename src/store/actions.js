@@ -121,7 +121,9 @@ export default {
   },
 
   start: ({commit, state}, data) => {
-    api.getElements('md_kb_settings', function (result) {
+    api.getCurrentUser(function (result) {
+
+    api.getElements('md_kb_settings', result, function (result) {
       commit('setSettings', result)
       api.getElements(result.find(item => item.NAME === 'entity').CODE, function (result) {
         commit('setElements', result)

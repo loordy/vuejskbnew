@@ -117,7 +117,11 @@ export default {
 
     },
     updateElement () {
-
+      if (this.section_code) {
+        this.$store.dispatch('updateSection', this.modalData.element)
+      } else {
+        this.$store.dispatch('addNewSection', this.modalData.element)
+      }
       this.$emit('close')
     },
     close () {

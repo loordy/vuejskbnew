@@ -1,16 +1,34 @@
 /* global BX24 */
+const BasParams = {
+  'ENTITY': '',
+  'NAME': '',
+  'ACTIVE': '',
+  'DATE_ACTIVE_FROM': '',
+  'DATE_ACTIVE_TO': '',
+  'SORT': '',
+  'PREVIEW_PICTURE': '',
+  'PREVIEW_TEXT': '',
+  'DETAIL_PICTURE': '',
+  'DETAIL_TEXT': '',
+  'CODE': '',
+  'SECTION': '',
+  'PROPERTY_VALUES': ''
+}
+
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
-    console.log(result)
+    console.log(result.data())
     callback(result)
   })
 }
+
 export function getUsers (callback) {
   BX24.callMethod('user.get', {}, function (result) {
     console.log(result)
     callback(result)
   })
 }
+
 export function getSections (entity, callback) {
   BX24.callMethod('entity.section.get', {
     ENTITY: entity,
@@ -27,22 +45,20 @@ export function getSections (entity, callback) {
   }
   )
 }
-export function getElements (entity, callback) {
-  BX24.callMethod('entity.item.get', {
-    ENTITY: entity,
-    SORT: {DATE_ACTIVE_FROM: 'ASC'},
-    FILTER: ''
-  },
-  function (result) {
-    if (result.error()) {
-      console.log(result)
-      getElements(entity, callback)
-    } else {
-      callback(result.data())
+
+export function getElements (params, callback) {
+  BX24.callMethod('entity.item.get', Object.assing(BasParams, params),
+    function (result) {
+      if (result.error()) {
+        console.log(result)
+        getElements(params, callback)
+      } else {
+        callback(result.data())
+      }
     }
-  }
   )
 }
+
 export function addNewItem (entity, data, callback) {
   BX24.callMethod('entity.item.add', {
     ENTITY: entity,
@@ -55,6 +71,7 @@ export function addNewItem (entity, data, callback) {
     callback(result.data())
   })
 }
+
 export function updateItem (entity, data, callback) {
   BX24.callMethod('entity.item.update', {
     ENTITY: entity,
@@ -64,10 +81,13 @@ export function updateItem (entity, data, callback) {
     SECTION: data.SECTION
   }, function (result) {
     console.log(result)
-    if (result.error()) { updateItem(entity, data, callback) }
+    if (result.error()) {
+      updateItem(entity, data, callback)
+    }
   }
   )
 }
+
 export function deleteItem (entity, data, callback) {
   BX24.callMethod('entity.item.delete', {
     ENTITY: entity,
@@ -80,6 +100,7 @@ export function deleteItem (entity, data, callback) {
     }
   })
 }
+
 export function addNewSection (entity, section, callback) {
   BX24.callMethod('entity.section.add', {
     ENTITY: entity,
@@ -91,6 +112,7 @@ export function addNewSection (entity, section, callback) {
     callback(result.data())
   })
 }
+
 export function updateSection (entity, data, callback) {
   BX24.callMethod('entity.section.update', {
     ENTITY: entity,
@@ -98,9 +120,12 @@ export function updateSection (entity, data, callback) {
     NAME: data.NAME,
     SECTION: data.SECTION
   }, function (result) {
-    if (result.error()) { updateItem(entity, data, callback) }
+    if (result.error()) {
+      updateItem(entity, data, callback)
+    }
   })
 }
+
 export function deleteSection (entity, data, callback) {
   BX24.callMethod('entity.section.delete', {
     ENTITY: entity,
@@ -117,9 +142,12 @@ export function deleteSection (entity, data, callback) {
 export function installEntity (data, callback) {
   BX24.callMethod('entity.add', {
     'ENTITY': data.CODE,
-    'NAME': data.NAME
+    'NAME': data.NAME,
+    'ACCESS': {AU: 'X'}
   }, function (result) {
-    if (result.error()) { console.log('erreoraraerae install') }
+    if (result.error()) {
+      console.log('erreoraraerae install')
+    }
   }
   )
 }
