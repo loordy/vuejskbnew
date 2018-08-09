@@ -130,6 +130,18 @@ export default {
             CREATED_BY: result.ID
           }
         }, function (result) {
+          if (result.length === 0) {
+            result = [{
+              CODE: 'md_knowledge1',
+              NAME: 'entity'
+            },
+            {
+              CODE: 'view',
+              NAME: 'viewType'
+            }
+            ]
+          }
+          // TODO переписать на дефолтные значения
           commit('setSettings', result)
           api.getElements(
             {
@@ -137,7 +149,8 @@ export default {
             }, function (result) {
               commit('setElements', result)
             })
-        })
+        }
+      )
     })
   }
 }
