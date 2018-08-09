@@ -1,10 +1,7 @@
 <template>
   <div class="header-line">
     <button @click="$router.push('/settings/')">Настройки</button>
-    <tagItem :tagData="{
-      NAME:'Домой',
-      icon: 'fa fa-home'
-}" searchText='' class="top-tags-line"></tagItem>
+    <ButtonSlide/>
     <listTagItem :taglist="taglist"/>
     <div class="header-line-filter">
       <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
@@ -17,10 +14,12 @@
 <script>
 import ListTagItem from './tag/ListTagItem'
 import TagItem from './tag/TagItem'
+import ButtonSlide from './buttons/ButtonSlide'
 export default {
   components: {
     ListTagItem,
-    TagItem
+    TagItem,
+    ButtonSlide
   },
   name: 'top',
   data () {
