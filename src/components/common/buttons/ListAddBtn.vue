@@ -12,8 +12,10 @@ export default {
         {
           openModal: 'modalAll',
           modalData: {
-            element: this.data,
-            new: true
+            element: {
+              NAME: 'Новая статья',
+              SECTION: this.$route.params.CODE
+            }
           }
         })
     }

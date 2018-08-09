@@ -1,8 +1,8 @@
 <template>
   <div>
-    <emptyList v-if="view"/>
-    <ListitemView v-else-if="getviewType.viewType === 'view'"></ListitemView>
-    <ListItemList v-else></ListItemList>
+    <emptyList v-if="$store.state.elements.length === 0"/>
+    <ListItemList v-else-if="getviewType.viewType === 'list'"></ListItemList>
+    <ListitemView v-else></ListitemView>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      console.log(to)
+      // console.log(to)
     }
   }
 }

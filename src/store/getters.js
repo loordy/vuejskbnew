@@ -11,8 +11,7 @@ export default {
     return state.elements.filter(element => element.SECTION === ID)
   },
   getElementByCODE: state => CODE => {
-    // TODO разобраться как показывать 1 элемент
-    if (CODE === undefined) { CODE = '2018-07-19T09:08:35+03:44' }
+    if (CODE === undefined) { CODE = state.elements.sort((a, b) => a.ID - b.ID)[0].CODE }
     return state.elements.find(element => element.CODE === CODE)
   },
   getCountAllSecEl: state => ID => {
@@ -33,12 +32,15 @@ export default {
     return state.bases.find(base => base.CODE === CODE)
   },
   getviewType: state => {
-    return state.viewSettings
+    return state.userSettings
   },
   getTagList: state => state.tags,
   getBaseList: state => state.bases,
+  getCurrentBase: state => NAME => {
+    return state.userSettings.find(item => item.NAME === NAME)
+  },
   getCurrentModal: state => state.currentModal,
-  getElementsList: state => ID => {
-    return state.elements.filter(element => element.SECTION === ID)
+  getElementsListACTIVE: state => ACTIVE => {
+    return state.elements.filter(element => element.ACTIVE === ACTIVE)
   }
 }

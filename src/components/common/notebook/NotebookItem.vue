@@ -1,7 +1,7 @@
 <template>
         <router-link to="/" class="notebook-list-item" @click="setStore()">
-            <span v-if="base.ID" class="delete-item" @click="deleteBase()"><i class="fas fa-times"></i></span>
-            <div class="notebook-cover">
+            <span v-if="baseid" class="delete-item" @click="deleteBase()"><i class="fas fa-times"></i></span>
+            <div class="notebook-cover" @click="setStore()">
                 <div class="notebook-skin">
                     <span>{{ base.NAME }}</span>
                 </div>
@@ -14,9 +14,16 @@ export default {
   props: {
     base: {}
   },
+  computed: {
+    baseid () {
+      return this.$store.getters.getBaseByCODE(this.base.CODE).ID
+    }
+  },
   methods: {
     setStore () {
-      this.$store.dispatch('setBases', this.base)
+      console.log('hi')
+      this.$store.dispatch('setElements', this.base)
+      this.$store.dispatch('setEntity', this.base)
     },
     deleteBase () {
       this.$store.dispatch('deleteBase', this.base)

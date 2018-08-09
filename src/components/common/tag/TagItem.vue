@@ -1,6 +1,6 @@
 <template>
-        <span :to="tagData.link" class="tag-item">
-          <span class="icon-list"><i class="fa fa-home"></i></span>
+        <span @click="addToRoute" class="tag-item">
+          <span class="icon-list"><i :class="[tagData.icon ? tagData.icon : 'fa fa-tag']"></i></span>
           <TextHighlighter :queries="searchText">{{ tagData.NAME }}</TextHighlighter>
           <span class="icon-delete"><i class="fas fa-times"></i></span>
       </span>
@@ -15,6 +15,29 @@ export default {
   props: {
     tagData: {},
     searchText: ''
+  },
+  methods: {
+    addToRoute () {
+      console.log(this.$store)
+      if (this.$route.name === 'listItems' && this.$route.query.tag) {
+        let arr = []
+        arr = this.$route.query.tag.toString().split(',')
+        if (!arr.includes(this.tagData.NAME)) { arr.push(this.tagData.NAME) }
+        this.$router.push({
+          path: '/listItems/',
+          query: {
+            tag: arr
+          }
+        })
+      } else {
+        this.$router.push({
+          path: '/listItems/',
+          query: {
+            tag: this.tagData.NAME
+          }
+        })
+      }
+    }
   }
 }
 </script>

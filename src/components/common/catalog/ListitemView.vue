@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     fbElements () {
-      return this.$store.getters.getElementsByParentID(this.$route.params.id)
+      return this.$store.getters.getElementsListACTIVE(this.$route.query.trunk)
     }
   }
 }

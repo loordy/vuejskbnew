@@ -68,6 +68,11 @@ export default {
     doSearch () {
       this.searchTags(this.searchWord)
     }
+  },
+  mounted () {
+    // this.$store.watch(this.$store.getters.getElementsListACTIVE('Y'), n => {
+    //   console.log('watched: ', n)
+    // })
   }
 }
 </script>

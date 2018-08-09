@@ -117,6 +117,7 @@ export default {
 
     },
     updateElement () {
+
       this.$emit('close')
     },
     close () {

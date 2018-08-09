@@ -1,45 +1,57 @@
 <template>
   <div class="header-line">
-    <listTagItem/>
-
+    <button @click="$router.push('/settings/')">Настройки</button>
+    <tagItem :tagData="{
+      NAME:'Домой',
+      icon: 'fa fa-home'
+}" searchText='' class="top-tags-line"></tagItem>
+    <listTagItem :taglist="taglist"/>
     <div class="header-line-filter">
-      <div class="header-filter-btn"  v-if="this.$route.name === 'filters'" @click="filterListModalMethod" :class="{active:filterListModal}">
+      <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
           <i class="fas fa-filter"></i>
       </div>
-
-      <!-- modal -->
-      <filterListModal v-if="filterListModal"  @close="filterListModal= false"/>
-      <!-- modal end-->
-
     </div>
   </div>
 </template>
 
 <script>
-import filterListModal from './modals/filterListModal'
 import ListTagItem from './tag/ListTagItem'
-
+import TagItem from './tag/TagItem'
 export default {
   components: {
     ListTagItem,
-    filterListModal
+    TagItem
   },
   name: 'top',
   data () {
     return {
       filterListModal: false,
-      tagName: 'Привет'
+      tagName: 'Привет',
+      taglist: ''
     }
   },
   methods: {
     viewChange (type) {
       this.$store.commit('setView', type)
     },
-
     filterListModalMethod (event) {
       this.filterListModal = !this.filterListModal
-      console.log(event)
-      console.log(event.currentTarget)
+      this.$store.commit('openModal',
+        {
+          openModal: 'filterListModal',
+          modalData: {
+            element: this.data
+          }
+        })
+    }
+  },
+  watch: {
+    $route (to, from) {
+      if (to.name === 'listItems' && to.query.tag) {
+        this.taglist = this.$store.getters.getTagList.filter(item => to.query.tag.includes(item.NAME))
+      } else {
+        this.taglist = ''
+      }
     }
   }
 
@@ -187,5 +199,9 @@ export default {
 
   .header-line_edit .line-edit-item.add-trash i{
     color: #f76b64;
+  }
+  .top-tags-line {
+    display: inline-block;
+    margin-left: 4px;
   }
 </style>

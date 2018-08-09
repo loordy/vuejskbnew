@@ -1,8 +1,6 @@
 <template>
 
     <aside id="right-aside" class="m-b-30">
-        <sidebarModal v-if="addModal"/>
-
         <nav class="category">
           <h2 class="category-nav-title aside-pt-block">Разделы</h2>
 
@@ -13,7 +11,7 @@
                 <i class="fa fa-home"></i>
               </router-link>
 
-              <router-link to="/listItems/?q=favorites&a=b&d=g" class="cat-nav-btn">
+              <router-link to="/listItems/?q=favorites&tag=Домой&tag=Привет" class="cat-nav-btn">
                 <i class="far fa-copy"></i>
               </router-link>
 
@@ -21,7 +19,7 @@
                 <i class="far fa-star"></i>
               </router-link>
 
-              <router-link to="/listItems/?a=trunk" class="cat-nav-btn trash">
+              <router-link to="/listItems/?trunk=N" class="cat-nav-btn trash">
                 <i class="far fa-trash-alt"></i>
               </router-link>
             </div>
@@ -43,7 +41,6 @@
 
 </template>
 <script>
-import sidebarModal from './modals/old_sidebarModal'
 import TreeItems from './tree/treeItems'
 import TagListSearch from './tag/TagListSearch'
 
@@ -51,8 +48,8 @@ export default {
   name: 'Sidebar',
   components: {
     TagListSearch,
-    TreeItems,
-    sidebarModal},
+    TreeItems
+  },
   data () {
     return {
       i: 0,

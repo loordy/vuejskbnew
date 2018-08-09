@@ -12,6 +12,7 @@
         </div>
         <div class="article-source-line">
           <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>
+          <!--<span class="source-line-item cnt-none">{{ $store.getters.getUserByID(fbElement.CREATED_BY ).NAME }}</span>-->
           <span class="source-line-item cnt-none">{{ fbElement.CREATED_BY }}</span>
         </div>
         <div class="content-text-wrap">
@@ -46,7 +47,11 @@ export default {
   name: 'detailItem',
   data () {
     return {
-      fbElement: this.$store.getters.getElementByCODE(this.$route.params.code)
+    }
+  },
+  computed: {
+    fbElement () {
+      return this.$store.getters.getElementByCODE(this.$route.params.code)
     }
   },
   components: {

@@ -14,6 +14,7 @@ import bottom from './components/common/bottom'
 import Sidebar from './components/common/Sidebar'
 import NotebookList from './components/common/notebook/NotebookList'
 import PrevTreeList from './components/common/modals/PrevTreeList'
+
 export default {
   name: 'App',
   components: {
@@ -33,12 +34,16 @@ export default {
       this.detailArticle = !this.detailArticle
     }
   },
+  computed: {},
+  created () {
+    console.log('lol')
+    this.$store.dispatch('start')
+    this.$store.dispatch('setUsers')
+    this.$store.dispatch('setBases')
+  },
   mounted () {
-    console.log('mounted app.vue')
-    this.$store.dispatch('installEntity')
-    this.$store.dispatch('setElements')
-    this.$store.dispatch('setSections')
-    this.$router.push({path: `/`})
+    console.log('hi')
+    this.$router.push('/')
   }
 }
 

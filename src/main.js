@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import wysiwyg from "vue-wysiwyg"
+import wysiwyg from 'vue-wysiwyg'
 Vue.use(wysiwyg, {})
 Vue.config.productionTip = false
 
