@@ -373,6 +373,8 @@ export default {
     border-radius: 5px;
     box-shadow: 0 3px 36px rgba(158,157,163,.54);
     margin-bottom: 10px;
+    background-color: #fff;
+    z-index: 100;
   }
 
   .inner-cat-list-list{

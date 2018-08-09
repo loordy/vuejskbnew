@@ -288,6 +288,10 @@ export default {
     align-items: center;
   }
 
+  .article-footer .top-tags-line{
+    width: 100%;
+  }
+
   .article-footer .article-footer-tags {
     width: calc(100% - 100px);
   }

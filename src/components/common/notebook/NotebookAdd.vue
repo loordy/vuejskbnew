@@ -163,6 +163,8 @@ export default {
     background-image: none;
     background-color: #dce1e4;
     padding: 20px;
+    box-shadow: none;
+    border: 0;
   }
 
   .notebook-list-item.add-notebook .notebook-skin {
