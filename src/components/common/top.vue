@@ -1,7 +1,7 @@
 <template>
   <div class="header-line">
     <button @click="$router.push('/settings/')">Настройки</button>
-    <ButtonSlide @click="showBases=!showBases"/>
+    <ButtonSlide @click="showBases = !showBases"/>{{showBases}}
     <listTagItem :taglist="taglist"/>
     <div class="header-line-filter">
       <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
