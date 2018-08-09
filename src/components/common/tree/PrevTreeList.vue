@@ -1,6 +1,9 @@
 <template>
   <div class="kb-prev-tree-wrap">
-    <h2 class="kb-prev-tree-title">Структура базы</h2>
+    <div class="kb-prev-tree-header">
+      <h2 class="kb-prev-tree-title">Структура базы</h2>
+      <a href="#" class="tree-add-item"><i class="fas fa-plus"></i>Добавить статью</a>
+    </div>
     <treeItemList :treeData="treeData" :currentItem="currentID"/>
     </div>
 </template>
@@ -22,8 +25,6 @@ export default {
 <style>
   /* --------prev tree list ------- */
   .kb-prev-tree-wrap {
-    padding: 20px;
-    background-color: #f5f5f5;
     margin-bottom: 30px;
   }
 
@@ -79,6 +80,37 @@ export default {
 
   .kb-prev-tree-list-parent > li > a {
     font-size: 18px;
+  }
+
+  .tree-add-item{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    color: #9aa5ab;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+    background-color: #ebf1f4;
+  }
+
+  .tree-add-item:hover{
+    background-color: #56c1e4;
+    color: #fff;
+  }
+
+  .tree-add-item:active{
+    background-color: #56c1e4;
+  }
+
+  .tree-add-item i{
+    font-size:  14px;
+    margin-right: 5px;
+  }
+
+  .kb-prev-tree-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   /* ---- prev tree list  end ---- */
