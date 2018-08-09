@@ -1,10 +1,11 @@
 import * as api from '../api/index'
+
 const entitykb = 'md_knowledge1'
 // const settingskb = 'md_settings_knowledge'
 export default {
   setElements: ({commit, state}, data) => {
     console.log(data)
-    api.getElements(data.CODE, function (result) {
+    api.getElements({ENTITY: data.CODE}, function (result) {
       commit('setElements', result)
     })
   },
@@ -16,13 +17,13 @@ export default {
   },
 
   setSettings: ({commit, state}, data) => {
-    api.getElements('md_kb_settings', function (result) {
+    api.getElements({ENTITY: 'md_kb_settings'}, function (result) {
       commit('setSettings', result)
     })
   },
 
   setBases: ({commit, state}, data) => {
-    api.getElements('md_kb_bases', function (result) {
+    api.getElements({ENTITY: 'md_kb_bases'}, function (result) {
       commit('setBases', result)
     })
   },
@@ -122,12 +123,21 @@ export default {
 
   start: ({commit, state}, data) => {
     api.getCurrentUser(function (result) {
-
-    api.getElements('md_kb_settings', result, function (result) {
-      commit('setSettings', result)
-      api.getElements(result.find(item => item.NAME === 'entity').CODE, function (result) {
-        commit('setElements', result)
-      })
+      api.getElements(
+        {
+          ENTITY: 'md_kb_settings',
+          FILTER: {
+            CREATED_BY: result.ID
+          }
+        }, function (result) {
+          commit('setSettings', result)
+          api.getElements(
+            {
+              ENTITY: result.find(item => item.NAME === 'entity').CODE
+            }, function (result) {
+              commit('setElements', result)
+            })
+        })
     })
   }
 }

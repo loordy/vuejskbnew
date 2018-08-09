@@ -14,10 +14,13 @@ const BasParams = {
   'SECTION': '',
   'PROPERTY_VALUES': ''
 }
-
+const BasParamsGet = {
+  ENTITY: '',
+  SORT: {DATE_ACTIVE_FROM: 'ASC'},
+  FILTER: ''
+}
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
-    console.log(result.data())
     callback(result)
   })
 }
@@ -47,7 +50,7 @@ export function getSections (entity, callback) {
 }
 
 export function getElements (params, callback) {
-  BX24.callMethod('entity.item.get', Object.assing(BasParams, params),
+  BX24.callMethod('entity.item.get', Object.assign(BasParamsGet, params),
     function (result) {
       if (result.error()) {
         console.log(result)
