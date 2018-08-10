@@ -45,6 +45,11 @@
         </div>
 
         <div class="slide_fade-aside">
+
+          <div class="edit-area-header text-left">
+            Параметры
+          </div>
+
           <div class="aside-block">
             <h3 class="aside-title">Инпут 1</h3>
             <input type="text" class="kb-input">
@@ -241,7 +246,7 @@ export default {
 
   .slide_fade_modal_close {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 5px;
     width: 32px;
     height: 32px;
@@ -263,12 +268,14 @@ export default {
     transition: all 300ms ease;
     text-align: center;
     line-height: 32px;
-    font-size: 20px;
+    font-size: 14px;
     color: #c4c7cc;
+    border: 1px solid #ddd;
   }
 
   .slide_fade_modal_close_inner:hover {
-    color: #333;
+    color: #9aa5ab;
+    border-color: #9aa5ab;
   }
 
   .kb_iframe_header {
@@ -537,15 +544,42 @@ export default {
     right: 0;
     height: 100%;
     padding: 10px;
-    background-color: #fff;
+    background-color: #eef2f4;
     overflow-y: auto;
-    padding-top: 30px;
+    padding-top: 0px;
   }
 
-  .edit-area-header {
+   .slide_fade-wrapp .slide_fade-aside .aside-block{
+     background-color: #fff;
+     padding: 20px 10px;
+     margin-bottom: 10px;
+     padding-bottom: 10px;
+   }
+
+   .slide_fade-wrapp .slide_fade-aside .edit-area-header{
+     padding-left: 0px;
+   }
+
+   .slide_fade-wrapp .slide_fade-aside .category{
+     width: 100%;
+   }
+
+   .slide_fade-wrapp .slide_fade-aside .select-tag{
+     width: auto;
+     margin-left: -10px;
+     margin-right: -10px;
+   }
+
+   .slide_fade-wrapp .slide_fade-aside .select-tag .select-tag-hed{
+     padding-top: 0;
+   }
+
+   .edit-area-header {
     padding: 15px 20px;
     text-align: center;
     font-size: 18px;
+    font-size: 20px;
+    font-family: "ProximaNova-Semibold";
   }
 
   .edit-area-form-container {
@@ -642,4 +676,11 @@ export default {
     padding: 15px;
   }
 
+   .editr{
+      min-height: 500px;
+   }
+
+   .kb-input{
+     margin-bottom: 10px;
+   }
 </style>

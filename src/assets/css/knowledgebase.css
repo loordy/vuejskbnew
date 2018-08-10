@@ -489,6 +489,9 @@ body{
   color: #3eddff;
 }
 
+.text-left{
+  text-align: left!important;
+}
 
 /*------form css------*/
 
