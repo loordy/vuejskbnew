@@ -1,16 +1,16 @@
 <template>
-    <div class="inner-cat-list">
+    <div class="inner-cat-list">{{ currentItem }}sdasdas
 
-        <div class="inner-cat-list-search">
-            <div class="inner-cat-list-search-wrap">
-                <input type="text" placeholder="Поиск по разделам...">
-                <button>
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
+        <!--<div class="inner-cat-list-search">-->
+            <!--<div class="inner-cat-list-search-wrap">-->
+                <!--<input type="text" placeholder="Поиск по разделам...">-->
+                <!--<button>-->
+                    <!--<i class="fas fa-search"></i>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="inner-cat-list-content">
-          <SelectListItem v-for="option in getList()" :key="option.CODE" :NAME="option.NAME"/>
+          <SelectListItem v-for="option in getList(currentItem)" :key="option.CODE" :NAME="option.NAME"/>
           <SelectList :optionList="optionsList" :currentItem="option.ID"></SelectList>
         </div>
     </div>

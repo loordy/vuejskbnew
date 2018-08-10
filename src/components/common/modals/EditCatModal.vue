@@ -21,15 +21,17 @@
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
           <div class="select-input">
-            <input type="text" class="kb-input" v-model="modalData.element.SECTION">
+            <input type="text" class="kb-input" v-model="modalData.element.SECTION" @keyup="doSearch">
+            <!--<input type="text" class="kb-input" v-model="searchWord" @keyup="doSearch">-->
             <div class="select-input-angle">
               <i class="fas fa-angle-down"></i>
             </div>
           </div>
 
         </div>
-
-        <SelectList :optionsList="treeData"/>
+        {{ (searchWord ? treeData : treeData) }}
+        <SelectList :optionsList="(searchWord ? treeData : treeData)"/>
+        {{ searchWord }}
 
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
@@ -76,9 +78,20 @@
 </template>
 <script>
 import SelectList from '../tree/SelectList'
+import {
+  mapActions as mapSearchActions,
+  mapGetters as mapSearchGetters,
+  getterTypes,
+  actionTypes
+} from 'vuex-search'
 export default {
   name: 'editCatModal',
   components: {SelectList},
+  data () {
+    return {
+      searchWord: ''
+    }
+  },
   props: {
     modalData: {}
   },
@@ -95,11 +108,26 @@ export default {
       Object.assign(this.modalData.element, this._beforeEditingCache)
       this._beforeEditingCache = null
       this.$emit('close')
+    },
+    ...mapSearchActions('tags', {
+      searchTags: actionTypes.search
+    }),
+    doSearch () {
+      this.searchTags(this.searchWord)
     }
   },
   computed: {
     treeData () {
-      return this.$store.getters.getElementsByParentID(this.currentID)
+      return this.$store.getters.getElementsByParentID()
+    },
+    ...mapSearchGetters('elements', {
+      resultIds: getterTypes.result,
+      isLoading: getterTypes.isSearching
+    }),
+    result () {
+      // return this.resultIds.map(ID => this.taglist.filter(item => item.ID === ID)[0])
+      // TODO можно ограничить в дальнейшем массив поиска по 2 букве и протестировать выход из цикла по достижению кол-ва
+      return this.treeData.filter(item => this.resultIds.includes(item.ID))
     }
   },
   mounted () {
