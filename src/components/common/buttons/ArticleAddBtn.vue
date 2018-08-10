@@ -66,8 +66,9 @@
         border-radius: 5px;
         transition: all ease 0.3s;
         background-color: #ebf1f4;
-        border: 0;
-        outline: none;
+        border: 0!important;
+        outline: none!important;;
+        cursor: pointer;
     }
 
     .tree-add-item:hover {

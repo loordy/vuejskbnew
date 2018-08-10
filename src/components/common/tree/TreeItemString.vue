@@ -1,6 +1,6 @@
 <template>
     <div class="cat-nav_list-item_link">
-        <router-link :to="'/detailItem/'+ section.CODE" class="link_text"><span>{{ section.NAME }}</span></router-link>
+        <router-link :to="'/detailItem/'+ section.CODE" class="link_text"><span class="link_text">{{ section.NAME }}</span></router-link>
         <div class="icon_sidebar_block">
               <span class="icon_sidebar icon_pencil" @click="editCatModalMethod">
                 <i class="fas fa-pencil-alt"></i>
@@ -42,7 +42,7 @@ export default {
         text-decoration: none;
         line-height: 36px;
         padding: 0 16px;
-        padding-right: 30px;
+        padding-right: 50px;
         position: relative;
         border-radius: 2px;
     }
@@ -103,6 +103,14 @@ export default {
 
     .icon_sidebar:hover {
         color: #556066;
+    }
+
+    .cat-nav_list-item_link span.link_text {
+      display: block;
+      white-space: nowrap;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
 </style>

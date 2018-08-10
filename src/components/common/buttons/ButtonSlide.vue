@@ -1,8 +1,8 @@
 <template>
-  <div class="notebook-list-title-toggle">
-    <i class="far fa-bookmark"></i> Базы заний <span class="slide-toggle"><i
+  <button class="notebook-list-title-toggle">
+    <i class="kb-log"></i> <span>Базы заний</span> <span class="slide-toggle"><i
     :class="[open ? 'fas fa-angle-up' : 'fas fa-angle-down']"></i></span>
-  </div>
+  </button>
 </template>
 <script>
 export default {
@@ -18,32 +18,35 @@ export default {
 
   .notebook-list-title-toggle {
     display: inline-block;
-    font-family: "ProximaNova-Semibold";
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 20px;
     color: rgba(32, 32, 33, 0.7);
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     transition: all ease 0.3s;
-    border-radius: 4px;
-    border: 1px solid rgba(184, 184, 184, .44);
     padding: 0 8px;
-    height: 28px;
-    line-height: 28px;
-    font-size: 15px;
-
+    background-color: transparent;
+    outline: none;
+    border: 0;
   }
 
-  .notebook-list-title-toggle > i {
-    font-size: 14px;
+  .notebook-list-title-toggle > i.kb-log {
+    font-size: 28px;
     display: inline-block;
+    width: 40px;
+    height: 40px;
     padding: 3px 0px 3px 0px;
     line-height: 20px;
     margin-left: 0px;
     margin-right: 2px;
     -webkit-transition: all ease 0.3s;
     transition: all ease 0.3s;
-    color: #9aa5ab;
+    color: #56c1e4;
+    vertical-align: middle;
+    background-image: url('../../../assets/images/kb-logo.png');
+    margin-right: 10px;
   }
 
   .notebook-list-title-toggle:hover {
@@ -52,7 +55,8 @@ export default {
 
   .slide-toggle {
     text-align: center;
-    vertical-align: middle;
+    font-size: 14px;
+    margin-left: 4px;
   }
 
 </style>

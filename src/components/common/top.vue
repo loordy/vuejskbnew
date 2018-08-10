@@ -1,14 +1,20 @@
 <template>
   <div class="header-line">
-    <button @click="$router.push('/settings/')">Настройки</button>
-    <ButtonSlide @click.native="showBases = !showBases" :open="showBases"></ButtonSlide>
-    <listTagItem :taglist="taglist"/>
-    <div class="header-line-filter">
-      <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
-          <i class="fas fa-filter"></i>
-      </div>
+
+    <!--<button @click="$router.push('/settings/')">Настройки</button>-->
+    <div class="header-line_logo">
+      <ButtonSlide @click.native="showBases = !showBases" :open="showBases"></ButtonSlide>
+      <articleAddBtn @click.native='openModal'/>
     </div>
     <NotebookList v-if="showBases" />
+    <div class="header-line_tag-list">
+      <listTagItem :taglist="taglist"/>
+      <div class="header-line-filter">
+        <div class="header-filter-btn"  v-if="this.$route.name === 'listItems'" @click="filterListModalMethod" :class="{active:filterListModal}">
+          <i class="fas fa-filter"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,12 +23,14 @@ import ListTagItem from './tag/ListTagItem'
 import TagItem from './tag/TagItem'
 import ButtonSlide from './buttons/ButtonSlide'
 import NotebookList from './notebook/NotebookList'
+import articleAddBtn from './buttons/articleAddBtn'
 export default {
   components: {
     ListTagItem,
     TagItem,
     ButtonSlide,
-    NotebookList
+    NotebookList,
+    articleAddBtn
   },
   name: 'top',
   data () {
@@ -44,6 +52,18 @@ export default {
           openModal: 'filterListModal',
           modalData: {
             element: this.data
+          }
+        })
+    },
+    openModal () {
+      this.$store.commit('openModal',
+        {
+          openModal: 'modalAll',
+          modalData: {
+            element: {
+              NAME: 'Новая статья',
+              SECTION: this.$route.params.CODE
+            }
           }
         })
     }
@@ -124,9 +144,19 @@ export default {
   }
 
   .header-line{
-    position: relative;
-    padding-right:  50px;
     margin-bottom:  10px;
+  }
+  .header-line_logo{
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  .header-line_tag-list{
+    position: relative;
+    padding-right:  40px;
+    margin-top: 20px;
   }
 
   .header-line .header-line-filter{
@@ -204,7 +234,8 @@ export default {
     color: #f76b64;
   }
   .top-tags-line {
-    display: inline-block;
+    display: block;
+    width: 100%;
     margin-left: 4px;
   }
 </style>

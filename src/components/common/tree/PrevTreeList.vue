@@ -2,18 +2,16 @@
   <div class="kb-prev-tree-wrap">
     <div class="kb-prev-tree-header">
       <h2 class="kb-prev-tree-title">Структура базы</h2>
-      <articleAddBtn/>
     </div>
     <treeItemList :treeData="treeData" :currentItem="currentID"/>
     </div>
 </template>
 <script>
   import TreeItemList from './TreeItemList'
-  import ArticleAddBtn from "../buttons/ArticleAddBtn";
 
   export default {
   name: 'prevTreeList',
-  components: {ArticleAddBtn, TreeItemList},
+  components: {TreeItemList},
   props: {
     currentID: ''
   },
@@ -23,18 +21,7 @@
     }
   },
   methods: {
-    openModal () {
-      this.$store.commit('openModal',
-        {
-          openModal: 'modalAll',
-          modalData: {
-            element: {
-              NAME: 'Новая статья',
-              SECTION: this.$route.params.CODE
-            }
-          }
-        })
-    }
+
   }
 }
 </script>

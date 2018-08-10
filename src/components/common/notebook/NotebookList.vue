@@ -1,12 +1,13 @@
 <template>
-  <div class="prev-notebook-list-wrap">
+  <transition>
+    <div class="prev-notebook-list-wrap">
 
-    <div class="prev-notebook-list">
-      <notebookItem v-for="base in bases" :key="base.CODE" :base="base"/>
-      <notebookAdd/>
+      <div class="prev-notebook-list">
+        <notebookItem v-for="base in bases" :key="base.CODE" :base="base"/>
+        <notebookAdd/>
+      </div>
     </div>
-  </div>
-
+  </transition>
 </template>
 <script>
 import NotebookItem from './NotebookItem'
@@ -29,6 +30,9 @@ export default {
 <style scoped>
 
   /* ----- notebook-list-item ---- */
+  .prev-notebook-list-wrap{
+    margin-bottom: 10px;
+  }
   .prev-notebook-list {
     display: flex;
     flex-wrap: wrap;

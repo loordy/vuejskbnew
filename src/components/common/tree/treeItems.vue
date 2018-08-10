@@ -99,13 +99,7 @@ export default {
     padding-left: 10px;
   }
 
-  .cat-nav_list-item_link span.link_text {
-    display: block;
-    white-space: nowrap;
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+
 
   .cat-nav_list-item {
     position: relative;

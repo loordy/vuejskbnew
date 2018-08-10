@@ -18,7 +18,8 @@ export default new Vuex.Store({
       CODE: 'asdasdas',
       ID: '12312',
       DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
-      ACTIVE: 'Y'
+      ACTIVE: 'Y',
+      SECTION: null
     }],
     users: [],
     sections: [],
