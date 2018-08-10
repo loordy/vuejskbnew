@@ -14,6 +14,9 @@ export default {
     if (CODE === undefined) { CODE = state.elements.sort((a, b) => a.ID - b.ID)[0].CODE }
     return state.elements.find(element => element.CODE === CODE)
   },
+  getElementByID: state => ID => {
+    return state.elements.find(element => element.ID === ID)
+  },
   getCountAllSecEl: state => ID => {
     if (ID === undefined) { ID = null }
     return state.sections.filter(section => section.SECTION === ID).length + state.elements.filter(element => element.SECTION === ID)

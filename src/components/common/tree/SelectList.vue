@@ -1,19 +1,12 @@
 <template>
-    <div class="inner-cat-list">
 
-        <div class="inner-cat-list-search">
-            <div class="inner-cat-list-search-wrap">
-                <input type="text" placeholder="Поиск по разделам...">
-                <button>
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </div>
-        <div class="inner-cat-list-content">
-          <SelectListItem v-for="option in getList()" :key="option.CODE" :NAME="option.NAME"/>
-          <SelectList :optionList="optionsList" :currentItem="option.ID"></SelectList>
-        </div>
-    </div>
+          <ul class="inner-cat-list-list">
+            <li class="inner-cat-list-list-item" v-for="curItem in getList(currentItem)" :key="curItem.CODE">
+              <SelectListItem :item="curItem"/>
+              <SelectList v-if="getList(curItem.ID).length !== 0" :currentItem="curItem.ID" :treeData="treeData"></SelectList>
+            </li>
+          </ul>
+
 </template>
 <script>
 import SelectListItem from './SelectListItem'
@@ -22,14 +15,14 @@ export default {
   name: 'SelectList',
   components: {SelectListItem},
   props: {
-    optionsList: '',
+    treeData: '',
     currentItem: {
       default: null
     }
   },
   methods: {
     getList (currentID) {
-      return this.optionsList.filter(item => item.ID === currentID)
+      return this.treeData.filter(item => item.SECTION === currentID)
     }
   }
 }

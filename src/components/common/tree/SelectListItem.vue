@@ -1,15 +1,11 @@
 <template>
-    <ul class="inner-cat-list-list">
-        <li class="inner-cat-list-list-item">
-            <div class="inner-cat-list-list-item_link"><span>{{ NAME }}</span></div>
-        </li>
-    </ul>
+<div class="inner-cat-list-list-item_link"><span>{{ item.NAME }}</span></div>
 </template>
 <script>
 export default {
   name: 'SelectListItem',
   props: {
-    NAME: ''
+    item: ''
   }
 }
 </script>

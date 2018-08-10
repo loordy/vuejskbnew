@@ -7,9 +7,8 @@
     </div>
 </template>
 <script>
-  import TreeItemList from './TreeItemList'
-
-  export default {
+import TreeItemList from './TreeItemList'
+export default {
   name: 'prevTreeList',
   components: {TreeItemList},
   props: {
@@ -17,7 +16,7 @@
   },
   computed: {
     treeData () {
-      return this.$store.getters.getElementsByParentID(this.currentID)
+      return this.$store.getters.getElementsListACTIVE('Y')
     }
   },
   methods: {

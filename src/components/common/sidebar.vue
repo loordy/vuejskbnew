@@ -27,12 +27,12 @@
 
           <TreeItems/>
 
-          <a href="" class="category-item-add_btn">
-            Новый раздел
-            <span class="cat-item-in_icon">
-              <i class="fas fa-plus"></i>
-            </span>
-          </a>
+          <!--<a href="" class="category-item-add_btn">-->
+            <!--Новый раздел-->
+            <!--<span class="cat-item-in_icon">-->
+              <!--<i class="fas fa-plus"></i>-->
+            <!--</span>-->
+          <!--</a>-->
         </nav>
 
       <tagListSearch/>

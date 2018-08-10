@@ -21,7 +21,7 @@
 // }
 export function getCurrentUser (callback) {
   BX24.callMethod('user.current', {}, function (result) {
-    console.log(result)
+    console.log(result.data())
     callback(result)
   })
 }
@@ -29,7 +29,7 @@ export function getCurrentUser (callback) {
 export function getUsers (callback) {
   BX24.callMethod('user.get', {}, function (result) {
     console.log(result)
-    callback(result)
+    callback(result.data())
   })
 }
 

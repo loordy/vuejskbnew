@@ -3,7 +3,7 @@
     <i class="modal-angle right"></i>
     <div class="edit-modal-wrap">
       <div class="edit-modal-header">
-        <div class="edit-modal-title">Редактировать раздел</div>
+        <div class="edit-modal-title">Редактировать статью</div>
 
         <div class="close-modal" @click="close">
           <i class="fas fa-times"></i>
@@ -21,16 +21,28 @@
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
           <div class="select-input">
-            <input type="text" class="kb-input" v-model="modalData.element.SECTION">
-            <div class="select-input-angle">
+            <input type="text" class="kb-input" v-model="model" @keyup="doSearch">
+            <!--<input type="text" class="kb-input" v-model="searchWord" @keyup="doSearch">-->
+            <div class="select-input-angle" @click="keyup = !keyup">
               <i class="fas fa-angle-down"></i>
             </div>
           </div>
 
         </div>
+        <div class="inner-cat-list">
 
-        <SelectList :optionsList="treeData"/>
-
+          <!--<div class="inner-cat-list-search">-->
+          <!--<div class="inner-cat-list-search-wrap">-->
+          <!--<input type="text" placeholder="Поиск по разделам...">-->
+          <!--<button>-->
+          <!--<i class="fas fa-search"></i>-->
+          <!--</button>-->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="inner-cat-list-content">
+        <SelectList v-if="keyup" :treeData="(searchWord ? treeData : treeData)"/>
+          </div>
+          </div>
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
           <div class="radio-button-row">
@@ -76,9 +88,21 @@
 </template>
 <script>
 import SelectList from '../tree/SelectList'
+import {
+  mapActions as mapSearchActions,
+  mapGetters as mapSearchGetters,
+  getterTypes,
+  actionTypes
+} from 'vuex-search'
 export default {
   name: 'editCatModal',
   components: {SelectList},
+  data () {
+    return {
+      searchWord: '',
+      keyup: false
+    }
+  },
   props: {
     modalData: {}
   },
@@ -95,11 +119,30 @@ export default {
       Object.assign(this.modalData.element, this._beforeEditingCache)
       this._beforeEditingCache = null
       this.$emit('close')
+    },
+    ...mapSearchActions('tags', {
+      searchTags: actionTypes.search
+    }),
+    doSearch () {
+      this.keyup = true
+      this.searchTags(this.searchWord)
     }
   },
   computed: {
     treeData () {
-      return this.$store.getters.getElementsByParentID(this.currentID)
+      return this.$store.getters.getElementsListACTIVE('Y')
+    },
+    model () {
+      return this.$store.getters.getElementByID()
+    },
+    ...mapSearchGetters('elements', {
+      resultIds: getterTypes.result,
+      isLoading: getterTypes.isSearching
+    }),
+    result () {
+      // return this.resultIds.map(ID => this.taglist.filter(item => item.ID === ID)[0])
+      // TODO можно ограничить в дальнейшем массив поиска по 2 букве и протестировать выход из цикла по достижению кол-ва
+      return this.treeData.filter(item => this.resultIds.includes(item.ID))
     }
   },
   mounted () {

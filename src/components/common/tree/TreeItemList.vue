@@ -2,15 +2,12 @@
   <ul class="kb-prev-tree-list-parent">
     <li class="kb-prev-tree-list_item" v-for="curItem in getList(currentItem)" :key="curItem.CODE">
       <trItem :itemData="curItem" :status="getList(curItem.ID).length"></trItem>
-      <treeItemList v-if="getList(curItem.ID).length > 0" :treeData="treeData" :currentItem="curItem.ID"></treeItemList>
+      <treeItemList v-if="getList(curItem.ID).length !== 0" :treeData="treeData" :currentItem="curItem.ID"></treeItemList>
     </li>
   </ul>
-
-
 </template>
 <script>
 import trItem from './TreeItem'
-
 export default {
   // TODO нужнопопробовать уменьшать массив перед вызовом доч элемента чтобы опять все не перебирать, но что делать когда он проваливается внутрь и там удалять хз
   name: 'treeItemList',
