@@ -63,7 +63,7 @@
         font-size: 18px;
         color: #9aa5ab;
         padding: 8px 15px;
-        border-radius: 5px;
+        border-radius: 3px;
         transition: all ease 0.3s;
         background-color: #ebf1f4;
         border: 0!important;
@@ -72,7 +72,7 @@
     }
 
     .tree-add-item:hover {
-        background-color: #56c1e4;
+        background-color: #3bc8f5;
         color: #fff;
     }
 

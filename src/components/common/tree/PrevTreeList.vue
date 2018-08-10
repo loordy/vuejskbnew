@@ -35,6 +35,7 @@
     font-family: "ProximaNova-Semibold";
     font-weight: normal;
     font-size: 22px;
+    margin-top: 0;
   }
 
   li.kb-prev-tree-list_item a {
