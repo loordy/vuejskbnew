@@ -20,7 +20,7 @@
             </div>
 
             <div class="edit-group btn-group m-b-0">
-              <button class="kb-btn green-btn">
+              <button class="kb-btn green-btn" @click="save">
                 Сохранить
               </button>
             </div>

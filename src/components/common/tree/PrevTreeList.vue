@@ -21,6 +21,20 @@
     treeData () {
       return this.$store.getters.getElementsByParentID(this.currentID)
     }
+  },
+  methods: {
+    openModal () {
+      this.$store.commit('openModal',
+        {
+          openModal: 'modalAll',
+          modalData: {
+            element: {
+              NAME: 'Новая статья',
+              SECTION: this.$route.params.CODE
+            }
+          }
+        })
+    }
   }
 }
 </script>

@@ -64,40 +64,24 @@ export function getElements (params, callback) {
   )
 }
 
-export function addNewItem (entity, data, callback) {
-  BX24.callMethod('entity.item.add', {
-    ENTITY: entity,
-    DATE_ACTIVE_FROM: new Date().getTime(),
-    NAME: data.NAME,
-    DETAIL_TEXT: data.DETAIL_TEXT,
-    CODE: data.CODE,
-    SECTION: data.SECTION
-  }, function (result) {
+export function addNewItem (data, callback) {
+  BX24.callMethod('entity.item.add', data, function (result) {
     callback(result.data())
   })
 }
 
-export function updateItem (entity, data, callback) {
-  BX24.callMethod('entity.item.update', {
-    ENTITY: entity,
-    ID: data.ID,
-    NAME: data.NAME,
-    DETAIL_TEXT: data.DETAIL_TEXT,
-    SECTION: data.SECTION
-  }, function (result) {
+export function updateItem (data, callback) {
+  BX24.callMethod('entity.item.update', data, function (result) {
     console.log(result)
     if (result.error()) {
-      updateItem(entity, data, callback)
+      updateItem(data, callback)
     }
   }
   )
 }
 
-export function deleteItem (entity, data, callback) {
-  BX24.callMethod('entity.item.delete', {
-    ENTITY: entity,
-    ID: data.ID
-  }, function (result) {
+export function deleteItem (data, callback) {
+  BX24.callMethod('entity.item.delete', data, function (result) {
     if (result.error()) {
       deleteItem(callback)
     } else {

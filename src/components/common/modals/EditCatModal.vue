@@ -29,52 +29,7 @@
 
         </div>
 
-        <div class="inner-cat-list">
-
-          <div class="inner-cat-list-search">
-            <div class="inner-cat-list-search-wrap">
-              <input type="text" placeholder="Поиск по разделам...">
-              <button>
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-          <div class="inner-cat-list-content">
-              <ul class="inner-cat-list-list">
-                  <li class="inner-cat-list-list-item">
-                      <div class="inner-cat-list-list-item_link"><span>Родительский раздел</span></div>
-                      <ul class="inner-cat-list-list">
-                        <li class="inner-cat-list-list-item">
-                            <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                        </li>
-                        <li class="inner-cat-list-list-item">
-                          <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                        </li>
-                        <li class="inner-cat-list-list-item">
-                          <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                          <ul class="inner-cat-list-list">
-                            <li class="inner-cat-list-list-item">
-                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                            </li>
-                            <li class="inner-cat-list-list-item">
-                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                            </li>
-                            <li class="inner-cat-list-list-item">
-                              <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                  </li>
-                  <li class="inner-cat-list-list-item">
-                    <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                  </li>
-                  <li class="inner-cat-list-list-item">
-                    <div class="inner-cat-list-list-item_link"><span>Подраздел</span></div>
-                  </li>
-              </ul>
-          </div>
-        </div>
+        <SelectList :optionsList="treeData"/>
 
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
@@ -107,12 +62,12 @@
           </button>
         </div>
 
-        <a href="#" class="category-item-add_btn">
-          Новый элемент
-          <span class="cat-item-in_icon">
-                  <i class="fas fa-plus"></i>
-                </span>
-        </a>
+        <!--<a href="#" class="category-item-add_btn">-->
+          <!--Новый элемент-->
+          <!--<span class="cat-item-in_icon">-->
+                  <!--<i class="fas fa-plus"></i>-->
+                <!--</span>-->
+        <!--</a>-->
 
       </div>
     </div>
@@ -120,22 +75,31 @@
   </div>
 </template>
 <script>
+import SelectList from '../tree/SelectList'
 export default {
   name: 'editCatModal',
+  components: {SelectList},
   props: {
     modalData: {}
   },
   methods: {
     deleteElement () {
-
+      this.$store.dispatch('deleteElement', this.modalData.element)
+      this.$emit('close')
     },
     updateElement () {
+      this.$store.dispatch('updateElement', this.modalData.element)
       this.$emit('close')
     },
     close () {
       Object.assign(this.modalData.element, this._beforeEditingCache)
       this._beforeEditingCache = null
       this.$emit('close')
+    }
+  },
+  computed: {
+    treeData () {
+      return this.$store.getters.getElementsByParentID(this.currentID)
     }
   },
   mounted () {
@@ -328,15 +292,6 @@ export default {
 
   /* ------modal css end---- */
 
-  .inner-cat-list-search{
-    padding: 10px 15px;
-    border-bottom: 1px solid #f5f5f7;
-  }
-
-  .inner-cat-list-search-wrap{
-    position: relative;
-  }
-
   .inner-cat-list-search-wrap input{
     height: 30px;
     width: 100%;
@@ -366,62 +321,6 @@ export default {
 
   .inner-cat-list-search-wrap button:hover{
     color: #556066;
-  }
-
-  .inner-cat-list{
-    border: 1px solid rgba(0,0,0,.06);
-    border-radius: 5px;
-    box-shadow: 0 3px 36px rgba(158,157,163,.54);
-    margin-bottom: 10px;
-    background-color: #fff;
-    z-index: 100;
-  }
-
-  .inner-cat-list-list{
-    list-style: none;
-    padding-left: 0;
-    margin: 0px;
-  }
-
-  .inner-cat-list-content{
-    padding: 10px 5px;
-  }
-
-  .inner-cat-list-list{
-    overflow: hidden;
-  }
-
-  .inner-cat-list-list-item .inner-cat-list-list-item_link{
-    color: #979797;
-    font-size: 14px;
-    display: block;
-    padding: 8px;
-    cursor: pointer;
-    position: relative;
-    font-family: "ProximaNova-Regular";
-  }
-
-  .inner-cat-list-list-item > .inner-cat-list-list-item_link:hover{
-    background-color: #f6f9fb;
-    color: #333;
-  }
-
-  .inner-cat-list-list-item > .inner-cat-list-list-item_link:hover:before{
-    content: "";
-    position: absolute;
-    left: -100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    max-width: 246px;
-    min-width: 246px;
-    background-color: #f6f9fb;
-    z-index: -1;
-  }
-
-  .inner-cat-list-list .inner-cat-list-list{
-    padding-left: 15px;
-    overflow: visible;
   }
 
   .inner-cat-list-list-item_link span{

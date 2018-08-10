@@ -1,18 +1,15 @@
 <template>
-  <div v-if="show.length !== 0">
-  <NotebookList />
- <detailItem></detailItem>
+  <div>
+  <detailItem v-if="show.length !== 0"></detailItem>
   </div>
 </template>
 
 <script>
 import detailItem from './detailItem'
-import NotebookList from '../common/notebook/NotebookList'
 export default {
   name: 'mainpage',
   components: {
-    detailItem,
-    NotebookList
+    detailItem
   },
   data () {
     return {
