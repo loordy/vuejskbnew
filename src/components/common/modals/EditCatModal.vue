@@ -84,11 +84,11 @@ export default {
   },
   methods: {
     deleteElement () {
-      this.$store.dispatch('updateElement', this.modalData.element)
+      this.$store.dispatch('deleteElement', this.modalData.element)
       this.$emit('close')
     },
     updateElement () {
-      this.$store.dispatch('deleteElement', this.modalData.element)
+      this.$store.dispatch('updateElement', this.modalData.element)
       this.$emit('close')
     },
     close () {
