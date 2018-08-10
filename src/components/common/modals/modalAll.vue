@@ -230,6 +230,7 @@ export default {
     bottom: 0;
     cursor: auto;
     background-color: #fff;
+    overflow: auto;
   }
 
   .slide_fade_modal_edit {
@@ -241,7 +242,10 @@ export default {
     top: 0;
     transition: all ease 0.3s;
     background: #eef2f4;
+  }
 
+  .slide_fade_modal{
+    background: #eef2f4;
   }
 
   .slide_fade_modal_close {
