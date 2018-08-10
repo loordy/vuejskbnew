@@ -20,36 +20,6 @@ export default {
 
     /* ------modal css end---- */
 
-    .inner-cat-list-search-wrap input {
-        height: 30px;
-        width: 100%;
-        padding-right: 40px;
-        line-height: 30px;
-        border: 0;
-        outline: none;
-    }
-
-    .inner-cat-list-search-wrap input::placeholder {
-        font-size: 14px;
-    }
-
-    .inner-cat-list-search-wrap button {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 30px;
-        height: 30px;
-        color: #bfc0c1;
-        transition: color ease 0.3s;
-        cursor: pointer;
-        background-color: transparent !important;
-        border: 0 !important;
-        outline: none;
-    }
-
-    .inner-cat-list-search-wrap button:hover {
-        color: #556066;
-    }
 
     .inner-cat-list-list {
         list-style: none;
@@ -86,7 +56,7 @@ export default {
         max-width: 246px;
         min-width: 246px;
         background-color: #f6f9fb;
-        z-index: -1;
+        z-index: 1;
     }
 
     .inner-cat-list-list .inner-cat-list-list {
@@ -100,6 +70,8 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        z-index: 5;
+        position: relative;
     }
 
     .select-input input {

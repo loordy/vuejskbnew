@@ -40,7 +40,7 @@
           <!--</div>-->
           <!--</div>-->
           <div class="inner-cat-list-content">
-        <SelectList v-if="keyup" :treeData="(searchWord ? treeData : treeData)"/>
+            <SelectList v-if="keyup" :treeData="(searchWord ? treeData : treeData)"/>
           </div>
           </div>
         <div class="edit-group" style="display:none">
@@ -335,6 +335,17 @@ export default {
 
   /* ------modal css end---- */
 
+  .inner-cat-list-search{
+    padding:  10px 10px;
+    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #f5f5f7;
+    margin-bottom: 10px;
+  }
+
+  .inner-cat-list-search-wrap{
+    position: relative;
+  }
+
   .inner-cat-list-search-wrap input{
     height: 30px;
     width: 100%;
@@ -393,6 +404,19 @@ export default {
     right: 0;
     color: #bfc0c1;
     text-align: center;
+    cursor: pointer;
+  }
+
+  .inner-cat-list{
+    padding: 10px 0;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 5px;
+    box-shadow: 0 3px 36px rgba(158,157,163,.54);
+  }
+
+  .inner-cat-list-content{
+    padding: 5px;
   }
 
 </style>
