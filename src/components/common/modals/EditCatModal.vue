@@ -3,7 +3,7 @@
     <i class="modal-angle right"></i>
     <div class="edit-modal-wrap">
       <div class="edit-modal-header">
-        <div class="edit-modal-title">Редактировать раздел</div>
+        <div class="edit-modal-title">Редактировать статью</div>
 
         <div class="close-modal" @click="close">
           <i class="fas fa-times"></i>
@@ -21,18 +21,15 @@
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
           <div class="select-input">
-            <input type="text" class="kb-input" v-model="modalData.element.SECTION" @keyup="doSearch">
+            <input type="text" class="kb-input" v-model="model.NAME" @keyup="doSearch">
             <!--<input type="text" class="kb-input" v-model="searchWord" @keyup="doSearch">-->
-            <div class="select-input-angle">
+            <div class="select-input-angle" @click="keyup = !keyup">
               <i class="fas fa-angle-down"></i>
             </div>
           </div>
 
         </div>
-        {{ (searchWord ? treeData : treeData) }}
-        <SelectList :optionsList="(searchWord ? treeData : treeData)"/>
-        {{ searchWord }}
-
+        <SelectList v-if="keyup" :treeData="(searchWord ? result : treeData)"/>
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
           <div class="radio-button-row">
@@ -89,7 +86,8 @@ export default {
   components: {SelectList},
   data () {
     return {
-      searchWord: ''
+      searchWord: '',
+      keyup: false
     }
   },
   props: {
@@ -113,12 +111,16 @@ export default {
       searchTags: actionTypes.search
     }),
     doSearch () {
+      this.keyup = true
       this.searchTags(this.searchWord)
     }
   },
   computed: {
     treeData () {
-      return this.$store.getters.getElementsByParentID()
+      return this.$store.getters.getElementsListACTIVE('Y')
+    },
+    model () {
+      return this.$store.getters.getElementByID(this.modalData.element.SECTION)
     },
     ...mapSearchGetters('elements', {
       resultIds: getterTypes.result,

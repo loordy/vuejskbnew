@@ -16,10 +16,34 @@ export default new Vuex.Store({
     elements: [{
       NAME: 'asdasd',
       CODE: 'asdasdas',
-      ID: '12312',
+      ID: '1',
       DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
       ACTIVE: 'Y',
       SECTION: null
+    },
+    {
+      NAME: 'rewdascacfdZZ',
+      CODE: 'asdasdasdasdsa',
+      ID: '123123',
+      DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
+      ACTIVE: 'Y',
+      SECTION: '1'
+    },
+    {
+      NAME: 'dewdsd',
+      CODE: 'adwdawxaxwcaefsr',
+      ID: '332',
+      DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
+      ACTIVE: 'Y',
+      SECTION: '1'
+    },
+    {
+      NAME: 'Scxzsczsczsd',
+      CODE: 'swxawxzsxc',
+      ID: '21212',
+      DETAIL_TEXT: 'asdasdasdasdasdasd asd asd asd s',
+      ACTIVE: 'Y',
+      SECTION: '332'
     }],
     users: [],
     sections: [],

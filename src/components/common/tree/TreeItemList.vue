@@ -5,8 +5,6 @@
       <treeItemList v-if="getList(curItem.ID).length > 0" :treeData="treeData" :currentItem="curItem.ID"></treeItemList>
     </li>
   </ul>
-
-
 </template>
 <script>
 import trItem from './TreeItem'

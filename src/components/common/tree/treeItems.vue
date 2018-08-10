@@ -2,7 +2,7 @@
   <div class="tree-list-wrap">
     <ul class="category-nav_list">
       <li v-for="section in sections" v-bind:class="[{open: showChildren === section.ID } , classli ]"
-          :key="'sidebarsec'+section.ID" :id="section.ID">
+          :key="section.CODE" :id="section.ID">
         <span v-if="getCountSections(section.ID)>0" @click="show" :id="section.ID" class="tree-caret"><i
           class="fas fa-caret-right"></i>
         </span>
