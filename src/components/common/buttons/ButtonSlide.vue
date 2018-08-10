@@ -17,9 +17,9 @@ export default {
   /* ----- notebook-list-item ---- */
 
   .notebook-list-title-toggle {
-    /* font-weight: 600; */
+    font-weight: 600;
     font-size: 18px;
-    color: #9aa5ab;
+    color: #717a89;
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -34,9 +34,6 @@ export default {
     background-color: transparent;
     outline: none;
     border: 0;
-    padding: 2px 15px;
-    border: 1px solid #9aa5ab;
-    border-radius: 20px;
   }
 
   .notebook-list-title-toggle > i.kb-log {
