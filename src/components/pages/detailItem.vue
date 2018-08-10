@@ -15,8 +15,7 @@
           <!--<span class="source-line-item cnt-none">{{ $store.getters.getUserByID(fbElement.CREATED_BY ).NAME }}</span>-->
           <span class="source-line-item cnt-none">{{ fbElement.CREATED_BY }}</span>
         </div>
-        <div class="content-text-wrap">
-          {{ fbElement.DETAIL_TEXT }}
+        <div class="content-text-wrap" v-html="fbElement.DETAIL_TEXT">
         </div>
         <div class="article-collapse">
           <button class="artc-collapse-btn">
