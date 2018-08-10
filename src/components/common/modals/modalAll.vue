@@ -549,7 +549,6 @@ export default {
     height: 100%;
     padding: 10px;
     background-color: #eef2f4;
-    overflow-y: auto;
     padding-top: 0px;
   }
 
