@@ -8,7 +8,6 @@
 </template>
 <script>
 import trItem from './TreeItem'
-
 export default {
   // TODO нужнопопробовать уменьшать массив перед вызовом доч элемента чтобы опять все не перебирать, но что делать когда он проваливается внутрь и там удалять хз
   name: 'treeItemList',

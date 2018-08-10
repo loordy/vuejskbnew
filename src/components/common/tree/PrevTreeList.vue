@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     treeData () {
-      return this.$store.getters.getElementsByParentID(this.currentID)
+      return this.$store.getters.getElementsListACTIVE('Y')
     }
   },
   methods: {

@@ -21,7 +21,7 @@
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
           <div class="select-input">
-            <input type="text" class="kb-input" v-model="model.NAME" @keyup="doSearch">
+            <input type="text" class="kb-input" v-model="model" @keyup="doSearch">
             <!--<input type="text" class="kb-input" v-model="searchWord" @keyup="doSearch">-->
             <div class="select-input-angle" @click="keyup = !keyup">
               <i class="fas fa-angle-down"></i>
@@ -29,7 +29,20 @@
           </div>
 
         </div>
-        <SelectList v-if="keyup" :treeData="(searchWord ? result : treeData)"/>
+        <div class="inner-cat-list">
+
+          <!--<div class="inner-cat-list-search">-->
+          <!--<div class="inner-cat-list-search-wrap">-->
+          <!--<input type="text" placeholder="Поиск по разделам...">-->
+          <!--<button>-->
+          <!--<i class="fas fa-search"></i>-->
+          <!--</button>-->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="inner-cat-list-content">
+        <SelectList v-if="keyup" :treeData="(searchWord ? treeData : treeData)"/>
+          </div>
+          </div>
         <div class="edit-group" style="display:none">
           <div class="edit-group-label">ДОСТУП К РАЗДЕЛУ</div>
           <div class="radio-button-row">
@@ -120,7 +133,7 @@ export default {
       return this.$store.getters.getElementsListACTIVE('Y')
     },
     model () {
-      return this.$store.getters.getElementByID(this.modalData.element.SECTION)
+      return this.$store.getters.getElementByID()
     },
     ...mapSearchGetters('elements', {
       resultIds: getterTypes.result,
