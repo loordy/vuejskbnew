@@ -2,7 +2,7 @@
   <div class="kb-prev-tree-wrap">
     <div class="kb-prev-tree-header">
       <h2 class="kb-prev-tree-title">Структура базы</h2>
-      <a href="#" class="tree-add-item"><i class="fas fa-plus"></i>Добавить статью</a>
+      <button @click='openModal' class="tree-add-item"><i class="fas fa-plus"></i>Добавить статью</button>
     </div>
     <treeItemList :treeData="treeData" :currentItem="currentID"/>
     </div>
@@ -18,6 +18,20 @@ export default {
   computed: {
     treeData () {
       return this.$store.getters.getElementsByParentID(this.currentID)
+    }
+  },
+  methods: {
+    openModal () {
+      this.$store.commit('openModal',
+        {
+          openModal: 'modalAll',
+          modalData: {
+            element: {
+              NAME: 'Новая статья',
+              SECTION: this.$route.params.CODE
+            }
+          }
+        })
     }
   }
 }

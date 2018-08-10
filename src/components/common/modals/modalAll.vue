@@ -35,10 +35,10 @@
           </div>
 
           <div class="edit-area-footer">
-            <button class="kb-btn green-btn" @click="saveItem">
+            <button class="kb-btn green-btn" @click="save">
               Сохранить
             </button>
-            <button class="kb-btn" @click="updateItem">
+            <button class="kb-btn" @click="apply">
               Применить
             </button>
           </div>

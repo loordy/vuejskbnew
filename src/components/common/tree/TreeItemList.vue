@@ -6,72 +6,7 @@
     </li>
   </ul>
 
-  <!--<ul class="kb-prev-tree-list">-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Группа компаний UCD Micros</span>-->
-  <!--</a>-->
-  <!--<ul class="kb-prev-tree-list-parent">-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#"><i class="fas fa-folder-open"></i><span>История</span></a>-->
-  <!--<ul class="kb-prev-tree-list-parent">-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#"><i-->
-  <!--class="far fa-file"></i><span>7 правил делового общения в мессенджерах</span></a>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item"><a href="#"><i class="far fa-file"></i><span>Вредные советы руководителю проекта</span></a>-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item"><a href="#"><i class="fas fa-folder-open"></i><span>Притча о двух работниках</span></a>-->
-  <!--<ul class="kb-prev-tree-list-parent">-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#"><i class="fas fa-folder-open"></i><span>История 2</span></a>-->
-  <!--<ul class="kb-prev-tree-list-parent">-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#"><i-->
-  <!--class="far fa-file"></i><span>7 правил делового общения в мессенджерах</span></a>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item"><a href="#"><i class="far fa-file"></i><span>Вредные советы руководителю проекта</span></a>-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Внутренний FAQ</span>-->
-  <!--</a>-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Внутренний FAQ</span>-->
-  <!--</a>-->
-  <!--</li>-->
-  <!--</ul>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Внутренний FAQ</span>-->
-  <!--</a>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Приказы и поручения</span>-->
-  <!--</a>-->
-  <!--</li>-->
-  <!--<li class="kb-prev-tree-list_item">-->
-  <!--<a href="#">-->
-  <!--<i class="fas fa-folder-open"></i>-->
-  <!--<span>Менеджер по продажам</span>-->
-  <!--</a>-->
-  <!--</li>-->
-  <!--</ul>-->
+
 </template>
 <script>
 import trItem from './TreeItem'

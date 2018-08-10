@@ -39,7 +39,7 @@ export default {
       data.CODE = new Date().getTime()
     }
     commit('addNewElement', data)
-    api.addNewItem(data.entity, data, function (result) {
+    api.addNewItem(data, function (result) {
       data.ID = result
       commit('updateElement', data)
       // state.getters.getElementByCODE(data.CODE).ID = result
@@ -49,13 +49,13 @@ export default {
   addNewSection: ({commit, state}, data) => {
     data.CODE = new Date()
     commit('addNewSection', data)
-    api.addNewSection(entitykb, data, function (result) {
+    api.addNewSection(data, function (result) {
       // state.getters.getSectionByCODE(data.CODE).ID = result
     })
   },
 
   updateElement: ({commit, state}, data) => {
-    api.updateItem(entitykb, data)
+    api.updateItem(data)
   },
 
   updateSection: ({commit, state}, data) => {
@@ -64,7 +64,7 @@ export default {
 
   deleteElement: ({commit, state}, data) => {
     commit('deleteElement', data)
-    api.deleteItem(entitykb, data, function (result) {
+    api.deleteItem(data, function (result) {
     })
   },
 
