@@ -1,5 +1,5 @@
 <template>
-<div class="inner-cat-list-list-item_link"><span>{{ item.NAME }}</span></div>
+<div class="inner-cat-list-list-item_link" :id="item.ID"><span>{{ item.NAME }}</span></div>
 </template>
 <script>
 export default {

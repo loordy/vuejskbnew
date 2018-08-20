@@ -21,9 +21,8 @@
         <div class="edit-group">
           <div class="edit-group-label">РОДИТЕЛЬСКИЙ РАЗДЕЛ</div>
           <div class="select-input">
-            <input type="text" class="kb-input" v-model="model" @keyup="doSearch">
-            <!--<input type="text" class="kb-input" v-model="searchWord" @keyup="doSearch">-->
-            <div class="select-input-angle" @click="keyup = !keyup">
+            <input type="text" class="kb-input" v-model="model" @click="doSearch">
+            <div class="select-input-angle" @click="doSearch">
               <i class="fas fa-angle-down"></i>
             </div>
           </div>
@@ -40,7 +39,7 @@
           <!--</div>-->
           <!--</div>-->
           <div class="inner-cat-list-content">
-        <SelectList v-if="keyup" :treeData="(searchWord ? treeData : treeData)"/>
+        <SelectList v-if="keyup" :treeData="(searchWord ? result : treeData)" :element="this.modalData.element"/>
           </div>
           </div>
         <div class="edit-group" style="display:none">
@@ -64,7 +63,6 @@
 
           </div>
         </div>
-
         <div class="edit-group btn-group">
           <button class="kb-btn red-btn" @click="deleteElement">
             Удалить
@@ -88,18 +86,18 @@
 </template>
 <script>
 import SelectList from '../tree/SelectList'
-import {
-  mapActions as mapSearchActions,
-  mapGetters as mapSearchGetters,
-  getterTypes,
-  actionTypes
-} from 'vuex-search'
 export default {
   name: 'editCatModal',
   components: {SelectList},
+  provide () {
+    return {
+      currentElement: this.modalData.element
+    }
+  },
   data () {
     return {
       searchWord: '',
+     // model: 'Верхний уровень',
       keyup: false
     }
   },
@@ -120,33 +118,39 @@ export default {
       this._beforeEditingCache = null
       this.$emit('close')
     },
-    ...mapSearchActions('tags', {
-      searchTags: actionTypes.search
-    }),
     doSearch () {
       this.keyup = true
-      this.searchTags(this.searchWord)
     }
   },
   computed: {
     treeData () {
       return this.$store.getters.getElementsListACTIVE('Y')
     },
-    model () {
-      return this.$store.getters.getElementByID()
+    modelComp () {
+      if (!this.keyup) {
+        if (this.$store.getters.getElementByID(this.modalData.element.SECTION)) {
+          return this.$store.getters.getElementByID(this.modalData.element.SECTION).NAME
+        } else {
+          return 'Верхний уровень'
+        }
+      } else {
+        return this.searchWord
+      }
     },
-    ...mapSearchGetters('elements', {
-      resultIds: getterTypes.result,
-      isLoading: getterTypes.isSearching
-    }),
+    model () {
+      if (this.$store.getters.getElementByID(this.modalData.element.SECTION)) {
+        return this.$store.getters.getElementByID(this.modalData.element.SECTION).NAME
+      } else {
+        return 'Верхний уровень'
+      }
+    },
     result () {
-      // return this.resultIds.map(ID => this.taglist.filter(item => item.ID === ID)[0])
-      // TODO можно ограничить в дальнейшем массив поиска по 2 букве и протестировать выход из цикла по достижению кол-ва
-      return this.treeData.filter(item => this.resultIds.includes(item.ID))
+      return this.treeData.filter((el) => el.toLowerCase().indexOf(this.searchWord.toLowerCase()) > -1)
     }
   },
   mounted () {
     this._beforeEditingCache = Object.assign({}, this.modalData.element)
+    this.model = this.$store.getters.getElementByID(this.modalData.element.SECTION).NAME
   }
 }
 </script>

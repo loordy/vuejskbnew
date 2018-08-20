@@ -2,7 +2,7 @@
 
           <ul class="inner-cat-list-list">
             <li class="inner-cat-list-list-item" v-for="curItem in getList(currentItem)" :key="curItem.CODE">
-              <SelectListItem :item="curItem"/>
+              <SelectListItem :item="curItem" @click.native="setSection($event)" />
               <SelectList v-if="getList(curItem.ID).length !== 0" :currentItem="curItem.ID" :treeData="treeData"></SelectList>
             </li>
           </ul>
@@ -14,8 +14,10 @@ import SelectListItem from './SelectListItem'
 export default {
   name: 'SelectList',
   components: {SelectListItem},
+  inject: ['currentElement'],
   props: {
     treeData: '',
+    element: '',
     currentItem: {
       default: null
     }
@@ -23,6 +25,12 @@ export default {
   methods: {
     getList (currentID) {
       return this.treeData.filter(item => item.SECTION === currentID)
+    },
+    setSection: function (event) {
+      console.log(this.currentElement)
+      console.log(event)
+      this.currentElement.SECTION = event.currentTarget.id
+      console.log( this.currentElement.SECTION)
     }
   }
 }

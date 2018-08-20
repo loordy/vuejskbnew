@@ -1,6 +1,5 @@
 <template>
   <div>
-    <PrevTreeList :currentID="fbElement.ID"></PrevTreeList>
     <div class="liset-item article">
       <div class="article-cover"
            :style="{ backgroundImage: 'url(' + require('@/assets/images/article.jpg') + ')' }">
@@ -10,6 +9,7 @@
           <h3><span>{{ fbElement.NAME }}</span></h3>
           <contentEditBtn :data="fbElement"></contentEditBtn>
         </div>
+        <PrevTreeList :currentID="fbElement.ID"></PrevTreeList>
         <div class="article-source-line">
           <span class="source-line-item">{{ fbElement.DATE_CREATE }}</span>
           <!--<span class="source-line-item cnt-none">{{ $store.getters.getUserByID(fbElement.CREATED_BY ).NAME }}</span>-->
